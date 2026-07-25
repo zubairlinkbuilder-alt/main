@@ -78,7 +78,7 @@ Among **men's hairstyles for thin straight hair**, the crew cut stands out becau
 **Best Face Shapes:** Oval, round, square
 **Best Hair Textures:** Straight, fine, slightly wavy
 
-The [Caesar haircut](https://stylexmagazine.com/caesar-haircut/) directs hair forward across the hairline — the exact area where thin straight hair exposes gaps first. That short horizontal fringe creates a defined front edge that masks recession without looking like a cover-up. George Clooney made the Caesar mainstream during his ER years in the mid-1990s, and the style originally dates back to Julius Caesar himself, who reportedly wore his hair brushed forward to cover a thinning hairline. For men with a **thinning crown**, the Caesar keeps the top short enough that crown density matches the front. Ask for a #3 on top, point-cut fringe, and a tapered fade.
+The **Caesar haircut** directs hair forward across the hairline — the exact area where thin straight hair exposes gaps first. That short horizontal fringe creates a defined front edge that masks recession without looking like a cover-up. George Clooney made the Caesar mainstream during his ER years in the mid-1990s, and the style originally dates back to Julius Caesar himself, who reportedly wore his hair brushed forward to cover a thinning hairline. For men with a **thinning crown**, the Caesar keeps the top short enough that crown density matches the front. Ask for a #3 on top, point-cut fringe, and a tapered fade.
 
 ### 6. Ivy League
 
@@ -150,7 +150,7 @@ This is the most versatile combination on the list. The **low fade** handles the
 **Best Face Shapes:** Oval, square, diamond
 **Best Hair Textures:** All textures
 
-The [high and tight haircut](https://stylexmagazine.com/high-tight-haircut/) removes everything that makes thin hair noticeable — length, layering, contrast. What remains is your bone structure and a sharp, masculine silhouette. This cut suits men with strong jawlines particularly well because the exposed sides frame the face without any hair softening the angles. On thin straight hair, the high and tight takes all the guesswork out. No styling, no product, no bad hair days. Trim every two weeks to keep it sharp.
+The **high and tight haircut** removes everything that makes thin hair noticeable — length, layering, contrast. What remains is your bone structure and a sharp, masculine silhouette. This cut suits men with strong jawlines particularly well because the exposed sides frame the face without any hair softening the angles. On thin straight hair, the high and tight takes all the guesswork out. No styling, no product, no bad hair days. Trim every two weeks to keep it sharp.
 
 ### 12. Slicked Back with Undercut
 
@@ -222,7 +222,7 @@ The faux hawk concentrates all available hair into a central ridge, giving thin 
 **Best Face Shapes:** Oval, square, diamond
 **Best Hair Textures:** Straight, fine
 
-The disconnected [undercut fade](https://stylexmagazine.com/undercut-fade-hairstyles/) works on thin straight hair when the top still has enough density to cover the scalp when styled. The hard disconnect line creates a bold, graphic look — no one mistakes this for thinning. Straight hair falls cleanly over the disconnect, which is an advantage curly-haired men don't get. Style the top forward, to the side, or slicked back depending on face shape. For thin straight hair specifically, I'd recommend styling forward — it covers the most scalp area with the least hair.
+The disconnected **undercut fade** works on thin straight hair when the top still has enough density to cover the scalp when styled. The hard disconnect line creates a bold, graphic look — no one mistakes this for thinning. Straight hair falls cleanly over the disconnect, which is an advantage curly-haired men don't get. Style the top forward, to the side, or slicked back depending on face shape. For thin straight hair specifically, I'd recommend styling forward — it covers the most scalp area with the least hair.
 
 ### 18. Classic Taper
 
@@ -318,7 +318,7 @@ Layering thin straight hair sounds counterintuitive — removing bulk from hair 
 **Best Face Shapes:** All face shapes
 **Best Hair Textures:** Straight, fine, wavy
 
-The [messy textured top](https://stylexmagazine.com/messy-hairstyles-men/) takes thin hair's biggest weakness — lack of structure — and turns it into the entire point of the style. Texturise the top with a sea salt spray or matte clay, tousle it with your fingers, and the hair looks styled rather than flat. The low fade keeps the bottom half tight so the rougher top looks intentional, not neglected. For men who want an effortless finish without the precision of a side part or quiff, this is the lowest-effort option that still looks put together.
+The **messy textured top** takes thin hair's biggest weakness — lack of structure — and turns it into the entire point of the style. Texturise the top with a sea salt spray or matte clay, tousle it with your fingers, and the hair looks styled rather than flat. The low fade keeps the bottom half tight so the rougher top looks intentional, not neglected. For men who want an effortless finish without the precision of a side part or quiff, this is the lowest-effort option that still looks put together.
 
 ---
 
@@ -392,7 +392,7 @@ Tell them where you're thinning — front, crown, sides, or overall. Point to th
 
 Ask for **point cutting or texturising** on the top rather than blunt cutting. Point cutting removes weight from the ends of individual strands, creating movement and separation. Blunt cutting leaves a flat, uniform surface that lies dead against the head on thin hair.
 
-Specify that you want the sides **blended, not hard-lined.** On thin straight hair, a sharp line between lengths shows every density change. A gradual taper or fade hides the transition.
+Specify that you want the sides **blended, not hard-lined.** If you're considering detailed **haircut designs** like razor lines or etched patterns, keep them on the fade area where hair is dense — never near thinning zones where they'll highlight sparse patches. On thin straight hair, a sharp line between lengths shows every density change. A gradual taper or fade hides the transition.
 
 Give a number if you can. "I want a #2 on the sides fading into two inches on top" tells your barber exactly what you want. "Something short on the sides and longer on top" leaves room for interpretation that rarely ends well on thin hair.
 
