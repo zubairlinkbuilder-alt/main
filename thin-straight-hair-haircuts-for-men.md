@@ -12,7 +12,7 @@ This is the opposite approach. These are **haircuts for guys with thin straight 
 
 Three things separate a good thin-hair cut from a bad one: weight distribution, length calibration, and blend technique.
 
-Thin straight hair lacks the natural body that wavy or curly textures provide. Every extra millimetre of length pulls hair flat against the scalp, making sparse patches more obvious. The best haircuts for men with thin straight hair remove weight at the ends through point cutting or razor texturising, keep the top between one and three inches, and graduate the sides with a taper or fade so the proportions stay balanced.
+Thin straight hair lacks the natural body that wavy or curly textures provide. Every extra millimetre of length pulls hair flat against the scalp, making sparse patches more obvious. The best haircuts for men with thin straight hair remove weight at the ends through point cutting or razor texturising, keep the top between one and three inches, and graduate the sides with a taper or **fade** so the proportions stay balanced.
 
 Clipper-over-comb blending matters more on thin straight hair than on any other texture. A hard line between lengths highlights density changes immediately. A gradual blend — especially through the parietal ridge where hair naturally thins — hides the transition entirely.
 
@@ -78,7 +78,7 @@ Among **men's hairstyles for thin straight hair**, the crew cut stands out becau
 **Best Face Shapes:** Oval, round, square
 **Best Hair Textures:** Straight, fine, slightly wavy
 
-The Caesar directs hair forward across the hairline — the exact area where thin straight hair exposes gaps first. That short horizontal fringe creates a defined front edge that masks recession without looking like a cover-up. George Clooney made the Caesar mainstream during his ER years in the mid-1990s, and the style originally dates back to Julius Caesar himself, who reportedly wore his hair brushed forward to cover a thinning hairline. For men with a **thinning crown**, the Caesar keeps the top short enough that crown density matches the front. Ask for a #3 on top, point-cut fringe, and a tapered fade.
+The [Caesar haircut](https://stylexmagazine.com/caesar-haircut/) directs hair forward across the hairline — the exact area where thin straight hair exposes gaps first. That short horizontal fringe creates a defined front edge that masks recession without looking like a cover-up. George Clooney made the Caesar mainstream during his ER years in the mid-1990s, and the style originally dates back to Julius Caesar himself, who reportedly wore his hair brushed forward to cover a thinning hairline. For men with a **thinning crown**, the Caesar keeps the top short enough that crown density matches the front. Ask for a #3 on top, point-cut fringe, and a tapered fade.
 
 ### 6. Ivy League
 
@@ -150,7 +150,7 @@ This is the most versatile combination on the list. The **low fade** handles the
 **Best Face Shapes:** Oval, square, diamond
 **Best Hair Textures:** All textures
 
-The **high and tight** removes everything that makes thin hair noticeable — length, layering, contrast. What remains is your bone structure and a sharp, masculine silhouette. This cut suits men with strong jawlines particularly well because the exposed sides frame the face without any hair softening the angles. On thin straight hair, the high and tight takes all the guesswork out. No styling, no product, no bad hair days. Trim every two weeks to keep it sharp.
+The [high and tight haircut](https://stylexmagazine.com/high-tight-haircut/) removes everything that makes thin hair noticeable — length, layering, contrast. What remains is your bone structure and a sharp, masculine silhouette. This cut suits men with strong jawlines particularly well because the exposed sides frame the face without any hair softening the angles. On thin straight hair, the high and tight takes all the guesswork out. No styling, no product, no bad hair days. Trim every two weeks to keep it sharp.
 
 ### 12. Slicked Back with Undercut
 
@@ -222,7 +222,7 @@ The faux hawk concentrates all available hair into a central ridge, giving thin 
 **Best Face Shapes:** Oval, square, diamond
 **Best Hair Textures:** Straight, fine
 
-The disconnected undercut works on thin straight hair when the top still has enough density to cover the scalp when styled. The hard disconnect line creates a bold, graphic look — no one mistakes this for thinning. Straight hair falls cleanly over the disconnect, which is an advantage curly-haired men don't get. Style the top forward, to the side, or slicked back depending on face shape. For thin straight hair specifically, I'd recommend styling forward — it covers the most scalp area with the least hair.
+The disconnected [undercut fade](https://stylexmagazine.com/undercut-fade-hairstyles/) works on thin straight hair when the top still has enough density to cover the scalp when styled. The hard disconnect line creates a bold, graphic look — no one mistakes this for thinning. Straight hair falls cleanly over the disconnect, which is an advantage curly-haired men don't get. Style the top forward, to the side, or slicked back depending on face shape. For thin straight hair specifically, I'd recommend styling forward — it covers the most scalp area with the least hair.
 
 ### 18. Classic Taper
 
@@ -332,7 +332,7 @@ The right cut for your hair type is half the equation — face shape determines 
 
 **Square faces** pair well with short, structured cuts that complement strong angles — the crew cut, **high and tight**, and skin fade crop all match the jaw's definition. Softer styles like the textured side sweep can balance a heavy jaw if that's the goal.
 
-**Oblong or long faces** benefit from cuts with some width at the sides and fringe coverage at the forehead. The French crop, **Caesar cut**, and angular fringe all shorten a long face visually. Avoid high-volume styles like the quiff that add more height to an already long shape.
+**Oblong or long faces** benefit from cuts with some width at the sides and fringe coverage at the forehead — see our guide to [haircuts for oblong faces](https://stylexmagazine.com/haircuts-for-oblong-faces-men/) for more options. The French crop, **Caesar cut**, and angular fringe all shorten a long face visually. Avoid high-volume styles like the quiff that add more height to an already long shape.
 
 **Heart-shaped faces** suit cuts that are fuller at the jaw level. A low fade with textured top, the Ivy League, or a faux hawk fade balance a wider forehead with a narrower chin.
 
