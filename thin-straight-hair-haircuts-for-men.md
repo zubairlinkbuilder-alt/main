@@ -318,7 +318,7 @@ Layering thin straight hair sounds counterintuitive — removing bulk from hair 
 **Best Face Shapes:** All face shapes
 **Best Hair Textures:** Straight, fine, wavy
 
-The messy textured top takes thin hair's biggest weakness — lack of structure — and turns it into the entire point of the style. Texturise the top with a sea salt spray or matte clay, tousle it with your fingers, and the hair looks styled rather than flat. The low fade keeps the bottom half tight so the rougher top looks intentional, not neglected. For men who want an effortless finish without the precision of a side part or quiff, this is the lowest-effort option that still looks put together.
+The [messy textured top](https://stylexmagazine.com/messy-hairstyles-men/) takes thin hair's biggest weakness — lack of structure — and turns it into the entire point of the style. Texturise the top with a sea salt spray or matte clay, tousle it with your fingers, and the hair looks styled rather than flat. The low fade keeps the bottom half tight so the rougher top looks intentional, not neglected. For men who want an effortless finish without the precision of a side part or quiff, this is the lowest-effort option that still looks put together.
 
 ---
 
