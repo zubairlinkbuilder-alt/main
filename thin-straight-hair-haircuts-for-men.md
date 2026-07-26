@@ -494,14 +494,15 @@ Derma-rolling (microneedling) at 0.5mm to 1.5mm depth has clinical support — a
 
 ### 3. Internal Links Used
 
-| Anchor Text | URL | Section |
-|---|---|---|
-| **fade haircuts** | stylexmagazine.com/fade-haircuts-for-men/ | Low Fade with Textured Top — bolded as placeholder (pending publish) |
-| **low fade haircut** | stylexmagazine.com/low-fade-vs-mid-fade-vs-high-fade/ | Low Fade with Textured Top — bolded placeholder |
-| **high and tight** | stylexmagazine.com/high-tight-haircut/ | High and Tight (H3 #11) — confirmed live |
-| **Caesar cut** | stylexmagazine.com/caesar-haircut/ | Caesar Cut (H3 #5) — confirmed live |
-| **messy hairstyles** | stylexmagazine.com/messy-hairstyles-men/ | Messy Textured Top (H3 #25) — confirmed live |
-| **undercut fade** | stylexmagazine.com/undercut-fade-hairstyles/ | Disconnected Undercut (H3 #17) — confirmed live |
+| Anchor Text | URL | Section | Status |
+|---|---|---|---|
+| **fade** | /fade-haircuts-for-men/ | Intro paragraph | Bold placeholder (not live) |
+| **Caesar haircut** | /caesar-haircut/ | Caesar Cut (H3 #5) | Bold placeholder (not live) |
+| **high and tight haircut** | /high-tight-haircut/ | High and Tight (H3 #11) | Bold placeholder (not live) |
+| **undercut fade** | /undercut-fade-hairstyles/ | Disconnected Undercut (H3 #17) | Bold placeholder (not live) |
+| **messy textured top** | /messy-hairstyles-men/ | Messy Textured Top (H3 #25) | Bold placeholder (not live) |
+| **haircut designs** | /haircut-designs/ | Barber Guide section | Bold placeholder (not live) |
+| haircuts for oblong faces | /haircuts-for-oblong-faces-men/ | Face Shape section — Oblong | Live link |
 
 ### 4. External Links Used
 
