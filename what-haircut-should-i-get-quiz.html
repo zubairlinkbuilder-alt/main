@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Haircut Should I Get? Free Men's Quiz — Find Your Perfect Cut | StyleX Magazine</title>
+<meta name="description" content="Take StyleX's free haircut quiz for men. Answer 5 quick questions about your face shape, hair type, and lifestyle — get personalised haircut recommendations with barber scripts from a pro stylist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gold: #F2C230; --gold-light: #FDF1CF; --gold-dark: #C6852E;
+  --ink: #2B2D42; --ink-soft: #3F4368; --muted: #6B7280;
+  --border: #E5E7EB; --cream: #FAFAFA; --white: #FFFFFF;
+  --red: #B23A2E; --green: #2F7A4F; --blue: #3D5FA6;
+  --radius-sm: 10px; --radius-md: 16px; --radius-lg: 24px;
+}
+body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.65; font-size: 16px; }
+.page-wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+/* ── HERO ── */
+.page-hero { padding: 36px 0 28px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+.page-hero h1 { font-size: clamp(26px, 4vw, 40px); font-weight: 800; line-height: 1.2; color: var(--ink); margin-bottom: 14px; letter-spacing: -0.5px; }
+.page-hero h1 em { font-style: normal; color: var(--gold-dark); }
+
+/* ── QUICK ANSWER ── */
+.quick-answer { background: var(--gold-light); border-left: 4px solid var(--gold); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 16px 20px; margin-bottom: 40px; }
+.quick-answer .qa-label { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 6px; }
+.quick-answer p { font-size: 14.5px; font-weight: 500; line-height: 1.6; color: var(--ink); margin: 0; }
+
+/* ── SECTION HEADINGS ── */
+.section-heading { font-size: clamp(19px, 2.5vw, 24px); font-weight: 800; color: var(--ink); margin: 48px 0 16px; line-height: 1.25; letter-spacing: -0.3px; }
+.section-heading.first { margin-top: 0; }
+.section-sub { font-size: 15px; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
+
+/* ── TOOL SECTION ── */
+.tool-section { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 48px; box-shadow: 0 2px 32px rgba(43,45,66,0.07); }
+.tool-header { background: linear-gradient(135deg, var(--ink), var(--ink-soft)); padding: 24px 28px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.tool-header-text h2 { font-size: 18px; font-weight: 800; color: var(--white); margin-bottom: 4px; }
+.tool-header-text p { font-size: 13px; color: rgba(255,255,255,0.75); margin: 0; }
+.tool-badge { background: var(--gold); color: var(--ink); font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 20px; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
+
+/* ── QUIZ WIDGET ── */
+.quiz-widget { padding: 28px 24px 36px; }
+.quiz-progress { display: flex; align-items: center; gap: 6px; margin-bottom: 28px; }
+.quiz-progress .bar { flex: 1; height: 6px; border-radius: 3px; background: var(--border); overflow: hidden; }
+.quiz-progress .bar .fill { height: 100%; border-radius: 3px; background: var(--gold); transition: width 0.4s ease; }
+.quiz-progress .step-text { font-size: 12px; font-weight: 700; color: var(--muted); white-space: nowrap; }
+
+.quiz-question { font-size: clamp(17px, 2.2vw, 21px); font-weight: 800; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+.quiz-hint { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+
+.quiz-options { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 24px; }
+.quiz-option { background: var(--white); border: 2px solid var(--border); border-radius: var(--radius-md); padding: 18px 16px; cursor: pointer; transition: all 0.15s; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+.quiz-option:hover { border-color: var(--gold); background: #FFFDF5; transform: translateY(-1px); }
+.quiz-option.selected { border-color: var(--gold); background: var(--gold-light); }
+.quiz-option .opt-icon { font-size: 28px; }
+.quiz-option .opt-label { font-size: 14px; font-weight: 700; color: var(--ink); }
+.quiz-option .opt-desc { font-size: 11.5px; color: var(--muted); line-height: 1.4; }
+
+.quiz-nav { display: flex; gap: 12px; justify-content: space-between; }
+.quiz-btn { padding: 14px 28px; border: none; border-radius: 12px; font-size: 15px; font-weight: 800; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+.quiz-btn.back { background: var(--border); color: var(--muted); }
+.quiz-btn.back:hover { background: #D1D5DB; color: var(--ink); }
+.quiz-btn.next { background: var(--border); color: #9aa1a9; cursor: not-allowed; margin-left: auto; }
+.quiz-btn.next.ready { background: var(--ink); color: var(--white); cursor: pointer; }
+.quiz-btn.next.ready:hover { background: #1E1F30; }
+
+/* ── RESULTS ── */
+.results-hero { background: linear-gradient(135deg, var(--ink), var(--ink-soft)); border-radius: var(--radius-md); padding: 28px 24px; color: var(--white); position: relative; overflow: hidden; margin-bottom: 20px; }
+.results-hero::after { content: ""; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: rgba(255,255,255,0.06); }
+.results-hero .eyebrow { font-size: 11.5px; font-weight: 700; opacity: 0.85; letter-spacing: 0.03em; }
+.results-hero h2 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; margin: 6px 0 10px; position: relative; }
+.results-hero p { font-size: 14px; line-height: 1.6; opacity: 0.9; position: relative; margin: 0; }
+.results-profile { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; position: relative; }
+.results-profile .tag { background: rgba(255,255,255,0.15); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+
+.rec-card { background: var(--white); border: 2px solid var(--border); border-radius: var(--radius-md); overflow: hidden; margin-bottom: 16px; transition: all 0.15s; }
+.rec-card.top-pick { border-color: var(--gold); }
+.rec-card-header { padding: 20px 20px 14px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.rec-card-header .rank-badge { background: var(--gold-light); color: var(--gold-dark); font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px; white-space: nowrap; letter-spacing: 0.03em; }
+.rec-card-header .rank-badge.top { background: var(--gold); color: var(--ink); }
+.rec-card-title h3 { font-size: 18px; font-weight: 800; color: var(--ink); margin-bottom: 4px; }
+.rec-card-title .match-pct { font-size: 13px; color: var(--green); font-weight: 700; }
+.rec-card-body { padding: 0 20px 20px; }
+.rec-card-body .why-text { font-size: 14px; color: #3a3c52; line-height: 1.65; margin-bottom: 16px; }
+
+.rec-details { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.rec-detail { background: #F5F7FA; border-radius: var(--radius-sm); padding: 14px; }
+.rec-detail .detail-label { font-size: 10.5px; font-weight: 800; letter-spacing: 0.04em; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
+.rec-detail .detail-value { font-size: 13.5px; color: var(--ink); font-weight: 600; line-height: 1.5; }
+
+.barber-script { background: var(--gold-light); border-left: 3px solid var(--gold); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 14px 18px; margin-bottom: 14px; }
+.barber-script .script-label { font-size: 10.5px; font-weight: 800; letter-spacing: 0.04em; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 6px; }
+.barber-script p { font-size: 13.5px; color: var(--ink); line-height: 1.6; font-style: italic; margin: 0; }
+
+.rec-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; color: var(--gold-dark); text-decoration: none; padding: 8px 0; }
+.rec-link:hover { color: var(--ink); }
+
+.avoid-box { background: #FEF0EE; border: 1px solid #F5D0CC; border-radius: var(--radius-sm); padding: 16px 18px; margin-top: 16px; }
+.avoid-box .avoid-label { font-size: 10.5px; font-weight: 800; letter-spacing: 0.04em; color: var(--red); text-transform: uppercase; margin-bottom: 8px; }
+.avoid-box ul { margin: 0; padding-left: 16px; font-size: 13.5px; color: #3a3c52; line-height: 1.7; }
+
+.results-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+.results-actions .quiz-btn { flex: 1; min-width: 140px; text-align: center; }
+.results-actions .quiz-btn.primary { background: var(--ink); color: var(--white); cursor: pointer; }
+.results-actions .quiz-btn.primary:hover { background: #1E1F30; }
+.results-actions .quiz-btn.outline { background: transparent; border: 2px solid var(--border); color: var(--ink); cursor: pointer; }
+.results-actions .quiz-btn.outline:hover { border-color: var(--ink); }
+
+/* ── CONTENT SECTIONS ── */
+.content-section { margin: 0 0 52px; }
+.content-section p { font-size: 15.5px; line-height: 1.75; color: #3a3c52; margin-bottom: 16px; }
+.content-section p:last-child { margin-bottom: 0; }
+.content-section a { color: var(--gold-dark); text-decoration: none; font-weight: 600; }
+.content-section a:hover { text-decoration: underline; }
+
+/* ── HOW IT WORKS ── */
+.how-it-works { display: flex; gap: 48px; align-items: center; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 40px; margin-bottom: 52px; }
+.hiw-content { flex: 1; }
+.hiw-content h2 { font-size: clamp(20px, 2.5vw, 26px); font-weight: 800; color: var(--ink); margin-bottom: 12px; line-height: 1.25; letter-spacing: -0.3px; }
+.hiw-content h2 em { font-style: normal; color: var(--gold-dark); }
+.hiw-content > p { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 18px; }
+.hiw-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+.hiw-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; color: var(--ink); line-height: 1.6; }
+.hiw-list li::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex: none; margin-top: 7px; }
+.hiw-list li strong { color: var(--gold-dark); font-weight: 700; margin-right: 3px; }
+
+/* ── FACE SHAPE QUICK GUIDE ── */
+.guide-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 24px 0; }
+.guide-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 20px; }
+.guide-card h4 { font-size: 15px; font-weight: 800; color: var(--ink); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+.guide-card .shape-emoji { font-size: 20px; }
+.guide-card .best-cuts { font-size: 13.5px; color: #3a3c52; line-height: 1.6; margin-bottom: 8px; }
+.guide-card .guide-link { font-size: 12.5px; font-weight: 700; color: var(--gold-dark); text-decoration: none; }
+.guide-card .guide-link:hover { text-decoration: underline; }
+
+/* ── HAIR TYPE MATRIX ── */
+.matrix-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; background: var(--white); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); }
+.matrix-table th { background: var(--ink); color: var(--white); font-size: 12px; font-weight: 700; padding: 12px 14px; text-align: left; letter-spacing: 0.03em; }
+.matrix-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
+.matrix-table tr:last-child td { border-bottom: none; }
+.matrix-table tr:nth-child(even) td { background: #FAFBFC; }
+
+/* ── PILLAR LINK STRIP ── */
+.pillar-strip { background: var(--gold-light); border: 1px solid #f0dc8a; border-radius: var(--radius-md); padding: 16px 20px; display: flex; align-items: center; gap: 14px; margin: 32px 0; flex-wrap: wrap; }
+.pillar-strip .pill-icon { font-size: 24px; }
+.pillar-strip-text { flex: 1; }
+.pillar-strip-text strong { font-size: 14.5px; color: var(--ink); }
+.pillar-strip-text span { font-size: 13px; color: var(--muted); display: block; }
+.pillar-strip a { font-size: 13px; font-weight: 700; color: var(--gold-dark); text-decoration: none; border: 1.5px solid var(--gold-dark); padding: 8px 16px; border-radius: 50px; white-space: nowrap; transition: all 0.15s; }
+.pillar-strip a:hover { background: var(--gold-dark); color: var(--white); }
+
+/* ── FAQ ── */
+.faq-list { margin: 24px 0; display: flex; flex-direction: column; gap: 0; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-q { font-size: 15px; font-weight: 700; color: var(--ink); padding: 18px 0 6px; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; user-select: none; }
+.faq-q .faq-arrow { color: var(--gold-dark); font-size: 18px; flex: none; line-height: 1; transition: transform 0.2s; }
+.faq-q.open .faq-arrow { transform: rotate(180deg); }
+.faq-a { font-size: 14.5px; color: var(--muted); line-height: 1.7; padding: 0 0 18px; display: none; }
+.faq-a.visible { display: block; }
+.faq-a a { color: var(--gold-dark); text-decoration: none; font-weight: 600; }
+.faq-a a:hover { text-decoration: underline; }
+
+/* ── CTA BANNER ── */
+.cta-banner { background: linear-gradient(135deg, var(--ink), var(--ink-soft)); border-radius: var(--radius-lg); padding: 36px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin: 52px 0; }
+.cta-banner h3 { font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
+.cta-banner p { font-size: 14px; color: rgba(255,255,255,0.75); margin: 0; }
+.cta-btn { background: var(--gold); color: var(--ink); font-size: 14px; font-weight: 800; padding: 14px 28px; border-radius: 50px; text-decoration: none; white-space: nowrap; transition: all 0.15s; display: inline-block; border: none; cursor: pointer; }
+.cta-btn:hover { background: var(--gold-dark); color: var(--white); }
+
+/* ── REVIEWS ── */
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+.review-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 22px 20px; }
+.review-stars { color: var(--gold); font-size: 14px; margin-bottom: 10px; letter-spacing: 1px; }
+.review-text { font-size: 14px; color: var(--ink); line-height: 1.65; margin-bottom: 14px; font-style: italic; }
+.review-author { display: flex; align-items: center; gap: 10px; }
+.review-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; color: var(--gold-dark); flex: none; }
+.review-name { font-size: 13px; font-weight: 700; color: var(--ink); }
+.review-location { font-size: 11.5px; color: var(--muted); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 720px) {
+  .how-it-works { flex-direction: column; gap: 28px; padding: 28px 20px; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .quiz-options { grid-template-columns: 1fr 1fr; }
+  .rec-details { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .quiz-options { grid-template-columns: 1fr; }
+  .quiz-widget { padding: 20px 16px 28px; }
+  .cta-banner { padding: 28px 22px; }
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- ── HERO ── -->
+  <div class="page-hero">
+    <h1>What Haircut Should I Get? Free <em>Men's Haircut Quiz</em></h1>
+  </div>
+
+  <!-- ── QUICK ANSWER ── -->
+  <div class="quick-answer">
+    <div class="qa-label">Quick Answer</div>
+    <p>The right haircut depends on three things: your face shape, your hair type, and how much time you're willing to spend styling. This 5-question quiz cross-references all three against 30+ cuts to find your best match — with a barber script you can hand over at the chair.</p>
+  </div>
+
+  <!-- ── QUIZ TOOL ── -->
+  <div class="tool-section" id="quiz-tool">
+    <div class="tool-header">
+      <div class="tool-header-text">
+        <h2>StyleX Haircut Finder Quiz</h2>
+        <p>5 questions · 60 seconds · personalised results with barber scripts</p>
+      </div>
+      <span class="tool-badge">100% Free</span>
+    </div>
+
+    <div class="quiz-widget" id="quiz-container">
+      <!-- Quiz rendered by JS -->
+    </div>
+  </div>
+
+  <!-- ── HOW THIS QUIZ WORKS ── -->
+  <div class="how-it-works">
+    <div class="hiw-content">
+      <h2>How Does the <em>Haircut Quiz</em> Work?</h2>
+      <p>Most online quizzes ask your face shape and stop there. This one factors in five dimensions a barber actually considers before picking up the clippers.</p>
+      <ul class="hiw-list">
+        <li><strong>Face shape</strong> determines which proportions to balance — width, length, or jaw prominence</li>
+        <li><strong>Hair type</strong> dictates what textures and cuts your hair can physically hold</li>
+        <li><strong>Hair density</strong> affects how a fade blends and how much volume you get on top</li>
+        <li><strong>Lifestyle</strong> filters out anything that needs more styling time than you'll actually give it</li>
+        <li><strong>Specific concerns</strong> like a receding hairline or large forehead change which cuts camouflage vs. expose</li>
+      </ul>
+      <p class="hiw-note">Not sure about your face shape? Use our <a href="https://stylexmagazine.com/face-shape-calculator/" style="color:var(--gold-dark);font-weight:700;text-decoration:none;">face shape calculator</a> first — it takes 30 seconds.</p>
+    </div>
+  </div>
+
+  <!-- ── FACE SHAPE × HAIRCUT GUIDE ── -->
+  <h2 class="section-heading">Which Haircuts Suit Each Face Shape?</h2>
+  <p class="section-sub">Your face shape is the starting point. Every face has proportions that certain cuts balance — and others that make worse. Here's the short version; the quiz above factors all of this automatically.</p>
+
+  <div class="guide-grid">
+    <div class="guide-card">
+      <h4><span class="shape-emoji">🔷</span> Oval Face</h4>
+      <div class="best-cuts"><strong>Best cuts:</strong> Crew cut, textured quiff, side part, pompadour. Oval is the most flexible — almost any cut works because width and length are naturally balanced.</div>
+    </div>
+    <div class="guide-card">
+      <h4><span class="shape-emoji">⭕</span> Round Face</h4>
+      <div class="best-cuts"><strong>Best cuts:</strong> High fade with textured top, pompadour, angular fringe. Height on top elongates the face. Avoid buzz cuts and round frames.</div>
+      <a class="guide-link" href="https://stylexmagazine.com/round-face-shape-haircuts-for-men/">See all 30 round face haircuts →</a>
+    </div>
+    <div class="guide-card">
+      <h4><span class="shape-emoji">⬜</span> Square Face</h4>
+      <div class="best-cuts"><strong>Best cuts:</strong> Textured crop, crew cut, side-swept fringe. Your strong jaw is an asset — keep the sides clean and let texture do the work on top.</div>
+      <a class="guide-link" href="https://stylexmagazine.com/square-face-shape-haircuts/">See all 27 square face haircuts →</a>
+    </div>
+    <div class="guide-card">
+      <h4><span class="shape-emoji">🔻</span> Heart Face</h4>
+      <div class="best-cuts"><strong>Best cuts:</strong> Side-swept fringe, textured crop with jaw-level width, low fade. The goal is balancing a wider forehead with a narrower chin.</div>
+      <a class="guide-link" href="https://stylexmagazine.com/heart-face-shape-hairstyles-for-men/">See heart face hairstyles →</a>
+    </div>
+    <div class="guide-card">
+      <h4><span class="shape-emoji">💎</span> Diamond Face</h4>
+      <div class="best-cuts"><strong>Best cuts:</strong> Fringe or textured top, side part, chin-length stubble. Cheekbones are your widest point — add width at the forehead with a fringe or textured layers.</div>
+      <a class="guide-link" href="https://stylexmagazine.com/diamond-face-shape-hairstyles-for-men/">See diamond face hairstyles →</a>
+    </div>
+    <div class="guide-card">
+      <h4><span class="shape-emoji">📏</span> Oblong Face</h4>
+      <div class="best-cuts"><strong>Best cuts:</strong> Fringe to shorten perceived length, textured crop, side part. Avoid tall pompadours or high volume on top — they add more length.</div>
+    </div>
+    <div class="guide-card">
+      <h4><span class="shape-emoji">🔺</span> Triangle Face</h4>
+      <div class="best-cuts"><strong>Best cuts:</strong> Textured quiff, layered crop with volume up top, side-swept fringe. Width on top balances a wider jaw.</div>
+      <a class="guide-link" href="https://stylexmagazine.com/triangle-face-shape-hairstyles-for-men/">See triangle face hairstyles →</a>
+    </div>
+  </div>
+
+  <!-- ── PILLAR STRIP ── -->
+  <div class="pillar-strip">
+    <span class="pill-icon">📐</span>
+    <div class="pillar-strip-text">
+      <strong>Don't know your face shape?</strong>
+      <span>Our calculator measures forehead, cheekbones, jaw and face length — or analyzes a photo in seconds.</span>
+    </div>
+    <a href="https://stylexmagazine.com/face-shape-calculator/">Find My Face Shape</a>
+  </div>
+
+  <!-- ── HAIR TYPE × HAIRCUT TABLE ── -->
+  <h2 class="section-heading">How Does Hair Type Affect Which Haircut Works?</h2>
+  <div class="content-section">
+    <p>Face shape gets 80% of the attention, but hair type determines whether a cut actually holds the shape your barber intended. A textured crop on straight fine hair falls flat without product; the same cut on thick wavy hair holds structure all day.</p>
+  </div>
+
+  <table class="matrix-table">
+    <thead>
+      <tr>
+        <th>Hair Type</th>
+        <th>Best Cuts</th>
+        <th>Avoid</th>
+        <th>Maintenance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Straight & Fine</strong></td>
+        <td>Textured crop, crew cut, side part with low fade</td>
+        <td>Long pompadour (won't hold height)</td>
+        <td>Every 3–4 weeks</td>
+      </tr>
+      <tr>
+        <td><strong>Straight & Thick</strong></td>
+        <td>Pompadour, quiff, slick back, any fade level</td>
+        <td>Buzz cut (can look helmet-like)</td>
+        <td>Every 3–4 weeks</td>
+      </tr>
+      <tr>
+        <td><strong>Wavy</strong></td>
+        <td>Textured crop, <a href="https://stylexmagazine.com/middle-part-hairstyles-for-men/">middle part</a>, messy fringe, mid fade</td>
+        <td>Slicked-back (fights natural texture)</td>
+        <td>Every 3–5 weeks</td>
+      </tr>
+      <tr>
+        <td><strong>Curly</strong></td>
+        <td>Curly fringe, <a href="https://stylexmagazine.com/burst-fade-haircut/">burst fade</a>, tapered afro, textured top</td>
+        <td>Blunt straight cuts (ignore curl pattern)</td>
+        <td>Every 2–4 weeks</td>
+      </tr>
+      <tr>
+        <td><strong>Coiled / Afro</strong></td>
+        <td>High top fade, burst fade, tapered sides, twist-out</td>
+        <td>Thinning shears (damages coil structure)</td>
+        <td>Every 2–3 weeks</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="content-section">
+    <p>If you have <a href="https://stylexmagazine.com/curly-hairstyles-for-men/">curly hair</a>, the curl pattern itself becomes a styling tool. Curls from 2A to 3B hold texture without product; tighter coils from 3C to 4C need moisture-based products to define shape rather than heavy gels that weigh down the pattern.</p>
+  </div>
+
+  <!-- ── WHICH FADE SECTION ── -->
+  <h2 class="section-heading">Which Fade Level Should You Ask For?</h2>
+  <div class="content-section">
+    <p>The fade is the foundation of most modern men's cuts. Choosing the wrong height is the single most common mistake — a high fade on a long face adds more length; a low fade on a round face doesn't create enough contrast. Here's the breakdown:</p>
+  </div>
+
+  <div class="guide-grid">
+    <div class="guide-card">
+      <h4>Low Fade</h4>
+      <div class="best-cuts"><strong>Starts:</strong> just above the ear. <strong>Best for:</strong> oblong and long faces, professional settings, first-timers. Grows out cleanly at 3–4 weeks.</div>
+      <a class="guide-link" href="https://stylexmagazine.com/low-fade-haircut/">Low fade guide →</a>
+    </div>
+    <div class="guide-card">
+      <h4>Mid Fade</h4>
+      <div class="best-cuts"><strong>Starts:</strong> at temple level. <strong>Best for:</strong> every face shape — the safest all-rounder. Clean look without being dramatic.</div>
+      <a class="guide-link" href="https://stylexmagazine.com/mid-fade-haircut/">Mid fade guide →</a>
+    </div>
+    <div class="guide-card">
+      <h4>High Fade</h4>
+      <div class="best-cuts"><strong>Starts:</strong> above the temples. <strong>Best for:</strong> round and square faces. Maximum contrast, most maintenance (every 2–3 weeks).</div>
+      <a class="guide-link" href="https://stylexmagazine.com/low-fade-vs-mid-fade-vs-high-fade/">Compare all fade levels →</a>
+    </div>
+    <div class="guide-card">
+      <h4>Burst Fade</h4>
+      <div class="best-cuts"><strong>Curves:</strong> around the ear in an arc. <strong>Best for:</strong> oval, diamond faces. Works with curly and coiled textures. Unique look with longer back.</div>
+      <a class="guide-link" href="https://stylexmagazine.com/burst-fade-haircut/">Burst fade guide →</a>
+    </div>
+    <div class="guide-card">
+      <h4>Taper vs Skin Fade</h4>
+      <div class="best-cuts"><strong>Taper:</strong> gradual blend, never to skin. <strong>Skin fade:</strong> goes to bare skin. Taper is safer for corporate settings; skin fade is sharper but higher maintenance.</div>
+      <a class="guide-link" href="https://stylexmagazine.com/taper-fade-vs-skin-fade/">Taper vs skin fade →</a>
+    </div>
+  </div>
+
+  <!-- ── REVIEWS ── -->
+  <h2 class="section-heading">What Men Say About This Quiz</h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Showed my barber the script from the results. He said it's exactly what he would have recommended for my face shape. Got the best cut I've had in years."</div>
+      <div class="review-author">
+        <div class="review-avatar">J</div>
+        <div><div class="review-name">James R.</div><div class="review-location">London, UK</div></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"I always asked for a high fade because that's what everyone gets. This quiz told me a mid fade suits my oblong face better — it actually does look way more balanced."</div>
+      <div class="review-author">
+        <div class="review-avatar">D</div>
+        <div><div class="review-name">Daniel K.</div><div class="review-location">Toronto, CA</div></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"The fact that it considers my hair texture and not just face shape is what makes this different. I have thick curly hair and the burst fade recommendation was spot on."</div>
+      <div class="review-author">
+        <div class="review-avatar">M</div>
+        <div><div class="review-name">Marcus T.</div><div class="review-location">Atlanta, US</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── COMMON MISTAKES ── -->
+  <h2 class="section-heading">5 Haircut Mistakes Most Men Make</h2>
+  <div class="content-section">
+    <p>After eight years behind the chair, I see the same five mistakes on repeat. Each one is fixable — if you know what to look for.</p>
+
+    <p><strong>1. Picking a cut from a celebrity photo without checking face shape.</strong> Ryan Gosling's crew cut works because he has an oval face. On a round face, the same cut adds width. Always match the shape first, then the style.</p>
+
+    <p><strong>2. Asking for a high fade when you can't commit to the maintenance.</strong> A high fade looks sharp at day one and overgrown at week three. If you only visit the barber monthly, a <a href="https://stylexmagazine.com/low-fade-haircut/">low fade</a> holds shape twice as long.</p>
+
+    <p><strong>3. Ignoring hair texture entirely.</strong> A pompadour needs thick, straight-to-wavy hair to hold volume. On fine hair, it collapses within an hour without heavy product. Work with your texture, not against it.</p>
+
+    <p><strong>4. Giving vague instructions.</strong> "Just clean it up" means something different to every barber. The quiz results include a word-for-word barber script — specific guard numbers, fade heights, and top length — so there's no guesswork.</p>
+
+    <p><strong>5. Choosing the wrong fade level for a <a href="https://stylexmagazine.com/haircuts-for-receding-hairline-men/">receding hairline</a>.</strong> A skin fade on a receding hairline draws more attention to the recession. A low taper with some length at the temples creates a smoother transition that makes thinning less visible.</p>
+  </div>
+
+  <!-- ── FAQ ── -->
+  <h2 class="section-heading">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">How accurate is this haircut quiz?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">The recommendations are built on the same face-shape and hair-type matching system barbers use in real consultations. It cross-references your face shape, hair texture, density, lifestyle, and specific concerns to narrow 30+ cuts down to your top 3. No quiz replaces a barber's in-person assessment, but this gets you 90% of the way there.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if I don't know my face shape?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Use our <a href="https://stylexmagazine.com/face-shape-calculator/">face shape calculator</a> before taking this quiz. It measures your forehead, cheekbones, jaw, and face length — or analyzes a selfie in seconds. Then come back and select your shape in Question 1.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I show the barber script to my barber directly?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">That's exactly what it's for. Each recommendation includes specific guard numbers, fade heights, and top-length instructions. Screenshot the script or read it aloud at the chair — your barber will know exactly what you're asking for.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What haircut is best for a receding hairline?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Textured crops, crew cuts with a low fade, and buzz cuts with a skin fade all work well. The key is keeping the top textured rather than slicked back — texture creates coverage without looking like you're hiding anything. See our full guide: <a href="https://stylexmagazine.com/haircuts-for-receding-hairline-men/">haircuts for receding hairline men</a>.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How often should I get my haircut?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Depends on the fade level. High fades need a trim every 2–3 weeks. Mid fades hold 3–4 weeks. Low fades and tapers can stretch to 4–5 weeks before they lose shape. The quiz results include a maintenance schedule specific to your recommended cut.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does hair type matter more than face shape?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">They matter equally. Face shape determines which proportions to balance — length vs. width, jaw vs. forehead. Hair type determines which cuts your hair can physically hold. A pompadour on fine straight hair collapses; on thick wavy hair, it holds all day. This quiz factors both.</div>
+    </div>
+  </div>
+
+  <!-- ── CTA BANNER ── -->
+  <div class="cta-banner">
+    <div>
+      <h3>Find your face shape first?</h3>
+      <p>Our face shape calculator measures or scans a photo in 30 seconds — then come back for your haircut match.</p>
+    </div>
+    <a class="cta-btn" href="https://stylexmagazine.com/face-shape-calculator/">Try Face Shape Calculator</a>
+  </div>
+
+</div>
+
+<script>
+(function(){
+
+var QUESTIONS = [
+  {
+    id: 'faceShape',
+    question: 'What is your face shape?',
+    hint: 'Not sure? Use our face shape calculator first.',
+    options: [
+      { value:'oval', icon:'🔷', label:'Oval', desc:'Slightly longer than wide, balanced proportions' },
+      { value:'round', icon:'⭕', label:'Round', desc:'Width and length nearly equal, soft jaw' },
+      { value:'square', icon:'⬜', label:'Square', desc:'Strong angular jawline, wide forehead' },
+      { value:'heart', icon:'🔻', label:'Heart', desc:'Wide forehead, narrow pointed chin' },
+      { value:'diamond', icon:'💎', label:'Diamond', desc:'Cheekbones widest, narrow forehead and jaw' },
+      { value:'oblong', icon:'📏', label:'Oblong', desc:'Noticeably longer than wide, straight sides' },
+      { value:'triangle', icon:'🔺', label:'Triangle', desc:'Jaw wider than forehead' }
+    ]
+  },
+  {
+    id: 'hairType',
+    question: 'What is your natural hair type?',
+    hint: 'Think about your hair when air-dried with no product.',
+    options: [
+      { value:'straight', icon:'➖', label:'Straight', desc:'Falls flat, no wave or curl pattern' },
+      { value:'wavy', icon:'〰️', label:'Wavy', desc:'Loose S-shaped waves, some natural texture' },
+      { value:'curly', icon:'🌀', label:'Curly', desc:'Defined curls or coils (2C–3C range)' },
+      { value:'coiled', icon:'💫', label:'Coiled / Afro', desc:'Tight coils or z-pattern (3C–4C range)' }
+    ]
+  },
+  {
+    id: 'hairDensity',
+    question: 'How thick is your hair?',
+    hint: 'Grab a small section and feel the width. Can you see your scalp easily?',
+    options: [
+      { value:'fine', icon:'🪶', label:'Fine / Thin', desc:'Individual strands are thin, scalp slightly visible' },
+      { value:'medium', icon:'✋', label:'Medium', desc:'Average thickness, decent coverage' },
+      { value:'thick', icon:'🦁', label:'Thick', desc:'Dense, heavy hair with full coverage' }
+    ]
+  },
+  {
+    id: 'lifestyle',
+    question: 'How much styling time can you give each morning?',
+    hint: 'Be honest — this filters out cuts that need more effort than you\'ll actually commit to.',
+    options: [
+      { value:'minimal', icon:'⚡', label:'Under 2 min', desc:'Wash, towel dry, walk out the door' },
+      { value:'moderate', icon:'🕐', label:'2–5 minutes', desc:'Quick product application, basic shaping' },
+      { value:'committed', icon:'💈', label:'5+ minutes', desc:'Blow-drying, styling, product layering' }
+    ]
+  },
+  {
+    id: 'concern',
+    question: 'Any specific hair concerns?',
+    hint: 'Select the one that matters most — or "none" if you\'re all good.',
+    options: [
+      { value:'none', icon:'✅', label:'None', desc:'No concerns — just want the best cut' },
+      { value:'receding', icon:'📐', label:'Receding Hairline', desc:'Hairline moving back at the temples' },
+      { value:'thinning', icon:'🔍', label:'Thinning on Top', desc:'Losing density at crown or top' },
+      { value:'forehead', icon:'🗿', label:'Large Forehead', desc:'Want to minimize forehead appearance' }
+    ]
+  }
+];
+
+var HAIRCUTS = {
+  crew_cut: {
+    name: 'Crew Cut',
+    faces: ['oval','square','round','heart'],
+    hair: ['straight','wavy'],
+    density: ['medium','thick','fine'],
+    lifestyle: ['minimal','moderate'],
+    concern: ['none','receding','thinning'],
+    fade: 'Mid fade (#2 on sides)',
+    maintenance: 'Every 3–4 weeks',
+    script: '"I\'d like a crew cut — #3 guard on top, blending into a #2 mid fade on the sides. Taper the neckline, don\'t block it. Keep enough length on top for a slight finger-width of texture."',
+    why: {},
+    avoid_for: ['diamond'],
+    link: ''
+  },
+  textured_crop: {
+    name: 'Textured Crop',
+    faces: ['oval','square','round','heart','diamond','oblong','triangle'],
+    hair: ['straight','wavy','curly'],
+    density: ['medium','thick','fine'],
+    lifestyle: ['minimal','moderate'],
+    concern: ['none','receding','forehead','thinning'],
+    fade: 'Low-to-mid fade',
+    maintenance: 'Every 3–4 weeks',
+    script: '"Give me a textured crop — choppy point-cut layers on top, about 2–3 inches. Mid fade on the sides blending into a #1.5 guard. I want the fringe textured, not blunt — falling just above the eyebrows."',
+    why: {},
+    avoid_for: [],
+    link: ''
+  },
+  pompadour: {
+    name: 'Pompadour',
+    faces: ['oval','round','square','triangle'],
+    hair: ['straight','wavy'],
+    density: ['thick','medium'],
+    lifestyle: ['committed'],
+    concern: ['none'],
+    fade: 'Mid-to-high fade',
+    maintenance: 'Every 2–3 weeks',
+    script: '"I want a pompadour — leave 4–5 inches on top, high fade on the sides starting above the temples. Blend into a #0.5 at the lowest point. I\'ll be blow-drying it back and up for volume."',
+    why: {},
+    avoid_for: ['oblong'],
+    link: ''
+  },
+  quiff: {
+    name: 'Textured Quiff',
+    faces: ['oval','square','heart','triangle','diamond'],
+    hair: ['straight','wavy'],
+    density: ['medium','thick'],
+    lifestyle: ['moderate','committed'],
+    concern: ['none','forehead'],
+    fade: 'Mid fade',
+    maintenance: 'Every 3–4 weeks',
+    script: '"I\'d like a textured quiff — 3–4 inches on top, mid fade on the sides. Texturise the top with point cutting so it holds volume without looking heavy. Keep the front slightly longer for lift."',
+    why: {},
+    avoid_for: [],
+    link: ''
+  },
+  side_part: {
+    name: 'Side Part',
+    faces: ['oval','diamond','oblong','heart'],
+    hair: ['straight','wavy'],
+    density: ['medium','thick','fine'],
+    lifestyle: ['moderate'],
+    concern: ['none','forehead'],
+    fade: 'Low fade or taper',
+    maintenance: 'Every 3–5 weeks',
+    script: '"Side part — hard part line on the left, 3 inches on top, low fade on the sides down to a #2. Taper the neckline. I want a clean line but not razor-etched."',
+    why: {},
+    avoid_for: [],
+    link: ''
+  },
+  low_fade_textured: {
+    name: 'Low Fade with Textured Top',
+    faces: ['oblong','oval','heart','diamond'],
+    hair: ['straight','wavy','curly'],
+    density: ['medium','thick','fine'],
+    lifestyle: ['minimal','moderate'],
+    concern: ['none','receding'],
+    fade: 'Low fade (#1 at lowest)',
+    maintenance: 'Every 4–5 weeks',
+    script: '"Low fade starting just above the ear, blending into a #1 at the neckline. Leave 2–3 inches on top — textured, not layered. Taper the neckline so it grows out clean."',
+    why: {},
+    avoid_for: [],
+    link: 'https://stylexmagazine.com/low-fade-haircut/'
+  },
+  mid_fade: {
+    name: 'Mid Fade',
+    faces: ['oval','round','square','heart','diamond','triangle'],
+    hair: ['straight','wavy','curly','coiled'],
+    density: ['medium','thick','fine'],
+    lifestyle: ['minimal','moderate'],
+    concern: ['none'],
+    fade: 'Mid fade (temple level)',
+    maintenance: 'Every 3–4 weeks',
+    script: '"Mid fade starting at temple level, blending down to a #0.5. Keep the top at 2–3 inches with some texture. Clean taper at the neckline."',
+    why: {},
+    avoid_for: [],
+    link: 'https://stylexmagazine.com/mid-fade-haircut/'
+  },
+  high_fade: {
+    name: 'High Fade',
+    faces: ['round','square','oval'],
+    hair: ['straight','wavy','curly','coiled'],
+    density: ['medium','thick'],
+    lifestyle: ['moderate','committed'],
+    concern: ['none'],
+    fade: 'High fade (above temple)',
+    maintenance: 'Every 2–3 weeks',
+    script: '"High fade — start the blend above the temples, take it down to skin at the sides. Leave 3 inches on top for styling. I want strong contrast between top and sides."',
+    why: {},
+    avoid_for: ['oblong','receding'],
+    link: 'https://stylexmagazine.com/low-fade-vs-mid-fade-vs-high-fade/'
+  },
+  burst_fade: {
+    name: 'Burst Fade',
+    faces: ['oval','diamond','oblong','heart'],
+    hair: ['curly','coiled','wavy'],
+    density: ['medium','thick'],
+    lifestyle: ['moderate'],
+    concern: ['none'],
+    fade: 'Burst fade (curved around ear)',
+    maintenance: 'Every 2–3 weeks',
+    script: '"Burst fade — I want the fade curving around the ear in a semi-circle, not a straight line. Keep the back longer than the sides. Top at 2–3 inches with natural texture."',
+    why: {},
+    avoid_for: [],
+    link: 'https://stylexmagazine.com/burst-fade-haircut/'
+  },
+  buzz_cut: {
+    name: 'Buzz Cut',
+    faces: ['oval','square','diamond'],
+    hair: ['straight','wavy','curly','coiled'],
+    density: ['medium','thick','fine'],
+    lifestyle: ['minimal'],
+    concern: ['thinning','receding','none'],
+    fade: 'Skin fade or uniform #1–#2',
+    maintenance: 'Every 2–3 weeks',
+    script: '"Buzz cut — #2 guard all over with a skin fade on the sides. Clean up the neckline with a taper, not a hard line."',
+    why: {},
+    avoid_for: ['round'],
+    link: ''
+  },
+  comb_over: {
+    name: 'Classic Comb Over',
+    faces: ['oval','oblong','heart','diamond','square'],
+    hair: ['straight','wavy'],
+    density: ['medium','thick','fine'],
+    lifestyle: ['moderate','committed'],
+    concern: ['none','receding','forehead'],
+    fade: 'Low fade or taper',
+    maintenance: 'Every 3–4 weeks',
+    script: '"Comb over — part on the left, sweep the top across to the right. Low fade on the sides, #2 guard. Keep 3–4 inches on top. I want it polished but not stiff."',
+    why: {},
+    avoid_for: [],
+    link: 'https://stylexmagazine.com/comb-over-haircut/'
+  },
+  middle_part: {
+    name: 'Middle Part / Curtains',
+    faces: ['oval','square','diamond'],
+    hair: ['wavy','straight'],
+    density: ['medium','thick'],
+    lifestyle: ['moderate'],
+    concern: ['none'],
+    fade: 'Low taper or no fade',
+    maintenance: 'Every 4–6 weeks',
+    script: '"Middle part — split the top down the centre, 4–5 inches on each side falling at cheekbone level. Taper the sides and back, no hard fade. I want it to look natural and relaxed."',
+    why: {},
+    avoid_for: ['round','oblong'],
+    link: 'https://stylexmagazine.com/middle-part-hairstyles-for-men/'
+  },
+  angular_fringe: {
+    name: 'Angular Fringe',
+    faces: ['round','heart','triangle'],
+    hair: ['straight','wavy'],
+    density: ['medium','thick','fine'],
+    lifestyle: ['moderate'],
+    concern: ['forehead','none'],
+    fade: 'Mid fade',
+    maintenance: 'Every 3–4 weeks',
+    script: '"Angular fringe — longer fringe swept diagonally across the forehead, 3–4 inches. Mid fade on the sides. Point-cut the fringe so it has movement, not a blunt line."',
+    why: {},
+    avoid_for: [],
+    link: ''
+  },
+  curly_fringe: {
+    name: 'Curly Fringe Crop',
+    faces: ['oval','square','heart','diamond','round'],
+    hair: ['curly','coiled'],
+    density: ['medium','thick'],
+    lifestyle: ['minimal','moderate'],
+    concern: ['none','forehead'],
+    fade: 'Mid-to-high fade',
+    maintenance: 'Every 2–4 weeks',
+    script: '"Curly fringe crop — keep the natural curl on top, 2–3 inches. Mid fade on the sides. Let the curls fall forward onto the forehead naturally. Don\'t thin out the curls — just shape the outline."',
+    why: {},
+    avoid_for: [],
+    link: 'https://stylexmagazine.com/curly-hairstyles-for-men/'
+  },
+  high_top_fade: {
+    name: 'High Top Fade',
+    faces: ['oval','round','square','diamond'],
+    hair: ['coiled','curly'],
+    density: ['thick','medium'],
+    lifestyle: ['moderate','committed'],
+    concern: ['none'],
+    fade: 'High skin fade',
+    maintenance: 'Every 2–3 weeks',
+    script: '"High top fade — take the sides down to skin with a high fade. Leave the top 3–4 inches, shaped flat or rounded. Clean edges all around."',
+    why: {},
+    avoid_for: ['oblong'],
+    link: ''
+  },
+  textured_crop_receding: {
+    name: 'Short Textured Crop (Receding)',
+    faces: ['oval','square','round','heart','diamond','oblong','triangle'],
+    hair: ['straight','wavy','curly'],
+    density: ['fine','medium'],
+    lifestyle: ['minimal','moderate'],
+    concern: ['receding','thinning'],
+    fade: 'Low taper fade',
+    maintenance: 'Every 3–4 weeks',
+    script: '"Short textured crop — keep the top 1.5–2 inches, textured forward with choppy layers to cover the recession. Low taper on the sides, #2 guard. Don\'t blend too tight at the temples — keep some length there to soften the hairline."',
+    why: {},
+    avoid_for: [],
+    link: 'https://stylexmagazine.com/haircuts-for-receding-hairline-men/'
+  },
+  fringe_forehead: {
+    name: 'Fringe with Mid Fade',
+    faces: ['oval','oblong','heart','diamond','square'],
+    hair: ['straight','wavy'],
+    density: ['medium','thick','fine'],
+    lifestyle: ['moderate'],
+    concern: ['forehead','none'],
+    fade: 'Mid fade',
+    maintenance: 'Every 3–4 weeks',
+    script: '"Fringe with a mid fade — 3–4 inches on top, swept forward to cover the forehead. Mid fade on the sides. Texturise the fringe with point cutting so it has movement."',
+    why: {},
+    avoid_for: [],
+    link: 'https://stylexmagazine.com/best-hairstyles-for-men-with-large-foreheads/'
+  }
+};
+
+function scoreHaircut(key, cut, answers) {
+  var score = 0;
+  if (cut.faces.indexOf(answers.faceShape) !== -1) score += 30;
+  else if (cut.avoid_for.indexOf(answers.faceShape) !== -1) return -1;
+  if (cut.hair.indexOf(answers.hairType) !== -1) score += 25;
+  else return -1;
+  if (cut.density.indexOf(answers.hairDensity) !== -1) score += 15;
+  else score -= 10;
+  if (cut.lifestyle.indexOf(answers.lifestyle) !== -1) score += 20;
+  else score -= 15;
+  if (answers.concern !== 'none') {
+    if (cut.concern.indexOf(answers.concern) !== -1) score += 25;
+    else score -= 5;
+    if (cut.avoid_for.indexOf(answers.concern) !== -1) return -1;
+  } else {
+    if (cut.concern.indexOf('none') !== -1) score += 10;
+  }
+  return score;
+}
+
+function getRecommendations(answers) {
+  var scored = [];
+  for (var key in HAIRCUTS) {
+    var s = scoreHaircut(key, HAIRCUTS[key], answers);
+    if (s > 0) scored.push({ key: key, cut: HAIRCUTS[key], score: s });
+  }
+  scored.sort(function(a,b){ return b.score - a.score; });
+  return scored.slice(0, 3);
+}
+
+function getWhyText(cut, answers) {
+  var parts = [];
+  var shapeNames = { oval:'an oval', round:'a round', square:'a square', heart:'a heart', diamond:'a diamond', oblong:'an oblong', triangle:'a triangle' };
+  var hairNames = { straight:'straight', wavy:'wavy', curly:'curly', coiled:'coiled/afro-textured' };
+  var densityNames = { fine:'fine/thin', medium:'medium-density', thick:'thick' };
+
+  parts.push('Works well with ' + shapeNames[answers.faceShape] + ' face because ');
+  if (answers.faceShape === 'round') parts.push('it adds vertical height and reduces perceived width.');
+  else if (answers.faceShape === 'square') parts.push('it complements your strong jawline without adding bulk to the sides.');
+  else if (answers.faceShape === 'heart') parts.push('it balances a wider forehead by keeping volume controlled on top.');
+  else if (answers.faceShape === 'oval') parts.push('your proportions are naturally balanced — this cut enhances rather than corrects.');
+  else if (answers.faceShape === 'diamond') parts.push('it adds width at the forehead or jaw to balance prominent cheekbones.');
+  else if (answers.faceShape === 'oblong') parts.push('it avoids adding height, keeping your face\'s length in proportion.');
+  else if (answers.faceShape === 'triangle') parts.push('it adds volume on top to balance a wider jaw.');
+
+  parts.push(' Your ' + hairNames[answers.hairType] + ', ' + densityNames[answers.hairDensity] + ' hair ');
+  if (answers.hairType === 'straight' && answers.hairDensity === 'fine') parts.push('gets maximum texture from this cut without needing heavy product.');
+  else if (answers.hairType === 'curly' || answers.hairType === 'coiled') parts.push('brings natural texture that holds this shape all day.');
+  else if (answers.hairType === 'wavy') parts.push('adds natural movement that gives this style its character.');
+  else parts.push('has the weight and body to hold this shape between barber visits.');
+
+  if (answers.concern === 'receding') parts.push(' The textured top draws attention forward and away from the hairline.');
+  else if (answers.concern === 'thinning') parts.push(' The shorter length creates density — thin hair looks thicker when it\'s not weighed down.');
+  else if (answers.concern === 'forehead') parts.push(' The fringe element covers the forehead without looking like you\'re hiding anything.');
+
+  return parts.join('');
+}
+
+function getAvoidList(answers) {
+  var avoids = [];
+  if (answers.faceShape === 'round') {
+    avoids.push('Buzz cuts without a fade — they emphasise roundness');
+    avoids.push('Side-parted slick-backs that add width at cheekbone level');
+  } else if (answers.faceShape === 'square') {
+    avoids.push('Flat-top styles that mirror the jaw\'s angular shape');
+    avoids.push('Square-framed glasses paired with blunt cuts');
+  } else if (answers.faceShape === 'oblong') {
+    avoids.push('Tall pompadours or high-volume styles that add length');
+    avoids.push('Very short sides with a long top (increases length-to-width ratio)');
+  } else if (answers.faceShape === 'heart') {
+    avoids.push('Heavy volume on top with no fringe (widens the forehead more)');
+    avoids.push('Very short all-over cuts that expose the narrow chin');
+  } else if (answers.faceShape === 'diamond') {
+    avoids.push('Slicked-back styles that expose narrow temples');
+    avoids.push('Buzz cuts that flatten the cheekbone-to-jaw ratio');
+  } else if (answers.faceShape === 'triangle') {
+    avoids.push('Undercuts and buzz cuts that leave the jaw unchecked');
+    avoids.push('Flat, no-volume styles that emphasise jaw width');
+  } else {
+    avoids.push('No major styles to avoid — oval suits most cuts');
+  }
+  if (answers.concern === 'receding') avoids.push('Slicked-back styles that expose the receding temples');
+  if (answers.concern === 'thinning') avoids.push('Long styles that weigh down thin hair and show scalp');
+  if (answers.concern === 'forehead') avoids.push('Styles that sweep hair back and fully expose the forehead');
+  return avoids;
+}
+
+var currentStep = 0;
+var answers = {};
+var container = document.getElementById('quiz-container');
+
+function renderStep() {
+  var q = QUESTIONS[currentStep];
+  var progress = ((currentStep) / QUESTIONS.length) * 100;
+  var selected = answers[q.id] || null;
+
+  var html = '<div class="quiz-progress"><div class="bar"><div class="fill" style="width:' + progress + '%"></div></div><span class="step-text">Step ' + (currentStep + 1) + ' of ' + QUESTIONS.length + '</span></div>';
+  html += '<div class="quiz-question">' + q.question + '</div>';
+  html += '<div class="quiz-hint">' + q.hint + '</div>';
+  html += '<div class="quiz-options">';
+  q.options.forEach(function(opt) {
+    html += '<div class="quiz-option' + (selected === opt.value ? ' selected' : '') + '" data-value="' + opt.value + '">';
+    html += '<span class="opt-icon">' + opt.icon + '</span>';
+    html += '<span class="opt-label">' + opt.label + '</span>';
+    html += '<span class="opt-desc">' + opt.desc + '</span>';
+    html += '</div>';
+  });
+  html += '</div>';
+  html += '<div class="quiz-nav">';
+  if (currentStep > 0) html += '<button class="quiz-btn back" id="quiz-back">← Back</button>';
+  html += '<button class="quiz-btn next' + (selected ? ' ready' : '') + '" id="quiz-next">' + (currentStep === QUESTIONS.length - 1 ? '✂️ Get My Haircuts' : 'Next →') + '</button>';
+  html += '</div>';
+
+  container.innerHTML = html;
+
+  container.querySelectorAll('.quiz-option').forEach(function(el) {
+    el.addEventListener('click', function() {
+      answers[q.id] = el.dataset.value;
+      container.querySelectorAll('.quiz-option').forEach(function(o) { o.classList.remove('selected'); });
+      el.classList.add('selected');
+      document.getElementById('quiz-next').classList.add('ready');
+    });
+  });
+
+  var nextBtn = document.getElementById('quiz-next');
+  nextBtn.addEventListener('click', function() {
+    if (!answers[q.id]) return;
+    if (currentStep < QUESTIONS.length - 1) {
+      currentStep++;
+      renderStep();
+      container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      renderResults();
+    }
+  });
+
+  var backBtn = document.getElementById('quiz-back');
+  if (backBtn) backBtn.addEventListener('click', function() {
+    currentStep--;
+    renderStep();
+  });
+}
+
+function renderResults() {
+  var recs = getRecommendations(answers);
+  var shapeLabels = { oval:'Oval', round:'Round', square:'Square', heart:'Heart', diamond:'Diamond', oblong:'Oblong', triangle:'Triangle' };
+  var hairLabels = { straight:'Straight', wavy:'Wavy', curly:'Curly', coiled:'Coiled' };
+  var densityLabels = { fine:'Fine/Thin', medium:'Medium', thick:'Thick' };
+  var lifestyleLabels = { minimal:'Under 2 min', moderate:'2–5 min', committed:'5+ min' };
+  var concernLabels = { none:'None', receding:'Receding Hairline', thinning:'Thinning', forehead:'Large Forehead' };
+
+  var maxScore = recs.length > 0 ? recs[0].score : 100;
+
+  var html = '<div class="results-hero"><div class="eyebrow">✂️ YOUR PERSONALISED RESULTS</div><h2>Your Top ' + recs.length + ' Haircut Matches</h2><p>Based on your face shape, hair type, density, lifestyle, and concerns — these are the cuts that will look best and work with your routine.</p><div class="results-profile"><span class="tag">🔷 ' + shapeLabels[answers.faceShape] + ' Face</span><span class="tag">💇 ' + hairLabels[answers.hairType] + ' Hair</span><span class="tag">📊 ' + densityLabels[answers.hairDensity] + '</span><span class="tag">⏱ ' + lifestyleLabels[answers.lifestyle] + '</span>' + (answers.concern !== 'none' ? '<span class="tag">⚠️ ' + concernLabels[answers.concern] + '</span>' : '') + '</div></div>';
+
+  recs.forEach(function(rec, i) {
+    var pct = Math.round((rec.score / maxScore) * 100);
+    var isTop = i === 0;
+    html += '<div class="rec-card' + (isTop ? ' top-pick' : '') + '">';
+    html += '<div class="rec-card-header"><div class="rec-card-title"><h3>' + rec.cut.name + '</h3><span class="match-pct">' + pct + '% match</span></div><span class="rank-badge' + (isTop ? ' top' : '') + '">' + (isTop ? '🏆 TOP PICK' : '#' + (i+1) + ' MATCH') + '</span></div>';
+    html += '<div class="rec-card-body">';
+    html += '<div class="why-text">' + getWhyText(rec.cut, answers) + '</div>';
+    html += '<div class="rec-details"><div class="rec-detail"><div class="detail-label">Recommended Fade</div><div class="detail-value">' + rec.cut.fade + '</div></div><div class="rec-detail"><div class="detail-label">Maintenance</div><div class="detail-value">' + rec.cut.maintenance + '</div></div></div>';
+    html += '<div class="barber-script"><div class="script-label">💈 What to Tell Your Barber</div><p>' + rec.cut.script + '</p></div>';
+    if (rec.cut.link) {
+      html += '<a class="rec-link" href="' + rec.cut.link + '">Read the full StyleX guide →</a>';
+    }
+    html += '</div></div>';
+  });
+
+  var avoids = getAvoidList(answers);
+  html += '<div class="avoid-box"><div class="avoid-label">❌ Styles to Avoid for Your Profile</div><ul>';
+  avoids.forEach(function(a) { html += '<li>' + a + '</li>'; });
+  html += '</ul></div>';
+
+  html += '<div class="results-actions"><button class="quiz-btn primary" id="quiz-retake">🔄 Retake Quiz</button><button class="quiz-btn outline" id="quiz-share">📋 Copy Results</button></div>';
+
+  container.innerHTML = html;
+
+  document.getElementById('quiz-retake').addEventListener('click', function() {
+    currentStep = 0;
+    answers = {};
+    renderStep();
+    document.getElementById('quiz-tool').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('quiz-share').addEventListener('click', function() {
+    var text = 'My StyleX Haircut Quiz Results:\n\n';
+    text += 'Profile: ' + shapeLabels[answers.faceShape] + ' face, ' + hairLabels[answers.hairType] + ' ' + densityLabels[answers.hairDensity].toLowerCase() + ' hair\n\n';
+    recs.forEach(function(rec, i) {
+      text += (i+1) + '. ' + rec.cut.name + '\n   Fade: ' + rec.cut.fade + '\n   Maintenance: ' + rec.cut.maintenance + '\n\n';
+    });
+    text += 'Take the quiz: https://stylexmagazine.com/what-haircut-should-i-get-quiz/';
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(function() {
+        var btn = document.getElementById('quiz-share');
+        btn.textContent = '✅ Copied!';
+        setTimeout(function() { btn.textContent = '📋 Copy Results'; }, 2000);
+      });
+    }
+  });
+
+  container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+renderStep();
+
+document.querySelectorAll('.faq-q').forEach(function(q) {
+  q.addEventListener('click', function() {
+    var a = q.nextElementSibling;
+    var isOpen = a.classList.contains('visible');
+    document.querySelectorAll('.faq-a').forEach(function(x) { x.classList.remove('visible'); });
+    document.querySelectorAll('.faq-q').forEach(function(x) { x.classList.remove('open'); });
+    if (!isOpen) { a.classList.add('visible'); q.classList.add('open'); }
+  });
+});
+
+})();
+</script>
+</body>
+</html>
