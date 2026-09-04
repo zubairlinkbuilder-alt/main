@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | Surayya Aslam Paper</title>
+<meta name="description" content="Learn about Surayya Aslam Paper - manufacturing packaging paper since 1972 in Multan, Pakistan.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.about-content{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);position:relative}
+.about-img img{width:100%;height:420px;object-fit:cover}
+.about-text p{color:var(--text-mid);font-size:.95rem;margin-bottom:14px}
+
+.timeline{max-width:700px;margin:0 auto;position:relative;padding-left:40px}
+.timeline::before{content:'';position:absolute;left:14px;top:0;bottom:0;width:2px;background:var(--border)}
+.tl-item{position:relative;padding-bottom:36px}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{position:absolute;left:-33px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--cream)}
+.tl-item h4{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:4px}
+.tl-item p{color:var(--text-mid);font-size:.9rem}
+
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.value-card{padding:32px 24px;background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);text-align:center}
+.value-icon{font-size:2rem;margin-bottom:14px}
+.value-card h3{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:8px}
+.value-card p{font-size:.85rem;color:var(--text-light)}
+
+.capacity-strip{background:var(--primary);padding:64px 0}
+.cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.cap-card{padding:28px 20px;text-align:center;border-radius:var(--radius);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
+.cap-card h3{font-size:1.6rem;color:var(--accent-light);margin-bottom:6px;font-variant-numeric:tabular-nums}
+.cap-card p{font-size:.8rem;color:rgba(255,255,255,.55)}
+
+.team-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.team-photo{border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3}
+.team-photo img{width:100%;height:100%;object-fit:cover}
+
+@media(max-width:960px){
+  .about-content{grid-template-columns:1fr}
+  .cap-grid{grid-template-columns:repeat(2,1fr)}
+  .values-grid{grid-template-columns:1fr 1fr}
+  .team-photos{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .cap-grid,.values-grid,.team-photos{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+<div class="nav-inner">
+  <a href="index.html" class="nav-logo"><img src="images/logo.jpg" alt="SA Group"><div class="nav-logo-text">SA Group<small>Surayya Aslam Paper</small></div></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html" class="cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero-bg"><img src="images/production3.jpg" alt="Production Line"></div>
+  <div class="container">
+    <div class="eyebrow">About Us</div>
+    <h1>Our Story &amp; Legacy</h1>
+    <p>Over five decades of manufacturing excellence in Pakistan's paper &amp; packaging industry.</p>
+  </div>
+</section>
+
+<!-- ABOUT INTRO -->
+<section class="section">
+<div class="container">
+  <div class="about-content">
+    <div class="about-img">
+      <img src="images/warehouse.jpg" alt="SA Paper Warehouse">
+    </div>
+    <div class="about-text">
+      <div class="section-eyebrow">Since 1972</div>
+      <h2 class="section-title" style="margin-bottom:20px">Manufacturing Excellence for Over 50 Years</h2>
+      <p>Surayya Aslam Paper is a licensed manufacturer (License No. 1066150) active in Pakistan's paper industry. Based in Multan's Industrial Estate, our company operates with an international scope, producing and exporting high-quality packaging materials worldwide.</p>
+      <p>With Trader Identification Number Pk41938429 assigned by the World Customs Organization (WCO), we adhere to international standards for identifying foreign operators &mdash; exporters, suppliers, manufacturers &mdash; ensuring efficient cross-border trade facilitation and supply chain control.</p>
+      <p>Our core business activities include:</p>
+      <ul style="color:var(--text-mid);font-size:.95rem;padding-left:20px;margin-bottom:14px">
+        <li>Production and sale of all kinds of packaging paper</li>
+        <li>Production and sale of cartons and cardboard</li>
+        <li>Production and printing of packaging boxes</li>
+        <li>Importing waste paper for sustainable production</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section section-alt">
+<div class="container">
+  <div class="section-header center">
+    <div class="section-eyebrow">Our Journey</div>
+    <h2 class="section-title">Key Milestones</h2>
+  </div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><h4>1972 &mdash; Foundation</h4><p>Surayya Aslam Paper established in Multan, Pakistan, beginning operations in the packaging paper industry.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><h4>1980s &mdash; Expansion</h4><p>Production capacity expanded with additional machinery. First export orders fulfilled, marking the beginning of international trade.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><h4>1990s &mdash; Corrugated Division</h4><p>Cardboard-making and converting units established, adding corrugated cartons and cardboard to our product range.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><h4>2000s &mdash; Modern Infrastructure</h4><p>Major facility upgrades with PM3 and PM4 production lines. Daily capacity reached 250 tons per day.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><h4>2010s &mdash; Global Trade</h4><p>WCO certification obtained (TIN: Pk41938429). Active participation in international trade exhibitions across multiple continents.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><h4>Today &mdash; Industry Leader</h4><p>Operating 4 production lines producing all paper grades from 100&ndash;600 GSM, with 5-color printing capability for custom packaging.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- CAPACITY -->
+<section class="capacity-strip">
+<div class="container">
+  <div class="section-header center">
+    <div class="section-eyebrow" style="color:rgba(184,134,11,.7)">Infrastructure</div>
+    <h2 class="section-title" style="color:#fff">Production Capacity</h2>
+  </div>
+  <div class="cap-grid">
+    <div class="cap-card"><h3>PM1&ndash;PM4</h3><p>Four advanced production lines</p></div>
+    <div class="cap-card"><h3>250 TPD</h3><p>Daily output capacity</p></div>
+    <div class="cap-card"><h3>100&ndash;600</h3><p>GSM range coverage</p></div>
+    <div class="cap-card"><h3>5 Colors</h3><p>Carton printing capability</p></div>
+  </div>
+</div>
+</section>
+
+<!-- VALUES -->
+<section class="section">
+<div class="container">
+  <div class="section-header center">
+    <div class="section-eyebrow">Why Choose Us</div>
+    <h2 class="section-title">Our Strengths</h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-card"><div class="value-icon">&#9733;</div><h3>Export Quality</h3><p>All products manufactured to international quality standards for global markets.</p></div>
+    <div class="value-card"><div class="value-icon">&#9878;</div><h3>Sustainable Production</h3><p>Waste paper import and recycling for eco-friendly packaging paper production.</p></div>
+    <div class="value-card"><div class="value-icon">&#9881;</div><h3>Advanced Machinery</h3><p>4 production lines with modern equipment for consistent, high-volume output.</p></div>
+    <div class="value-card"><div class="value-icon">&#127760;</div><h3>Global Trade</h3><p>WCO certified with active participation in international exhibitions.</p></div>
+    <div class="value-card"><div class="value-icon">&#128200;</div><h3>Full Range</h3><p>100 to 600 GSM covering every packaging need from lightweight to heavy board.</p></div>
+    <div class="value-card"><div class="value-icon">&#129309;</div><h3>Experienced Team</h3><p>Expert and experienced staff with over 50 years of collective industry knowledge.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- TEAM / EXHIBITIONS -->
+<section class="section section-alt">
+<div class="container">
+  <div class="section-header center">
+    <div class="section-eyebrow">Our Team</div>
+    <h2 class="section-title">Global Engagements</h2>
+  </div>
+  <p style="text-align:center;color:var(--text-mid);max-width:600px;margin:0 auto">Our team regularly participates in international paper and packaging exhibitions, building partnerships worldwide.</p>
+  <div class="team-photos">
+    <div class="team-photo"><img src="images/exhibition1.jpg" alt="Team at International Exhibition"></div>
+    <div class="team-photo"><img src="images/exhibition2.jpg" alt="Exhibition Booth"></div>
+    <div class="team-photo"><img src="images/exhibition3.jpg" alt="Trade Show Visit"></div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+  <div class="footer-grid">
+    <div class="footer-about"><div class="footer-brand"><img src="images/logo.jpg" alt="SA Group"><span>Surayya Aslam Paper</span></div><p>Pakistan's trusted manufacturer of packaging paper, corrugated cartons, and cardboard since 1972.</p></div>
+    <div><h4>Navigation</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products.html">Products</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Products</h4><ul><li><a href="products.html">Kraft Liner</a></li><li><a href="products.html">Test Liner</a></li><li><a href="products.html">Paper Board</a></li><li><a href="products.html">Fluting Paper</a></li><li><a href="products.html">Corrugated Cartons</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li>Plot 3/A, Industrial Estate</li><li>Phase 1, Multan, Pakistan</li><li style="margin-top:10px"><a href="tel:+923018635303">+92 301 8635303</a></li><li><a href="mailto:iasheikh@yahoo.com">iasheikh@yahoo.com</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">&copy; 2024 Surayya Aslam Paper (SA Group). All Rights Reserved.</div>
+</div>
+</footer>
+<button class="scroll-top" id="scrollTop" aria-label="Back to top">&#9650;</button>
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){this.classList.toggle('open');document.getElementById('navLinks').classList.toggle('open')});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('hamburger').classList.remove('open');document.getElementById('navLinks').classList.remove('open')}));
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',scrollY>40);document.getElementById('scrollTop').classList.toggle('vis',scrollY>400)});
+document.getElementById('scrollTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+</script>
+</body>
+</html>

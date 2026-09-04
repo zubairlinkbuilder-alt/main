@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Surayya Aslam Paper</title>
+<meta name="description" content="Get in touch with Surayya Aslam Paper for packaging paper, corrugated cartons, and cardboard inquiries.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info h3{font-size:1.3rem;color:var(--primary);margin-bottom:20px}
+.info-item{display:flex;gap:14px;margin-bottom:24px;align-items:flex-start}
+.info-icon{width:44px;height:44px;min-width:44px;border-radius:50%;background:var(--cream-dark);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--accent)}
+.info-text h4{font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:2px}
+.info-text p,.info-text a{font-size:.88rem;color:var(--text-mid)}
+.info-text a:hover{color:var(--accent)}
+
+.contact-form{background:var(--surface);border-radius:var(--radius);padding:36px;border:1px solid var(--border);box-shadow:var(--shadow-sm)}
+.contact-form h3{font-size:1.2rem;color:var(--primary);margin-bottom:6px}
+.contact-form > p{font-size:.85rem;color:var(--text-light);margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:.8rem;font-weight:600;color:var(--text);margin-bottom:5px;font-family:'DM Sans',sans-serif}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:var(--radius);
+  font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--text);
+  background:var(--cream);transition:var(--transition);
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(184,134,11,.1)}
+.form-group textarea{resize:vertical;min-height:110px}
+.form-submit{width:100%;margin-top:6px}
+
+.map-section{background:var(--surface);padding:0}
+.map-wrap{height:380px;background:var(--cream-dark);display:flex;align-items:center;justify-content:center;color:var(--text-light);font-size:.9rem}
+
+@media(max-width:960px){.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+<div class="nav-inner">
+  <a href="index.html" class="nav-logo"><img src="images/logo.jpg" alt="SA Group"><div class="nav-logo-text">SA Group<small>Surayya Aslam Paper</small></div></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html" class="cta active">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-bg"><img src="images/warehouse2.jpg" alt="SA Paper Facility"></div>
+  <div class="container">
+    <div class="eyebrow">Contact Us</div>
+    <h1>Get in Touch</h1>
+    <p>Reach out for inquiries about our packaging paper, corrugated cartons, and custom solutions.</p>
+  </div>
+</section>
+
+<section class="section">
+<div class="container">
+  <div class="contact-grid">
+
+    <div class="contact-info">
+      <h3>Contact Information</h3>
+
+      <div class="info-item">
+        <div class="info-icon">&#9742;</div>
+        <div class="info-text">
+          <h4>Phone</h4>
+          <p><a href="tel:+923018635303">+92 301 8635303</a></p>
+          <p><a href="tel:+92616562857">+92 61 6562857</a></p>
+          <p><a href="tel:+92616773643">+92 61 6773643</a></p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">&#9993;</div>
+        <div class="info-text">
+          <h4>Email</h4>
+          <p><a href="mailto:iasheikh@yahoo.com">iasheikh@yahoo.com</a></p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">&#9873;</div>
+        <div class="info-text">
+          <h4>Factory Address</h4>
+          <p>Plot 3/A, Industrial Estate<br>Phase 1, Multan, Pakistan</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">&#128100;</div>
+        <div class="info-text">
+          <h4>Contact Person</h4>
+          <p>Bilal Aslam</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">&#127760;</div>
+        <div class="info-text">
+          <h4>Trade Identification</h4>
+          <p>License No: 1066150<br>WCO TIN: Pk41938429</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h3>Send Us a Message</h3>
+      <p>Fill in the form below and our team will get back to you shortly.</p>
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group"><label>Your Name</label><input type="text" required placeholder="Full name"></div>
+          <div class="form-group"><label>Company</label><input type="text" placeholder="Company name"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Email</label><input type="email" required placeholder="email@example.com"></div>
+          <div class="form-group"><label>Phone</label><input type="tel" placeholder="+92 ..."></div>
+        </div>
+        <div class="form-group">
+          <label>Product Interest</label>
+          <select>
+            <option value="">Select a product</option>
+            <option>Kraft Liner (KL)</option>
+            <option>Test Liner Super Type (TLS)</option>
+            <option>Paper Board</option>
+            <option>Fluting Paper</option>
+            <option>Corrugated Cartons</option>
+            <option>Corrugated Cardboard</option>
+            <option>Custom Packaging</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea required placeholder="Tell us about your requirements, quantity, dimensions..."></textarea></div>
+        <button type="submit" class="btn btn-primary form-submit">Send Message &rarr;</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<div class="map-section">
+  <div class="map-wrap">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.1!2d71.47!3d30.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDEyJzAwLjAiTiA3McKwMjgnMTIuMCJF!5e0!3m2!1sen!2spk!4v1" width="100%" height="380" style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</div>
+
+<footer class="footer">
+<div class="container">
+  <div class="footer-grid">
+    <div class="footer-about"><div class="footer-brand"><img src="images/logo.jpg" alt="SA Group"><span>Surayya Aslam Paper</span></div><p>Pakistan's trusted manufacturer of packaging paper, corrugated cartons, and cardboard since 1972.</p></div>
+    <div><h4>Navigation</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products.html">Products</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Products</h4><ul><li><a href="products.html">Kraft Liner</a></li><li><a href="products.html">Test Liner</a></li><li><a href="products.html">Paper Board</a></li><li><a href="products.html">Fluting Paper</a></li><li><a href="products.html">Corrugated Cartons</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li>Plot 3/A, Industrial Estate</li><li>Phase 1, Multan, Pakistan</li><li style="margin-top:10px"><a href="tel:+923018635303">+92 301 8635303</a></li><li><a href="mailto:iasheikh@yahoo.com">iasheikh@yahoo.com</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">&copy; 2024 Surayya Aslam Paper (SA Group). All Rights Reserved.</div>
+</div>
+</footer>
+<button class="scroll-top" id="scrollTop" aria-label="Back to top">&#9650;</button>
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){this.classList.toggle('open');document.getElementById('navLinks').classList.toggle('open')});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('hamburger').classList.remove('open');document.getElementById('navLinks').classList.remove('open')}));
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',scrollY>40);document.getElementById('scrollTop').classList.toggle('vis',scrollY>400)});
+document.getElementById('scrollTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+function handleSubmit(e){e.preventDefault();alert('Thank you for your inquiry! Our team will contact you shortly.');e.target.reset()}
+</script>
+</body>
+</html>

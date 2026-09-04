@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products | Surayya Aslam Paper</title>
+<meta name="description" content="Kraft Liner, Test Liner, Paper Board, Fluting, Corrugated Cartons & Cardboard - 100 to 600 GSM packaging solutions.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.product-tabs{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:40px}
+.product-tab{
+  padding:10px 24px;border-radius:var(--radius);font-size:.85rem;font-weight:600;
+  cursor:pointer;border:2px solid var(--border);background:transparent;
+  color:var(--text-mid);font-family:'DM Sans',sans-serif;transition:var(--transition);
+}
+.product-tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.product-tab:hover:not(.active){border-color:var(--primary);color:var(--primary)}
+
+.products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.p-card{
+  background:var(--surface);border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--border);transition:var(--transition);
+  display:grid;grid-template-columns:280px 1fr;
+}
+.p-card:hover{box-shadow:var(--shadow-md)}
+.p-card-img{overflow:hidden;min-height:260px}
+.p-card-img img{width:100%;height:100%;object-fit:cover}
+.p-card-body{padding:28px}
+.p-card-body h3{font-size:1.2rem;color:var(--primary);margin-bottom:10px}
+.p-card-body > p{font-size:.88rem;color:var(--text-mid);margin-bottom:16px}
+.spec-table{width:100%;border-collapse:collapse;font-size:.82rem;font-variant-numeric:tabular-nums}
+.spec-table td{padding:8px 0;border-bottom:1px solid var(--border)}
+.spec-table tr:last-child td{border-bottom:none}
+.spec-table td:first-child{font-weight:600;color:var(--text);width:45%}
+.spec-table td:last-child{color:var(--text-mid);text-align:right}
+
+.product-full{display:none}
+.product-full.active{display:block}
+
+.process-strip{background:var(--primary);padding:64px 0}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.proc-item{text-align:center;padding:24px 16px}
+.proc-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--accent-light);display:block}
+.proc-label{font-size:.82rem;color:rgba(255,255,255,.55);margin-top:6px;text-transform:uppercase;letter-spacing:1.5px}
+.proc-desc{font-size:.85rem;color:rgba(255,255,255,.7);margin-top:8px}
+
+@media(max-width:960px){
+  .products-grid{grid-template-columns:1fr}
+  .p-card{grid-template-columns:1fr}
+  .p-card-img{min-height:200px;max-height:220px}
+  .process-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .process-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+<div class="nav-inner">
+  <a href="index.html" class="nav-logo"><img src="images/logo.jpg" alt="SA Group"><div class="nav-logo-text">SA Group<small>Surayya Aslam Paper</small></div></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="products.html" class="active">Products</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html" class="cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-bg"><img src="images/production2.jpg" alt="Production Roller"></div>
+  <div class="container">
+    <div class="eyebrow">Our Products</div>
+    <h1>Paper &amp; Packaging Solutions</h1>
+    <p>Complete range of packaging paper, corrugated cartons, and cardboard manufactured to international quality standards.</p>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section">
+<div class="container">
+  <div class="product-tabs">
+    <button class="product-tab active" data-tab="all">All Products</button>
+    <button class="product-tab" data-tab="paper">Packaging Paper</button>
+    <button class="product-tab" data-tab="carton">Cartons &amp; Cardboard</button>
+  </div>
+
+  <div class="products-grid" id="productsGrid">
+
+    <div class="p-card" data-cat="paper">
+      <div class="p-card-img"><img src="images/paper-sample1.jpg" alt="Kraft Liner"></div>
+      <div class="p-card-body">
+        <h3>Kraft Liner (KL)</h3>
+        <p>High-strength kraft liner for premium corrugated packaging. Excellent burst and tensile strength.</p>
+        <table class="spec-table">
+          <tr><td>Grammage</td><td>100 &ndash; 400 GSM</td></tr>
+          <tr><td>Burst Strength</td><td>270 &ndash; 300 Kpa</td></tr>
+          <tr><td>RCT</td><td>0.9 &ndash; 1.0 Kn/m</td></tr>
+          <tr><td>Tensile</td><td>104 &ndash; 110 N</td></tr>
+          <tr><td>Cobb 60</td><td>35 &ndash; 40</td></tr>
+          <tr><td>Moisture</td><td>7.5 &plusmn; 1%</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="p-card" data-cat="paper">
+      <div class="p-card-img"><img src="images/production1.jpg" alt="Test Liner Super Type"></div>
+      <div class="p-card-body">
+        <h3>Test Liner Super Type (TLS)</h3>
+        <p>Superior quality test liner with enhanced surface properties for high-quality printing applications.</p>
+        <table class="spec-table">
+          <tr><td>Grammage</td><td>100 &ndash; 300 GSM</td></tr>
+          <tr><td>Surface</td><td>Super Smooth</td></tr>
+          <tr><td>Printability</td><td>Excellent</td></tr>
+          <tr><td>Moisture</td><td>7.5 &plusmn; 1%</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="p-card" data-cat="paper">
+      <div class="p-card-img"><img src="images/warehouse2.jpg" alt="Paper Board"></div>
+      <div class="p-card-body">
+        <h3>Paper Board</h3>
+        <p>Heavy-duty paperboard for rigid packaging. Available in high grammages for maximum protection.</p>
+        <table class="spec-table">
+          <tr><td>Grammage</td><td>330 &ndash; 600 GSM</td></tr>
+          <tr><td>Burst Strength</td><td>270 &ndash; 300 Kpa</td></tr>
+          <tr><td>RCT</td><td>0.9 &ndash; 1.0 Kn/m</td></tr>
+          <tr><td>Tensile</td><td>104 &ndash; 110 N</td></tr>
+          <tr><td>Cobb 60</td><td>35 &ndash; 40</td></tr>
+          <tr><td>Moisture</td><td>7.5 &plusmn; 1%</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="p-card" data-cat="paper">
+      <div class="p-card-img"><img src="images/production3.jpg" alt="Fluting Paper"></div>
+      <div class="p-card-body">
+        <h3>Fluting Paper (127 GSM)</h3>
+        <p>Corrugating medium with excellent CMT values for sturdy, reliable box construction.</p>
+        <table class="spec-table">
+          <tr><td>CMT</td><td>370 &ndash; 420</td></tr>
+          <tr><td>Grammage</td><td>127 &plusmn; 3 GSM</td></tr>
+          <tr><td>Burst Strength</td><td>210 &ndash; 240 Kpa</td></tr>
+          <tr><td>RCT</td><td>1.4 &ndash; 2.0 Kn/m</td></tr>
+          <tr><td>Cobb 60</td><td>35 &ndash; 50</td></tr>
+          <tr><td>Temperature</td><td>(23&plusmn;1)&deg;C</td></tr>
+          <tr><td>Area Moisture</td><td>(50&plusmn;2)%</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="p-card" data-cat="carton">
+      <div class="p-card-img"><img src="images/carton-box.jpg" alt="Corrugated Cartons"></div>
+      <div class="p-card-body">
+        <h3>Corrugated Cartons</h3>
+        <p>Normal and die-cut cartons with multi-color printing for all packaging needs. Expert staff, any custom size.</p>
+        <table class="spec-table">
+          <tr><td>Type</td><td>Normal &amp; Die-Cut</td></tr>
+          <tr><td>Printing</td><td>Up to 5 Colors</td></tr>
+          <tr><td>Sizes</td><td>All Custom Sizes</td></tr>
+          <tr><td>Wall Type</td><td>Single &amp; Double Wall</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="p-card" data-cat="carton">
+      <div class="p-card-img"><img src="images/cardboard-corrugated.jpg" alt="Corrugated Cardboard"></div>
+      <div class="p-card-body">
+        <h3>Corrugated Cardboard</h3>
+        <p>Precision-made board from our cardboard-making and converting units. All flute types available.</p>
+        <table class="spec-table">
+          <tr><td>Flute Types</td><td>B, C, E &amp; BC</td></tr>
+          <tr><td>Units</td><td>Making &amp; Converting</td></tr>
+          <tr><td>Format</td><td>Sheets &amp; Rolls</td></tr>
+          <tr><td>Widths</td><td>All Standard Widths</td></tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-strip">
+<div class="container">
+  <div class="section-header center">
+    <div class="section-eyebrow" style="color:rgba(184,134,11,.7)">Our Process</div>
+    <h2 class="section-title" style="color:#fff">From Raw Material to Finished Product</h2>
+  </div>
+  <div class="process-grid">
+    <div class="proc-item"><span class="proc-num">01</span><span class="proc-label">Sourcing</span><p class="proc-desc">Import and process waste paper as sustainable raw material</p></div>
+    <div class="proc-item"><span class="proc-num">02</span><span class="proc-label">Production</span><p class="proc-desc">4 production lines (PM1&ndash;PM4) manufacturing all paper grades</p></div>
+    <div class="proc-item"><span class="proc-num">03</span><span class="proc-label">Converting</span><p class="proc-desc">Cardboard-making and converting units for corrugated products</p></div>
+    <div class="proc-item"><span class="proc-num">04</span><span class="proc-label">Delivery</span><p class="proc-desc">Quality checked and shipped domestically and internationally</p></div>
+  </div>
+</div>
+</section>
+
+<section class="section" style="text-align:center;background:var(--cream-dark)">
+<div class="container">
+  <h2 class="section-title">Need a Custom Packaging Solution?</h2>
+  <p style="color:var(--text-mid);margin:14px auto 28px;max-width:500px">Contact our team to discuss your specific requirements, grammage, dimensions, and quantity.</p>
+  <a href="contact.html" class="btn btn-primary">Get a Quote &rarr;</a>
+</div>
+</section>
+
+<footer class="footer">
+<div class="container">
+  <div class="footer-grid">
+    <div class="footer-about"><div class="footer-brand"><img src="images/logo.jpg" alt="SA Group"><span>Surayya Aslam Paper</span></div><p>Pakistan's trusted manufacturer of packaging paper, corrugated cartons, and cardboard since 1972.</p></div>
+    <div><h4>Navigation</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products.html">Products</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Products</h4><ul><li><a href="products.html">Kraft Liner</a></li><li><a href="products.html">Test Liner</a></li><li><a href="products.html">Paper Board</a></li><li><a href="products.html">Fluting Paper</a></li><li><a href="products.html">Corrugated Cartons</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li>Plot 3/A, Industrial Estate</li><li>Phase 1, Multan, Pakistan</li><li style="margin-top:10px"><a href="tel:+923018635303">+92 301 8635303</a></li><li><a href="mailto:iasheikh@yahoo.com">iasheikh@yahoo.com</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">&copy; 2024 Surayya Aslam Paper (SA Group). All Rights Reserved.</div>
+</div>
+</footer>
+<button class="scroll-top" id="scrollTop" aria-label="Back to top">&#9650;</button>
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){this.classList.toggle('open');document.getElementById('navLinks').classList.toggle('open')});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('hamburger').classList.remove('open');document.getElementById('navLinks').classList.remove('open')}));
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',scrollY>40);document.getElementById('scrollTop').classList.toggle('vis',scrollY>400)});
+document.getElementById('scrollTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+document.querySelectorAll('.product-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.product-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const cat=tab.dataset.tab;
+    document.querySelectorAll('.p-card').forEach(c=>{c.style.display=(cat==='all'||c.dataset.cat===cat)?'':'none'});
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery | Surayya Aslam Paper</title>
+<meta name="description" content="Photo gallery of Surayya Aslam Paper manufacturing facility, production lines, and international exhibitions.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.gallery-tabs{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:36px}
+.gallery-tab{
+  padding:9px 22px;border-radius:var(--radius);font-size:.82rem;font-weight:600;
+  cursor:pointer;border:2px solid var(--border);background:transparent;
+  color:var(--text-mid);font-family:'DM Sans',sans-serif;transition:var(--transition);
+}
+.gallery-tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.gallery-tab:hover:not(.active){border-color:var(--primary);color:var(--primary)}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.g-item{
+  position:relative;overflow:hidden;border-radius:var(--radius);cursor:pointer;
+  aspect-ratio:4/3;background:var(--cream-dark);
+}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:var(--transition)}
+.g-item:hover img{transform:scale(1.05)}
+.g-item .g-label{
+  position:absolute;bottom:0;left:0;right:0;padding:14px 16px;
+  background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 100%);
+  color:#fff;font-size:.82rem;font-weight:600;
+  opacity:0;transition:var(--transition);
+}
+.g-item:hover .g-label{opacity:1}
+.g-item.tall{grid-row:span 2;aspect-ratio:auto}
+
+.lightbox{
+  display:none;position:fixed;inset:0;z-index:200;
+  background:rgba(0,0,0,.9);align-items:center;justify-content:center;padding:24px;
+}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90%;max-height:85vh;border-radius:var(--radius);object-fit:contain}
+.lb-close{
+  position:absolute;top:20px;right:24px;color:#fff;font-size:1.6rem;
+  cursor:pointer;width:44px;height:44px;display:flex;align-items:center;
+  justify-content:center;background:rgba(255,255,255,.1);border-radius:50%;
+  border:none;transition:var(--transition);
+}
+.lb-close:hover{background:rgba(255,255,255,.2)}
+
+@media(max-width:960px){.gallery-grid{grid-template-columns:repeat(2,1fr)}.g-item.tall{grid-row:auto}}
+@media(max-width:600px){.gallery-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+<div class="nav-inner">
+  <a href="index.html" class="nav-logo"><img src="images/logo.jpg" alt="SA Group"><div class="nav-logo-text">SA Group<small>Surayya Aslam Paper</small></div></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="gallery.html" class="active">Gallery</a></li>
+    <li><a href="contact.html" class="cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-bg"><img src="images/warehouse.jpg" alt="Warehouse"></div>
+  <div class="container">
+    <div class="eyebrow">Gallery</div>
+    <h1>Inside the Mill</h1>
+    <p>Our manufacturing facility, production processes, products, and international engagements.</p>
+  </div>
+</section>
+
+<section class="section">
+<div class="container">
+  <div class="gallery-tabs">
+    <button class="gallery-tab active" data-tab="all">All Photos</button>
+    <button class="gallery-tab" data-tab="factory">Factory</button>
+    <button class="gallery-tab" data-tab="products">Products</button>
+    <button class="gallery-tab" data-tab="exhibitions">Exhibitions</button>
+  </div>
+
+  <div class="gallery-grid" id="galleryGrid">
+    <div class="g-item tall" data-cat="factory" onclick="openLB(this)">
+      <img src="images/warehouse.jpg" alt="Paper Rolls Warehouse">
+      <div class="g-label">Paper Rolls Warehouse</div>
+    </div>
+    <div class="g-item" data-cat="factory" onclick="openLB(this)">
+      <img src="images/warehouse2.jpg" alt="Warehouse Panorama">
+      <div class="g-label">Warehouse Panorama</div>
+    </div>
+    <div class="g-item" data-cat="factory" onclick="openLB(this)">
+      <img src="images/production1.jpg" alt="Production Line">
+      <div class="g-label">Production Line</div>
+    </div>
+    <div class="g-item" data-cat="factory" onclick="openLB(this)">
+      <img src="images/production2.jpg" alt="Paper Roller">
+      <div class="g-label">Paper Roller Close-up</div>
+    </div>
+    <div class="g-item" data-cat="factory" onclick="openLB(this)">
+      <img src="images/production3.jpg" alt="Production Machine">
+      <div class="g-label">Production Machine</div>
+    </div>
+    <div class="g-item" data-cat="products" onclick="openLB(this)">
+      <img src="images/paper-sample1.jpg" alt="Paper Board Sample">
+      <div class="g-label">Paper Board Sample</div>
+    </div>
+    <div class="g-item" data-cat="products" onclick="openLB(this)">
+      <img src="images/cardboard-corrugated.jpg" alt="Corrugated Board Layers">
+      <div class="g-label">Corrugated Board Layers</div>
+    </div>
+    <div class="g-item" data-cat="products" onclick="openLB(this)">
+      <img src="images/cardboard-stack.jpg" alt="Cardboard Stack">
+      <div class="g-label">Cardboard Stack</div>
+    </div>
+    <div class="g-item" data-cat="products" onclick="openLB(this)">
+      <img src="images/cardboard-sheets.jpg" alt="Corrugated Sheets">
+      <div class="g-label">Corrugated Sheets</div>
+    </div>
+    <div class="g-item" data-cat="products" onclick="openLB(this)">
+      <img src="images/carton-box.jpg" alt="Corrugated Cartons">
+      <div class="g-label">Corrugated Cartons</div>
+    </div>
+    <div class="g-item" data-cat="products" onclick="openLB(this)">
+      <img src="images/carton-inside.jpg" alt="Carton Interior">
+      <div class="g-label">Carton Interior</div>
+    </div>
+    <div class="g-item" data-cat="exhibitions" onclick="openLB(this)">
+      <img src="images/exhibition1.jpg" alt="International Exhibition 1">
+      <div class="g-label">International Exhibition</div>
+    </div>
+    <div class="g-item" data-cat="exhibitions" onclick="openLB(this)">
+      <img src="images/exhibition2.jpg" alt="International Exhibition 2">
+      <div class="g-label">Exhibition Booth</div>
+    </div>
+    <div class="g-item" data-cat="exhibitions" onclick="openLB(this)">
+      <img src="images/exhibition3.jpg" alt="Trade Show">
+      <div class="g-label">Trade Show Visit</div>
+    </div>
+    <div class="g-item" data-cat="exhibitions" onclick="openLB(this)">
+      <img src="images/exhibition4.jpg" alt="Team Photo">
+      <div class="g-label">International Partners</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="lightbox" id="lightbox" onclick="closeLB()">
+  <button class="lb-close" aria-label="Close">&times;</button>
+  <img id="lbImg" src="" alt="Gallery Image">
+</div>
+
+<footer class="footer">
+<div class="container">
+  <div class="footer-grid">
+    <div class="footer-about"><div class="footer-brand"><img src="images/logo.jpg" alt="SA Group"><span>Surayya Aslam Paper</span></div><p>Pakistan's trusted manufacturer of packaging paper, corrugated cartons, and cardboard since 1972.</p></div>
+    <div><h4>Navigation</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products.html">Products</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Products</h4><ul><li><a href="products.html">Kraft Liner</a></li><li><a href="products.html">Test Liner</a></li><li><a href="products.html">Paper Board</a></li><li><a href="products.html">Fluting Paper</a></li><li><a href="products.html">Corrugated Cartons</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li>Plot 3/A, Industrial Estate</li><li>Phase 1, Multan, Pakistan</li><li style="margin-top:10px"><a href="tel:+923018635303">+92 301 8635303</a></li><li><a href="mailto:iasheikh@yahoo.com">iasheikh@yahoo.com</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">&copy; 2024 Surayya Aslam Paper (SA Group). All Rights Reserved.</div>
+</div>
+</footer>
+<button class="scroll-top" id="scrollTop" aria-label="Back to top">&#9650;</button>
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){this.classList.toggle('open');document.getElementById('navLinks').classList.toggle('open')});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('hamburger').classList.remove('open');document.getElementById('navLinks').classList.remove('open')}));
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',scrollY>40);document.getElementById('scrollTop').classList.toggle('vis',scrollY>400)});
+document.getElementById('scrollTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Gallery tabs
+document.querySelectorAll('.gallery-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.gallery-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const cat=tab.dataset.tab;
+    document.querySelectorAll('.g-item').forEach(c=>{c.style.display=(cat==='all'||c.dataset.cat===cat)?'':'none'});
+  });
+});
+
+// Lightbox
+function openLB(el){document.getElementById('lbImg').src=el.querySelector('img').src;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden'}
+function closeLB(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB()});
+</script>
+</body>
+</html>

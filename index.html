@@ -4,729 +4,241 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Surayya Aslam Paper | Premium Packaging Paper Since 1972</title>
-<meta name="description" content="Surayya Aslam Paper - Pakistan's leading manufacturer of packaging paper, corrugated cartons & cardboard since 1972. Export quality 100-600 GSM. 250 tons/day capacity.">
+<meta name="description" content="Pakistan's leading manufacturer of packaging paper, corrugated cartons & cardboard since 1972. Export quality 100-600 GSM.">
+<link rel="stylesheet" href="css/style.css">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
---primary:#1a3c34;
---primary-light:#2d5f4f;
---accent:#c8a45a;
---accent-light:#dbb96e;
---bg:#fafaf7;
---bg-alt:#f0ece4;
---text:#1a1a1a;
---text-light:#555;
---white:#fff;
---shadow:0 4px 24px rgba(0,0,0,.08);
---shadow-lg:0 8px 48px rgba(0,0,0,.12);
---radius:8px;
---transition:.3s ease;
+/* HOME HERO */
+.home-hero{
+  min-height:92vh;display:flex;align-items:center;
+  position:relative;overflow:hidden;background:var(--primary);
 }
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--bg);line-height:1.7;overflow-x:hidden}
-img{max-width:100%;height:auto;display:block}
-a{text-decoration:none;color:inherit}
-.container{max-width:1200px;margin:0 auto;padding:0 24px}
-section{padding:80px 0}
-h1,h2,h3,h4{font-weight:700;line-height:1.3}
-h2.section-title{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--primary);text-align:center;margin-bottom:16px}
-.section-subtitle{text-align:center;color:var(--text-light);font-size:1.1rem;max-width:650px;margin:0 auto 48px}
-.accent-line{width:60px;height:4px;background:var(--accent);margin:16px auto 0;border-radius:2px}
+.home-hero .hero-bg{position:absolute;inset:0}
+.home-hero .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.2}
+.home-hero .hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(15,43,60,.93) 0%,rgba(15,43,60,.6) 60%,rgba(15,43,60,.85) 100%);
+}
+.home-hero .container{position:relative;z-index:2;padding-top:68px}
+.home-hero .eyebrow{
+  display:inline-block;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:500;
+  letter-spacing:2.5px;text-transform:uppercase;color:var(--accent-light);
+  margin-bottom:20px;padding:6px 16px;
+  border:1px solid rgba(184,134,11,.25);border-radius:50px;
+}
+.home-hero h1{font-size:clamp(2.4rem,5vw,3.8rem);color:#fff;margin-bottom:20px;max-width:680px}
+.home-hero h1 em{font-style:italic;color:var(--accent-light)}
+.home-hero .lead{font-size:clamp(1rem,1.8vw,1.15rem);color:rgba(255,255,255,.72);max-width:540px;margin-bottom:36px}
+.home-hero .hero-btns{display:flex;gap:14px;flex-wrap:wrap}
 
-/* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(26,60,52,.97);backdrop-filter:blur(10px);transition:var(--transition)}
-.nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.15)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:0 24px;max-width:1200px;margin:0 auto;height:72px}
-.nav-logo{display:flex;align-items:center;gap:12px}
-.nav-logo img{height:48px;width:48px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)}
-.nav-logo span{color:var(--white);font-weight:700;font-size:1.15rem;letter-spacing:.5px}
-.nav-logo small{display:block;font-size:.7rem;color:var(--accent);font-weight:400;letter-spacing:1px;text-transform:uppercase}
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{color:rgba(255,255,255,.85);font-weight:500;font-size:.95rem;position:relative;padding:4px 0;transition:var(--transition)}
-.nav-links a:hover,.nav-links a.active{color:var(--accent)}
-.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--accent);transition:var(--transition)}
-.nav-links a:hover::after,.nav-links a.active::after{width:100%}
-.nav-cta{background:var(--accent);color:var(--primary);padding:10px 24px;border-radius:var(--radius);font-weight:600;transition:var(--transition)}
-.nav-cta:hover{background:var(--accent-light);transform:translateY(-1px)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
-.hamburger span{width:26px;height:2.5px;background:var(--white);border-radius:2px;transition:var(--transition)}
-.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+/* STATS BAR */
+.stats-bar{background:var(--surface);border-bottom:1px solid var(--border)}
+.stats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.stat-item{
+  padding:32px 20px;text-align:center;
+  border-right:1px solid var(--border);
+}
+.stat-item:last-child{border-right:none}
+.stat-num{
+  font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);
+  font-weight:900;color:var(--primary);display:block;line-height:1;
+  font-variant-numeric:tabular-nums;
+}
+.stat-label{
+  font-size:.72rem;text-transform:uppercase;letter-spacing:2px;
+  color:var(--text-light);margin-top:6px;font-weight:500;
+}
 
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--primary)}
-.hero-bg{position:absolute;inset:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.3}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,60,52,.92) 0%,rgba(26,60,52,.7) 50%,rgba(26,60,52,.85) 100%)}
-.hero-content{position:relative;z-index:2;padding-top:72px}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,164,90,.15);border:1px solid rgba(200,164,90,.3);color:var(--accent);padding:8px 20px;border-radius:50px;font-size:.85rem;font-weight:500;margin-bottom:24px;letter-spacing:1px;text-transform:uppercase}
-.hero h1{font-size:clamp(2.4rem,5.5vw,4rem);color:var(--white);margin-bottom:20px;max-width:700px}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.hero p{font-size:clamp(1rem,2vw,1.2rem);color:rgba(255,255,255,.8);max-width:560px;margin-bottom:36px;line-height:1.8}
-.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:var(--radius);font-weight:600;font-size:1rem;transition:var(--transition);border:none;cursor:pointer}
-.btn-primary{background:var(--accent);color:var(--primary)}
-.btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,164,90,.3)}
-.btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.3)}
-.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:64px;padding-top:40px;border-top:1px solid rgba(255,255,255,.1)}
-.hero-stat{text-align:center}
-.hero-stat .num{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;color:var(--accent);display:block}
-.hero-stat .label{font-size:.85rem;color:rgba(255,255,255,.6);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+/* INTRO */
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.intro-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg)}
+.intro-img img{width:100%;height:380px;object-fit:cover}
+.intro-text h3{font-size:clamp(1.4rem,2.5vw,1.8rem);color:var(--primary);margin-bottom:16px}
+.intro-text p{color:var(--text-mid);margin-bottom:14px;font-size:.95rem}
+.intro-text .btn{margin-top:8px}
 
-/* ABOUT */
-.about{background:var(--white)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.about-img{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg)}
-.about-img img{width:100%;height:400px;object-fit:cover}
-.about-img .exp-badge{position:absolute;bottom:24px;right:24px;background:var(--accent);color:var(--primary);padding:16px 24px;border-radius:var(--radius);text-align:center;font-weight:700;box-shadow:var(--shadow)}
-.about-img .exp-badge .num{font-size:2rem;display:block;line-height:1}
-.about-img .exp-badge .txt{font-size:.75rem;text-transform:uppercase;letter-spacing:1px}
-.about-text h3{font-size:1.1rem;color:var(--accent);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
-.about-text h2{font-size:clamp(1.6rem,3vw,2.2rem);color:var(--primary);margin-bottom:20px}
-.about-text p{color:var(--text-light);margin-bottom:16px}
-.about-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
-.about-feature{display:flex;align-items:flex-start;gap:12px;padding:16px;background:var(--bg);border-radius:var(--radius)}
-.about-feature .icon{width:40px;height:40px;min-width:40px;background:var(--primary);color:var(--accent);display:flex;align-items:center;justify-content:center;border-radius:var(--radius);font-size:1.2rem}
-.about-feature h4{font-size:.9rem;color:var(--primary)}
-.about-feature p{font-size:.8rem;color:var(--text-light);margin:0}
+/* PRODUCT HIGHLIGHTS */
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.prod-card{
+  background:var(--surface);border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--border);transition:var(--transition);
+}
+.prod-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.prod-card-img{height:200px;overflow:hidden}
+.prod-card-img img{width:100%;height:100%;object-fit:cover;transition:var(--transition)}
+.prod-card:hover .prod-card-img img{transform:scale(1.04)}
+.prod-card-body{padding:24px}
+.prod-card-body h3{font-size:1.1rem;color:var(--primary);margin-bottom:8px}
+.prod-card-body p{font-size:.85rem;color:var(--text-light);margin-bottom:14px}
+.prod-card-body .link{font-size:.85rem;font-weight:600;color:var(--accent)}
+.prod-card-body .link:hover{color:var(--accent-hover)}
 
-/* PRODUCTS */
-.products{background:var(--bg)}
-.product-tabs{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:48px}
-.product-tab{padding:10px 24px;border-radius:50px;border:2px solid var(--primary);color:var(--primary);font-weight:600;cursor:pointer;transition:var(--transition);background:transparent;font-size:.9rem}
-.product-tab.active,.product-tab:hover{background:var(--primary);color:var(--white)}
-.product-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px}
-.product-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:var(--transition)}
-.product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
-.product-card-img{height:240px;overflow:hidden}
-.product-card-img img{width:100%;height:100%;object-fit:cover;transition:var(--transition)}
-.product-card:hover .product-card-img img{transform:scale(1.05)}
-.product-card-body{padding:28px}
-.product-card-body h3{font-size:1.3rem;color:var(--primary);margin-bottom:12px}
-.product-card-body p{color:var(--text-light);font-size:.95rem;margin-bottom:16px}
-.spec-table{width:100%;border-collapse:collapse;font-size:.85rem}
-.spec-table td{padding:8px 0;border-bottom:1px solid #eee}
-.spec-table td:first-child{font-weight:600;color:var(--primary);width:50%}
-.spec-table td:last-child{color:var(--text-light)}
-.product-panel{display:none}
-.product-panel.active{display:block}
+/* CTA BAND */
+.cta-band{
+  background:var(--primary);padding:64px 0;text-align:center;
+}
+.cta-band h2{color:#fff;font-size:clamp(1.5rem,3vw,2rem);margin-bottom:14px}
+.cta-band p{color:rgba(255,255,255,.6);margin-bottom:28px;font-size:1rem}
 
-/* CAPACITY */
-.capacity{background:var(--primary);color:var(--white);position:relative;overflow:hidden}
-.capacity::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(200,164,90,.1) 0%,transparent 70%);border-radius:50%}
-.capacity-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;position:relative;z-index:2}
-.cap-card{text-align:center;padding:40px 24px;background:rgba(255,255,255,.05);border-radius:var(--radius);border:1px solid rgba(255,255,255,.08);transition:var(--transition)}
-.cap-card:hover{background:rgba(255,255,255,.1);transform:translateY(-4px)}
-.cap-icon{font-size:2.5rem;margin-bottom:16px}
-.cap-card h3{font-size:clamp(1.6rem,3vw,2.2rem);color:var(--accent);margin-bottom:8px}
-.cap-card p{color:rgba(255,255,255,.7);font-size:.9rem}
-
-/* GALLERY */
-.gallery{background:var(--white)}
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.gallery-item{position:relative;overflow:hidden;border-radius:var(--radius);cursor:pointer;aspect-ratio:4/3}
-.gallery-item img{width:100%;height:100%;object-fit:cover;transition:var(--transition)}
-.gallery-item:hover img{transform:scale(1.08)}
-.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5) 0%,transparent 50%);opacity:0;transition:var(--transition)}
-.gallery-item:hover::after{opacity:1}
-.gallery-item span{position:absolute;bottom:16px;left:16px;color:var(--white);font-weight:600;font-size:.9rem;z-index:2;opacity:0;transform:translateY(8px);transition:var(--transition)}
-.gallery-item:hover span{opacity:1;transform:translateY(0)}
-.gallery-item.wide{grid-column:span 2}
-
-/* GLOBAL PRESENCE */
-.global{background:var(--bg-alt)}
-.global-content{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.global-text h3{font-size:clamp(1.4rem,2.5vw,1.8rem);color:var(--primary);margin-bottom:16px}
-.global-text p{color:var(--text-light);margin-bottom:20px}
-.global-list{list-style:none;display:grid;gap:12px}
-.global-list li{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--white);border-radius:var(--radius);font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,.04)}
-.global-list li .dot{width:8px;height:8px;background:var(--accent);border-radius:50%;min-width:8px}
-.global-photos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.global-photos img{border-radius:var(--radius);height:200px;object-fit:cover;box-shadow:var(--shadow)}
-
-/* CONTACT */
-.contact{background:var(--white)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
-.contact-info{display:flex;flex-direction:column;gap:24px}
-.contact-card{display:flex;gap:16px;padding:24px;background:var(--bg);border-radius:var(--radius)}
-.contact-card .c-icon{width:52px;height:52px;min-width:52px;background:var(--primary);color:var(--accent);display:flex;align-items:center;justify-content:center;border-radius:var(--radius);font-size:1.3rem}
-.contact-card h4{font-size:1rem;color:var(--primary);margin-bottom:4px}
-.contact-card p{color:var(--text-light);font-size:.9rem;line-height:1.6}
-.contact-card a{color:var(--primary);font-weight:600}
-.contact-form{background:var(--bg);padding:40px;border-radius:var(--radius)}
-.contact-form h3{font-size:1.4rem;color:var(--primary);margin-bottom:24px}
-.form-group{margin-bottom:20px}
-.form-group label{display:block;font-weight:600;font-size:.9rem;color:var(--primary);margin-bottom:6px}
-.form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 16px;border:2px solid #e0ddd5;border-radius:var(--radius);font-size:.95rem;font-family:inherit;background:var(--white);transition:var(--transition);outline:none}
-.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--primary)}
-.form-group textarea{resize:vertical;min-height:120px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.btn-submit{width:100%;padding:14px;background:var(--primary);color:var(--white);border:none;border-radius:var(--radius);font-size:1rem;font-weight:600;cursor:pointer;transition:var(--transition)}
-.btn-submit:hover{background:var(--primary-light)}
-
-/* FOOTER */
-.footer{background:var(--primary);color:rgba(255,255,255,.7);padding:60px 0 0}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}
-.footer h4{color:var(--white);font-size:1rem;margin-bottom:16px}
-.footer-about p{font-size:.9rem;line-height:1.8}
-.footer-about .f-logo{display:flex;align-items:center;gap:12px;margin-bottom:16px}
-.footer-about .f-logo img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)}
-.footer-about .f-logo span{color:var(--white);font-weight:700;font-size:1.1rem}
-.footer ul{list-style:none}
-.footer ul li{margin-bottom:10px}
-.footer ul a{color:rgba(255,255,255,.7);font-size:.9rem;transition:var(--transition)}
-.footer ul a:hover{color:var(--accent);padding-left:4px}
-.footer-bottom{padding:20px 0;text-align:center;font-size:.85rem}
-
-/* LIGHTBOX */
-.lightbox{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px}
-.lightbox.open{display:flex}
-.lightbox img{max-width:90%;max-height:85vh;border-radius:var(--radius);object-fit:contain}
-.lightbox-close{position:absolute;top:24px;right:32px;color:var(--white);font-size:2rem;cursor:pointer;z-index:3;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.1);border-radius:50%;transition:var(--transition)}
-.lightbox-close:hover{background:rgba(255,255,255,.2)}
-
-/* SCROLL TOP */
-.scroll-top{position:fixed;bottom:32px;right:32px;width:48px;height:48px;background:var(--primary);color:var(--accent);border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;opacity:0;visibility:hidden;transition:var(--transition);z-index:999;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center}
-.scroll-top.visible{opacity:1;visibility:visible}
-.scroll-top:hover{background:var(--primary-light);transform:translateY(-3px)}
-
-/* ANIMATIONS */
-.fade-in{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
-.fade-in.visible{opacity:1;transform:translateY(0)}
-
-/* RESPONSIVE */
-@media(max-width:992px){
-.nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:var(--primary);flex-direction:column;padding:24px;gap:0}
-.nav-links.open{display:flex}
-.nav-links li{border-bottom:1px solid rgba(255,255,255,.08)}
-.nav-links a{display:block;padding:14px 0}
-.hamburger{display:flex}
-.hero-stats{grid-template-columns:repeat(2,1fr);gap:16px}
-.about-grid,.global-content,.contact-grid{grid-template-columns:1fr}
-.capacity-grid{grid-template-columns:repeat(2,1fr)}
-.footer-grid{grid-template-columns:1fr 1fr}
-.gallery-grid{grid-template-columns:repeat(2,1fr)}
-.gallery-item.wide{grid-column:auto}
+@media(max-width:960px){
+  .intro-grid{grid-template-columns:1fr}
+  .prod-grid{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:600px){
-section{padding:56px 0}
-.hero-stats{grid-template-columns:1fr 1fr}
-.capacity-grid{grid-template-columns:1fr}
-.product-cards{grid-template-columns:1fr}
-.about-features{grid-template-columns:1fr}
-.gallery-grid{grid-template-columns:1fr}
-.form-row{grid-template-columns:1fr}
-.footer-grid{grid-template-columns:1fr}
-.global-photos{grid-template-columns:1fr}
-.hero-btns{flex-direction:column}
-.btn{justify-content:center}
+  .prod-grid{grid-template-columns:1fr}
+  .home-hero .hero-btns{flex-direction:column}
+  .home-hero .hero-btns .btn{justify-content:center}
 }
 </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 <nav class="nav" id="nav">
 <div class="nav-inner">
-<a href="#home" class="nav-logo">
-<img src="images/logo.jpg" alt="SA Group Logo">
-<span>SA Group<small>Surayya Aslam Paper</small></span>
-</a>
-<ul class="nav-links" id="navLinks">
-<li><a href="#home" class="active">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#products">Products</a></li>
-<li><a href="#gallery">Gallery</a></li>
-<li><a href="#global">Global</a></li>
-<li><a href="#contact" class="nav-cta">Contact Us</a></li>
-</ul>
-<div class="hamburger" id="hamburger" onclick="toggleMenu()">
-<span></span><span></span><span></span>
-</div>
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.jpg" alt="SA Group">
+    <div class="nav-logo-text">SA Group<small>Surayya Aslam Paper</small></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html" class="cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="home">
-<div class="hero-bg"><img src="images/warehouse.jpg" alt="Paper Rolls Warehouse"></div>
-<div class="hero-overlay"></div>
-<div class="container hero-content">
-<div class="hero-badge">Established 1972</div>
-<h1>Pakistan's Trusted <em>Paper &amp; Packaging</em> Manufacturer</h1>
-<p>From premium kraft liner to corrugated cartons, Surayya Aslam Paper delivers export-quality packaging solutions with over 50 years of manufacturing excellence.</p>
-<div class="hero-btns">
-<a href="#products" class="btn btn-primary">Explore Products &#8594;</a>
-<a href="#contact" class="btn btn-outline">Request a Quote</a>
+<section class="home-hero">
+  <div class="hero-bg"><img src="images/warehouse2.jpg" alt="Paper Rolls Warehouse"></div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="eyebrow">Established 1972 &middot; Multan, Pakistan</div>
+    <h1>Packaging Paper, <em>Perfected</em></h1>
+    <p class="lead">From 100 GSM kraft liner to 600 GSM heavy board &mdash; four production lines, 250 tons per day, export quality that ships worldwide.</p>
+    <div class="hero-btns">
+      <a href="products.html" class="btn btn-primary">Explore Products &rarr;</a>
+      <a href="contact.html" class="btn btn-white">Request a Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+<div class="container">
+  <div class="stats-grid">
+    <div class="stat-item"><span class="stat-num">52+</span><span class="stat-label">Years Experience</span></div>
+    <div class="stat-item"><span class="stat-num">250</span><span class="stat-label">Tons / Day</span></div>
+    <div class="stat-item"><span class="stat-num">4</span><span class="stat-label">Production Lines</span></div>
+    <div class="stat-item"><span class="stat-num">100&ndash;600</span><span class="stat-label">GSM Range</span></div>
+  </div>
 </div>
-<div class="hero-stats">
-<div class="hero-stat"><span class="num">50+</span><span class="label">Years of Excellence</span></div>
-<div class="hero-stat"><span class="num">250</span><span class="label">Tons / Day</span></div>
-<div class="hero-stat"><span class="num">4</span><span class="label">Production Lines</span></div>
-<div class="hero-stat"><span class="num">100-600</span><span class="label">GSM Range</span></div>
 </div>
+
+<!-- INTRO -->
+<section class="section">
+<div class="container">
+  <div class="intro-grid">
+    <div class="intro-img"><img src="images/production1.jpg" alt="SA Paper Production Line"></div>
+    <div class="intro-text">
+      <div class="section-eyebrow">Who We Are</div>
+      <h3>Pakistan's Trusted Paper Manufacturer</h3>
+      <p>Surayya Aslam Paper is a licensed manufacturer (No. 1066150) active in Pakistan's paper industry since 1972. With international trade operations and WCO certification (TIN: Pk41938429), we supply packaging solutions across borders.</p>
+      <p>Our Multan facility houses four production lines (PM1&ndash;PM4) producing Kraft Liner, Test Liner, Fluting papers, corrugated cartons, and cardboard in grammages from 100 to 600 GSM.</p>
+      <a href="about.html" class="btn btn-outline">Learn More &rarr;</a>
+    </div>
+  </div>
 </div>
 </section>
 
-<!-- ABOUT -->
-<section class="about" id="about">
+<!-- PRODUCT HIGHLIGHTS -->
+<section class="section section-alt">
 <div class="container">
-<h2 class="section-title">About Surayya Aslam Paper</h2>
-<p class="section-subtitle">A legacy of quality paper manufacturing spanning over five decades, rooted in Multan, Pakistan.</p>
-<div class="accent-line"></div>
-<div class="about-grid fade-in" style="margin-top:48px">
-<div class="about-img">
-<img src="images/production1.jpg" alt="SA Paper Production Line">
-<div class="exp-badge"><span class="num">52+</span><span class="txt">Years Experience</span></div>
-</div>
-<div class="about-text">
-<h3>Our Story</h3>
-<h2>Manufacturing Excellence Since 1972</h2>
-<p>Surayya Aslam Paper is a manufacturer active in the paper industry with license number 1066150 and Trader Identification Number (TIN) Pk41938429. Based in Multan, Pakistan, our business activities span internationally.</p>
-<p>With 4 production lines (PM1 to PM4) and a daily capacity of 250 tons, we produce Kraft Liner, Test Liner Super Type, Kraft Liner B-Type, Fluting papers, corrugated cartons, and cardboard in all standard widths and GSM ranges from 100 to 600 grams.</p>
-<div class="about-features">
-<div class="about-feature">
-<div class="icon">&#9881;</div>
-<div><h4>4 Production Lines</h4><p>PM1 to PM4 advanced machinery</p></div>
-</div>
-<div class="about-feature">
-<div class="icon">&#9733;</div>
-<div><h4>Export Quality</h4><p>International standard products</p></div>
-</div>
-<div class="about-feature">
-<div class="icon">&#9878;</div>
-<div><h4>Eco Recycling</h4><p>Waste paper to packaging paper</p></div>
-</div>
-<div class="about-feature">
-<div class="icon">&#127760;</div>
-<div><h4>Global Reach</h4><p>International trade activities</p></div>
-</div>
-</div>
-</div>
-</div>
+  <div class="section-header center">
+    <div class="section-eyebrow">Our Products</div>
+    <h2 class="section-title">What We Manufacture</h2>
+  </div>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="images/paper-sample1.jpg" alt="Kraft Liner Paper"></div>
+      <div class="prod-card-body">
+        <h3>Packaging Paper</h3>
+        <p>Kraft Liner, Test Liner Super Type, Paper Board &amp; Fluting in all standard widths and GSMs.</p>
+        <a href="products.html" class="link">View Details &rarr;</a>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="images/carton-box.jpg" alt="Corrugated Cartons"></div>
+      <div class="prod-card-body">
+        <h3>Corrugated Cartons</h3>
+        <p>Normal and die-cut cartons with up to 5-color printing. All custom sizes available.</p>
+        <a href="products.html" class="link">View Details &rarr;</a>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="images/cardboard-corrugated.jpg" alt="Corrugated Cardboard"></div>
+      <div class="prod-card-body">
+        <h3>Corrugated Cardboard</h3>
+        <p>Board sheets and rolls from our cardboard-making and converting units. All flute types.</p>
+        <a href="products.html" class="link">View Details &rarr;</a>
+      </div>
+    </div>
+  </div>
 </div>
 </section>
 
-<!-- CAPACITY STATS -->
-<section class="capacity">
+<!-- CTA -->
+<section class="cta-band">
 <div class="container">
-<h2 class="section-title" style="color:#fff">Our Production Capacity</h2>
-<p class="section-subtitle" style="color:rgba(255,255,255,.6)">State-of-the-art manufacturing facility equipped for large-scale production</p>
-<div class="accent-line" style="margin-bottom:48px"></div>
-<div class="capacity-grid">
-<div class="cap-card fade-in">
-<div class="cap-icon">&#128220;</div>
-<h3>250 TPD</h3>
-<p>Daily Production Capacity across all four production lines</p>
-</div>
-<div class="cap-card fade-in">
-<div class="cap-icon">&#128208;</div>
-<h3>100-600 GSM</h3>
-<p>Complete grammage range for all packaging requirements</p>
-</div>
-<div class="cap-card fade-in">
-<div class="cap-icon">&#9881;</div>
-<h3>4 Lines</h3>
-<p>PM1 through PM4 advanced production machines</p>
-</div>
-<div class="cap-card fade-in">
-<div class="cap-icon">&#127942;</div>
-<h3>5 Colors</h3>
-<p>Multi-color printing capability for custom cartons</p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- PRODUCTS -->
-<section class="products" id="products">
-<div class="container">
-<h2 class="section-title">Our Products</h2>
-<p class="section-subtitle">Premium packaging paper and corrugated solutions manufactured to international quality standards</p>
-<div class="accent-line"></div>
-<div class="product-tabs" style="margin-top:40px">
-<button class="product-tab active" onclick="showTab('all')">All Products</button>
-<button class="product-tab" onclick="showTab('paper')">Packaging Paper</button>
-<button class="product-tab" onclick="showTab('carton')">Cartons &amp; Cardboard</button>
-</div>
-
-<div id="products-grid" class="product-cards">
-
-<!-- Kraft Liner -->
-<div class="product-card fade-in" data-cat="paper">
-<div class="product-card-img"><img src="images/paper-sample1.jpg" alt="Kraft Liner Paper"></div>
-<div class="product-card-body">
-<h3>Kraft Liner (KL)</h3>
-<p>High-strength kraft liner for premium corrugated packaging. Excellent burst and tensile strength for demanding applications.</p>
-<table class="spec-table">
-<tr><td>Grammage</td><td>100 - 400 GSM</td></tr>
-<tr><td>Burst Strength</td><td>270 - 300 Kpa</td></tr>
-<tr><td>RCT</td><td>0.9 - 1 Kn/m</td></tr>
-<tr><td>Tensile (N)</td><td>104 - 110</td></tr>
-<tr><td>Cobb 60</td><td>35 - 40</td></tr>
-</table>
-</div>
-</div>
-
-<!-- Test Liner Super -->
-<div class="product-card fade-in" data-cat="paper">
-<div class="product-card-img"><img src="images/production2.jpg" alt="Test Liner Super Type Paper"></div>
-<div class="product-card-body">
-<h3>Test Liner Super Type (TLS)</h3>
-<p>Superior quality test liner with enhanced surface properties. Ideal for high-quality printing and packaging applications.</p>
-<table class="spec-table">
-<tr><td>Grammage</td><td>100 - 300 GSM</td></tr>
-<tr><td>Surface Quality</td><td>Super Smooth</td></tr>
-<tr><td>Printability</td><td>Excellent</td></tr>
-<tr><td>Moisture</td><td>7.5 &plusmn; 1%</td></tr>
-</table>
-</div>
-</div>
-
-<!-- Paperboard -->
-<div class="product-card fade-in" data-cat="paper">
-<div class="product-card-img"><img src="images/warehouse2.jpg" alt="Paper Board"></div>
-<div class="product-card-body">
-<h3>Paper Board</h3>
-<p>Heavy-duty paperboard for rigid packaging solutions. Available in various thicknesses from 330 to 600 GSM.</p>
-<table class="spec-table">
-<tr><td>Grammage</td><td>330 - 600 GSM</td></tr>
-<tr><td>Burst Strength</td><td>270 - 300 Kpa</td></tr>
-<tr><td>RCT</td><td>0.9 - 1 Kn/m</td></tr>
-<tr><td>Tensile (N)</td><td>104 - 110</td></tr>
-<tr><td>Moisture</td><td>7.5 &plusmn; 1%</td></tr>
-</table>
-</div>
-</div>
-
-<!-- Fluting -->
-<div class="product-card fade-in" data-cat="paper">
-<div class="product-card-img"><img src="images/production3.jpg" alt="Fluting Paper 127"></div>
-<div class="product-card-body">
-<h3>Fluting Paper (127 GSM)</h3>
-<p>Corrugating medium with excellent CMT values for sturdy box construction. Consistent quality for reliable stacking strength.</p>
-<table class="spec-table">
-<tr><td>CMT</td><td>370 - 420</td></tr>
-<tr><td>Grammage</td><td>127 &plusmn; 3 GSM</td></tr>
-<tr><td>Burst Strength</td><td>210 - 240 Kpa</td></tr>
-<tr><td>RCT</td><td>1.4 - 2 Kn/m</td></tr>
-<tr><td>Cobb 60</td><td>35 - 50</td></tr>
-</table>
-</div>
-</div>
-
-<!-- Corrugated Cartons -->
-<div class="product-card fade-in" data-cat="carton">
-<div class="product-card-img"><img src="images/carton-box.jpg" alt="Corrugated Cartons"></div>
-<div class="product-card-body">
-<h3>Corrugated Cartons</h3>
-<p>Normal and die-cut cartons with up to 5-color printing. Custom sizes and designs for all packaging needs.</p>
-<table class="spec-table">
-<tr><td>Type</td><td>Normal &amp; Die-Cut</td></tr>
-<tr><td>Printing</td><td>Up to 5 Colors</td></tr>
-<tr><td>Customization</td><td>All Sizes Available</td></tr>
-<tr><td>Wall Type</td><td>Single &amp; Double Wall</td></tr>
-</table>
-</div>
-</div>
-
-<!-- Corrugated Cardboard -->
-<div class="product-card fade-in" data-cat="carton">
-<div class="product-card-img"><img src="images/cardboard-corrugated.jpg" alt="Corrugated Cardboard Sheets"></div>
-<div class="product-card-body">
-<h3>Corrugated Cardboard</h3>
-<p>High-quality corrugated board sheets and rolls produced with expert precision. Two main units: cardboard-making and converting.</p>
-<table class="spec-table">
-<tr><td>Flute Types</td><td>B, C, E &amp; BC</td></tr>
-<tr><td>Units</td><td>Making &amp; Converting</td></tr>
-<tr><td>Format</td><td>Sheets &amp; Rolls</td></tr>
-<tr><td>Customization</td><td>All Widths</td></tr>
-</table>
-</div>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- GALLERY -->
-<section class="gallery" id="gallery">
-<div class="container">
-<h2 class="section-title">Gallery</h2>
-<p class="section-subtitle">A glimpse into our manufacturing facility, production processes, and international presence</p>
-<div class="accent-line" style="margin-bottom:48px"></div>
-<div class="gallery-grid">
-<div class="gallery-item wide" onclick="openLightbox(this)">
-<img src="images/warehouse2.jpg" alt="Paper Rolls Warehouse"><span>Paper Rolls Warehouse</span>
-</div>
-<div class="gallery-item" onclick="openLightbox(this)">
-<img src="images/production1.jpg" alt="Production Line"><span>Production Line</span>
-</div>
-<div class="gallery-item" onclick="openLightbox(this)">
-<img src="images/production2.jpg" alt="Paper Roller"><span>Paper Roller Close-up</span>
-</div>
-<div class="gallery-item" onclick="openLightbox(this)">
-<img src="images/production3.jpg" alt="Production Machine"><span>Production Machine</span>
-</div>
-<div class="gallery-item" onclick="openLightbox(this)">
-<img src="images/cardboard-corrugated.jpg" alt="Corrugated Layers"><span>Corrugated Board Layers</span>
-</div>
-<div class="gallery-item wide" onclick="openLightbox(this)">
-<img src="images/cardboard-sheets.jpg" alt="Corrugated Cardboard Sheets"><span>Corrugated Cardboard Sheets</span>
-</div>
-<div class="gallery-item" onclick="openLightbox(this)">
-<img src="images/carton-box.jpg" alt="Corrugated Cartons"><span>Corrugated Cartons</span>
-</div>
-<div class="gallery-item" onclick="openLightbox(this)">
-<img src="images/cardboard-stack.jpg" alt="Cardboard Stack"><span>Cardboard Stack</span>
-</div>
-<div class="gallery-item" onclick="openLightbox(this)">
-<img src="images/paper-sample1.jpg" alt="Paper Sample"><span>Paper Board Sample</span>
-</div>
-</div>
-</div>
-</section>
-
-<!-- GLOBAL PRESENCE -->
-<section class="global" id="global">
-<div class="container">
-<h2 class="section-title">Global Presence</h2>
-<p class="section-subtitle">Actively participating in international trade exhibitions and building partnerships worldwide</p>
-<div class="accent-line" style="margin-bottom:48px"></div>
-<div class="global-content fade-in">
-<div class="global-text">
-<h3>Connecting With the World</h3>
-<p>Surayya Aslam Paper is committed to expanding its global footprint. Our team regularly participates in international paper and packaging exhibitions, forging partnerships with businesses across continents.</p>
-<p>With Trader Identification Number Pk41938429 assigned by the World Customs Organization (WCO), we operate under international trade standards ensuring seamless cross-border supply chain operations.</p>
-<ul class="global-list">
-<li><span class="dot"></span>International Paper &amp; Packaging Exhibitions</li>
-<li><span class="dot"></span>WCO Certified Trader (TIN: Pk41938429)</li>
-<li><span class="dot"></span>Export Quality Products - All GSM Ranges</li>
-<li><span class="dot"></span>Waste Paper Import for Sustainable Production</li>
-<li><span class="dot"></span>Cross-Border Supply Chain Partnerships</li>
-</ul>
-</div>
-<div class="global-photos">
-<img src="images/exhibition1.jpg" alt="International Exhibition" onerror="this.src='images/warehouse.jpg'">
-<img src="images/exhibition2.jpg" alt="Team at Exhibition" onerror="this.src='images/production1.jpg'">
-<img src="images/exhibition3.jpg" alt="Exhibition Turkey" onerror="this.src='images/production2.jpg'">
-<img src="images/exhibition4.jpg" alt="TM Systems Visit" onerror="this.src='images/production3.jpg'">
-</div>
-</div>
-</div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-<div class="container">
-<h2 class="section-title">Get In Touch</h2>
-<p class="section-subtitle">Ready to discuss your packaging requirements? Contact us today for quotes and inquiries.</p>
-<div class="accent-line" style="margin-bottom:48px"></div>
-<div class="contact-grid fade-in">
-<div class="contact-info">
-<div class="contact-card">
-<div class="c-icon">&#128205;</div>
-<div>
-<h4>Head Office &amp; Factory</h4>
-<p>Plot 3/A, Industrial Estate Phase 1,<br>Multan, Pakistan</p>
-</div>
-</div>
-<div class="contact-card">
-<div class="c-icon">&#128222;</div>
-<div>
-<h4>Phone Numbers</h4>
-<p><a href="tel:+923018635303">+92 301 8635303</a> (Bilal Aslam)<br>
-<a href="tel:+92616562857">+92 61 6562857</a><br>
-<a href="tel:+92616773643">+92 61 6773643</a></p>
-</div>
-</div>
-<div class="contact-card">
-<div class="c-icon">&#9993;</div>
-<div>
-<h4>Email Address</h4>
-<p><a href="mailto:iasheikh@yahoo.com">iasheikh@yahoo.com</a></p>
-</div>
-</div>
-<div class="contact-card">
-<div class="c-icon">&#127760;</div>
-<div>
-<h4>Contact Person</h4>
-<p><strong>Bilal Aslam</strong><br>Sales &amp; Business Development</p>
-</div>
-</div>
-</div>
-<div class="contact-form">
-<h3>Send Us a Message</h3>
-<form onsubmit="handleSubmit(event)">
-<div class="form-row">
-<div class="form-group">
-<label>Full Name</label>
-<input type="text" placeholder="Your full name" required>
-</div>
-<div class="form-group">
-<label>Company</label>
-<input type="text" placeholder="Company name">
-</div>
-</div>
-<div class="form-row">
-<div class="form-group">
-<label>Email</label>
-<input type="email" placeholder="your@email.com" required>
-</div>
-<div class="form-group">
-<label>Phone</label>
-<input type="tel" placeholder="+92 xxx xxxxxxx">
-</div>
-</div>
-<div class="form-group">
-<label>Product Interest</label>
-<select>
-<option value="">Select a product category</option>
-<option>Kraft Liner (KL)</option>
-<option>Test Liner Super Type (TLS)</option>
-<option>Kraft Liner B-Type (KLB)</option>
-<option>Paper Board</option>
-<option>Fluting Paper</option>
-<option>Corrugated Cartons</option>
-<option>Corrugated Cardboard</option>
-<option>Custom Packaging Solution</option>
-</select>
-</div>
-<div class="form-group">
-<label>Message</label>
-<textarea placeholder="Tell us about your requirements, desired GSM, quantity, etc."></textarea>
-</div>
-<button type="submit" class="btn-submit">Send Inquiry &#8594;</button>
-</form>
-</div>
-</div>
+  <h2>Ready to Discuss Your Requirements?</h2>
+  <p>Get in touch with our team for pricing, samples, and custom packaging solutions.</p>
+  <a href="contact.html" class="btn btn-primary">Contact Us &rarr;</a>
 </div>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
 <div class="container">
-<div class="footer-grid">
-<div class="footer-about">
-<div class="f-logo">
-<img src="images/logo.jpg" alt="SA Group Logo">
-<span>Surayya Aslam Paper</span>
-</div>
-<p>A leading Pakistani manufacturer of packaging paper, corrugated cartons, and cardboard since 1972. Committed to quality, sustainability, and international standards.</p>
-</div>
-<div>
-<h4>Quick Links</h4>
-<ul>
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About Us</a></li>
-<li><a href="#products">Products</a></li>
-<li><a href="#gallery">Gallery</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</div>
-<div>
-<h4>Products</h4>
-<ul>
-<li><a href="#products">Kraft Liner</a></li>
-<li><a href="#products">Test Liner Super</a></li>
-<li><a href="#products">Paper Board</a></li>
-<li><a href="#products">Fluting Paper</a></li>
-<li><a href="#products">Corrugated Cartons</a></li>
-<li><a href="#products">Cardboard Sheets</a></li>
-</ul>
-</div>
-<div>
-<h4>Contact Info</h4>
-<ul>
-<li>Plot 3/A, Industrial Estate</li>
-<li>Phase 1, Multan, Pakistan</li>
-<li style="margin-top:12px"><a href="tel:+923018635303">+92 301 8635303</a></li>
-<li><a href="tel:+92616562857">+92 61 6562857</a></li>
-<li style="margin-top:12px"><a href="mailto:iasheikh@yahoo.com">iasheikh@yahoo.com</a></li>
-</ul>
-</div>
-</div>
-<div class="footer-bottom">
-&copy; 2024 Surayya Aslam Paper (SA Group). All Rights Reserved. | License No. 1066150
-</div>
+  <div class="footer-grid">
+    <div class="footer-about">
+      <div class="footer-brand"><img src="images/logo.jpg" alt="SA Group"><span>Surayya Aslam Paper</span></div>
+      <p>Pakistan's trusted manufacturer of packaging paper, corrugated cartons, and cardboard since 1972. Export quality, international standards.</p>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="products.html">Products</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul>
+    </div>
+    <div>
+      <h4>Products</h4>
+      <ul><li><a href="products.html">Kraft Liner</a></li><li><a href="products.html">Test Liner Super</a></li><li><a href="products.html">Paper Board</a></li><li><a href="products.html">Fluting Paper</a></li><li><a href="products.html">Corrugated Cartons</a></li></ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li>Plot 3/A, Industrial Estate</li>
+        <li>Phase 1, Multan, Pakistan</li>
+        <li style="margin-top:10px"><a href="tel:+923018635303">+92 301 8635303</a></li>
+        <li><a href="tel:+92616562857">+92 61 6562857</a></li>
+        <li style="margin-top:10px"><a href="mailto:iasheikh@yahoo.com">iasheikh@yahoo.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2024 Surayya Aslam Paper (SA Group). All Rights Reserved.</div>
 </div>
 </footer>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-<div class="lightbox-close">&times;</div>
-<img id="lightboxImg" src="" alt="Gallery Image">
-</div>
-
-<!-- SCROLL TOP -->
-<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#9650;</button>
+<button class="scroll-top" id="scrollTop" aria-label="Back to top">&#9650;</button>
 
 <script>
-// Mobile menu
-function toggleMenu(){
-document.getElementById('navLinks').classList.toggle('open');
-document.getElementById('hamburger').classList.toggle('open');
-}
-document.querySelectorAll('.nav-links a').forEach(a=>{
-a.addEventListener('click',()=>{
-document.getElementById('navLinks').classList.remove('open');
-document.getElementById('hamburger').classList.remove('open');
-});
-});
-
-// Navbar scroll
-window.addEventListener('scroll',()=>{
-const nav=document.getElementById('nav');
-const st=document.getElementById('scrollTop');
-if(window.scrollY>50)nav.classList.add('scrolled');else nav.classList.remove('scrolled');
-if(window.scrollY>400)st.classList.add('visible');else st.classList.remove('visible');
-
-// Active link
-const secs=document.querySelectorAll('section');
-let cur='';
-secs.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id});
-document.querySelectorAll('.nav-links a').forEach(a=>{
-a.classList.remove('active');
-if(a.getAttribute('href')==='#'+cur)a.classList.add('active');
-});
-});
-
-// Product tabs
-function showTab(cat){
-document.querySelectorAll('.product-tab').forEach(t=>t.classList.remove('active'));
-event.target.classList.add('active');
-document.querySelectorAll('.product-card').forEach(c=>{
-if(cat==='all'||c.dataset.cat===cat){c.style.display='';} else{c.style.display='none';}
-});
-}
-
-// Lightbox
-function openLightbox(el){
-const img=el.querySelector('img');
-document.getElementById('lightboxImg').src=img.src;
-document.getElementById('lightbox').classList.add('open');
-document.body.style.overflow='hidden';
-}
-function closeLightbox(){
-document.getElementById('lightbox').classList.remove('open');
-document.body.style.overflow='';
-}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
-
-// Form handler
-function handleSubmit(e){
-e.preventDefault();
-alert('Thank you for your inquiry! Our team will contact you within 24 hours.');
-e.target.reset();
-}
-
-// Fade-in on scroll
-const obs=new IntersectionObserver(entries=>{
-entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
-},{threshold:.15});
-document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+document.getElementById('hamburger').addEventListener('click',function(){this.classList.toggle('open');document.getElementById('navLinks').classList.toggle('open')});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('hamburger').classList.remove('open');document.getElementById('navLinks').classList.remove('open')}));
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',scrollY>40);document.getElementById('scrollTop').classList.toggle('vis',scrollY>400)});
+document.getElementById('scrollTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 </script>
-
 </body>
 </html>
