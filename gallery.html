@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery | Surayya Aslam Paper</title>
-<meta name="description" content="Photo gallery of Surayya Aslam Paper manufacturing facility, production lines, and international exhibitions.">
+<title>Gallery | SA Group - Surayya Aslam Group</title>
+<meta name="description" content="Photo gallery of SA Group manufacturing facility, production lines, and international exhibitions.">
 <link rel="stylesheet" href="css/style.css">
 <style>
 .gallery-tabs{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:36px}
@@ -34,7 +34,7 @@
 
 .lightbox{
   display:none;position:fixed;inset:0;z-index:200;
-  background:rgba(0,0,0,.9);align-items:center;justify-content:center;padding:24px;
+  background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;
 }
 .lightbox.open{display:flex}
 .lightbox img{max-width:90%;max-height:85vh;border-radius:var(--radius);object-fit:contain}
@@ -54,7 +54,7 @@
 
 <nav class="nav" id="nav">
 <div class="nav-inner">
-  <a href="index.html" class="nav-logo"><img src="images/logo.jpg" alt="SA Group"><div class="nav-logo-text">SA Group<small>Surayya Aslam Paper</small></div></a>
+  <a href="index.html" class="nav-logo"><img src="images/logo.jpg" alt="SA Group"><div class="nav-logo-text">SA Group<small>Surayya Aslam Group</small></div></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
@@ -157,12 +157,12 @@
 <footer class="footer">
 <div class="container">
   <div class="footer-grid">
-    <div class="footer-about"><div class="footer-brand"><img src="images/logo.jpg" alt="SA Group"><span>Surayya Aslam Paper</span></div><p>Pakistan's trusted manufacturer of packaging paper, corrugated cartons, and cardboard since 1972.</p></div>
+    <div class="footer-about"><div class="footer-brand"><img src="images/logo.jpg" alt="SA Group"><span>Surayya Aslam Group</span></div><p>Pakistan's trusted manufacturer of packaging paper, corrugated cartons, and cardboard since 1972.</p></div>
     <div><h4>Navigation</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products.html">Products</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul></div>
     <div><h4>Products</h4><ul><li><a href="products.html">Kraft Liner</a></li><li><a href="products.html">Test Liner</a></li><li><a href="products.html">Paper Board</a></li><li><a href="products.html">Fluting Paper</a></li><li><a href="products.html">Corrugated Cartons</a></li></ul></div>
-    <div><h4>Contact</h4><ul><li>Plot 3/A, Industrial Estate</li><li>Phase 1, Multan, Pakistan</li><li style="margin-top:10px"><a href="tel:+923018635303">+92 301 8635303</a></li><li><a href="mailto:iasheikh@yahoo.com">iasheikh@yahoo.com</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li>Plot 3/A, Industrial Estate</li><li>Phase 1, Multan, Pakistan</li><li style="margin-top:10px"><a href="tel:+923018635303">+92 301 8635303</a></li><li><a href="tel:+92616562857">+92 61 6562857</a></li><li><a href="tel:+92616773643">+92 61 6773643</a></li><li style="margin-top:10px"><a href="mailto:iasheikh@yahoo.com">iasheikh@yahoo.com</a></li></ul></div>
   </div>
-  <div class="footer-bottom">&copy; 2024 Surayya Aslam Paper (SA Group). All Rights Reserved.</div>
+  <div class="footer-bottom">&copy; 2024 Surayya Aslam Group (SA Group). All Rights Reserved.</div>
 </div>
 </footer>
 <button class="scroll-top" id="scrollTop" aria-label="Back to top">&#9650;</button>
@@ -172,7 +172,6 @@ document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',scrollY>40);document.getElementById('scrollTop').classList.toggle('vis',scrollY>400)});
 document.getElementById('scrollTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-// Gallery tabs
 document.querySelectorAll('.gallery-tab').forEach(tab=>{
   tab.addEventListener('click',()=>{
     document.querySelectorAll('.gallery-tab').forEach(t=>t.classList.remove('active'));
@@ -182,7 +181,6 @@ document.querySelectorAll('.gallery-tab').forEach(tab=>{
   });
 });
 
-// Lightbox
 function openLB(el){document.getElementById('lbImg').src=el.querySelector('img').src;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden'}
 function closeLB(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow=''}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB()});
