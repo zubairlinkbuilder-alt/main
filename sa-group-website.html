@@ -52,6 +52,13 @@ ul{list-style:none}
 .nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.1)}
 .nav-links .cta{background:var(--accent);color:#fff;font-weight:600;margin-left:8px}
 .nav-links .cta:hover{background:var(--accent-hover)}
+#google_translate_element{display:inline-block}
+#google_translate_element .goog-te-gadget{font-size:0;color:transparent}
+#google_translate_element .goog-te-gadget .goog-te-combo{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:var(--radius);padding:6px 10px;font-size:.8rem;font-family:'DM Sans',sans-serif;cursor:pointer;outline:none}
+#google_translate_element .goog-te-gadget .goog-te-combo:hover{background:rgba(255,255,255,.2)}
+#google_translate_element .goog-te-gadget .goog-te-combo option{background:var(--primary-dark);color:#fff}
+.goog-te-banner-frame{display:none!important}
+body{top:0!important}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
 .hamburger span{width:24px;height:2px;background:#fff;border-radius:1px;transition:.25s;display:block}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
@@ -267,10 +274,17 @@ ul{list-style:none}
     <li><a href="#about">About</a></li>
     <li><a href="#products">Products</a></li>
     <li><a href="#contact" class="cta">Contact Us</a></li>
+    <li><div id="google_translate_element"></div></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </div>
 </nav>
+<script>
+function googleTranslateElementInit(){
+  new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'en,zh-CN,zh-TW,ur,ar,es,fr,de,ja,ko,ru,pt,tr',layout:google.translate.TranslateElement.InlineLayout.SIMPLE,autoDisplay:false},'google_translate_element');
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <!-- ════════════════════════════════════════════════════════════════
      HERO SECTION
