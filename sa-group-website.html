@@ -266,7 +266,6 @@ ul{list-style:none}
     <li><a href="#home" class="active">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#products">Products</a></li>
-    <li><a href="#gallery">Gallery</a></li>
     <li><a href="#contact" class="cta">Contact Us</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -319,8 +318,8 @@ ul{list-style:none}
     <div class="about-text">
       <div class="section-eyebrow">Who We Are</div>
       <h3>Pakistan's Trusted Paper &amp; Packaging Conglomerate</h3>
-      <p>Surayya Aslam Group is a licensed manufacturer (License No. 1066150) and one of Pakistan's leading paper and packaging conglomerates. Based in Multan's Industrial Estate, our group operates with an international scope, producing and exporting high-quality packaging materials worldwide.</p>
-      <p>With Trader Identification Number Pk41938429 assigned by the World Customs Organization (WCO), we adhere to international standards for cross-border trade facilitation and supply chain control.</p>
+      <p>Surayya Aslam Group is one of Pakistan's leading paper and packaging conglomerates. Based in Multan's Industrial Estate, our group operates with an international scope, producing and exporting high-quality packaging materials worldwide.</p>
+      <p>We adhere to international standards for cross-border trade facilitation and supply chain control, ensuring efficient and reliable export operations.</p>
       <p>Our core business activities include:</p>
       <ul class="about-list">
         <li>Production and sale of all kinds of packaging paper</li>
@@ -557,100 +556,6 @@ ul{list-style:none}
 </section>
 
 <!-- ════════════════════════════════════════════════════════════════
-     GALLERY SECTION
-     Images: ALL 15 real images used here
-     warehouse.jpg, warehouse2.jpg, production1-3.jpg,
-     paper-sample1.jpg, cardboard-corrugated.jpg, cardboard-stack.jpg,
-     cardboard-sheets.jpg, carton-box.jpg, carton-inside.jpg,
-     exhibition1-4.jpg
-     ════════════════════════════════════════════════════════════════ -->
-<section class="section" id="gallery">
-<div class="container">
-  <div class="section-header center">
-    <div class="section-eyebrow">Gallery</div>
-    <h2 class="section-title">Inside the Mill</h2>
-    <p style="color:var(--text-mid);max-width:560px;margin:12px auto 0;font-size:.92rem">Our manufacturing facility, production processes, products, and international engagements.</p>
-  </div>
-
-  <div class="gallery-tabs">
-    <button class="gallery-tab active" data-tab="all">All Photos</button>
-    <button class="gallery-tab" data-tab="factory">Factory</button>
-    <button class="gallery-tab" data-tab="products">Products</button>
-    <button class="gallery-tab" data-tab="exhibitions">Exhibitions</button>
-  </div>
-
-  <div class="gallery-grid" id="galleryGrid">
-    <div class="g-item tall" data-cat="factory" onclick="openLB(this)">
-      <img src="images/warehouse.jpg" alt="Paper Rolls Warehouse">
-      <div class="g-label">Paper Rolls Warehouse</div>
-    </div>
-    <div class="g-item" data-cat="factory" onclick="openLB(this)">
-      <img src="images/warehouse2.jpg" alt="Warehouse Panorama">
-      <div class="g-label">Warehouse Panorama</div>
-    </div>
-    <div class="g-item" data-cat="factory" onclick="openLB(this)">
-      <img src="images/production1.jpg" alt="Production Line">
-      <div class="g-label">Production Line</div>
-    </div>
-    <div class="g-item" data-cat="factory" onclick="openLB(this)">
-      <img src="images/production2.jpg" alt="Paper Roller">
-      <div class="g-label">Paper Roller Close-up</div>
-    </div>
-    <div class="g-item" data-cat="factory" onclick="openLB(this)">
-      <img src="images/production3.jpg" alt="Production Machine">
-      <div class="g-label">Production Machine</div>
-    </div>
-    <div class="g-item" data-cat="products" onclick="openLB(this)">
-      <img src="images/paper-sample1.jpg" alt="Paper Board Sample">
-      <div class="g-label">Paper Board Sample</div>
-    </div>
-    <div class="g-item" data-cat="products" onclick="openLB(this)">
-      <img src="images/cardboard-corrugated.jpg" alt="Corrugated Board Layers">
-      <div class="g-label">Corrugated Board Layers</div>
-    </div>
-    <div class="g-item" data-cat="products" onclick="openLB(this)">
-      <img src="images/cardboard-stack.jpg" alt="Cardboard Stack">
-      <div class="g-label">Cardboard Stack</div>
-    </div>
-    <div class="g-item" data-cat="products" onclick="openLB(this)">
-      <img src="images/cardboard-sheets.jpg" alt="Corrugated Sheets">
-      <div class="g-label">Corrugated Sheets</div>
-    </div>
-    <div class="g-item" data-cat="products" onclick="openLB(this)">
-      <img src="images/carton-box.jpg" alt="Corrugated Cartons">
-      <div class="g-label">Corrugated Cartons</div>
-    </div>
-    <div class="g-item" data-cat="products" onclick="openLB(this)">
-      <img src="images/carton-inside.jpg" alt="Carton Interior">
-      <div class="g-label">Carton Interior</div>
-    </div>
-    <div class="g-item" data-cat="exhibitions" onclick="openLB(this)">
-      <img src="images/exhibition1.jpg" alt="International Exhibition">
-      <div class="g-label">International Exhibition</div>
-    </div>
-    <div class="g-item" data-cat="exhibitions" onclick="openLB(this)">
-      <img src="images/exhibition2.jpg" alt="Exhibition Booth">
-      <div class="g-label">Exhibition Booth</div>
-    </div>
-    <div class="g-item" data-cat="exhibitions" onclick="openLB(this)">
-      <img src="images/exhibition3.jpg" alt="Trade Show">
-      <div class="g-label">Trade Show Visit</div>
-    </div>
-    <div class="g-item" data-cat="exhibitions" onclick="openLB(this)">
-      <img src="images/exhibition4.jpg" alt="Team Photo">
-      <div class="g-label">International Partners</div>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" onclick="closeLB()">
-  <button class="lb-close" aria-label="Close">&times;</button>
-  <img id="lbImg" src="" alt="Gallery Image">
-</div>
-
-<!-- ════════════════════════════════════════════════════════════════
      CTA BAND
      ════════════════════════════════════════════════════════════════ -->
 <section class="cta-band">
@@ -715,13 +620,6 @@ ul{list-style:none}
         </div>
       </div>
 
-      <div class="info-item">
-        <div class="info-icon">&#127760;</div>
-        <div class="info-text">
-          <h4>Trade Identification</h4>
-          <p>License No: 1066150<br>WCO TIN: Pk41938429</p>
-        </div>
-      </div>
     </div>
 
     <div class="contact-form">
@@ -776,7 +674,6 @@ ul{list-style:none}
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About Us</a></li>
         <li><a href="#products">Products</a></li>
-        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contact">Contact Us</a></li>
       </ul>
     </div>
@@ -824,7 +721,7 @@ window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('scrolled',scrollY>40);
   document.getElementById('scrollTop').classList.toggle('vis',scrollY>400);
   // Active nav link on scroll
-  const sections=['home','about','products','gallery','contact'];
+  const sections=['home','about','products','contact'];
   let current='home';
   sections.forEach(id=>{const el=document.getElementById(id);if(el&&el.offsetTop-120<=scrollY)current=id});
   document.querySelectorAll('.nav-links a:not(.cta)').forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+current)});
@@ -840,21 +737,6 @@ document.querySelectorAll('.product-tab').forEach(tab=>{
     document.querySelectorAll('.p-card').forEach(c=>{c.style.display=(cat==='all'||c.dataset.cat===cat)?'':'none'});
   });
 });
-
-// Gallery tabs
-document.querySelectorAll('.gallery-tab').forEach(tab=>{
-  tab.addEventListener('click',()=>{
-    document.querySelectorAll('.gallery-tab').forEach(t=>t.classList.remove('active'));
-    tab.classList.add('active');
-    const cat=tab.dataset.tab;
-    document.querySelectorAll('.g-item').forEach(c=>{c.style.display=(cat==='all'||c.dataset.cat===cat)?'':'none'});
-  });
-});
-
-// Lightbox
-function openLB(el){document.getElementById('lbImg').src=el.querySelector('img').src;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden'}
-function closeLB(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow=''}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB()});
 
 // Contact form
 function handleSubmit(e){e.preventDefault();alert('Thank you for your inquiry! Our team will contact you shortly.');e.target.reset()}
