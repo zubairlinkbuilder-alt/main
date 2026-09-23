@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Beginner's Complete Training Foundation | ExerciseMenu.com</title>
+<meta name="description" content="Everything you need to start training right — reps, sets, structure, and progression. A free guide by coach Sadia Baloch, ExerciseMenu.com.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A0F1E;
+    --navy-2: #0F1629;
+    --surface: #141C33;
+    --surface-2: #1B2542;
+    --line: rgba(255, 255, 255, .09);
+    --text: #F2F4F8;
+    --muted: #9AA3B8;
+    --accent: #FF6B35;
+    --accent-soft: rgba(255, 107, 53, .14);
+    --accent-2: #FFB38F;
+    --paper: #F4F1EC;
+    --ink: #0A0F1E;
+    --viewer-bg: #2A2F3A;
+    --head: "Barlow Condensed", "Roboto Condensed", "Arial Narrow", Impact, sans-serif;
+    --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--viewer-bg);
+    background-image: radial-gradient(circle at 50% 40%, #363C4A 0%, #22262F 70%);
+    color: var(--text);
+    font-family: var(--body);
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+
+  /* ---------- Viewer ---------- */
+  .viewer {
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 16px 88px;
+  }
+  .book {
+    --h: calc(100dvh - 128px);
+    position: relative;
+    height: var(--h);
+    width: min(calc(var(--h) * 0.7071), 92vw);
+    max-height: calc(92vw / 0.7071);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .55), 0 4px 14px rgba(0, 0, 0, .35);
+    border-radius: 3px;
+    overflow: hidden;
+    background: var(--navy);
+  }
+
+  .page {
+    container-type: inline-size;
+    position: absolute;
+    inset: 0;
+    background: var(--navy);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(6%);
+    transition: opacity .45s ease, transform .45s cubic-bezier(.2, .7, .2, 1), visibility 0s linear .45s;
+    overflow: hidden;
+  }
+  .page.active {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: opacity .45s ease, transform .45s cubic-bezier(.2, .7, .2, 1), visibility 0s;
+    z-index: 2;
+  }
+  .page.leave-left { transform: translateX(-6%); }
+  .page.leave-right { transform: translateX(6%); }
+  .page.enter-from-left { transform: translateX(-6%); }
+
+  .nav-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    border: 0;
+    background: rgba(255, 255, 255, .12);
+    color: #fff;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: background .2s, opacity .2s;
+    z-index: 10;
+    backdrop-filter: blur(6px);
+  }
+  .nav-arrow:hover { background: var(--accent); }
+  .nav-arrow:disabled { opacity: .2; cursor: default; background: rgba(255, 255, 255, .12); }
+  .nav-arrow svg { width: 26px; height: 26px; }
+  .nav-prev { left: 24px; }
+  .nav-next { right: 24px; }
+
+  .toolbar {
+    position: fixed;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 10px;
+    background: rgba(10, 15, 30, .88);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    max-width: calc(100vw - 24px);
+  }
+  .counter {
+    font-family: var(--head);
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: .04em;
+    padding: 0 10px;
+    min-width: 64px;
+    text-align: center;
+    color: var(--text);
+  }
+  .counter b { color: var(--accent); font-weight: 700; }
+  .dots { display: flex; gap: 4px; }
+  .dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    font: 600 12px var(--body);
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .dot:hover { color: #fff; border-color: var(--muted); }
+  .dot.active { background: var(--accent); border-color: var(--accent); color: var(--navy); }
+  .tb-sep { width: 1px; height: 24px; background: var(--line); margin: 0 4px; }
+  .tb-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 34px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--text);
+    font: 600 13px var(--body);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .tb-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .tb-btn.primary { background: var(--accent); border-color: var(--accent); color: var(--navy); }
+  .tb-btn.primary:hover { background: #ff8455; color: var(--navy); }
+  .tb-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+  /* ---------- Page scaffolding (sizes scale with page width via cqw) ---------- */
+  .pg {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 5.4cqw 7cqw 0;
+  }
+  .pg-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--head);
+    font-weight: 600;
+    font-size: clamp(10px, 1.9cqw, 14px);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-bottom: 2.2cqw;
+    border-bottom: 1px solid var(--line);
+  }
+  .pg-head .sec { color: var(--accent); }
+  .pg-body { flex: 1 0 auto; display: flex; flex-direction: column; padding-top: 3.6cqw; }
+  .pg-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.4cqw 0 3.6cqw;
+    border-top: 1px solid var(--line);
+    font-family: var(--head);
+    font-weight: 600;
+    font-size: clamp(10px, 1.9cqw, 14px);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .pg-foot .num { color: var(--text); font-size: 1.3em; letter-spacing: .04em; }
+  .pg-foot .num span { color: var(--accent); }
+
+  .kicker {
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(11px, 2.1cqw, 15px);
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.6cqw;
+    display: flex;
+    align-items: center;
+    gap: 1.6cqw;
+  }
+  .kicker::before { content: ""; width: 5cqw; height: 2px; background: var(--accent); }
+  h1, h2 {
+    font-family: var(--head);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: .92;
+    letter-spacing: -.005em;
+  }
+  h2 { font-size: clamp(24px, 7.4cqw, 58px); }
+  h2 em { font-style: normal; color: var(--accent); }
+  .sub {
+    font-size: clamp(13px, 2.55cqw, 19px);
+    color: var(--muted);
+    margin-top: 1.8cqw;
+    line-height: 1.4;
+    max-width: 88%;
+  }
+  p, li { font-size: clamp(12.5px, 2.25cqw, 17px); line-height: 1.55; color: #D6DBE6; }
+  p + p { margin-top: 2cqw; }
+  strong { color: var(--text); font-weight: 700; }
+
+  .callout {
+    position: relative;
+    margin-top: auto;
+    margin-bottom: 3.4cqw;
+    background: var(--accent);
+    color: var(--navy);
+    padding: 3cqw 4cqw 3cqw 10cqw;
+    border-radius: 2px;
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(15px, 3.3cqw, 25px);
+    line-height: 1.12;
+    text-transform: uppercase;
+  }
+  .callout::before {
+    content: "";
+    position: absolute;
+    left: 4.4cqw;
+    top: 3.2cqw;
+    width: 3.6cqw;
+    height: 3.6cqw;
+    background: var(--navy);
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+  }
+  .callout small {
+    display: block;
+    font-size: .5em;
+    letter-spacing: .2em;
+    margin-bottom: 1cqw;
+    opacity: .75;
+  }
+
+  .grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+    background-size: 5cqw 5cqw;
+    pointer-events: none;
+  }
+  .page > .pg { z-index: 1; }
+  .deco { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+
+  /* ---------- 1. Cover ---------- */
+  .cover { background: var(--navy); }
+  .cover .grid-bg {
+    background-size: 6cqw 6cqw;
+    mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, .5) 60%, #000 100%);
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, .5) 60%, #000 100%);
+  }
+  .cover-slab {
+    position: absolute;
+    right: -18cqw;
+    bottom: -8cqw;
+    width: 78cqw;
+    height: 92cqw;
+    background: linear-gradient(160deg, var(--accent) 0%, #E4471A 100%);
+    transform: skewX(-14deg);
+    pointer-events: none;
+  }
+  .cover-slab::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, rgba(10, 15, 30, .16) 0 2px, transparent 2px 3.2cqw);
+  }
+  .cover-rings {
+    position: absolute;
+    left: -30cqw;
+    top: 40cqw;
+    width: 80cqw;
+    height: 80cqw;
+    border-radius: 50%;
+    background: repeating-radial-gradient(circle, transparent 0 3.8cqw, rgba(255, 107, 53, .16) 3.8cqw calc(3.8cqw + 1px));
+    pointer-events: none;
+  }
+  .cover-num {
+    position: absolute;
+    right: 3cqw;
+    top: 25cqw;
+    font-family: var(--head);
+    font-weight: 900;
+    font-size: 58cqw;
+    line-height: .8;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, .09);
+    pointer-events: none;
+  }
+  .cover .pg { padding-top: 0; }
+  .strip {
+    margin: 0 -7cqw;
+    padding: 1.6cqw 7cqw;
+    background: #05080F;
+    font-family: var(--head);
+    font-weight: 600;
+    font-size: clamp(9px, 1.75cqw, 13px);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .strip b { color: var(--accent); font-weight: 700; }
+  .masthead {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-top: 4cqw;
+  }
+  .brand {
+    font-family: var(--head);
+    font-weight: 900;
+    font-size: 11.6cqw;
+    line-height: .8;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+  }
+  .brand span { color: var(--accent); }
+  .brand small {
+    display: block;
+    font-weight: 600;
+    font-size: .2em;
+    letter-spacing: .62em;
+    margin-top: 1.6cqw;
+    color: var(--muted);
+  }
+  .issue {
+    text-align: right;
+    font-family: var(--head);
+    font-weight: 600;
+    font-size: clamp(10px, 2cqw, 15px);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.5;
+    padding-bottom: 1cqw;
+    white-space: nowrap;
+  }
+  .issue b { display: block; color: var(--text); font-size: 1.35em; }
+  .cover-main { margin-top: 7cqw; position: relative; }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.4cqw;
+    background: var(--text);
+    color: var(--navy);
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(11px, 2.3cqw, 17px);
+    letter-spacing: .16em;
+    padding: 1.2cqw 2.4cqw;
+    text-transform: uppercase;
+  }
+  .badge i { width: 1.6cqw; height: 1.6cqw; background: var(--accent); border-radius: 50%; display: block; }
+  .cover h1 {
+    font-size: 13.2cqw;
+    line-height: .86;
+    margin-top: 3.4cqw;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, .4);
+  }
+  .cover h1 .o { color: var(--accent); }
+  .cover h1 .thin { font-weight: 500; display: block; font-size: .58em; letter-spacing: .02em; color: var(--muted); }
+  .cover .deck {
+    margin-top: 3.4cqw;
+    font-family: var(--head);
+    font-weight: 600;
+    font-size: clamp(15px, 3.6cqw, 27px);
+    line-height: 1.15;
+    letter-spacing: .02em;
+    max-width: 64%;
+    color: var(--text);
+    text-transform: uppercase;
+  }
+  .coverlines {
+    position: absolute;
+    right: 0;
+    bottom: 17cqw;
+    width: 34cqw;
+    list-style: none;
+    z-index: 2;
+  }
+  .coverlines li {
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(11px, 2.5cqw, 19px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    color: var(--navy);
+    padding: 1.5cqw 0;
+    border-top: 2px solid rgba(10, 15, 30, .35);
+  }
+  .coverlines li span {
+    display: block;
+    font-size: .68em;
+    letter-spacing: .18em;
+    opacity: .7;
+    margin-bottom: .4cqw;
+  }
+  .cover-cta { display: flex; flex-direction: column; align-items: flex-start; gap: 2cqw; margin-top: 5cqw; }
+  .cover-cta .btn { min-width: 40cqw; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.6cqw;
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(13px, 2.6cqw, 19px);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 2cqw 3.6cqw;
+    border: 2px solid var(--accent);
+    background: var(--accent);
+    color: var(--navy);
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: transform .15s, background .2s, color .2s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.ghost { background: rgba(10, 15, 30, .6); color: var(--text); border-color: rgba(255, 255, 255, .35); }
+  .btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .btn svg { width: 1.2em; height: 1.2em; }
+  .cover .pg-foot { margin-top: auto; border-top-color: rgba(10, 15, 30, .3); position: relative; z-index: 2; }
+  .cover .pg-foot .url { color: var(--text); font-size: 1.5em; letter-spacing: .06em; font-weight: 700; }
+  .cover .pg-foot .by { color: var(--navy); }
+  .cover .pg-foot .num { color: var(--navy); }
+  .cover .pg-foot .num span { color: var(--navy); }
+
+  /* ---------- 2. Welcome ---------- */
+  .welcome-quote {
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(20px, 5.2cqw, 40px);
+    line-height: 1.08;
+    text-transform: uppercase;
+    margin: 5cqw 0 4cqw;
+    padding-left: 4cqw;
+    border-left: 4px solid var(--accent);
+  }
+  .welcome-quote em { font-style: normal; color: var(--accent); }
+  .big-line {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(22px, 6cqw, 46px);
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 3cqw 0;
+    line-height: 1;
+  }
+  .coach {
+    margin-top: auto;
+    margin-bottom: 4cqw;
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: center;
+    gap: 3.4cqw;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 3.4cqw;
+  }
+  .avatar {
+    width: 13cqw;
+    height: 13cqw;
+    border-radius: 50%;
+    background: conic-gradient(from 200deg, var(--accent), #E4471A, var(--accent));
+    display: grid;
+    place-items: center;
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: 5cqw;
+    color: var(--navy);
+  }
+  .coach-name {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(18px, 4.4cqw, 34px);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .coach-role { font-size: clamp(11px, 2cqw, 15px); color: var(--muted); margin-top: .8cqw; line-height: 1.4; }
+  .stat { text-align: center; padding-left: 3cqw; border-left: 1px solid var(--line); }
+  .stat b {
+    display: block;
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(22px, 6.4cqw, 50px);
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat span {
+    font-family: var(--head);
+    font-weight: 600;
+    font-size: clamp(10px, 1.8cqw, 14px);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ---------- 3. Reps & Sets ---------- */
+  .defs { display: grid; grid-template-columns: 1fr 1fr; gap: 3cqw; margin: 3.6cqw 0 3.4cqw; }
+  .def {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 3cqw 3.4cqw;
+    position: relative;
+    overflow: hidden;
+  }
+  .def .term {
+    font-family: var(--head);
+    font-weight: 900;
+    font-size: clamp(30px, 8.6cqw, 68px);
+    line-height: .85;
+    color: var(--accent);
+  }
+  .def .aka {
+    font-family: var(--head);
+    font-weight: 600;
+    font-size: clamp(10px, 1.8cqw, 14px);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 1.2cqw 0 1.8cqw;
+  }
+  .def p { font-size: clamp(12px, 2.15cqw, 16px); }
+  .sets-visual {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 3.4cqw;
+    align-items: center;
+    padding: 2.8cqw 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 3cqw;
+  }
+  .sets-visual .formula {
+    font-family: var(--head);
+    font-weight: 900;
+    font-size: clamp(40px, 15cqw, 116px);
+    line-height: .8;
+  }
+  .sets-visual .formula span { color: var(--accent); }
+  .rows { display: grid; gap: 1.6cqw; }
+  .row { display: flex; align-items: center; gap: 1.2cqw; }
+  .row label {
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(10px, 1.9cqw, 14px);
+    letter-spacing: .14em;
+    color: var(--muted);
+    width: 9cqw;
+    text-transform: uppercase;
+  }
+  .row i { width: 3cqw; height: 3cqw; border-radius: 50%; background: var(--accent); display: block; flex-shrink: 0; }
+  .row .rest {
+    font-size: clamp(9px, 1.6cqw, 12px);
+    color: var(--muted);
+    margin-left: 1cqw;
+    font-family: var(--head);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- 4. Rep table ---------- */
+  .rep-table { width: 100%; border-collapse: collapse; margin-top: 4.5cqw; }
+  .rep-table th {
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(11px, 2cqw, 15px);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--accent);
+    text-align: left;
+    padding: 1.8cqw 2.4cqw;
+  }
+  .rep-table td {
+    padding: 2.3cqw 2.4cqw;
+    border-bottom: 1px solid var(--line);
+    vertical-align: middle;
+  }
+  .rep-table tr:nth-child(even) td { background: rgba(255, 255, 255, .025); }
+  .goal {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(16px, 3.6cqw, 27px);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .reps-cell {
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(15px, 3.4cqw, 26px);
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .reps-cell small, .sets-cell small { font-size: .6em; color: var(--muted); letter-spacing: .1em; margin-left: .6cqw; }
+  .sets-cell {
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(15px, 3.4cqw, 26px);
+    white-space: nowrap;
+  }
+  .range {
+    position: relative;
+    height: 1.2cqw;
+    min-height: 5px;
+    background: var(--surface-2);
+    border-radius: 99px;
+    margin-top: 1.4cqw;
+    width: 100%;
+  }
+  .range i {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--a) / 25 * 100%);
+    width: calc((var(--b) - var(--a)) / 25 * 100%);
+    background: var(--accent);
+    border-radius: 99px;
+  }
+  .scale {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--head);
+    font-size: clamp(9px, 1.6cqw, 12px);
+    letter-spacing: .1em;
+    color: var(--muted);
+    margin-top: 1.4cqw;
+    text-transform: uppercase;
+  }
+  .note {
+    margin-top: auto;
+    margin-bottom: 4cqw;
+    display: flex;
+    gap: 2.6cqw;
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    padding: 3cqw 3.4cqw;
+  }
+  .note .tag {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(11px, 2cqw, 15px);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: var(--navy);
+    padding: .6cqw 1.6cqw;
+    white-space: nowrap;
+  }
+  .note p { font-size: clamp(13px, 2.4cqw, 18px); color: var(--text); font-weight: 500; }
+
+  /* ---------- 5. Structure steps ---------- */
+  .steps { list-style: none; margin-top: 5cqw; position: relative; }
+  .steps::before {
+    content: "";
+    position: absolute;
+    left: 5.5cqw;
+    top: 4cqw;
+    bottom: 4cqw;
+    width: 2px;
+    background: linear-gradient(var(--accent), rgba(255, 107, 53, .15));
+  }
+  .steps li {
+    display: grid;
+    grid-template-columns: 11cqw 1fr;
+    gap: 3.4cqw;
+    align-items: start;
+    padding-bottom: 3.8cqw;
+    position: relative;
+  }
+  .steps .n {
+    width: 11cqw;
+    height: 11cqw;
+    background: var(--navy);
+    border: 2px solid var(--accent);
+    display: grid;
+    place-items: center;
+    font-family: var(--head);
+    font-weight: 900;
+    font-size: 5.6cqw;
+    color: var(--accent);
+    position: relative;
+    z-index: 1;
+  }
+  .steps li:first-child .n { background: var(--accent); color: var(--navy); }
+  .steps h3 {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(17px, 4cqw, 30px);
+    text-transform: uppercase;
+    line-height: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.6cqw;
+    padding-top: 1cqw;
+  }
+  .chip {
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(10px, 1.9cqw, 14px);
+    letter-spacing: .12em;
+    padding: .5cqw 1.6cqw;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 99px;
+  }
+  .steps p { margin-top: 1.2cqw; }
+
+  /* ---------- 6. Progressive overload ---------- */
+  .po-top { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4cqw; margin-top: 4.5cqw; align-items: end; }
+  .stairs {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.4cqw;
+    height: 30cqw;
+    padding-bottom: 1cqw;
+    border-bottom: 2px solid var(--line);
+    position: relative;
+  }
+  .stairs i {
+    flex: 1;
+    background: linear-gradient(180deg, var(--accent), rgba(255, 107, 53, .35));
+    display: block;
+  }
+  .stairs i:nth-child(1) { height: 30%; opacity: .45; }
+  .stairs i:nth-child(2) { height: 42%; opacity: .55; }
+  .stairs i:nth-child(3) { height: 54%; opacity: .7; }
+  .stairs i:nth-child(4) { height: 66%; opacity: .8; }
+  .stairs i:nth-child(5) { height: 80%; opacity: .9; }
+  .stairs i:nth-child(6) { height: 100%; }
+  .stairs-label {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--head);
+    font-weight: 600;
+    font-size: clamp(10px, 1.8cqw, 14px);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 1.4cqw;
+  }
+  .howto { margin-top: 4.5cqw; }
+  .howto h3 {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(15px, 3.2cqw, 24px);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 2cqw;
+  }
+  .howto ul { list-style: none; display: grid; gap: 1.6cqw; }
+  .howto li {
+    display: grid;
+    grid-template-columns: 6cqw 1fr;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 2.4cqw 3cqw 2.4cqw 0;
+    color: var(--text);
+  }
+  .howto li::before {
+    content: "";
+    justify-self: center;
+    width: 2.2cqw;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  /* ---------- 7. Weekly schedule ---------- */
+  .week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1.2cqw; margin-top: 4.5cqw; }
+  .day {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 2cqw 1.2cqw;
+    min-height: 22cqw;
+    display: flex;
+    flex-direction: column;
+    gap: 1cqw;
+  }
+  .day b {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(12px, 2.6cqw, 20px);
+    letter-spacing: .08em;
+    color: var(--muted);
+  }
+  .day span {
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(10px, 2.2cqw, 17px);
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin-top: auto;
+  }
+  .day.train { background: var(--accent); border-color: var(--accent); color: var(--navy); }
+  .day.train b { color: var(--navy); opacity: .7; }
+  .day.train .letter { font-family: var(--head); font-weight: 900; font-size: 8cqw; line-height: .8; }
+  .day.active-rec { border-color: rgba(255, 107, 53, .5); }
+  .day.active-rec span { color: var(--accent-2); }
+  .workouts { display: grid; grid-template-columns: 1fr 1fr; gap: 3cqw; margin-top: 4cqw; }
+  .wo { border: 1px solid var(--line); background: var(--navy-2); }
+  .wo-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 2.2cqw 3cqw;
+    border-bottom: 2px solid var(--accent);
+  }
+  .wo-head h3 {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(16px, 3.8cqw, 29px);
+    text-transform: uppercase;
+  }
+  .wo-head h3 span { color: var(--accent); }
+  .wo-head small {
+    font-family: var(--head);
+    font-weight: 600;
+    font-size: clamp(9px, 1.7cqw, 13px);
+    letter-spacing: .14em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .wo ul { list-style: none; }
+  .wo li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.9cqw 3cqw;
+    border-bottom: 1px solid var(--line);
+    color: var(--text);
+    font-weight: 500;
+  }
+  .wo li:last-child { border-bottom: 0; }
+  .wo li em {
+    font-style: normal;
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(14px, 2.9cqw, 22px);
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  /* ---------- 8. Mistakes ---------- */
+  .mistakes { list-style: none; margin-top: 4cqw; }
+  .mistakes li {
+    display: grid;
+    grid-template-columns: 12cqw 1fr;
+    gap: 2.6cqw;
+    padding: 2.8cqw 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+  .mistakes li:last-child { border-bottom: 0; }
+  .mistakes .mn {
+    font-family: var(--head);
+    font-weight: 900;
+    font-size: 11cqw;
+    line-height: .8;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--accent);
+  }
+  .mistakes h3 {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(17px, 4cqw, 30px);
+    text-transform: uppercase;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    gap: 1.8cqw;
+  }
+  .mistakes h3::before {
+    content: "×";
+    display: inline-grid;
+    place-items: center;
+    width: 3.8cqw;
+    height: 3.8cqw;
+    background: var(--accent);
+    color: var(--navy);
+    font-size: .8em;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+  .mistakes p { margin-top: 1.2cqw; }
+
+  /* ---------- 9. Cheat sheet ---------- */
+  .cheat { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4cqw; margin: 4cqw 0 4cqw; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 3cqw;
+    position: relative;
+  }
+  .card-t {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(14px, 2.9cqw, 22px);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding-bottom: 1.6cqw;
+    margin-bottom: 1cqw;
+    border-bottom: 2px solid var(--accent);
+  }
+  .card-t span {
+    font-size: .62em;
+    color: var(--accent);
+    letter-spacing: .2em;
+  }
+  .card dl { display: grid; grid-template-columns: 1fr auto; }
+  .card dt, .card dd {
+    padding: 1.3cqw 0;
+    border-bottom: 1px solid var(--line);
+    font-size: clamp(12px, 2.2cqw, 16px);
+  }
+  .card dt { color: #D6DBE6; }
+  .card dd {
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(14px, 2.9cqw, 22px);
+    color: var(--accent);
+    text-align: right;
+    white-space: nowrap;
+  }
+  .card dl > :nth-last-child(-n+2) { border-bottom: 0; }
+  .card.rule {
+    grid-column: 1 / -1;
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--navy);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 3cqw;
+    align-items: center;
+  }
+  .card.rule .card-t { border-bottom-color: var(--navy); margin: 0 0 1.4cqw; }
+  .card.rule .card-t span { color: var(--navy); }
+  .rule-flow {
+    display: flex;
+    align-items: center;
+    gap: 2cqw;
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(15px, 3.4cqw, 26px);
+    text-transform: uppercase;
+    line-height: 1.05;
+  }
+  .rule-flow .arrow {
+    font-size: 1.6em;
+    line-height: 1;
+  }
+  .rule-num {
+    font-family: var(--head);
+    font-weight: 900;
+    font-size: 13cqw;
+    line-height: .8;
+    color: var(--navy);
+  }
+  .save-hint {
+    margin-top: auto;
+    margin-bottom: 4cqw;
+    padding-top: 3cqw;
+    font-family: var(--head);
+    font-weight: 600;
+    font-size: clamp(10px, 1.9cqw, 14px);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ---------- 10. Back cover ---------- */
+  .back { background: var(--navy); }
+  .back-slab {
+    position: absolute;
+    left: -5cqw;
+    right: -5cqw;
+    top: -4cqw;
+    height: 16cqw;
+    background: linear-gradient(100deg, var(--accent), #E4471A);
+    transform: skewY(-4deg);
+  }
+  .back .pg-head { color: var(--navy); border-bottom-color: rgba(10, 15, 30, .25); }
+  .back .pg-head .sec { color: var(--navy); }
+  .back h2 { font-size: clamp(26px, 8.6cqw, 66px); margin-top: 3cqw; }
+  .back .sub { color: var(--text); max-width: 80%; }
+  .teasers { display: grid; gap: 1.6cqw; margin-top: 3.4cqw; }
+  .teaser {
+    display: grid;
+    grid-template-columns: 9cqw 1fr auto;
+    align-items: center;
+    gap: 3cqw;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 2.2cqw 3cqw;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .2s, transform .2s;
+  }
+  .teaser:hover { border-color: var(--accent); transform: translateX(4px); }
+  .teaser .tn {
+    font-family: var(--head);
+    font-weight: 900;
+    font-size: 8cqw;
+    line-height: .8;
+    color: var(--accent);
+  }
+  .teaser h3 {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(16px, 3.6cqw, 27px);
+    text-transform: uppercase;
+    line-height: 1.02;
+  }
+  .teaser small {
+    display: block;
+    margin-top: .8cqw;
+    font-size: clamp(11px, 1.9cqw, 14px);
+    color: var(--muted);
+  }
+  .teaser .go {
+    width: 7cqw;
+    height: 7cqw;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+  }
+  .teaser .go svg { width: 3cqw; height: 3cqw; }
+  .back-cta {
+    margin-top: 3cqw;
+    padding: 3.2cqw 3.6cqw;
+    border: 1px solid var(--line);
+    background: linear-gradient(135deg, var(--surface-2), var(--navy-2));
+  }
+  .back-cta p.cta {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(17px, 4cqw, 30px);
+    text-transform: uppercase;
+    line-height: 1.05;
+    color: var(--text);
+  }
+  .back-cta p.cta a { color: var(--accent); text-decoration: none; }
+  .email-row { display: flex; gap: 1.6cqw; margin-top: 3cqw; flex-wrap: wrap; }
+  .email-row input {
+    flex: 1 1 40%;
+    min-width: 0;
+    background: var(--navy);
+    border: 1px solid rgba(255, 255, 255, .2);
+    color: var(--text);
+    font: 500 clamp(13px, 2.3cqw, 17px) var(--body);
+    padding: 1.8cqw 2.4cqw;
+    border-radius: 2px;
+    outline: none;
+  }
+  .email-row input:focus { border-color: var(--accent); }
+  .email-row input::placeholder { color: var(--muted); }
+  .email-help { font-size: clamp(11px, 1.8cqw, 13px); color: var(--muted); margin-top: 1.4cqw; }
+  .social {
+    margin-top: auto;
+    padding: 2.6cqw 0 2.6cqw;
+    text-align: center;
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(13px, 2.8cqw, 21px);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .social b { color: var(--accent); font-weight: 700; }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 720px) {
+    .viewer { padding: 10px 0 78px; }
+    .book {
+      width: calc(100vw - 16px);
+      height: calc(100dvh - 96px);
+      max-height: none;
+    }
+    .page { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+    .pg { height: auto; min-height: 100%; padding: 6cqw 6cqw 0; }
+    .nav-arrow { width: 42px; height: 42px; top: auto; bottom: 20px; transform: none; background: rgba(10, 15, 30, .88); border: 1px solid var(--line); }
+    .nav-prev { left: 12px; }
+    .nav-next { right: 12px; }
+    .toolbar { bottom: 20px; padding: 4px 6px; gap: 2px; }
+    .dots, .tb-sep, .tb-btn .lbl { display: none; }
+    .tb-btn { padding: 0 11px; }
+    .counter { min-width: 52px; font-size: 15px; padding: 0 6px; }
+    .cover .deck { max-width: 100%; }
+    .coverlines { position: relative; bottom: auto; width: 100%; margin-top: 6cqw; }
+    .coverlines li { color: var(--text); border-top-color: var(--line); }
+    .cover-slab { opacity: .9; }
+    .cover .pg-foot .by, .cover .pg-foot .num, .cover .pg-foot .num span { color: var(--muted); }
+    .coach { grid-template-columns: auto 1fr; }
+    .coach .stat { border-left: 0; padding-left: 0; text-align: left; }
+    .defs, .workouts, .cheat, .po-top { grid-template-columns: 1fr; }
+    .week { grid-template-columns: repeat(4, 1fr); }
+    .day { min-height: 18cqw; }
+    .card.rule { grid-template-columns: 1fr; }
+    .callout, .note, .coach, .save-hint { margin-top: 5cqw; }
+    .teaser .go { display: none; }
+    .teaser { grid-template-columns: 9cqw 1fr; }
+  }
+
+  .page.scroll { overflow-y: auto; }
+  .page.scroll .pg { height: auto; min-height: 100%; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page, .page.active { transition: none; }
+  }
+
+  /* ---------- Print: every page, no chrome ---------- */
+  @page { size: A4; margin: 0; }
+  @media print {
+    html, body { height: auto; overflow: visible; background: var(--navy); }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .nav-arrow, .toolbar, .no-print { display: none !important; }
+    .viewer { display: block; height: auto; padding: 0; }
+    .book { width: 210mm; height: auto; max-height: none; box-shadow: none; border-radius: 0; overflow: visible; }
+    .page {
+      position: relative;
+      inset: auto;
+      width: 210mm;
+      height: 297mm;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+      transition: none !important;
+      overflow: hidden;
+      break-after: page;
+      page-break-after: always;
+    }
+    .page:last-child { break-after: auto; page-break-after: auto; }
+    .pg { height: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<main class="viewer" aria-label="The Beginner's Complete Training Foundation — digital magazine">
+  <div class="book" id="book">
+
+    <!-- ============ PAGE 1 — COVER ============ -->
+    <section class="page cover active" data-title="Cover" aria-label="Page 1 of 10: Cover">
+      <div class="deco">
+        <div class="grid-bg"></div>
+        <div class="cover-rings"></div>
+        <div class="cover-num">01</div>
+        <div class="cover-slab"></div>
+      </div>
+      <div class="pg">
+        <div class="strip"><b>Inside:</b> Everything you need to start training right — reps, sets, structure, and progression</div>
+        <div class="masthead">
+          <div class="brand">Exercise<span>Menu</span><small>.com magazine</small></div>
+          <div class="issue">Issue 01 — 2025<b>Free Guide</b></div>
+        </div>
+
+        <div class="cover-main">
+          <span class="badge"><i></i>Free Guide — Issue 01</span>
+          <h1>The Beginner's <span class="o">Complete</span> Training Foundation</h1>
+          <p class="deck">Reps. Sets. Structure. Progression. Everything in one place.</p>
+          <div class="cover-cta no-print">
+            <button class="btn" type="button" data-action="download">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16"/></svg>
+              Download PDF
+            </button>
+            <button class="btn ghost" type="button" data-action="email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/></svg>
+              Email This Guide
+            </button>
+          </div>
+        </div>
+
+        <ul class="coverlines">
+          <li><span>p.03</span>Reps &amp; Sets Explained</li>
+          <li><span>p.04</span>How Many Reps For Your Goal</li>
+          <li><span>p.07</span>Your First 3-Day Plan</li>
+          <li><span>p.09</span>The One-Page Cheat Sheet</li>
+        </ul>
+
+        <div class="pg-foot">
+          <span class="url">ExerciseMenu.com</span>
+          <span class="by">By Sadia Baloch</span>
+          <span class="num"><span>01</span> / 10</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PAGE 2 — WELCOME ============ -->
+    <section class="page" data-title="Welcome" aria-label="Page 2 of 10: Welcome">
+      <div class="grid-bg"></div>
+      <div class="pg">
+        <div class="pg-head"><span class="sec">Welcome</span><span>The Beginner's Complete Training Foundation</span></div>
+        <div class="pg-body">
+          <div class="kicker">A note from your coach</div>
+          <h2>Before You Lift Anything — <em>Read This</em></h2>
+
+          <p class="welcome-quote">Most beginners fail not because they lack motivation — they fail because <em>nobody gave them a clear starting point.</em></p>
+
+          <p class="big-line">This guide fixes that.</p>
+
+          <p>Inside, you'll find exactly how many reps and sets to do, how to structure your sessions, and how to keep making progress week after week — without guessing.</p>
+
+          <div class="coach">
+            <div class="avatar" aria-hidden="true">SB</div>
+            <div>
+              <div class="coach-name">Sadia Baloch</div>
+              <div class="coach-role">Certified Fitness Coach | ExerciseMenu.com</div>
+            </div>
+            <div class="stat"><b>7+</b><span>Years coaching</span></div>
+            <div class="stat"><b>257+</b><span>Clients</span></div>
+          </div>
+        </div>
+        <div class="pg-foot"><span>ExerciseMenu.com</span><span class="num"><span>02</span> / 10</span></div>
+      </div>
+    </section>
+
+    <!-- ============ PAGE 3 — REPS & SETS ============ -->
+    <section class="page" data-title="Reps & Sets" aria-label="Page 3 of 10: Reps and Sets">
+      <div class="grid-bg"></div>
+      <div class="pg">
+        <div class="pg-head"><span class="sec">01 · The Basics</span><span>Reps &amp; Sets</span></div>
+        <div class="pg-body">
+          <div class="kicker">The Basics</div>
+          <h2>Reps &amp; Sets — <em>The Foundation</em> of Every Workout</h2>
+          <p class="sub">If you don't understand this, nothing else will make sense.</p>
+
+          <div class="defs">
+            <div class="def">
+              <div class="term">REP</div>
+              <div class="aka">Repetition</div>
+              <p>A <strong>REP</strong> (repetition) is one complete movement — one squat, one push-up, one curl.</p>
+            </div>
+            <div class="def">
+              <div class="term">SET</div>
+              <div class="aka">A group of reps</div>
+              <p>A <strong>SET</strong> is a group of reps performed back to back before resting.</p>
+            </div>
+          </div>
+
+          <div class="sets-visual" aria-label="3 sets of 10 reps shown as three rows of ten dots">
+            <div class="formula">3<span>×</span>10</div>
+            <div class="rows" aria-hidden="true">
+              <div class="row"><label>Set 1</label><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><span class="rest">Rest</span></div>
+              <div class="row"><label>Set 2</label><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><span class="rest">Rest</span></div>
+              <div class="row"><label>Set 3</label><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
+
+          <p>So <strong>3x10</strong> means 3 sets of 10 reps.</p>
+          <p style="margin-bottom:3cqw"><strong>Why it matters:</strong> the number of reps you do directly determines what your body adapts to. Change the reps, change the result.</p>
+
+          <div class="callout"><small>Remember</small>3 sets of 10 reps = 3x10. Simple. But the number you pick changes everything.</div>
+        </div>
+        <div class="pg-foot"><span>ExerciseMenu.com</span><span class="num"><span>03</span> / 10</span></div>
+      </div>
+    </section>
+
+    <!-- ============ PAGE 4 — REPS FOR YOUR GOAL ============ -->
+    <section class="page" data-title="Reps for Your Goal" aria-label="Page 4 of 10: How Many Reps Should You Do">
+      <div class="grid-bg"></div>
+      <div class="pg">
+        <div class="pg-head"><span class="sec">02 · Rep Ranges</span><span>Pick Your Goal</span></div>
+        <div class="pg-body">
+          <div class="kicker">Rep Ranges</div>
+          <h2>How Many Reps <em>Should You Do?</em></h2>
+          <p class="sub">It depends on what you want — here's the exact answer.</p>
+
+          <table class="rep-table">
+            <thead>
+              <tr><th>Goal</th><th>Reps Per Set</th><th>Sets</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="goal">Muscle Growth</div><div class="range" style="--a:6;--b:12"><i></i></div></td>
+                <td class="reps-cell">6–12<small>REPS</small></td>
+                <td class="sets-cell">3–4<small>SETS</small></td>
+              </tr>
+              <tr>
+                <td><div class="goal">Fat Loss</div><div class="range" style="--a:12;--b:20"><i></i></div></td>
+                <td class="reps-cell">12–20<small>REPS</small></td>
+                <td class="sets-cell">3–4<small>SETS</small></td>
+              </tr>
+              <tr>
+                <td><div class="goal">Strength</div><div class="range" style="--a:1;--b:5"><i></i></div></td>
+                <td class="reps-cell">1–5<small>REPS</small></td>
+                <td class="sets-cell">4–5<small>SETS</small></td>
+              </tr>
+              <tr>
+                <td><div class="goal">Endurance</div><div class="range" style="--a:15;--b:25"><i></i></div></td>
+                <td class="reps-cell">15–25<small>REPS</small></td>
+                <td class="sets-cell">2–3<small>SETS</small></td>
+              </tr>
+              <tr>
+                <td><div class="goal">General Fitness</div><div class="range" style="--a:8;--b:15"><i></i></div></td>
+                <td class="reps-cell">8–15<small>REPS</small></td>
+                <td class="sets-cell">3<small>SETS</small></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="scale" aria-hidden="true"><span>0 reps</span><span>5</span><span>10</span><span>15</span><span>20</span><span>25 reps</span></div>
+
+          <div class="note">
+            <span class="tag">Beginners</span>
+            <p>Start with the higher end of the rep range. Lower the reps as you get stronger.</p>
+          </div>
+        </div>
+        <div class="pg-foot"><span>ExerciseMenu.com</span><span class="num"><span>04</span> / 10</span></div>
+      </div>
+    </section>
+
+    <!-- ============ PAGE 5 — WORKOUT STRUCTURE ============ -->
+    <section class="page" data-title="Workout Structure" aria-label="Page 5 of 10: What a Proper Workout Looks Like">
+      <div class="grid-bg"></div>
+      <div class="pg">
+        <div class="pg-head"><span class="sec">03 · Structure</span><span>Session Blueprint</span></div>
+        <div class="pg-body">
+          <div class="kicker">Session Blueprint</div>
+          <h2>What a Proper Workout <em>Actually Looks Like</em></h2>
+          <p class="sub">Most people skip the parts that matter most.</p>
+
+          <ol class="steps">
+            <li>
+              <div class="n">1</div>
+              <div><h3>Warm-Up <span class="chip">5–10 MIN</span></h3><p>Light cardio + dynamic stretches. <strong>Never skip this.</strong></p></div>
+            </li>
+            <li>
+              <div class="n">2</div>
+              <div><h3>Compound Movements First</h3><p>Squats, deadlifts, bench press, rows. Big muscles, big energy.</p></div>
+            </li>
+            <li>
+              <div class="n">3</div>
+              <div><h3>Isolation Exercises After</h3><p>Curls, lateral raises, tricep pushdowns.</p></div>
+            </li>
+            <li>
+              <div class="n">4</div>
+              <div><h3>Cool-Down <span class="chip">5 MIN</span></h3><p>Static stretching. Speeds up recovery.</p></div>
+            </li>
+          </ol>
+
+          <div class="callout"><small>Rule</small>Hardest exercise goes first. You have the most energy at the start — use it on what matters.</div>
+        </div>
+        <div class="pg-foot"><span>ExerciseMenu.com</span><span class="num"><span>05</span> / 10</span></div>
+      </div>
+    </section>
+
+    <!-- ============ PAGE 6 — PROGRESSIVE OVERLOAD ============ -->
+    <section class="page" data-title="Progressive Overload" aria-label="Page 6 of 10: Progressive Overload">
+      <div class="grid-bg"></div>
+      <div class="pg">
+        <div class="pg-head"><span class="sec">04 · Progression</span><span>Progressive Overload</span></div>
+        <div class="pg-body">
+          <div class="kicker">Progressive Overload</div>
+          <h2>Why You Need to Keep <em>Challenging Your Body</em></h2>
+          <p class="sub">Same weight every week = zero progress.</p>
+
+          <div class="po-top">
+            <div>
+              <p><strong>Progressive overload</strong> means gradually increasing the demand on your muscles over time.</p>
+              <p>Without it, your body has no reason to change.</p>
+            </div>
+            <div aria-hidden="true">
+              <div class="stairs"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="stairs-label"><span>Week 1</span><span>Slightly more each week</span></div>
+            </div>
+          </div>
+
+          <div class="howto">
+            <h3>How to apply it as a beginner</h3>
+            <ul>
+              <li>Add 1–2 reps before adding weight</li>
+              <li>When you hit the top of your rep range for all sets, add 2.5–5kg</li>
+              <li>Track every session — if you're not recording it, you're guessing</li>
+            </ul>
+          </div>
+
+          <div class="callout"><small>The weekly goal</small>The goal every week: do slightly more than last week. That's it.</div>
+        </div>
+        <div class="pg-foot"><span>ExerciseMenu.com</span><span class="num"><span>06</span> / 10</span></div>
+      </div>
+    </section>
+
+    <!-- ============ PAGE 7 — WEEKLY SCHEDULE ============ -->
+    <section class="page" data-title="3-Day Plan" aria-label="Page 7 of 10: A Simple 3-Day Plan">
+      <div class="grid-bg"></div>
+      <div class="pg">
+        <div class="pg-head"><span class="sec">05 · The Plan</span><span>Your First Week</span></div>
+        <div class="pg-body">
+          <div class="kicker">Your First Weekly Schedule</div>
+          <h2>A Simple 3-Day Plan <em>That Actually Works</em></h2>
+          <p class="sub">For complete beginners. No equipment assumptions.</p>
+
+          <div class="week">
+            <div class="day train"><b>MON</b><div class="letter">A</div><span>Full Body</span></div>
+            <div class="day"><b>TUE</b><span>Rest or Walk</span></div>
+            <div class="day train"><b>WED</b><div class="letter">B</div><span>Full Body</span></div>
+            <div class="day"><b>THU</b><span>Rest or Walk</span></div>
+            <div class="day train"><b>FRI</b><div class="letter">A</div><span>Full Body</span></div>
+            <div class="day active-rec"><b>SAT</b><span>Active Recovery</span></div>
+            <div class="day"><b>SUN</b><span>Full Rest</span></div>
+          </div>
+
+          <div class="workouts">
+            <div class="wo">
+              <div class="wo-head"><h3>Workout <span>A</span></h3><small>Full Body</small></div>
+              <ul>
+                <li>Squat <em>3x10</em></li>
+                <li>Push-Up <em>3x10</em></li>
+                <li>Dumbbell Row <em>3x10</em></li>
+                <li>Plank <em>3x30sec</em></li>
+              </ul>
+            </div>
+            <div class="wo">
+              <div class="wo-head"><h3>Workout <span>B</span></h3><small>Full Body</small></div>
+              <ul>
+                <li>Deadlift <em>3x8</em></li>
+                <li>Overhead Press <em>3x10</em></li>
+                <li>Lat Pulldown <em>3x10</em></li>
+                <li>Glute Bridge <em>3x15</em></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="note">
+            <span class="tag">Note</span>
+            <p>Alternate A and B each week.</p>
+          </div>
+        </div>
+        <div class="pg-foot"><span>ExerciseMenu.com</span><span class="num"><span>07</span> / 10</span></div>
+      </div>
+    </section>
+
+    <!-- ============ PAGE 8 — MISTAKES ============ -->
+    <section class="page" data-title="5 Mistakes" aria-label="Page 8 of 10: 5 Mistakes That Kill Beginner Progress">
+      <div class="grid-bg"></div>
+      <div class="pg">
+        <div class="pg-head"><span class="sec">06 · Avoid These</span><span>Common Beginner Mistakes</span></div>
+        <div class="pg-body">
+          <div class="kicker">Common Beginner Mistakes</div>
+          <h2>5 Mistakes That <em>Kill Beginner Progress</em></h2>
+          <p class="sub">You're probably making at least two of these.</p>
+
+          <ol class="mistakes">
+            <li><div class="mn">01</div><div><h3>Too Much Too Soon</h3><p>6 days a week in month one = burnout or injury. Start with 3.</p></div></li>
+            <li><div class="mn">02</div><div><h3>Junk Volume</h3><p>More sets ≠ more results. 10 sets of curls doesn't build more muscle than 4 quality sets.</p></div></li>
+            <li><div class="mn">03</div><div><h3>No Progression Plan</h3><p>Showing up without tracking means you'll do the same thing forever.</p></div></li>
+            <li><div class="mn">04</div><div><h3>Skipping Warm-Ups</h3><p>Cold muscles + heavy weight = injury waiting to happen.</p></div></li>
+            <li><div class="mn">05</div><div><h3>Copying Advanced Programs</h3><p>If it's designed for someone with 3 years of training, it's not for you yet.</p></div></li>
+          </ol>
+        </div>
+        <div class="pg-foot"><span>ExerciseMenu.com</span><span class="num"><span>08</span> / 10</span></div>
+      </div>
+    </section>
+
+    <!-- ============ PAGE 9 — CHEAT SHEET ============ -->
+    <section class="page" data-title="Cheat Sheet" aria-label="Page 9 of 10: Quick Reference Cheat Sheet">
+      <div class="grid-bg"></div>
+      <div class="pg">
+        <div class="pg-head"><span class="sec">07 · Quick Reference</span><span>Cheat Sheet</span></div>
+        <div class="pg-body">
+          <div class="kicker">Quick Reference Cheat Sheet</div>
+          <h2>Everything You Need — <em>One Page</em></h2>
+          <p class="sub">Save this. Screenshot it. Use it.</p>
+
+          <div class="cheat">
+            <div class="card">
+              <div class="card-t">Rep Ranges <span>01</span></div>
+              <dl>
+                <dt>Strength</dt><dd>1–5</dd>
+                <dt>Muscle</dt><dd>6–12</dd>
+                <dt>Fat Loss</dt><dd>12–20</dd>
+                <dt>Endurance</dt><dd>15–25</dd>
+              </dl>
+            </div>
+            <div class="card">
+              <div class="card-t">Set Ranges <span>02</span></div>
+              <dl>
+                <dt>Beginner</dt><dd>2–3 sets</dd>
+                <dt>Intermediate</dt><dd>3–4 sets</dd>
+                <dt>Advanced</dt><dd>4–5 sets</dd>
+              </dl>
+            </div>
+            <div class="card">
+              <div class="card-t">Rest Periods <span>03</span></div>
+              <dl>
+                <dt>Heavy (1–5 reps)</dt><dd>3–5 min</dd>
+                <dt>Moderate (6–12)</dt><dd>60–90 sec</dd>
+                <dt>Light (15+)</dt><dd>30–60 sec</dd>
+              </dl>
+            </div>
+            <div class="card">
+              <div class="card-t">Weekly Frequency <span>04</span></div>
+              <dl>
+                <dt>Beginner</dt><dd>3x/week</dd>
+                <dt>Intermediate</dt><dd>4x/week</dd>
+                <dt>Advanced</dt><dd>5–6x/week</dd>
+              </dl>
+            </div>
+            <div class="card rule">
+              <div class="rule-num">05</div>
+              <div>
+                <div class="card-t">Progressive Overload Rule</div>
+                <div class="rule-flow"><span>Hit top of rep range for all sets</span><span class="arrow">→</span><span>Add 2.5–5kg next session</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="pg-foot"><span>ExerciseMenu.com</span><span class="num"><span>09</span> / 10</span></div>
+      </div>
+    </section>
+
+    <!-- ============ PAGE 10 — BACK COVER ============ -->
+    <section class="page back" data-title="Back Cover" aria-label="Page 10 of 10: Back Cover">
+      <div class="deco">
+        <div class="grid-bg"></div>
+        <div class="back-slab"></div>
+      </div>
+      <div class="pg">
+        <div class="pg-head"><span class="sec">Keep Going</span><span>Issue 01 — 2025</span></div>
+        <div class="pg-body">
+          <h2>More Free Guides at <em>ExerciseMenu.com</em></h2>
+          <p class="sub">Workout structure. Training principles. Exercise guides. All free.</p>
+
+          <div class="teasers">
+            <a class="teaser" href="https://exercisemenu.com" target="_blank" rel="noopener">
+              <span class="tn">01</span>
+              <span><h3>How Many Sets Per Muscle Group?</h3><small>exercisemenu.com</small></span>
+              <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+            </a>
+            <a class="teaser" href="https://exercisemenu.com" target="_blank" rel="noopener">
+              <span class="tn">02</span>
+              <span><h3>Push Pull Legs Split — Complete Guide</h3><small>exercisemenu.com</small></span>
+              <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+            </a>
+            <a class="teaser" href="https://exercisemenu.com" target="_blank" rel="noopener">
+              <span class="tn">03</span>
+              <span><h3>What Is Progressive Overload?</h3><small>exercisemenu.com</small></span>
+              <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+            </a>
+          </div>
+
+          <div class="back-cta">
+            <p class="cta">Visit <a href="https://exercisemenu.com" target="_blank" rel="noopener">ExerciseMenu.com</a> for more free training resources</p>
+            <form class="email-row no-print" id="emailForm" novalidate>
+              <label for="emailInput" class="visually-hidden" style="position:absolute;left:-9999px">Your email address</label>
+              <input id="emailInput" type="email" placeholder="Your email address" autocomplete="email" required>
+              <button class="btn" type="submit">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/></svg>
+                Email Me This Guide
+              </button>
+            </form>
+            <p class="email-help no-print" id="emailHelp">Opens your email app with the guide link ready to send.</p>
+          </div>
+
+          <p class="social">Built for beginners. <b>Backed by coaching experience.</b></p>
+        </div>
+        <div class="pg-foot"><span>ExerciseMenu.com</span><span class="num"><span>10</span> / 10</span></div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<button class="nav-arrow nav-prev" id="prevBtn" type="button" aria-label="Previous page">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
+</button>
+<button class="nav-arrow nav-next" id="nextBtn" type="button" aria-label="Next page">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+</button>
+
+<nav class="toolbar" aria-label="Magazine controls">
+  <span class="counter" id="counter" aria-live="polite"><b>1</b> / 10</span>
+  <span class="tb-sep"></span>
+  <div class="dots" id="dots"></div>
+  <span class="tb-sep"></span>
+  <button class="tb-btn" type="button" data-action="email" title="Email this guide">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/></svg>
+    <span class="lbl">Email</span>
+  </button>
+  <button class="tb-btn primary" type="button" data-action="download" title="Download as PDF">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16"/></svg>
+    <span class="lbl">Download PDF</span>
+  </button>
+</nav>
+
+<script>
+(function () {
+  var pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
+  var total = pages.length;
+  var current = 0;
+  var counter = document.getElementById('counter');
+  var dotsWrap = document.getElementById('dots');
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+
+  var GUIDE_TITLE = "The Beginner's Complete Training Foundation";
+  function guideUrl() {
+    return /^https?:/.test(location.protocol) ? location.href.split('#')[0] : 'https://exercisemenu.com';
+  }
+
+  pages.forEach(function (p, i) {
+    var d = document.createElement('button');
+    d.className = 'dot';
+    d.type = 'button';
+    d.textContent = i + 1;
+    d.setAttribute('aria-label', 'Go to page ' + (i + 1) + ': ' + p.dataset.title);
+    d.addEventListener('click', function () { go(i); });
+    dotsWrap.appendChild(d);
+  });
+  var dots = dotsWrap.children;
+
+  function go(i) {
+    if (i < 0 || i >= total || i === current) return;
+    var forward = i > current;
+    var from = pages[current];
+    var to = pages[i];
+
+    from.classList.remove('active', 'leave-left', 'leave-right');
+    from.classList.add(forward ? 'leave-left' : 'leave-right');
+
+    to.classList.remove('leave-left', 'leave-right', 'enter-from-left');
+    if (!forward) {
+      to.classList.add('enter-from-left');
+      void to.offsetWidth;
+    }
+    to.classList.add('active');
+    to.classList.remove('enter-from-left');
+    to.scrollTop = 0;
+
+    current = i;
+    update();
+  }
+
+  function update() {
+    counter.innerHTML = '<b>' + (current + 1) + '</b> / ' + total;
+    for (var k = 0; k < dots.length; k++) {
+      dots[k].classList.toggle('active', k === current);
+      dots[k].setAttribute('aria-current', k === current ? 'page' : 'false');
+    }
+    pages.forEach(function (p, k) { p.setAttribute('aria-hidden', k === current ? 'false' : 'true'); });
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === total - 1;
+    if (history.replaceState) history.replaceState(null, '', '#page-' + (current + 1));
+  }
+
+  prevBtn.addEventListener('click', function () { go(current - 1); });
+  nextBtn.addEventListener('click', function () { go(current + 1); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); go(current + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(current - 1); }
+    else if (e.key === 'Home') { go(0); }
+    else if (e.key === 'End') { go(total - 1); }
+  });
+
+  // Swipe on touch devices
+  var sx = null, sy = null;
+  var book = document.getElementById('book');
+  book.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+  book.addEventListener('touchend', function (e) {
+    if (sx === null) return;
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.4) go(current + (dx < 0 ? 1 : -1));
+    sx = sy = null;
+  }, { passive: true });
+
+  // Download + email actions
+  function mailto(to) {
+    var subject = encodeURIComponent(GUIDE_TITLE + ' — Free Guide from ExerciseMenu.com');
+    var body = encodeURIComponent(
+      "Here's the free guide: " + GUIDE_TITLE + "\n" +
+      "Reps. Sets. Structure. Progression. Everything in one place.\n\n" +
+      "Read or download it here: " + guideUrl() + "\n\n" +
+      "More free training resources: https://exercisemenu.com"
+    );
+    location.href = 'mailto:' + (to ? encodeURIComponent(to) : '') + '?subject=' + subject + '&body=' + body;
+  }
+
+  document.querySelectorAll('[data-action]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      if (el.dataset.action === 'download') window.print();
+      if (el.dataset.action === 'email') mailto('');
+    });
+  });
+
+  var form = document.getElementById('emailForm');
+  var input = document.getElementById('emailInput');
+  var help = document.getElementById('emailHelp');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = input.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+      help.textContent = 'Please enter a valid email address.';
+      help.style.color = 'var(--accent)';
+      input.focus();
+      return;
+    }
+    help.style.color = '';
+    help.textContent = 'Opening your email app…';
+    mailto(v);
+  });
+
+  // Keep every page inside its frame, even if the web fonts fail and a wider fallback font is used.
+  // Small overflows are scaled down slightly; if that would make text too small (phones, short
+  // laptop screens), the page scrolls inside its frame instead. Print always scales to fit A4.
+  var phone = window.matchMedia('(max-width: 720px)');
+  var MIN_SCALE = 0.84;
+  function fit() {
+    var printing = window.matchMedia('print').matches;
+    pages.forEach(function (pg) {
+      var inner = pg.querySelector('.pg');
+      inner.style.transform = inner.style.width = inner.style.height = '';
+      pg.classList.remove('scroll');
+      if (phone.matches && !printing) return;
+      for (var pass = 0; pass < 2; pass++) {
+        var H = pg.clientHeight, h = inner.scrollHeight;
+        var W = pg.clientWidth, w = inner.scrollWidth;
+        if (h <= H + 1 && w <= W + 1) break;
+        var cur = parseFloat(inner.dataset.s || 1);
+        var s = cur * Math.min(H / h, W / w);
+        inner.dataset.s = s;
+        inner.style.transformOrigin = 'top left';
+        inner.style.transform = 'scale(' + s + ')';
+        inner.style.width = (100 / s) + '%';
+        inner.style.height = (100 / s) + '%';
+      }
+      if (!inner.style.transform) delete inner.dataset.s;
+      else if (!printing && parseFloat(inner.dataset.s) < MIN_SCALE) {
+        inner.style.transform = inner.style.width = inner.style.height = '';
+        delete inner.dataset.s;
+        pg.classList.add('scroll');
+      }
+    });
+  }
+  function refit() { pages.forEach(function (pg) { delete pg.querySelector('.pg').dataset.s; }); fit(); }
+  var rt;
+  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(refit, 120); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(refit);
+  window.addEventListener('load', refit);
+  var printMq = window.matchMedia('print');
+  if (printMq.addEventListener) printMq.addEventListener('change', refit);
+  else if (printMq.addListener) printMq.addListener(refit);
+  window.addEventListener('afterprint', refit);
+  refit();
+
+  // Deep link: #page-N
+  var m = /#page-(\d+)/.exec(location.hash);
+  var start = m ? Math.min(Math.max(parseInt(m[1], 10) - 1, 0), total - 1) : 0;
+  if (start !== 0) {
+    pages[0].classList.remove('active');
+    pages[start].classList.add('active');
+    current = start;
+  }
+  update();
+})();
+</script>
+</body>
+</html>
