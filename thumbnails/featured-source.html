@@ -1,0 +1,51 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1200px;height:630px;overflow:hidden;background:#0A0F1E;font-family:Inter,sans-serif;color:#F2F4F8;position:relative}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:36px 36px;mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.35) 55%,rgba(0,0,0,.1) 100%)}
+.glow{position:absolute;left:-160px;top:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(255,107,53,.22),transparent 65%)}
+.rings{position:absolute;left:-260px;bottom:-330px;width:620px;height:620px;border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 26px,rgba(255,107,53,.18) 26px 27px)}
+.slab{position:absolute;right:-120px;top:-40px;width:560px;height:720px;background:linear-gradient(160deg,#FF6B35,#E4471A);transform:skewX(-14deg)}
+.slab::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(10,15,30,.16) 0 2px,transparent 2px 22px)}
+.left{position:absolute;left:64px;top:44px;width:560px;z-index:3}
+.brand{font:900 30px "Barlow Condensed";letter-spacing:-.01em;text-transform:uppercase}
+.brand span{color:#FF6B35}.brand small{font-weight:600;font-size:16px;letter-spacing:.3em;color:#9AA3B8;margin-left:6px}
+.badge{display:inline-flex;align-items:center;gap:10px;margin-top:26px;background:#F2F4F8;color:#0A0F1E;font:800 17px "Barlow Condensed";letter-spacing:.18em;padding:8px 16px;text-transform:uppercase}
+.badge i{width:10px;height:10px;border-radius:50%;background:#FF6B35}
+h1{font:900 76px/0.86 "Barlow Condensed";text-transform:uppercase;margin-top:20px;letter-spacing:-.005em}
+h1 .o{color:#FF6B35}h1 .t{font-weight:700}
+.deck{margin-top:18px;font:700 22px "Barlow Condensed";letter-spacing:.06em;text-transform:uppercase;color:#F2F4F8}
+.deck b{color:#FF6B35}
+.row{display:flex;gap:10px;margin-top:22px;align-items:center}
+.cta{display:inline-flex;align-items:center;gap:10px;background:#FF6B35;color:#0A0F1E;font:800 20px "Barlow Condensed";letter-spacing:.12em;padding:13px 22px;text-transform:uppercase}
+.cta svg{width:20px;height:20px}
+.chip{font:700 15px "Barlow Condensed";letter-spacing:.16em;text-transform:uppercase;color:#9AA3B8;border:1px solid rgba(255,255,255,.18);padding:12px 14px}
+.chip b{color:#F2F4F8}
+.stack{position:absolute;right:70px;top:48px;width:380px;height:540px;z-index:2}
+.stack img{position:absolute;width:370px;box-shadow:0 30px 60px rgba(0,0,0,.55),0 6px 16px rgba(0,0,0,.35);border-radius:3px}
+.p3{right:-38px;top:30px;transform:rotate(11deg);filter:brightness(.62)}
+.p2{right:-14px;top:14px;transform:rotate(5deg);filter:brightness(.78)}
+.p1{right:26px;top:0;transform:rotate(-4deg)}
+.free{position:absolute;z-index:4;right:356px;top:410px;width:124px;height:124px;border-radius:50%;background:#F2F4F8;color:#0A0F1E;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font:900 34px/0.9 "Barlow Condensed";text-transform:uppercase;transform:rotate(-12deg);box-shadow:0 12px 30px rgba(0,0,0,.45);border:4px solid #FF6B35}
+.free small{display:block;font-size:14px;letter-spacing:.16em;font-weight:700;color:#FF6B35;margin-top:4px}
+.foot{position:absolute;left:64px;bottom:26px;z-index:3;font:600 15px "Barlow Condensed";letter-spacing:.22em;text-transform:uppercase;color:#9AA3B8}
+.foot b{color:#F2F4F8}
+</style></head><body>
+<div class="glow"></div><div class="grid"></div><div class="rings"></div><div class="slab"></div>
+<div class="left">
+  <div class="brand">Exercise<span>Menu</span><small>.COM</small></div>
+  <div class="badge"><i></i>Free Guide — Issue 01</div>
+  <h1>The Beginner's<br><span class="o">Complete</span> Training<br>Foundation</h1>
+  <p class="deck">Reps. Sets. Structure. Progression.<br><b>Everything in one place.</b></p>
+  <div class="row">
+    <span class="cta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16"/></svg>Download Free PDF</span>
+    <span class="chip"><b>10</b> Pages</span>
+  </div>
+</div>
+<div class="stack">
+  <img class="p3" src="page-9.png"><img class="p2" src="page-4.png"><img class="p1" src="cover-portrait.png">
+</div>
+<div class="free">Free<small>Guide</small></div>
+<div class="foot">By Coach <b>Sadia Baloch</b> · 7+ years · 257+ clients</div>
+</body></html>
