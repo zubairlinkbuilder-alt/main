@@ -1,0 +1,32 @@
+{% extends "base.html" %}{% block content %}
+<h1>Prospects &amp; Emails</h1>
+<form class="card row" method="get">
+<div><label>Status</label><select name="status"><option value="">All</option>
+{% for s in ['new','searching','found','not_found','error'] %}<option {{ 'selected' if status==s }}>{{ s }}</option>{% endfor %}</select></div>
+<div><label>Search domain / email</label><input type="text" name="q" value="{{ q }}"></div>
+<button class="btn primary">Filter</button></form>
+<form method="post" action="/prospects/action">
+<div class="actions">
+<button class="btn" name="action" value="find_emails">Find emails (selected)</button>
+<button class="btn" name="action" value="find_all_new">Find emails (all new)</button>
+<span class="shrink">|</span>
+<select name="template_id" style="width:auto">{% for t in templates %}<option value="{{ t.id }}">{{ t.name }}{{ ' (default)' if t.is_default }}</option>{% endfor %}</select>
+<button class="btn primary" name="action" value="create_drafts">Create drafts (selected)</button>
+<span class="shrink">|</span>
+<button class="btn danger" name="action" value="block" data-confirm="Block selected domains? They will never be scanned or emailed.">Block domain</button>
+<button class="btn danger" name="action" value="delete" data-confirm="Delete selected prospects?">Delete</button>
+</div>
+<div class="tablewrap"><table>
+<tr><th><input type="checkbox" data-checkall="ids"></th><th>Domain</th><th>Status</th><th>Email to use</th><th>All emails found</th><th>Linked from</th><th>Links</th><th>Outreach</th></tr>
+{% for r in rows %}{% set em = emails_of(r) %}<tr>
+<td><input type="checkbox" name="ids" value="{{ r.id }}"></td>
+<td><a href="/prospects/{{ r.id }}"><b>{{ r.domain }}</b></a>{% if r.site_name %}<div class="small muted">{{ r.site_name }}</div>{% endif %}</td>
+<td><span class="tag {{ r.status }}">{{ r.status }}</span>{% if r.error %}<div class="small muted">{{ r.error[:80] }}</div>{% endif %}</td>
+<td>{{ r.best_email or '-' }}</td>
+<td class="small">{% for e in em[:4] %}{{ e.email }} <span class="muted">({{ e.source }}{{ ', MX ok' if e.mx }})</span><br>{% endfor %}{% if em|length > 4 %}+{{ em|length - 4 }} more{% endif %}
+{% if r.contact_page %}<a href="{{ r.contact_page }}" target="_blank" rel="noopener">contact page</a>{% endif %}</td>
+<td class="small">{{ r.sources or '' }}</td><td>{{ r.n_links }}</td><td>{{ r.n_outreach }}</td></tr>
+{% else %}<tr><td colspan="8" class="muted">No prospects. Run a <a href="/scan">scan</a>.</td></tr>{% endfor %}
+</table></div></form>
+<p class="muted small">"not_found" = no public email on the homepage or contact/about/write-for-us pages. Open the domain to check the contact form manually, then type the email on the prospect page.</p>
+{% endblock %}

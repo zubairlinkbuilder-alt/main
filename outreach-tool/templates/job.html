@@ -1,0 +1,21 @@
+{% extends "base.html" %}{% block content %}
+<h1>Job #{{ job.id }} - {{ job.kind }} <span class="tag {{ job.status }}" id="st">{{ job.status }}</span></h1>
+<div class="card">
+<div class="bar"><i id="bar" style="width:0%"></i></div>
+<p id="prog" class="muted"></p>
+<pre class="log" id="log">{{ job.log }}</pre>
+<div class="actions">
+<form method="post" action="/jobs/{{ job.id }}/cancel" id="cancelform"><button class="btn danger">Cancel job</button></form>
+{% if job.kind in ('scan','emails') %}<a class="btn" href="/prospects">Go to prospects &rarr;</a>{% endif %}
+{% if job.kind in ('send','gmail-drafts') %}<a class="btn" href="/outreach">Go to drafts &rarr;</a>{% endif %}
+</div></div>
+<script>
+function poll(){fetch('/api/jobs/{{ job.id }}').then(function(r){return r.json()}).then(function(j){
+var pct=j.total?Math.round(100*j.progress/j.total):0;document.getElementById('bar').style.width=pct+'%';
+document.getElementById('prog').textContent=j.progress+' / '+j.total+' ('+pct+'%)';
+var st=document.getElementById('st');st.textContent=j.status;st.className='tag '+j.status;
+var lg=document.getElementById('log');var atBottom=lg.scrollTop+lg.clientHeight>=lg.scrollHeight-20;lg.textContent=j.log;if(atBottom)lg.scrollTop=lg.scrollHeight;
+if(j.status==='running'){setTimeout(poll,2000)}else{document.getElementById('cancelform').style.display='none'}})}
+poll();
+</script>
+{% endblock %}

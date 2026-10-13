@@ -1,0 +1,15 @@
+{% extends "base.html" %}{% block content %}
+<h1>Articles</h1>
+<form class="card row" method="get">
+<div><label>Website</label><select name="site"><option value="">All</option>{% for s in sites %}<option value="{{ s.id }}" {{ 'selected' if site==s.id }}>{{ s.domain }}</option>{% endfor %}</select></div>
+<div><label>Published from</label><input type="date" name="start" value="{{ start }}"></div>
+<div><label>to</label><input type="date" name="end" value="{{ end }}"></div>
+<button class="btn primary">Filter</button></form>
+<div class="tablewrap"><table>
+<tr><th>Published</th><th>Site</th><th>Title</th><th>External links</th><th>Found via</th></tr>
+{% for r in rows %}<tr><td>{{ (r.published_at or '')[:10] }}</td><td>{{ r.site }}</td>
+<td><a href="/articles/{{ r.id }}">{{ r.title or r.url }}</a><div class="small muted break">{{ r.url }}</div></td>
+<td>{{ r.n_links }} <span class="muted">({{ r.n_live }} live)</span></td><td><span class="tag">{{ r.source }}</span></td></tr>
+{% else %}<tr><td colspan="5" class="muted">No articles. Run a <a href="/scan">scan</a>.</td></tr>{% endfor %}
+</table></div>
+{% endblock %}

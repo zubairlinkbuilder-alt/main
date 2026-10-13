@@ -1,0 +1,23 @@
+{% extends "base.html" %}{% block content %}
+<h1>Drafts &amp; Send</h1>
+{% if not configured %}<div class="flash">Gmail is not configured - <a href="/settings">add your Gmail + App Password</a> to push drafts or send.</div>{% endif %}
+<p class="muted">Sent today: <b>{{ sent_today }}</b> / {{ limit }} daily limit. Each email is sent only once per address - duplicates are skipped automatically.</p>
+<div class="actions">{% for s in ['','draft','approved','sent','failed','skipped'] %}<a class="btn {{ 'primary' if status==s }}" href="/outreach?status={{ s }}">{{ s or 'all' }}</a>{% endfor %}</div>
+<form method="post" action="/outreach/action">
+<div class="actions">
+<button class="btn" name="action" value="approve">Approve selected</button>
+<button class="btn" name="action" value="unapprove">Back to draft</button>
+<button class="btn" name="action" value="gmail_drafts">Save selected to Gmail Drafts</button>
+<button class="btn ok" name="action" value="send" data-confirm="Send the selected emails now?">Send selected</button>
+<button class="btn ok" name="action" value="send_all_approved" data-confirm="Send ALL approved emails (respecting the daily limit)?">Send all approved</button>
+<button class="btn danger" name="action" value="delete" data-confirm="Delete selected (sent emails are kept)?">Delete</button>
+</div>
+<div class="tablewrap"><table>
+<tr><th><input type="checkbox" data-checkall="ids"></th><th>Status</th><th>To</th><th>Domain</th><th>Subject</th><th>Gmail draft</th><th>Sent</th></tr>
+{% for r in rows %}<tr><td>{% if r.status != 'sent' %}<input type="checkbox" name="ids" value="{{ r.id }}">{% endif %}</td>
+<td><span class="tag {{ r.status }}">{{ r.status }}</span>{% if r.error %}<div class="small muted">{{ r.error[:100] }}</div>{% endif %}</td>
+<td>{{ r.to_email }}</td><td>{{ r.domain }}</td><td><a href="/outreach/{{ r.id }}">{{ r.subject }}</a></td>
+<td>{{ 'yes' if r.gmail_draft else '' }}</td><td class="small">{{ r.sent_at or '' }}</td></tr>
+{% else %}<tr><td colspan="7" class="muted">Nothing here. Create drafts from <a href="/prospects">Prospects</a>.</td></tr>{% endfor %}
+</table></div></form>
+{% endblock %}

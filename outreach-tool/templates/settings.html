@@ -1,0 +1,26 @@
+{% extends "base.html" %}{% block content %}
+<h1>Settings</h1>
+<form method="post" class="card">
+<h2>Gmail</h2>
+<p class="small muted">Use a Google <b>App Password</b>, not your normal password: Google Account &rarr; Security &rarr; 2-Step Verification (turn on) &rarr; App passwords &rarr; create one, paste the 16 characters here.</p>
+<div class="row">
+<div><label>Gmail address (sender)</label><input type="email" name="gmail_address" value="{{ s.gmail_address }}"></div>
+<div><label>App Password {% if s.gmail_app_password %}<span class="tag found">saved</span>{% endif %}</label><input type="password" name="gmail_app_password" placeholder="{{ 'leave blank to keep saved' if s.gmail_app_password else 'xxxx xxxx xxxx xxxx' }}" autocomplete="new-password"></div>
+<div><label>From name</label><input type="text" name="from_name" value="{{ s.from_name }}"></div>
+</div>
+<h2 style="margin-top:20px">Template values</h2>
+<div class="row">
+<div><label>Your name ({{ '{{' }}my_name{{ '}}' }})</label><input type="text" name="my_name" value="{{ s.my_name }}"></div>
+<div><label>Your website ({{ '{{' }}my_website{{ '}}' }})</label><input type="text" name="my_website" value="{{ s.my_website }}"></div>
+</div>
+<h2 style="margin-top:20px">Sending safety</h2>
+<div class="row">
+<div><label>Delay between emails (seconds, randomised &plusmn;30%)</label><input type="number" name="send_delay_seconds" value="{{ s.send_delay_seconds }}" min="10"></div>
+<div><label>Daily send limit</label><input type="number" name="daily_send_limit" value="{{ s.daily_send_limit }}" min="1" max="500"></div>
+<div><label>Request timeout (seconds)</label><input type="number" name="request_timeout" value="{{ s.request_timeout }}" min="5" max="60"></div>
+</div>
+<p class="small muted">Gmail hard limit is ~500/day for personal accounts, but new accounts sending cold email above ~30-50/day get flagged as spam. Start low.</p>
+<label class="inline"><input type="checkbox" name="verify_mx" value="1" {{ 'checked' if s.verify_mx=='1' }}> Drop emails whose domain has no mail server (MX check)</label>
+<div class="actions"><button class="btn primary">Save</button><button class="btn" name="test" value="1">Save &amp; test Gmail connection</button></div>
+</form>
+{% endblock %}

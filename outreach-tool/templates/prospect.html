@@ -1,0 +1,20 @@
+{% extends "base.html" %}{% block content %}
+<h1>{{ p.domain }} <span class="tag {{ p.status }}">{{ p.status }}</span></h1>
+<p><a href="{{ p.homepage }}" target="_blank" rel="noopener">{{ p.homepage }}</a>{% if p.contact_page %} &middot; <a href="{{ p.contact_page }}" target="_blank" rel="noopener">contact page</a>{% endif %} &middot; checked {{ p.checked_at or 'never' }}</p>
+<div class="card"><form method="post" class="row">
+<div><label>Email to use for outreach</label>
+<input type="email" name="best_email" value="{{ p.best_email or '' }}" list="found"><datalist id="found">{% for e in emails %}<option value="{{ e.email }}">{% endfor %}</datalist></div>
+<button class="btn primary">Save</button></form></div>
+<div class="card"><h2>Emails found ({{ emails|length }})</h2>
+<table><tr><th>Email</th><th>Source</th><th>Score</th><th>MX</th><th>Found on</th></tr>
+{% for e in emails %}<tr><td>{{ e.email }}</td><td>{{ e.source }}</td><td>{{ e.score }}</td><td>{{ 'yes' if e.mx else ('no' if e.mx == false else 'n/a') }}</td><td class="break"><a href="{{ e.page }}" target="_blank" rel="noopener">{{ e.page }}</a></td></tr>
+{% else %}<tr><td colspan="5" class="muted">None. {{ p.error or '' }}</td></tr>{% endfor %}</table></div>
+<div class="card"><h2>Where this domain was linked</h2>
+<table><tr><th>Published</th><th>Article</th><th>Linked URL</th><th>Anchor</th><th>Status</th></tr>
+{% for l in links %}<tr><td>{{ (l.published_at or '')[:10] }}</td><td>{{ l.site }}: <a href="{{ l.article_url }}" target="_blank" rel="noopener">{{ l.title }}</a></td>
+<td class="break">{{ l.final_url or l.url }}</td><td>{{ l.anchor }}</td><td><span class="tag {{ l.verdict.split(':')[0] }}">{{ l.verdict }}</span></td></tr>{% endfor %}</table></div>
+<div class="card"><h2>Outreach</h2>
+<table><tr><th>To</th><th>Subject</th><th>Status</th></tr>
+{% for o in outreach_rows %}<tr><td>{{ o.to_email }}</td><td><a href="/outreach/{{ o.id }}">{{ o.subject }}</a></td><td><span class="tag {{ o.status }}">{{ o.status }}</span></td></tr>
+{% else %}<tr><td colspan="3" class="muted">None yet.</td></tr>{% endfor %}</table></div>
+{% endblock %}

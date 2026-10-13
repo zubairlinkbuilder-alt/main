@@ -1,0 +1,19 @@
+{% extends "base.html" %}{% block content %}
+<h1>Websites</h1>
+<div class="card">
+<form method="post">
+<label>Add websites (one per line)</label>
+<textarea name="urls" placeholder="https://example-blog.com&#10;anothersite.com"></textarea>
+<div class="actions"><button class="btn primary">Add websites</button></div>
+</form></div>
+<form method="post" action="/websites/delete">
+<div class="actions"><button class="btn danger" data-confirm="Remove selected websites and their scanned articles?">Remove selected</button>
+<a class="btn" href="/scan">Scan websites &rarr;</a></div>
+<div class="tablewrap"><table>
+<tr><th><input type="checkbox" data-checkall="ids"></th><th>Domain</th><th>URL</th><th>Articles</th><th>Latest article</th><th>Added</th></tr>
+{% for r in rows %}<tr><td><input type="checkbox" name="ids" value="{{ r.id }}"></td><td><b>{{ r.domain }}</b></td>
+<td><a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.url }}</a></td>
+<td><a href="/articles?site={{ r.id }}">{{ r.n_articles }}</a></td><td>{{ (r.latest or '')[:10] }}</td><td>{{ r.added_at[:10] }}</td></tr>
+{% else %}<tr><td colspan="6" class="muted">No websites yet.</td></tr>{% endfor %}
+</table></div></form>
+{% endblock %}

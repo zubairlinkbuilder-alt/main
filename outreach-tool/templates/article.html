@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block content %}
+<h1>{{ art.title }}</h1>
+<p><a href="{{ art.url }}" target="_blank" rel="noopener">{{ art.url }}</a> &middot; {{ art.site }} &middot; published {{ (art.published_at or '')[:10] }} &middot; via {{ art.source }}</p>
+<div class="tablewrap"><table>
+<tr><th>Status</th><th>Domain</th><th>Link</th><th>Anchor</th><th>rel</th></tr>
+{% for l in links %}<tr><td><span class="tag {{ l.verdict.split(':')[0] }}">{{ l.verdict }}</span> {{ l.status_code or '' }}</td>
+<td><a href="/prospects?q={{ l.domain }}">{{ l.domain }}</a></td>
+<td class="break"><a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.url }}</a>{% if l.final_url and l.final_url != l.url %}<div class="small muted">&rarr; {{ l.final_url }}</div>{% endif %}</td>
+<td>{{ l.anchor }}</td><td class="small">{{ l.rel }}</td></tr>
+{% else %}<tr><td colspan="5" class="muted">No external links in the article body (after blocklist).</td></tr>{% endfor %}
+</table></div>
+{% endblock %}

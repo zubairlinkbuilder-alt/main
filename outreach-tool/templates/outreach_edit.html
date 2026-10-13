@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block content %}
+<h1>Email to {{ o.domain }} <span class="tag {{ o.status }}">{{ o.status }}</span></h1>
+<form method="post" class="card">
+<label>To</label><input type="email" name="to_email" value="{{ o.to_email }}" {{ 'disabled' if o.status=='sent' }}>
+<label>Subject</label><input type="text" name="subject" value="{{ o.subject }}" {{ 'disabled' if o.status=='sent' }}>
+<label>Body</label><textarea name="body" style="min-height:320px" {{ 'disabled' if o.status=='sent' }}>{{ o.body }}</textarea>
+{% if o.status != 'sent' %}<div class="actions"><button class="btn">Save</button><button class="btn primary" name="approve" value="1">Save &amp; approve</button></div>{% endif %}
+{% if o.error %}<p class="muted">Last error: {{ o.error }}</p>{% endif %}
+</form>
+<a href="/outreach">&larr; Back</a>
+{% endblock %}

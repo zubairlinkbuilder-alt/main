@@ -1,0 +1,29 @@
+{% extends "base.html" %}{% block content %}
+<h1>Scan websites</h1>
+<form method="post" class="card">
+<h2>1. Websites</h2>
+{% if not sites %}<p class="muted">No websites yet - <a href="/websites">add some</a>.</p>{% endif %}
+<p><label class="inline"><input type="checkbox" data-checkall="website_ids"> <b>Select all</b></label></p>
+<div class="grid">{% for s in sites %}<label class="inline"><input type="checkbox" name="website_ids" value="{{ s.id }}"> {{ s.domain }}</label>{% endfor %}</div>
+<h2 style="margin-top:20px">2. Date range (article publish date)</h2>
+<div class="row">
+<div><label>From</label><input type="date" name="start" value="{{ week_ago }}" id="start"></div>
+<div><label>To</label><input type="date" name="end" value="{{ today }}" id="end"></div>
+<div><label>Max articles per site</label><input type="number" name="max_per_site" value="30" min="1" max="500"></div>
+</div>
+<div class="actions small">Quick:
+<button type="button" class="btn" onclick="rng(0)">Today</button>
+<button type="button" class="btn" onclick="rng(1)">Yesterday+today</button>
+<button type="button" class="btn" onclick="rng(7)">Last 7 days</button>
+<button type="button" class="btn" onclick="rng(30)">Last 30 days</button></div>
+<h2 style="margin-top:10px">3. Options</h2>
+<label class="inline"><input type="checkbox" name="auto_emails" value="1" checked> Find emails for new prospect domains right after the scan</label><br>
+<label class="inline"><input type="checkbox" name="rescan" value="1"> Re-scan articles already scanned</label>
+<div class="actions"><button class="btn primary">Start scan</button></div>
+<p class="muted small">Only links inside the article body are used (nav, sidebar, footer, comments, author box and share buttons are stripped). Blocklisted domains are ignored. Each link is checked live: <span class="tag live">live</span> <span class="tag blocked">blocked</span> (bot protection - site exists, page unconfirmed) <span class="tag dead">dead</span>. Dead links are not turned into prospects.</p>
+</form>
+<script>
+function rng(d){var e=new Date(),s=new Date();s.setDate(e.getDate()-d);
+var f=function(x){return x.toISOString().slice(0,10)};document.getElementById('start').value=f(s);document.getElementById('end').value=f(e)}
+</script>
+{% endblock %}

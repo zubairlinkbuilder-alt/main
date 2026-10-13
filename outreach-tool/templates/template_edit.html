@@ -1,0 +1,17 @@
+{% extends "base.html" %}{% block content %}
+<h1>{{ 'Edit' if tpl else 'New' }} template</h1>
+<div class="row" style="align-items:start">
+<form method="post" class="card" style="flex:2">
+<label>Name</label><input type="text" name="name" value="{{ tpl.name if tpl else '' }}" required>
+<label>Subject</label><input type="text" name="subject" value="{{ tpl.subject if tpl else '' }}" required>
+<label>Body</label><textarea name="body" style="min-height:320px" required>{{ tpl.body if tpl else '' }}</textarea>
+<p><label class="inline"><input type="checkbox" name="is_default" value="1" {{ 'checked' if tpl and tpl.is_default }}> Use as default template</label></p>
+<div class="actions"><button class="btn primary">Save template</button><a class="btn" href="/templates">Back</a></div>
+</form>
+<div class="card" style="flex:1"><h2>Variables</h2><p class="small muted">Click to copy, paste into subject or body.</p>
+{% for v in VARIABLES %}<div><code style="cursor:pointer" onclick="navigator.clipboard.writeText(this.textContent)">{{ '{{' }}{{ v }}{{ '}}' }}</code></div>{% endfor %}
+<p class="small muted">site_name = prospect's site name &middot; source_site / article_title / article_url = the article that linked to them &middot; linked_url / anchor_text = the link itself &middot; my_name / my_website from Settings.</p></div>
+</div>
+{% if preview %}<div class="card"><h2>Preview <span class="muted small">(using {{ preview.from }})</span></h2>
+<p><b>Subject:</b> {{ preview.subject }}</p><pre style="white-space:pre-wrap;font-family:inherit">{{ preview.body }}</pre></div>{% endif %}
+{% endblock %}

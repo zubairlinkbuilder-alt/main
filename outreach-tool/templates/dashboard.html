@@ -1,0 +1,28 @@
+{% extends "base.html" %}{% block content %}
+<h1>Dashboard</h1>
+{% if not settings.gmail_app_password %}<div class="flash">Step 1: open <a href="/settings">Settings</a> and add your Gmail address + App Password before sending.</div>{% endif %}
+<div class="grid">
+  <div class="stat"><b>{{ stats.websites }}</b>Websites</div>
+  <div class="stat"><b>{{ stats.articles }}</b>Articles scanned</div>
+  <div class="stat"><b>{{ stats.links }}</b>External links</div>
+  <div class="stat"><b>{{ stats.prospects }}</b>Prospect domains</div>
+  <div class="stat"><b>{{ stats.with_email }}</b>With email</div>
+  <div class="stat"><b>{{ stats.drafts }}</b>Drafts</div>
+  <div class="stat"><b>{{ stats.approved }}</b>Approved</div>
+  <div class="stat"><b>{{ stats.sent }}</b>Sent ({{ sent_today }} today)</div>
+</div>
+<div class="card" style="margin-top:16px">
+<h2>Workflow</h2>
+<ol>
+<li><a href="/websites">Websites</a> - add the sites you want to monitor.</li>
+<li><a href="/scan">Scan</a> - pick sites + date range. The tool finds articles, extracts external links from the article body and checks each link is live.</li>
+<li><a href="/prospects">Prospects</a> - find emails on the linked sites, check/fix them, then create drafts from a template.</li>
+<li><a href="/outreach">Drafts &amp; Send</a> - review, edit, approve, push to Gmail Drafts or send.</li>
+</ol>
+</div>
+<div class="card"><h2>Recent jobs</h2>
+<table><tr><th>#</th><th>Kind</th><th>Status</th><th>Progress</th><th>Started (UTC)</th></tr>
+{% for j in recent %}<tr><td><a href="/jobs/{{ j.id }}">{{ j.id }}</a></td><td>{{ j.kind }}</td><td><span class="tag {{ j.status }}">{{ j.status }}</span></td><td>{{ j.progress }}/{{ j.total }}</td><td>{{ j.created_at }}</td></tr>
+{% else %}<tr><td colspan="5" class="muted">No jobs yet.</td></tr>{% endfor %}
+</table></div>
+{% endblock %}
