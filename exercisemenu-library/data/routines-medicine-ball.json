@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "medicine-ball-full-body-workout",
+    "title": "Medicine Ball Full-Body Workout (3 Days, Beginner)",
+    "excerpt": "A 3-day beginner medicine ball workout plan with sets, reps and rest for every exercise, plus how to progress it week by week.",
+    "content": "<p>This plan uses one medicine ball, and a slam ball if you have one, to train your whole body three times a week. Each day mixes explosive throws with slower core work, so you build power and control in the same session.</p><p>Train on three non-consecutive days, such as Monday, Wednesday and Friday. Warm up for five minutes first with light cardio and a few bodyweight squats and arm circles.</p>[em_routine_plan]<h2>Which ball weight to use</h2><p>For the throws (chest pass, overhead throw and rotational throw), pick a ball light enough to move fast, usually 2–4 kg (4–9 lb) for beginners. For slams, use a non-bouncing slam ball. For wall balls, choose a weight you can throw to the target for every rep in the set.</p><h2>How to progress</h2><p>Once you complete every set and rep with good form for two sessions in a row, add one rep per set or move up to a slightly heavier ball. On the throws, try to throw faster before you go heavier. Our guide to <a href=\"/progressive-overload-for-beginners/\">progressive overload for beginners</a> covers more ways to keep moving forward, and if numbers like 3×10 are new to you, see <a href=\"/what-does-3x10-4x12-or-5x5-mean-workout/\">what 3x10, 4x12 and 5x5 mean</a>.</p><p><em>If you have an injury or a medical condition, check with your doctor before starting a new program.</em></p>",
+    "goal": ["Full body", "Power"],
+    "level": ["Beginner"],
+    "equipment": ["Medicine ball"],
+    "plan": [
+      "# Day 1: Push and Core",
+      "medicine-ball-chest-pass | 3 | 10 | 45",
+      "medicine-ball-slam | 3 | 10 | 60",
+      "medicine-ball-woodchop-squat | 3 | 8/side | 45",
+      "medicine-ball-close-grip-push-up | 3 | 8 | 60",
+      "medicine-ball-dead-bug | 2 | 8/side | 30",
+      "# Day 2: Legs and Rotation",
+      "wall-ball | 3 | 12 | 60",
+      "medicine-ball-rotational-throw | 3 | 6/side | 45",
+      "medicine-ball-russian-twist | 3 | 10/side | 30",
+      "medicine-ball-crunch | 2 | 12 | 30",
+      "# Day 3: Total-Body Power",
+      "medicine-ball-overhead-throw | 3 | 8 | 60",
+      "wall-ball | 3 | 10 | 60",
+      "medicine-ball-chest-pass | 2 | 12 | 45",
+      "medicine-ball-slam | 2 | 10 | 60",
+      "medicine-ball-dead-bug | 3 | 8/side | 30"
+    ]
+  }
+]
