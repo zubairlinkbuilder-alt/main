@@ -1,5 +1,7 @@
 # Gym Visual purchase list: batch 1 (medicine ball)
 
+> **Superseded:** the current, verified list with every Gym Visual ID is the Buy List sheet in `deliverables/ExerciseMenu-GIF-Plan.xlsx`.
+
 Buy only from **gymvisual.com**, not resellers. Gym Visual's licence (Non-Exclusive Commercial
 Royalty-Free) does not allow redistributing the files or using them in AI tools or as a basis
 for AI-generated content. Keep the invoice.
