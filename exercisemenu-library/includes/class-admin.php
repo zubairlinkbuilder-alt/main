@@ -34,11 +34,21 @@ class EM_Admin {
 			}
 		}
 
+		if ( isset( $_POST['em_rescan'] ) && check_admin_referer( 'em_rescan' ) ) {
+			printf( '<div class="notice notice-success"><p>Scanned %d posts and pages for exercise links.</p></div>', (int) EM_Links::index_all() );
+		}
+
 		echo '<h2>Import bundled content</h2>';
 		echo '<p>Creates the exercises and routines in the plugin\'s <code>data</code> folder as drafts. Anything with the same slug is left alone.</p>';
 		echo '<form method="post">';
 		wp_nonce_field( 'em_import' );
 		echo '<p><button class="button button-primary" name="em_import" value="1">Import</button></p></form>';
+
+		echo '<h2>Article links</h2>';
+		echo '<p>Exercise pages list the posts and pages that link to them. Posts are scanned when saved; rescan once after installing or after bulk edits.</p>';
+		echo '<form method="post">';
+		wp_nonce_field( 'em_rescan' );
+		echo '<p><button class="button" name="em_rescan" value="1">Rescan articles</button></p></form>';
 
 		self::checklist();
 		echo '</div>';

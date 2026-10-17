@@ -22,6 +22,7 @@ require_once EM_LIB_DIR . 'includes/class-routine-plan.php';
 require_once EM_LIB_DIR . 'includes/class-meta.php';
 require_once EM_LIB_DIR . 'includes/class-render.php';
 require_once EM_LIB_DIR . 'includes/class-library.php';
+require_once EM_LIB_DIR . 'includes/class-links.php';
 require_once EM_LIB_DIR . 'includes/class-seo.php';
 require_once EM_LIB_DIR . 'includes/class-importer.php';
 require_once EM_LIB_DIR . 'includes/class-admin.php';
@@ -30,6 +31,7 @@ EM_Post_Types::init();
 EM_Meta::init();
 EM_Render::init();
 EM_Library::init();
+EM_Links::init();
 EM_SEO::init();
 EM_Admin::init();
 
@@ -43,6 +45,7 @@ register_activation_hook(
 	function () {
 		EM_Post_Types::register();
 		flush_rewrite_rules();
+		EM_Links::index_all();
 	}
 );
 

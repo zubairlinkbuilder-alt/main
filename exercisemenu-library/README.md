@@ -9,6 +9,9 @@ LoadMuscle links routines to exercises, with stricter quality control.
 - **Routines** at `/workout-routines/{slug}/`: day-by-day tables (exercise, sets, reps, rest).
   Every exercise name links to its guide. Days per week, exercise count and session length
   are calculated from the plan.
+- **Articles ↔ exercises**: every exercise page lists the posts/pages that link to it
+  ("Related articles"), and the post edit screen has an *Exercise links* box listing
+  exercises the article names but doesn't link yet, with the URL ready to copy.
 - **Library pages** `/exercises/` and `/workout-routines/`: filterable grids (muscle, equipment, level, goal).
 - **Index control**: nothing reaches Google until you tick *Ready to index*.
 
@@ -73,6 +76,16 @@ exercise for setup. Warm-up is not included.
 Works with WordPress core sitemaps, Yoast SEO and Rank Math. It has been tested on
 core WordPress only; with Yoast or Rank Math, open one unticked exercise and check its
 robots tag once.
+
+## Linking articles to exercises
+
+Link the first mention of each exercise in an article to its `/exercises/{slug}/` page.
+The *Exercise links* box on the post screen shows which named exercises are still unlinked
+(it reads the last saved version). Links are recorded when a post is saved; after installing,
+click **Tools → Exercise Library → Rescan articles** once so existing articles are picked up.
+
+This adds more internal links per article than the ExerciseMenu article-writer skill's
+3–4 link limit allows. Decide whether exercise-name links count toward that limit.
 
 ## Adding more exercises in bulk
 

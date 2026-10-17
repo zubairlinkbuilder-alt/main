@@ -130,6 +130,15 @@ class EM_Render {
 			$out .= '</ul>';
 		}
 
+		$articles = EM_Links::articles_linking_to( $post->post_name );
+		if ( $articles ) {
+			$out .= '<h2>Related articles</h2><ul>';
+			foreach ( $articles as $article ) {
+				$out .= '<li><a href="' . esc_url( get_permalink( $article ) ) . '">' . esc_html( get_the_title( $article ) ) . '</a></li>';
+			}
+			$out .= '</ul>';
+		}
+
 		return $out;
 	}
 
