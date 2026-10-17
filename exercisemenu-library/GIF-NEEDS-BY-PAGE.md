@@ -1,5 +1,7 @@
 # ExerciseMenu: which pages need which exercise GIFs
 
+> **Superseded:** the current plan, with every image checked for form, is `deliverables/ExerciseMenu-GIF-Plan.xlsx`.
+
 Source: all 115 posts in exercisemenu.com/post-sitemap.xml, fetched 17 Oct 2026. Every
 content image was listed with its section heading and alt text, then sorted into
 **exercise demos** (replace with a GIF) and **infographics / charts / photos** (keep).
