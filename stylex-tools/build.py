@@ -12,18 +12,24 @@ HERE = pathlib.Path(__file__).parent
 SRC = HERE / "src"
 DIST = HERE / "dist"
 
-PAGES = ["face-shape.html", "age-test.html"]
+PAGES = ["face-shape.html", "age-test.html", "face-shape-quiz.html"]
 
 
 def build() -> None:
     css = (SRC / "_ui.css").read_text(encoding="utf-8")
     engine = (SRC / "engine.js").read_text(encoding="utf-8")
+    quiz = (SRC / "quiz-engine.js").read_text(encoding="utf-8")
     DIST.mkdir(exist_ok=True)
 
     for name in PAGES:
         html = (SRC / name).read_text(encoding="utf-8")
-        for token, payload in (("/*!INJECT_CSS*/", css), ("/*!INJECT_ENGINE*/", engine)):
+        for token, payload in (("/*!INJECT_CSS*/", css),
+                               ("/*!INJECT_ENGINE*/", engine),
+                               ("/*!INJECT_QUIZ*/", quiz)):
             if token not in html:
+                # only the quiz page needs the quiz engine
+                if token == "/*!INJECT_QUIZ*/":
+                    continue
                 raise SystemExit(f"{name}: missing {token}")
             html = html.replace(token, payload)
         out = DIST / name

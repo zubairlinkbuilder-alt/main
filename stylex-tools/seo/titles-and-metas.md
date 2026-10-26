@@ -91,3 +91,35 @@ names, so they belong on one URL.
 Both sets contain `from photo`, `ai`, `free` and `app` variants. Same intent,
 different vocabulary. Cover both on `/face-shape-calculator/` with an H2 and
 an FAQ entry using the "detector" phrasing, rather than a second page.
+
+---
+
+## /face-shape-quiz/
+
+**Title (recommended)** — 53
+```
+Face Shape Quiz: What Is My Face Shape? (7 Questions)
+```
+
+**Meta description (recommended)** — 148
+```
+Answer 7 questions and find your face shape in about a minute — no tape measure, no photo. Then see the haircuts that suit it and the ones to avoid.
+```
+
+Alternates:
+
+| Len | Title |
+|---|---|
+| 53 | Face Shape Quiz — Find Your Shape & Best Haircut Free |
+| 55 | Face Shape Quiz: Your Shape + The Haircuts That Suit It |
+| 49 | What Is My Face Shape? Free Quiz, No Tape Measure |
+
+| Len | Description |
+|---|---|
+| 153 | Free face shape quiz. Seven questions, no measuring and no photo, then the exact haircuts, fringe and beard shape for your face. Works for men and women. |
+| 157 | What is my face shape? Take the 7-question quiz and get your shape in 60 seconds, plus the cuts that work with your proportions and the ones that fight them. |
+
+The title carries both the category term (`face shape quiz`) and the
+question people actually type (`what is my face shape`). "No tape measure"
+is the quiz's reason to exist next to the calculator, so it earns the
+description.

@@ -8,6 +8,7 @@ no server, no API key and no per-use cost.
 |---|---|---|
 | **Face Shape Detector & Haircut Finder** (primary) | `dist/face-shape.html` | face shape / haircut cluster |
 | **How Old Do I Look?** | `dist/age-test.html` | apparent-age cluster |
+| **Face Shape Quiz** | `dist/face-shape-quiz.html` | quiz cluster, haircut gap |
 
 ---
 
@@ -48,6 +49,7 @@ can now reach the tool. All classes are namespaced `sx-` to limit collisions.
 | Haircut / beard recommendations | `SHAPES` in `src/engine.js` |
 | Internal links shown with the result | `LINKS` at the top of each page's script |
 | Classifier calibration | `TUNING` in `src/engine.js` |
+| Quiz questions and answer weights | `src/quiz-engine.js` |
 | Colours, spacing | `src/_ui.css` (tokens at the top) |
 | The face shape CTA target | search `face-shape-calculator` in `src/age-test.html` |
 
@@ -56,6 +58,7 @@ After editing anything in `src/`, rebuild:
 ```
 python3 build.py          # writes dist/
 node tests/classify.test.mjs
+node tests/quiz.test.mjs
 ```
 
 `LINKS` starts empty on purpose — add only URLs confirmed in your sitemap, or
@@ -142,10 +145,29 @@ Still do this before launch:
 
 ---
 
+## The quiz
+
+`dist/face-shape-quiz.html` is a different route to the same answer: seven
+questions, no photo and no measuring, for people who have neither a tape
+measure nor a usable straight-on photo. It loads no model at all, so it is
+instant and makes zero network requests after the page itself.
+
+Answer weights live in `src/quiz-engine.js`. Each option carries weights
+across the seven shapes; they are summed and the highest total wins, with a
+close second reported when the top two finish within 12 percent.
+
+Face length is the heaviest-weighted question because it is the only thing
+separating oblong from square. In the first draft it was not, and every
+oblong answer set scored as square — `tests/quiz.test.mjs` caught it.
+
+`seo/quiz-research.md` has the keyword analysis the page content was built
+against, and the cannibalisation boundaries between the three tool pages.
+
 ## Tests
 
 ```
 node tests/classify.test.mjs
+node tests/quiz.test.mjs
 ```
 
 Checks all seven archetypes classify correctly, that an average face does not

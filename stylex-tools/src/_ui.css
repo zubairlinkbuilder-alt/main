@@ -243,3 +243,68 @@
 .sx-field:focus-visible{outline:2px solid var(--sx-accent); outline-offset:1px}
 .sx-field-label{font-weight:650; font-size:.93rem; display:block; margin-bottom:7px}
 .sx-dot{width:9px; height:9px; border-radius:999px; display:inline-block; margin-right:7px; background:var(--sx-accent)}
+
+/* ==================================================================
+   Quiz
+   ================================================================== */
+.sx-q{margin:0 0 4px}
+.sx-q-head{display:flex; align-items:baseline; gap:10px; margin:0 0 14px; flex-wrap:wrap}
+.sx-q-num{
+  font-size:.74rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--sx-muted); white-space:nowrap;
+}
+.sx-q h2{font-size:clamp(1.1rem,3.2vw,1.3rem); font-weight:700; margin:0; flex:1 1 220px; min-width:0}
+.sx-q-hint{font-size:.87rem; color:var(--sx-muted); margin:0 0 16px}
+
+.sx-opts{display:grid; gap:10px; margin:0; padding:0; list-style:none}
+.sx-opt{
+  display:flex; gap:12px; align-items:flex-start; width:100%; text-align:left;
+  font:inherit; cursor:pointer; color:var(--sx-text);
+  background:var(--sx-bg); border:1.5px solid var(--sx-border);
+  border-radius:12px; padding:14px 16px; min-height:52px;
+  transition:border-color .12s, background .12s;
+}
+.sx-opt:hover{border-color:var(--sx-accent); background:var(--sx-surface)}
+.sx-opt:focus-visible{outline:2px solid var(--sx-accent); outline-offset:2px}
+.sx-opt[aria-pressed="true"]{border-color:var(--sx-accent); background:var(--sx-surface)}
+.sx-opt[aria-pressed="true"] .sx-opt-mark{background:var(--sx-accent); border-color:var(--sx-accent)}
+.sx-opt[aria-pressed="true"] .sx-opt-mark::after{opacity:1}
+.sx-opt-mark{
+  flex:0 0 20px; width:20px; height:20px; margin-top:2px; border-radius:999px;
+  border:2px solid var(--sx-border); position:relative; background:var(--sx-bg);
+}
+.sx-opt-mark::after{
+  content:""; position:absolute; inset:4px; border-radius:999px;
+  background:var(--sx-brand-ink); opacity:0; transition:opacity .12s;
+}
+.sx-opt b{display:block; font-weight:650; font-size:.96rem; margin-bottom:2px}
+.sx-opt span{display:block; font-size:.85rem; color:var(--sx-muted)}
+
+.sx-qbar{display:flex; align-items:center; gap:12px; margin:0 0 20px}
+.sx-qbar-track{flex:1; height:6px; background:var(--sx-surface-2); border-radius:999px; overflow:hidden; min-width:0}
+.sx-qbar-track i{display:block; height:100%; width:0; background:var(--sx-accent); transition:width .25s}
+.sx-qbar-text{font-size:.82rem; color:var(--sx-muted); white-space:nowrap; font-variant-numeric:tabular-nums}
+
+.sx-qnav{display:flex; gap:10px; justify-content:space-between; margin-top:20px; flex-wrap:wrap}
+
+.sx-verdict{
+  text-align:center; padding:10px 0 4px;
+  border-bottom:1px solid var(--sx-border); margin-bottom:20px;
+}
+.sx-verdict .sx-eyebrow{font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--sx-muted); margin:0 0 6px}
+.sx-verdict .sx-big{font-size:clamp(2rem,7vw,2.8rem); font-weight:800; letter-spacing:-.02em; margin:0}
+.sx-verdict .sx-sub{color:var(--sx-muted); font-size:.9rem; margin:8px 0 18px}
+
+.sx-split{
+  background:var(--sx-surface); border:1px solid var(--sx-border);
+  border-left:4px solid var(--sx-accent); border-radius:0 10px 10px 0;
+  padding:14px 16px; margin:0 0 20px; font-size:.9rem;
+}
+.sx-split strong{color:var(--sx-text)}
+
+.sx-chips{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 4px; padding:0; list-style:none}
+.sx-chip{
+  font-size:.82rem; font-weight:600; padding:7px 13px; border-radius:999px;
+  background:var(--sx-surface-2); color:var(--sx-text); border:1px solid var(--sx-border);
+}
+.sx-chip--on{background:var(--sx-accent); border-color:var(--sx-accent); color:var(--sx-brand-ink)}

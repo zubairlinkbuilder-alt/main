@@ -1,0 +1,151 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://stylexmagazine.com/face-shape-quiz/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StyleX Magazine",
+          "item": "https://stylexmagazine.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://stylexmagazine.com/tools/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Face Shape Quiz",
+          "item": "https://stylexmagazine.com/face-shape-quiz/"
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://stylexmagazine.com/face-shape-quiz/#app",
+      "name": "Face Shape Quiz",
+      "url": "https://stylexmagazine.com/face-shape-quiz/",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Any modern web browser",
+      "browserRequirements": "Requires JavaScript. No installation, no photo and no sign-up.",
+      "description": "A seven-question quiz that identifies your face shape without a tape measure or a photo, then gives the haircuts that suit it and the ones to avoid.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://stylexmagazine.com/#website"
+      },
+      "significantLink": "https://stylexmagazine.com/face-shape-calculator/",
+      "featureList": [
+        "Seven questions, no measuring and no photo",
+        "Scores all seven face shapes and reports a close second",
+        "Haircut recommendations for men and women",
+        "Beard and facial hair guidance",
+        "Shows how each answer was scored"
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://stylexmagazine.com/face-shape-quiz/#howto",
+      "name": "How to find your face shape without measuring",
+      "totalTime": "PT1M",
+      "description": "Four checks in a mirror that narrow seven face shapes down to one.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Clear your face",
+          "text": "Pull all your hair back off your face, including a fringe, and stand square to a mirror with your chin level."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Find your widest point",
+          "text": "Compare three widths by eye: the forehead at the hairline, the cheekbones under the outer corners of your eyes, and the jaw at its widest."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Compare length to width",
+          "text": "Judge the distance from hairline to chin against the width across your cheekbones. Clearly longer points to oblong; about equal points to round or square."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Read your chin",
+          "text": "A pointed chin points to heart or diamond, a rounded chin to round or oval, and a square chin to square or oblong."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://stylexmagazine.com/face-shape-quiz/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What face type am I if I am between two shapes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both, in practice. The seven shapes are a stylist's shorthand rather than biological categories, and most faces borrow from two. When the quiz finds a close call it names both, and the cuts that appear on both lists are the ones that will work on you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know my face shape without measuring?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Answer two questions in a mirror with your hair pulled back. Which is widest, the forehead, cheekbones or jaw? And is your face longer than it is wide, or about the same? Those two answers narrow seven shapes to two, and your chin shape usually settles it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can my face shape change?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The bone structure does not, but what you see does. Weight changes alter cheek fullness and jaw definition, ageing softens the jawline, and facial hair changes the lower third outright. Re-checking every year or so is reasonable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a face shape quiz as accurate as a photo detector?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They have different kinds of error. A quiz depends on how well you judge your own face, while a photo tool depends on camera angle, lens distance and lighting. Measurements are the most reliable of the three. If a quiz and a detector disagree, you are probably between two shapes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the apple face shape?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A make-up term rather than a bone-structure category. It describes a round face with full cheeks and a soft jaw, so treat it as round and use the round recommendations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which face shape is best for haircuts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oval, only because it is the most forgiving and fights the fewest cuts. That is not the same as better looking, and every other shape has cuts that suit it better than they suit an oval face. The goal is to pick a cut that works with the proportions you have."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this quiz store my answers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Everything runs in your browser and nothing is sent anywhere. Close the page and the answers are gone."
+          }
+        }
+      ]
+    }
+  ]
+}
