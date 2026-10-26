@@ -33,7 +33,7 @@
       "applicationCategory": "EntertainmentApplication",
       "operatingSystem": "Any modern web browser",
       "browserRequirements": "Requires JavaScript. No installation or sign-up.",
-      "description": "Estimates the apparent age of a face from a photo. Guess your own result first, then compare. Runs entirely in the browser; photos are never uploaded. It estimates apparent age only and is not a biological age or health measurement.",
+      "description": "Estimates the apparent age of a face from a photo or selfie, shown as a range. Runs entirely in the browser; photos are never uploaded. It estimates apparent age only and is not a biological age or health measurement.",
       "offers": {
         "@type": "Offer",
         "price": "0",
