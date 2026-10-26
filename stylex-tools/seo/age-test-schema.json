@@ -3,7 +3,7 @@
   "@graph": [
     {
       "@type": "BreadcrumbList",
-      "@id": "https://stylexmagazine.com/tools/how-old-do-i-look/#breadcrumb",
+      "@id": "https://stylexmagazine.com/ai-face-age-estimation/#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -21,15 +21,15 @@
           "@type": "ListItem",
           "position": 3,
           "name": "How Old Do I Look",
-          "item": "https://stylexmagazine.com/tools/how-old-do-i-look/"
+          "item": "https://stylexmagazine.com/ai-face-age-estimation/"
         }
       ]
     },
     {
       "@type": "WebApplication",
-      "@id": "https://stylexmagazine.com/tools/how-old-do-i-look/#app",
+      "@id": "https://stylexmagazine.com/ai-face-age-estimation/#app",
       "name": "How Old Do I Look? AI Face Age Test",
-      "url": "https://stylexmagazine.com/tools/how-old-do-i-look/",
+      "url": "https://stylexmagazine.com/ai-face-age-estimation/",
       "applicationCategory": "EntertainmentApplication",
       "operatingSystem": "Any modern web browser",
       "browserRequirements": "Requires JavaScript. No installation or sign-up.",
@@ -50,7 +50,7 @@
     },
     {
       "@type": "FAQPage",
-      "@id": "https://stylexmagazine.com/tools/how-old-do-i-look/#faq",
+      "@id": "https://stylexmagazine.com/ai-face-age-estimation/#faq",
       "mainEntity": [
         {
           "@type": "Question",
@@ -96,7 +96,7 @@
     },
     {
       "@type": "HowTo",
-      "@id": "https://stylexmagazine.com/tools/how-old-do-i-look/#howto",
+      "@id": "https://stylexmagazine.com/ai-face-age-estimation/#howto",
       "name": "How to photograph your face for an accurate age estimate",
       "description": "Five steps that keep lighting, angle and resolution from skewing the result.",
       "totalTime": "PT1M",

@@ -7,35 +7,45 @@ plugin override anyway.
 
 ---
 
-## /tools/how-old-do-i-look/
+## /ai-face-age-estimation/
 
-**Title (recommended)** ,  40
+> URL changed from `/tools/how-old-do-i-look/` to `/ai-face-age-estimation/`.
+> The new slug is itself a strong keyword, which changes the title pair: the
+> title now carries both the slug phrase and the question people type.
+
+**Title (recommended)**, 46
 ```
-How Old Do I Look? Free AI Face Age Test
+How Old Do I Look? Free AI Face Age Estimation
 ```
 
-**Meta description (recommended)** ,  156
+**Meta description (recommended)**, 155
 ```
-Free AI face age test. Upload a photo or take a selfie to find out how old you look, shown as a range. Nothing is uploaded, everything runs in your browser.
+Free AI face age estimation. Upload a photo or selfie to find out how old you look, shown as a range. Nothing is uploaded, every step runs in your browser.
 ```
 
 Alternates:
 
 | Len | Title |
 |---|---|
-| 51 | How Old Do I Look? Free AI Age Test From Your Photo |
-| 53 | How Old Do I Look? AI Face Age Test, Nothing Uploaded |
-| 47 | How Old Do I Look? Free Face Age Test (Private) |
+| 49 | AI Face Age Estimation: How Old Do I Look? (Free) |
+| 52 | Face Age Estimation: How Old Do I Look? Free AI Test |
+| 49 | AI Face Age Estimation, Free Online Face Age Test |
+| 40 | How Old Do I Look? Free AI Face Age Test |
 
 | Len | Description |
 |---|---|
-| 146 | Upload a photo and see how old your face looks. Guess your result first, then compare. Free, no sign-up, and your photo never leaves your browser. |
-| 148 | Find out how old you look from a photo in seconds. Guess first, then see the result. 100% free, no sign-up, and your photo never leaves your device. |
+| 151 | AI face age estimation that reads your apparent age from a photo in seconds. Guess your result first, then compare. Free, no sign-up, nothing uploaded. |
+| 149 | How old do I look? Free AI face age estimation from a photo or selfie, shown as a range. Guess first, then compare. Nothing uploaded, nothing stored. |
 
-The exact-match phrase leads the title because "how old do i look" is the head
-term and competitors own it with pure-play domains. "Nothing uploaded" is the
-one claim none of them can make, so it earns its place in the description.
+Why this pair wins over the old `/tools/how-old-do-i-look/` title:
 
+- The slug itself is the keyword, so the URL, title, H1 and first paragraph
+  all line up on `ai face age estimation` without stuffing.
+- `how old do i look` stays as the question in the title, because that is
+  what people type into search.
+- The slug phrase has lower volume than the question but is far less
+  competitor-saturated (no pure-play `.com` holds it), so this page can own
+  the phrase outright.
 ---
 
 ## /face-shape-calculator/
