@@ -383,8 +383,8 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
         res.sourceWidth = crop.size;
         res.cropX = crop.x;
         res.cropY = crop.y;
-        ui.preview.src = crop.canvas.toDataURL('image/jpeg', 0.9);
         ui.preview.onload = function () { render(res); busy(false); ui.progress.classList.add('sx-hidden'); say(''); };
+        ui.preview.src = crop.canvas.toDataURL('image/jpeg', 0.9);
       });
     }).catch(function (err) {
       console.error('[StyleX] analysis failed', err);
@@ -392,14 +392,25 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
     });
   }
 
+  // Read the file as a data: URL rather than an object URL. A strict
+  // Content-Security-Policy (img-src 'self' data:) blocks blob: images, which
+  // is what makes an upload fail silently inside an embed or an iframe.
   function handleFile(file) {
     if (!file) return;
-    if (!/^image\//.test(file.type)) { say('That file is not an image.'); return; }
-    var url = URL.createObjectURL(file);
-    var img = new Image();
-    img.onload = function () { run(img); URL.revokeObjectURL(url); };
-    img.onerror = function () { say('That image could not be read.'); URL.revokeObjectURL(url); };
-    img.src = url;
+    if (file.type && !/^image\//.test(file.type)) { say('That is not an image file.'); return; }
+    if (/heic|heif/i.test(file.type) || /\.(heic|heif)$/i.test(file.name || '')) {
+      say('iPhone HEIC photos cannot be read by browsers. Convert it to JPG and try again.');
+      return;
+    }
+    var reader = new FileReader();
+    reader.onload = function () {
+      var img = new Image();
+      img.onload = function () { run(img); };
+      img.onerror = function () { say('That image could not be decoded. Try a JPG, PNG or WebP file.'); };
+      img.src = reader.result;
+    };
+    reader.onerror = function () { say('That file could not be read. Try another one.'); };
+    reader.readAsDataURL(file);
   }
 
   /* ------------------------------- camera --------------------------- */

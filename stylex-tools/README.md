@@ -71,10 +71,22 @@ dark mode moves to `#2B2D42` with the gold kept as the accent. Gold carries
 would fail contrast outright. Change a token in one place and both tools
 follow.
 
+### Why the photo is read with FileReader, not createObjectURL
+
+`URL.createObjectURL` produces a `blob:` URL, and a strict
+Content-Security-Policy with `img-src 'self' data:` blocks it — the image
+simply fails to load and the tool reports that it could not read the file.
+Both tools now read uploads with `FileReader.readAsDataURL`, which works under
+that policy. If you add a CSP to your own site, keep `data:` in `img-src`.
+
+HEIC is detected and rejected with a clear message, because no browser decodes
+it. iPhone users either convert to JPG or switch Settings › Camera › Formats
+to "Most Compatible".
+
 ### Why the CTA is in the static HTML
 
-The face shape button appears twice: once above the tool and once with the
-result. Both are in the page source at load, not injected after analysis.
+The face shape button sits directly below the tool, in the page source at
+load rather than injected after an analysis.
 That matters — a crawler never uploads a photo, so anything rendered only in
 the result state is invisible to it. The same goes for the prose sections:
 every H2 is in the HTML at rest.

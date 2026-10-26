@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How Old Do I Look</title>
-<meta name="description" content="Find out how old you look from a photo. Guess your result first, then compare. Free, no sign-up, and your photo never leaves your browser.">
+<meta name="description" content="Free AI face age test. Upload a photo or take a selfie and find out how old you look. Guess your result first, then compare. Your photo never leaves your browser.">
 <style>/*!INJECT_CSS*/</style>
 <style>
 /* Standalone page only — DELETE this block when pasting the tool into a
@@ -22,87 +22,116 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
     <span aria-current="page">How Old Do I Look</span>
   </nav>
 
-  <h1>How Old Do I Look?</h1>
-  <p class="sx-lede">Upload a photo and the tool estimates the age your face reads as — your <em>apparent</em> age, not your real one. Guess your result first, then see how close you were.</p>
+  <h1 class="sx-title">How Old Do I Look?</h1>
+  <p class="sx-subtitle">Free AI Face Age Test — Nothing Uploaded</p>
 
-  <div class="sx-privacy">
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    <span><strong>Your photo never leaves this page.</strong> The model runs in your browser. Nothing is uploaded, stored, or shared — so there is nothing for anyone to leak.</span>
+  <div class="sx-quick">
+    <h2>Quick Answer</h2>
+    <p>Upload a photo or take a selfie and the tool estimates your <strong>apparent age</strong> — the age your face reads as, shown as a range rather than one number. Guess your result first and compare. It is not your biological age and not a health measurement. Free, no sign-up, and every step runs in your browser.</p>
   </div>
 
+  <!-- ================================ APP ================================ -->
+  <div class="sx-app">
+
+    <div class="sx-app-head">
+      <div>
+        <strong>StyleX Face Age Test</strong>
+        <span class="sx-app-sub">Upload Photo · Take Selfie — all processed in your browser, nothing stored</span>
+      </div>
+      <span class="sx-pill">100% FREE</span>
+    </div>
+
+    <div class="sx-tabs" role="tablist" aria-label="How to add your photo">
+      <button type="button" role="tab" id="sx-tab-upload" aria-selected="true" aria-controls="sx-panel-upload" data-tab="upload">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+        Upload Photo
+      </button>
+      <button type="button" role="tab" id="sx-tab-selfie" aria-selected="false" aria-controls="sx-panel-selfie" data-tab="selfie">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        Selfie Mode
+      </button>
+    </div>
+
+    <div class="sx-app-body">
+
+      <ol class="sx-steps" id="sx-steps">
+        <li data-step="1" data-on="1"><b>1</b> Add photo</li>
+        <li class="sx-rule" aria-hidden="true"></li>
+        <li data-step="2"><b>2</b> Your guess</li>
+        <li class="sx-rule" aria-hidden="true"></li>
+        <li data-step="3"><b>3</b> Result</li>
+      </ol>
+
+      <!-- ---------------------------- INPUT ---------------------------- -->
+      <div id="sx-input">
+
+        <div id="sx-panel-upload" role="tabpanel" aria-labelledby="sx-tab-upload">
+          <div class="sx-drop" id="sx-drop" tabindex="0" role="button" aria-label="Choose a photo of your face">
+            <strong>Drop a photo here, or tap to choose one</strong>
+            <span>One face, looking at the camera, no sunglasses. JPG, PNG or WebP.</span>
+            <div class="sx-actions">
+              <button type="button" class="sx-btn" id="sx-pick">Choose photo</button>
+            </div>
+          </div>
+          <input type="file" accept="image/jpeg,image/png,image/webp,image/*" id="sx-file" class="sx-hidden">
+        </div>
+
+        <div id="sx-panel-selfie" role="tabpanel" aria-labelledby="sx-tab-selfie" hidden>
+          <div class="sx-stage"><video id="sx-video" playsinline muted></video></div>
+          <div class="sx-actions">
+            <button type="button" class="sx-btn" id="sx-shoot">Capture</button>
+            <button type="button" class="sx-btn sx-btn--ghost" id="sx-cam-stop">Stop camera</button>
+          </div>
+          <p class="sx-note" style="text-align:center;margin:12px 0 0">The camera needs an HTTPS page and your permission. Nothing is recorded or sent.</p>
+        </div>
+
+        <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--sx-border)">
+          <label class="sx-field-label" for="sx-guess"><span class="sx-dot"></span>Optional: what age do you think it will say?</label>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+            <input type="number" id="sx-guess" min="5" max="100" inputmode="numeric" placeholder="e.g. 27" class="sx-field">
+            <span class="sx-note" style="min-width:0">We compare it to the result. Kept on this page only.</span>
+          </div>
+        </div>
+
+        <div class="sx-progress sx-hidden" id="sx-progress"><i></i></div>
+        <p class="sx-status" id="sx-status"></p>
+      </div>
+
+      <!-- ---------------------------- RESULT ---------------------------- -->
+      <div class="sx-hidden" id="sx-result">
+
+        <div class="sx-alert sx-alert--warn sx-hidden" id="sx-warnings"></div>
+
+        <div class="sx-grid sx-grid--2">
+          <div class="sx-stage">
+            <img id="sx-preview" alt="The photo you analysed">
+            <canvas class="sx-overlay" id="sx-overlay"></canvas>
+          </div>
+          <div class="sx-hero">
+            <p class="sx-note" style="margin-bottom:4px">You look about</p>
+            <p class="sx-age" id="sx-age">—</p>
+            <p class="sx-conf" id="sx-range"></p>
+            <p class="sx-note sx-hidden" id="sx-verdict" style="margin-top:12px;font-size:.93rem;color:var(--sx-text)"></p>
+          </div>
+        </div>
+
+        <div class="sx-actions" style="margin-top:20px">
+          <button type="button" class="sx-btn sx-btn--ghost" id="sx-again">Try another photo</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================== CTA ============================== -->
   <div class="sx-cta">
-    <h2>Looking for a haircut, not a number?</h2>
-    <p>Apparent age is a party trick. The measurement that changes what actually suits you is your face shape — the ratio of forehead to cheekbone to jaw. It decides which haircut, fringe, beard line and glasses frame work on you.</p>
-    <a class="sx-btn sx-btn--cta" href="https://stylexmagazine.com/face-shape-calculator/">Find your face shape <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <h2>Now find the haircut that suits your face</h2>
+    <p>Apparent age is a party trick. The measurement that changes what actually suits you is your face shape — the ratio of forehead to cheekbone to jaw. It decides which haircut, fringe, beard line and glasses frame work on you, and which fight your proportions.</p>
+    <a class="sx-btn sx-btn--cta" href="https://stylexmagazine.com/face-shape-calculator/">Open the Face Shape Calculator <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <ul class="sx-links" id="sx-links" style="margin-top:16px"></ul>
   </div>
 
-  <!-- ------------------------------- INPUT ------------------------------- -->
-  <div class="sx-card" id="sx-input">
-    <div class="sx-drop" id="sx-drop" tabindex="0" role="button" aria-label="Choose a photo of your face">
-      <strong>Drop a photo here, or tap to choose one</strong>
-      <span>One face, looking at the camera, no sunglasses. JPG, PNG or WebP.</span>
-      <div class="sx-actions">
-        <button type="button" class="sx-btn" id="sx-pick">Choose photo</button>
-        <button type="button" class="sx-btn sx-btn--ghost" id="sx-cam">Use camera</button>
-      </div>
-    </div>
-    <input type="file" accept="image/*" id="sx-file" class="sx-hidden">
-
-    <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--sx-border)">
-      <label for="sx-guess" style="font-weight:600;font-size:.93rem;display:block;margin-bottom:6px">Optional: what age do you think it will say?</label>
-      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-        <input type="number" id="sx-guess" min="5" max="100" inputmode="numeric" placeholder="e.g. 27"
-               style="font:inherit;width:120px;padding:10px 12px;border:1px solid var(--sx-border);border-radius:10px;background:var(--sx-bg);color:var(--sx-text);min-height:44px">
-        <span class="sx-note">We will compare it to the result. Kept on this page only.</span>
-      </div>
-    </div>
-
-    <div class="sx-progress sx-hidden" id="sx-progress"><i></i></div>
-    <p class="sx-status" id="sx-status"></p>
-  </div>
-
-  <!-- ------------------------------ CAMERA ------------------------------- -->
-  <div class="sx-card sx-hidden" id="sx-camera">
-    <div class="sx-stage"><video id="sx-video" playsinline muted></video></div>
-    <div class="sx-actions">
-      <button type="button" class="sx-btn" id="sx-shoot">Capture</button>
-      <button type="button" class="sx-btn sx-btn--ghost" id="sx-cam-cancel">Cancel</button>
-    </div>
-  </div>
-
-  <!-- ------------------------------ RESULT ------------------------------- -->
-  <div class="sx-hidden" id="sx-result">
-
-    <div class="sx-alert sx-alert--warn sx-hidden" id="sx-warnings"></div>
-
-    <div class="sx-card">
-      <div class="sx-grid sx-grid--2">
-        <div class="sx-stage">
-          <img id="sx-preview" alt="The photo you analysed">
-          <canvas class="sx-overlay" id="sx-overlay"></canvas>
-        </div>
-        <div class="sx-hero">
-          <p class="sx-note" style="margin-bottom:4px">You look about</p>
-          <p class="sx-age" id="sx-age">—</p>
-          <p class="sx-conf" id="sx-range"></p>
-          <p class="sx-note sx-hidden" id="sx-verdict" style="margin-top:12px;font-size:.93rem;color:var(--sx-text)"></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="sx-cta sx-cta--result">
-      <h2>Now find out what actually suits you</h2>
-      <p>You have a number. Your face shape is the measurement that decides which cuts work with your proportions and which fight them — same photo, far more useful answer.</p>
-      <a class="sx-btn sx-btn--cta" href="https://stylexmagazine.com/face-shape-calculator/">Open the face shape calculator <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <ul class="sx-links" id="sx-links" style="margin-top:16px"></ul>
-    </div>
-
-    <div class="sx-actions" style="margin-bottom:22px">
-      <button type="button" class="sx-btn sx-btn--ghost" id="sx-again">Try another photo</button>
-    </div>
-  </div>
-
-
+  <!-- ============================= PROSE ============================= -->
   <div class="sx-card sx-prose">
     <h2>What this number is — and is not</h2>
     <p>It is an <strong>apparent age</strong>: the age a model trained on labelled face photos reads your face as. It is not your biological age, it is not a health measurement, and it says nothing about how long you will live. Any tool that tells you otherwise from a single selfie is overselling itself.</p>
@@ -151,19 +180,21 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
     </ol>
   </div>
 
-  <!-- -------------------------------- FAQ -------------------------------- -->
+  <!-- ============================== FAQ ============================== -->
   <div class="sx-card sx-faq">
     <h2>Questions people ask</h2>
     <details><summary>How accurate is an AI age detector?</summary>
-      <p>Models of this type are typically a few years out either way, and the error grows with age — estimates for children are tighter than for adults over 40, where several vendors report an average error of five years or more. Treat the number as a range, not a reading.</p></details>
+      <p>Models of this type are typically a few years out either way, and the error grows with age. Estimates for children are tighter than for adults over 40, where several vendors report an average error of five years or more. Treat the number as a range rather than a reading.</p></details>
     <details><summary>Is this my biological age?</summary>
-      <p>No. Biological age is estimated from clinical and molecular markers, and the published research on predicting health outcomes from face photos comes from hospital datasets with consent procedures attached. This tool estimates how old your face looks. The two are not the same thing and should not be read as one.</p></details>
+      <p>No. Biological age is estimated from clinical and molecular markers, and the published research on predicting health outcomes from face photos comes from hospital datasets with consent procedures attached. This tool estimates how old your face looks. The two are not the same thing.</p></details>
     <details><summary>Why did it say I look older than I am?</summary>
       <p>Usually the photo, not the face. Harsh overhead light deepens shadows around the eyes and mouth; a low camera angle adds weight to the jaw; low resolution smears the fine skin detail the model reads as youth. Facial hair pushes estimates up, and a neutral expression reads older than a smile. Try a second photo in soft, even, front-on light.</p></details>
     <details><summary>Does my photo get uploaded?</summary>
       <p>No. The model file downloads to your browser and the photo is processed on your device. Nothing about your image is transmitted, so there is no copy of it anywhere but your own phone or computer.</p></details>
+    <details><summary>Why will my iPhone photo not load?</summary>
+      <p>iPhones save photos as HEIC by default, and browsers cannot decode that format. Either convert the photo to JPG, or change Settings › Camera › Formats to "Most Compatible" and take a new one.</p></details>
     <details><summary>Can I use it to verify someone's age?</summary>
-      <p>No, and you should not. Age verification and age assurance are a regulated field with its own accuracy and auditing requirements. This is an entertainment tool for your own photo.</p></details>
+      <p>No, and you should not. Age verification and age assurance are a regulated field with their own accuracy and auditing requirements. This is an entertainment tool for your own photo.</p></details>
   </div>
 
 </div>
@@ -174,13 +205,11 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
   'use strict';
 
   /* ==================================================================
-   * EDIT ME — where this tool sends traffic next.
-   * Point the first entry at your face shape tool once it is live. Only
-   * use URLs that exist; an empty array hides the card.
+   * EDIT ME — extra links shown under the CTA after a result.
+   * The Face Shape Calculator button above is always in the HTML, so it
+   * is crawlable without these. Only add URLs that exist in your sitemap.
    * ================================================================== */
   var LINKS = [
-    // Extra links shown under the CTA after a result. The face shape button
-    // above is always in the HTML, so it is crawlable without these.
     // { text: 'Best haircuts for a round face', href: 'https://stylexmagazine.com/...' }
   ];
 
@@ -188,14 +217,16 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
   var el = function (id) { return document.getElementById(id); };
 
   var ui = {
-    drop: el('sx-drop'), pick: el('sx-pick'), cam: el('sx-cam'), file: el('sx-file'),
-    guess: el('sx-guess'),
+    tabs: document.querySelectorAll('.sx-tabs button[data-tab]'),
+    panelUpload: el('sx-panel-upload'), panelSelfie: el('sx-panel-selfie'),
+    steps: el('sx-steps'),
+    drop: el('sx-drop'), pick: el('sx-pick'), file: el('sx-file'), guess: el('sx-guess'),
+    video: el('sx-video'), shoot: el('sx-shoot'), camStop: el('sx-cam-stop'),
     progress: el('sx-progress'), bar: el('sx-progress').firstElementChild, status: el('sx-status'),
-    camera: el('sx-camera'), video: el('sx-video'), shoot: el('sx-shoot'), camCancel: el('sx-cam-cancel'),
     input: el('sx-input'), result: el('sx-result'), warnings: el('sx-warnings'),
     preview: el('sx-preview'), overlay: el('sx-overlay'),
     age: el('sx-age'), range: el('sx-range'), verdict: el('sx-verdict'),
-    links: el('sx-links'), crossCard: el('sx-crosslink-card'), again: el('sx-again')
+    links: el('sx-links'), again: el('sx-again')
   };
 
   var current = null;
@@ -203,12 +234,19 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
 
   function say(m) { ui.status.textContent = m || ''; }
   function progress(f) { ui.progress.classList.remove('sx-hidden'); ui.bar.style.width = Math.round(f * 100) + '%'; }
-  function busy(on) { ui.pick.disabled = on; ui.cam.disabled = on; ui.drop.style.opacity = on ? '.6' : ''; }
-  function fail(m) { busy(false); ui.progress.classList.add('sx-hidden'); say(m); }
+  function busy(on) { ui.pick.disabled = on; ui.drop.style.opacity = on ? '.6' : ''; }
+  function fail(m) { busy(false); ui.progress.classList.add('sx-hidden'); say(m); step(1); }
+
+  function step(n) {
+    Array.prototype.forEach.call(ui.steps.querySelectorAll('li[data-step]'), function (li) {
+      if (Number(li.dataset.step) <= n) li.dataset.on = '1';
+      else delete li.dataset.on;
+    });
+  }
 
   var MESSAGES = {
-    no_face: 'No face found. Try a photo taken straight on, with the whole face in frame and even light.',
-    face_too_small: 'The face is too small in this photo to read. Move closer or crop in before uploading.'
+    no_face: 'No face found. Use a photo taken straight on, with the whole face in frame and even light.',
+    face_too_small: 'The face is too small in this photo to read. Move closer, or crop in before uploading.'
   };
   var WARNING_TEXT = {
     multiple_faces: 'More than one face is in this photo — the largest one was used.',
@@ -237,10 +275,10 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, w, h);
     var k = w / res.sourceWidth;
-    var stroke = getComputedStyle(document.documentElement).getPropertyValue('--sx-accent').trim() || '#fff';
+    var stroke = getComputedStyle(document.documentElement).getPropertyValue('--sx-accent').trim() || '#F2C230';
     var b = res.box;
-    ctx.strokeStyle = stroke; ctx.lineWidth = 2; ctx.globalAlpha = .8;
-    var r = 8, x = (b.x - res.cropX) * k, y = (b.y - res.cropY) * k, bw = b.width * k, bh = b.height * k;
+    ctx.strokeStyle = stroke; ctx.lineWidth = 3; ctx.globalAlpha = .9;
+    var r = 10, x = (b.x - res.cropX) * k, y = (b.y - res.cropY) * k, bw = b.width * k, bh = b.height * k;
     ctx.beginPath();
     ctx.moveTo(x + r, y);
     ctx.arcTo(x + bw, y, x + bw, y + bh, r);
@@ -289,12 +327,13 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
 
     ui.input.classList.add('sx-hidden');
     ui.result.classList.remove('sx-hidden');
+    step(3);
     drawOverlay(res);
-    ui.result.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   function run(source) {
     busy(true);
+    step(2);
     say('Loading the age model…');
     progress(0.05);
     S.loadModels(function (stage, frac) {
@@ -310,8 +349,11 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
         res.sourceWidth = crop.size;
         res.cropX = crop.x;
         res.cropY = crop.y;
+        ui.preview.onload = function () {
+          render(res); busy(false); ui.progress.classList.add('sx-hidden'); say('');
+          ui.result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        };
         ui.preview.src = crop.canvas.toDataURL('image/jpeg', 0.9);
-        ui.preview.onload = function () { render(res); busy(false); ui.progress.classList.add('sx-hidden'); say(''); };
       });
     }).catch(function (err) {
       console.error('[StyleX] analysis failed', err);
@@ -319,39 +361,71 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
     });
   }
 
+  // Read the file as a data: URL rather than an object URL. A strict
+  // Content-Security-Policy (img-src 'self' data:) blocks blob: images, which
+  // is what makes an upload fail silently inside an embed or an iframe.
   function handleFile(file) {
     if (!file) return;
-    if (!/^image\//.test(file.type)) { say('That file is not an image.'); return; }
-    var url = URL.createObjectURL(file);
-    var img = new Image();
-    img.onload = function () { run(img); URL.revokeObjectURL(url); };
-    img.onerror = function () { say('That image could not be read.'); URL.revokeObjectURL(url); };
-    img.src = url;
+    if (file.type && !/^image\//.test(file.type)) {
+      say('That is not an image file.'); return;
+    }
+    if (/heic|heif/i.test(file.type) || /\.(heic|heif)$/i.test(file.name || '')) {
+      say('iPhone HEIC photos cannot be read by browsers. Convert it to JPG and try again.');
+      return;
+    }
+    var reader = new FileReader();
+    reader.onload = function () {
+      var img = new Image();
+      img.onload = function () { run(img); };
+      img.onerror = function () {
+        say('That image could not be decoded. Try a JPG, PNG or WebP file.');
+      };
+      img.src = reader.result;
+    };
+    reader.onerror = function () { say('That file could not be read. Try another one.'); };
+    reader.readAsDataURL(file);
+  }
+
+  /* ------------------------------- tabs ----------------------------- */
+
+  function selectTab(name) {
+    Array.prototype.forEach.call(ui.tabs, function (b) {
+      b.setAttribute('aria-selected', String(b.dataset.tab === name));
+    });
+    ui.panelUpload.hidden = name !== 'upload';
+    ui.panelSelfie.hidden = name !== 'selfie';
+    say('');
+    if (name === 'selfie') openCamera(); else stopCamera();
   }
 
   function stopCamera() {
     if (stream) { stream.getTracks().forEach(function (t) { t.stop(); }); stream = null; }
-    ui.camera.classList.add('sx-hidden');
-  }
-  function openCamera() {
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      say('This browser cannot open the camera. Upload a photo instead.'); return;
-    }
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 1280 } }, audio: false })
-      .then(function (s) {
-        stream = s; ui.video.srcObject = s; ui.video.play();
-        ui.camera.classList.remove('sx-hidden'); say('');
-      })
-      .catch(function () { say('Camera access was blocked. Allow it in your browser, or upload a photo instead.'); });
   }
 
+  function openCamera() {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      say('This browser cannot open the camera. Use the Upload Photo tab instead.'); return;
+    }
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 1280 } }, audio: false })
+      .then(function (s) { stream = s; ui.video.srcObject = s; ui.video.play(); say(''); })
+      .catch(function () {
+        say('Camera access was blocked. Allow it in your browser, or use the Upload Photo tab.');
+      });
+  }
+
+  /* ------------------------------ events ---------------------------- */
+
+  Array.prototype.forEach.call(ui.tabs, function (b) {
+    b.addEventListener('click', function () { selectTab(b.dataset.tab); });
+  });
+
   ui.pick.addEventListener('click', function (e) { e.stopPropagation(); ui.file.click(); });
-  ui.cam.addEventListener('click', function (e) { e.stopPropagation(); openCamera(); });
   ui.drop.addEventListener('click', function () { ui.file.click(); });
   ui.drop.addEventListener('keydown', function (e) {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); ui.file.click(); }
   });
   ui.file.addEventListener('change', function () { handleFile(this.files[0]); this.value = ''; });
+
   ['dragenter', 'dragover'].forEach(function (ev) {
     ui.drop.addEventListener(ev, function (e) { e.preventDefault(); ui.drop.classList.add('is-over'); });
   });
@@ -361,17 +435,29 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
   ui.drop.addEventListener('drop', function (e) {
     if (e.dataTransfer && e.dataTransfer.files) handleFile(e.dataTransfer.files[0]);
   });
-  ui.shoot.addEventListener('click', function () { var f = toCanvas(ui.video, 1200); stopCamera(); run(f); });
-  ui.camCancel.addEventListener('click', stopCamera);
+
+  ui.shoot.addEventListener('click', function () {
+    if (!stream) { say('The camera is not running. Tap Selfie Mode again to start it.'); return; }
+    var frame = toCanvas(ui.video, 1200);
+    stopCamera();
+    run(frame);
+  });
+  ui.camStop.addEventListener('click', function () { stopCamera(); say('Camera stopped.'); });
+
   ui.again.addEventListener('click', function () {
     current = null;
     ui.result.classList.add('sx-hidden');
     ui.input.classList.remove('sx-hidden');
+    step(1);
     say('');
-    ui.input.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    ui.input.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
+
+  ui.guess.addEventListener('input', function () { if (this.value) step(2); });
+
   window.addEventListener('resize', function () { if (current) drawOverlay(current); });
 
+  // Warm the model up on first interaction so the first real run feels instant.
   var warmed = false;
   ['pointerdown', 'keydown'].forEach(function (ev) {
     ui.drop.addEventListener(ev, function () {
