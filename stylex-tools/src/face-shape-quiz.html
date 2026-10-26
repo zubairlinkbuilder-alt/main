@@ -216,6 +216,20 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
       <p>No. Everything runs in your browser and nothing is sent anywhere. Close the page and the answers are gone.</p></details>
   </div>
 
+  <!-- ============================ CTA ROW ============================ -->
+  <div class="sx-grid sx-grid--2" style="margin:0 0 18px">
+    <a href="{{CALCULATOR}}" style="display:block;background:var(--sx-surface);border:1px solid var(--sx-border);border-left:4px solid var(--sx-accent);border-radius:0 10px 10px 0;padding:18px 20px;text-decoration:none;color:var(--sx-text)">
+      <strong style="display:block;font-size:1rem;color:var(--sx-text);margin-bottom:4px">Face Shape Calculator</strong>
+      <span style="font-size:.88rem;color:var(--sx-muted);display:block;margin-bottom:10px">Precise ratios from your measurements or a photo.</span>
+      <span style="font-size:.9rem;font-weight:650;color:var(--sx-ink)">Open the calculator ›</span>
+    </a>
+    <a href="{{HOME}}" data-fallback-key="ageTest" data-fallback-label="How Old Do I Look? AI Age Test" data-fallback-blurb="A different lens on your face, in about a minute." style="display:block;background:var(--sx-surface);border:1px solid var(--sx-border);border-left:4px solid var(--sx-ink);border-radius:0 10px 10px 0;padding:18px 20px;text-decoration:none;color:var(--sx-text)">
+      <strong style="display:block;font-size:1rem;color:var(--sx-text);margin-bottom:4px" data-dyn="title">Explore more tools</strong>
+      <span style="font-size:.88rem;color:var(--sx-muted);display:block;margin-bottom:10px" data-dyn="blurb">Haircut guides, face shape articles and more.</span>
+      <span style="font-size:.9rem;font-weight:650;color:var(--sx-ink)">Browse StyleX Magazine ›</span>
+    </a>
+  </div>
+
   <!-- =============================== CTAs =============================== -->
   <div class="sx-cta">
     <h2>Next: get the exact cut, not just the label</h2>
@@ -457,6 +471,18 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
     ui.qfill.style.width = '0%';
     ui.intro.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
+
+  // Secondary CTA row above the FAQ (upgrades to age test when available).
+  (function () {
+    var card = document.querySelector('[data-fallback-key="ageTest"]');
+    if (!card || !SITE.ageTest) return;
+    card.href = SITE.ageTest;
+    var t = card.querySelector('[data-dyn="title"]');
+    var b = card.querySelector('[data-dyn="blurb"]');
+    if (t) t.textContent = card.dataset.fallbackLabel;
+    if (b) b.textContent = card.dataset.fallbackBlurb;
+    card.querySelector('span:last-child').textContent = 'Try the age test ›';
+  })();
 
   // Bottom CTA list: related tools and articles, from the link map. Anything
   // still null in links.json is skipped, so no broken link can ship.
