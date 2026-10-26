@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Face Shape Quiz</title>
-<meta name="description" content="Answer 7 questions and find your face shape in about a minute — no tape measure, no photo. Then see the haircuts that suit it and the ones to avoid.">
+<meta name="description" content="Answer 7 questions and find your face shape in about a minute, with no tape measure and no photo. Then see the haircuts that suit it and the ones to avoid.">
 <style>/*!INJECT_CSS*/</style>
 <style>
-/* Standalone page only — DELETE this block when pasting the tool into a
+/* Standalone page only. DELETE this block when pasting the tool into a
    WordPress post or theme template, so your theme keeps control of the page. */
 html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: var(--sx-text); }
 </style>
@@ -17,9 +17,7 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
 <div class="sx-tool" id="sx-face-quiz">
 
   <nav class="sx-crumbs" aria-label="Breadcrumb">
-    <a href="https://stylexmagazine.com/">StyleX Magazine</a> ›
-    <a href="https://stylexmagazine.com/tools/">Tools</a> ›
-    <span aria-current="page">Face Shape Quiz</span>
+    <!--BREADCRUMB-->
   </nav>
 
   <h1 class="sx-title">Face Shape Quiz</h1>
@@ -27,7 +25,7 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
 
   <div class="sx-quick">
     <h2>Quick Answer</h2>
-    <p>Answer seven questions about your face — length, widest point, jawline, chin, forehead, hairline and cheekbones — and the quiz scores them against all seven face shapes. You get your shape in about a minute, plus the haircuts that work with it and the ones that fight it. No tape measure, no photo, no sign-up.</p>
+    <p>Answer seven questions about your face, covering length, widest point, jawline, chin, forehead, hairline and cheekbones. The quiz scores them against all seven face shapes. You get your shape in about a minute, plus the haircuts that work with it and the ones that fight it. No tape measure, no photo, no sign-up.</p>
   </div>
 
   <!-- ================================ QUIZ ================================ -->
@@ -49,7 +47,7 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
         <ul class="sx-list sx-list--yes" style="margin-bottom:20px">
           <li>Pull all your hair back off your face, including a fringe.</li>
           <li>Stand square to a mirror, or use a photo taken straight on.</li>
-          <li>Keep your chin level — tilting changes the proportions you are judging.</li>
+          <li>Keep your chin level, because tilting changes the proportions you are judging.</li>
           <li>Answer on what you see, not what you have been told before.</li>
         </ul>
         <div class="sx-actions" style="justify-content:flex-start">
@@ -67,7 +65,7 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
         <div class="sx-q" id="sx-q" aria-live="polite">
           <div class="sx-q-head">
             <span class="sx-q-num" id="sx-qnum">Question 1</span>
-            <h2 id="sx-qtext">—</h2>
+            <h2 id="sx-qtext">&nbsp;</h2>
           </div>
           <p class="sx-q-hint" id="sx-qhint"></p>
           <ul class="sx-opts" id="sx-qopts"></ul>
@@ -84,7 +82,7 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
 
         <div class="sx-verdict">
           <p class="sx-eyebrow">Your face shape</p>
-          <p class="sx-big" id="sx-shape">—</p>
+          <p class="sx-big" id="sx-shape">&nbsp;</p>
           <p class="sx-sub" id="sx-conf"></p>
         </div>
 
@@ -93,7 +91,7 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
         <div class="sx-split sx-hidden" id="sx-splitnote"></div>
 
         <h2 style="margin-top:26px">Haircuts for your shape</h2>
-        <p class="sx-note" style="margin-bottom:14px">Pick the set you want — the shape result is the same either way.</p>
+        <p class="sx-note" style="margin-bottom:14px">Pick the set you want. The shape result is the same either way.</p>
         <div class="sx-toggle" id="sx-gender" role="group" aria-label="Show recommendations for">
           <button type="button" data-g="men" aria-pressed="true">Men</button>
           <button type="button" data-g="women" aria-pressed="false">Women</button>
@@ -125,9 +123,11 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
           </div>
         </details>
 
+        <p id="sx-deeplink" style="margin-top:20px" hidden></p>
+
         <div class="sx-qnav" style="margin-top:24px">
           <button type="button" class="sx-btn sx-btn--ghost" id="sx-retake">Retake the quiz</button>
-          <a class="sx-btn sx-btn--cta" href="https://stylexmagazine.com/face-shape-calculator/">Check it with measurements <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="sx-btn sx-btn--cta" href="{{CALCULATOR}}">Check it with measurements <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
 
@@ -140,11 +140,11 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
     <h2>What your face structure actually means</h2>
     <p>Every face shape is a judgement about four lines and one ratio. Learn them once and you can read any face, including your own, without a tape measure.</p>
     <ul>
-      <li><strong>Forehead width</strong> — measured across the widest point, roughly a finger above the eyebrows.</li>
-      <li><strong>Cheekbone width</strong> — across the face at the outer corners of your eyes, where the bone sits highest.</li>
-      <li><strong>Jaw width</strong> — from one gonial angle to the other, the corners below your ears where the jaw turns.</li>
-      <li><strong>Face length</strong> — hairline to the base of the chin.</li>
-      <li><strong>The chin</strong> — pointed, rounded or square, which decides several shapes on its own.</li>
+      <li><strong>Forehead width.</strong> Measured across the widest point, roughly a finger above the eyebrows.</li>
+      <li><strong>Cheekbone width.</strong> Across the face at the outer corners of your eyes, where the bone sits highest.</li>
+      <li><strong>Jaw width.</strong> From one gonial angle to the other, the corners below your ears where the jaw turns.</li>
+      <li><strong>Face length.</strong> Hairline to the base of the chin.</li>
+      <li><strong>The chin.</strong> Pointed, rounded or square, which decides several shapes on its own.</li>
     </ul>
     <p>Two questions settle most faces. <strong>Which of the three widths is largest?</strong> And <strong>how does the length compare to the width?</strong> A face longer than it is wide with even widths is oblong. One as wide as it is long with a hard jaw is square. Forehead widest with a pointed chin is heart. Jaw widest is triangle.</p>
 
@@ -153,37 +153,37 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
       <table>
         <thead><tr><th>Shape</th><th>How to recognise it</th><th>The cut brief</th></tr></thead>
         <tbody>
-          <tr><td><strong>Oval</strong></td><td>Longer than wide, cheekbones widest, jaw softly rounded</td><td>Almost anything works — don't hide the proportion</td></tr>
-          <tr><td><strong>Round</strong></td><td>Width and length close to equal, soft jaw, full cheeks</td><td>Add height on top, keep the sides tight</td></tr>
-          <tr><td><strong>Square</strong></td><td>Three widths near-equal, strong angular jaw</td><td>Lean into the angle, or soften it with texture</td></tr>
-          <tr><td><strong>Oblong</strong></td><td>Clearly longer than wide, widths similar</td><td>Add width at the sides, keep height off the top</td></tr>
-          <tr><td><strong>Heart</strong></td><td>Wide forehead, narrow pointed chin</td><td>Break up the forehead, add weight at the jaw</td></tr>
-          <tr><td><strong>Diamond</strong></td><td>Cheekbones clearly widest, narrow forehead and chin</td><td>Widen the forehead and jaw, not the cheeks</td></tr>
-          <tr><td><strong>Triangle</strong></td><td>Jaw widest, narrowing up to a smaller forehead</td><td>Volume above the eyeline to balance the jaw</td></tr>
+          <tr><td><strong data-shape="oval">Oval</strong></td><td>Longer than wide, cheekbones widest, jaw softly rounded</td><td>Almost anything works, so don't hide the proportion</td></tr>
+          <tr><td><strong data-shape="round">Round</strong></td><td>Width and length close to equal, soft jaw, full cheeks</td><td>Add height on top, keep the sides tight</td></tr>
+          <tr><td><strong data-shape="square">Square</strong></td><td>Three widths near-equal, strong angular jaw</td><td>Lean into the angle, or soften it with texture</td></tr>
+          <tr><td><strong data-shape="oblong">Oblong</strong></td><td>Clearly longer than wide, widths similar</td><td>Add width at the sides, keep height off the top</td></tr>
+          <tr><td><strong data-shape="heart">Heart</strong></td><td>Wide forehead, narrow pointed chin</td><td>Break up the forehead, add weight at the jaw</td></tr>
+          <tr><td><strong data-shape="diamond">Diamond</strong></td><td>Cheekbones clearly widest, narrow forehead and chin</td><td>Widen the forehead and jaw, not the cheeks</td></tr>
+          <tr><td><strong data-shape="triangle">Triangle</strong></td><td>Jaw widest, narrowing up to a smaller forehead</td><td>Volume above the eyeline to balance the jaw</td></tr>
         </tbody>
       </table>
     </div>
-    <p>You may also see names that are not separate shapes at all. <strong>Rectangle</strong> is oblong. <strong>Long face</strong> is oblong. <strong>Pear</strong> is triangle. <strong>Inverted triangle</strong> is heart. <strong>Apple face shape</strong> is a make-up term for a round face with full cheeks, not a bone-structure category — if a quiz offers it, read it as round.</p>
+    <p>You may also see names that are not separate shapes at all. <strong>Rectangle</strong> is oblong. <strong>Long face</strong> is oblong. <strong>Pear</strong> is triangle. <strong>Inverted triangle</strong> is heart. <strong>Apple face shape</strong> is a make-up term for a round face with full cheeks, not a bone-structure category. If a quiz offers it, read it as round.</p>
 
     <h2>How to determine your face shape for a haircut</h2>
     <p>A barber does not need the label. They need to know which proportion you want to change. That is the useful translation:</p>
     <ol>
-      <li><strong>Find your widest point.</strong> Forehead, cheekbones or jaw — this decides whether a cut should add or remove width, and where.</li>
+      <li><strong>Find your widest point.</strong> Forehead, cheekbones or jaw. This decides whether a cut should add or remove width, and where.</li>
       <li><strong>Compare length to width.</strong> A long face wants width at the sides. A wide face wants height on top.</li>
       <li><strong>Read the chin.</strong> A pointed chin takes weight near the jaw; a heavy jaw takes volume above the eyeline.</li>
       <li><strong>Say it in the chair.</strong> "My face is long and narrow, so keep some width at the temples" works better than "I have an oblong face".</li>
     </ol>
 
     <h2>Does face shape differ for men and women?</h2>
-    <p>The bone structure categories are identical — the same seven shapes, judged the same way. What changes is the cut that answers them, because the silhouettes differ. A round face wants height and a tight perimeter either way, but for men that usually means a fade with volume on top, and for women it usually means long layers starting below the chin and a deep side part. That is why the result above has both sets.</p>
+    <p>The bone structure categories are identical: the same seven shapes, judged the same way. What changes is the cut that answers them, because the silhouettes differ. A round face wants height and a tight perimeter either way, but for men that usually means a fade with volume on top, and for women it usually means long layers starting below the chin and a deep side part. That is why the result above has both sets.</p>
     <p>One real difference: facial hair. A beard is the fastest way to change the apparent shape of the lower face, which makes it a genuine styling tool for a round, heart or diamond face, and a trap for a triangle or square one.</p>
 
     <h2>How accurate is a face shape quiz?</h2>
     <p>Honestly: good enough to point you at the right haircut, not precise enough to settle an argument. A quiz is reading your judgement of your own face, and people routinely misjudge their own forehead width and jaw angle. It also cannot see you.</p>
-    <p>Where a quiz does better than a tape measure is the borderline. Most faces are not a clean example of one shape — they sit between two, and the cuts that appear on both lists are the safe ones. That is why this quiz reports a close second rather than forcing a single label.</p>
-    <p>If you want a number rather than a judgement, measure the four widths and compare the ratios. The <a href="https://stylexmagazine.com/face-shape-calculator/">face shape calculator</a> does that arithmetic, and takes a photo if you would rather not hold a tape to your head.</p>
+    <p>Where a quiz does better than a tape measure is the borderline. Most faces are not a clean example of one shape. They sit between two, and the cuts that appear on both lists are the safe ones. That is why this quiz reports a close second rather than forcing a single label.</p>
+    <p>If you want a number rather than a judgement, measure the four widths and compare the ratios. The <a href="{{CALCULATOR}}">face shape calculator</a> does that arithmetic, and takes a photo if you would rather not hold a tape to your head.</p>
 
-    <h2>Quiz, calculator or detector — which should you use?</h2>
+    <h2>Quiz, calculator or detector: which should you use?</h2>
     <div class="sx-table-wrap">
       <table>
         <thead><tr><th>Method</th><th>What it needs</th><th>Best when</th></tr></thead>
@@ -194,7 +194,7 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
         </tbody>
       </table>
     </div>
-    <p>They answer the same question with different inputs. If two of them disagree, trust the measurements — and look at which two shapes you are sitting between, because that is usually the real answer.</p>
+    <p>They answer the same question with different inputs. If two of them disagree, trust the measurements, then look at which two shapes you are sitting between, because that is usually the real answer.</p>
   </div>
 
   <!-- =============================== FAQ =============================== -->
@@ -203,15 +203,15 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
     <details><summary>What face type am I if I'm between two shapes?</summary>
       <p>Both, in practice. The seven shapes are a stylist's shorthand, not biological categories, and most faces borrow from two. When this quiz finds a close call it names both, and the cuts that appear on both lists are the ones that will work on you.</p></details>
     <details><summary>How do I know my face shape without measuring?</summary>
-      <p>Answer two questions in a mirror with your hair pulled back. Which is widest — forehead, cheekbones or jaw? And is your face longer than it is wide, or about the same? Those two answers narrow seven shapes to two, and your chin shape usually settles it. That is exactly what this quiz does, with five more questions to catch the edge cases.</p></details>
+      <p>Answer two questions in a mirror with your hair pulled back. Which is widest: forehead, cheekbones or jaw? And is your face longer than it is wide, or about the same? Those two answers narrow seven shapes to two, and your chin shape usually settles it. That is exactly what this quiz does, with five more questions to catch the edge cases.</p></details>
     <details><summary>Can my face shape change?</summary>
       <p>The bone structure does not, but what you see does. Weight changes alter cheek fullness and jaw definition, and ageing softens the jawline and can make a square face read oval. Facial hair changes the lower third outright. Re-checking every year or so is reasonable.</p></details>
     <details><summary>Is a face shape quiz as accurate as a photo detector?</summary>
-      <p>Different kinds of error. A quiz depends on how well you judge your own face; a photo tool depends on the photo — camera angle, lens distance and lighting all shift the result. Measurements are the most reliable of the three. If the quiz and a detector disagree, you are probably between two shapes.</p></details>
+      <p>Different kinds of error. A quiz depends on how well you judge your own face; a photo tool depends on the photo, because camera angle, lens distance and lighting all shift the result. Measurements are the most reliable of the three. If the quiz and a detector disagree, you are probably between two shapes.</p></details>
     <details><summary>What is the apple face shape?</summary>
       <p>A make-up term, not a bone-structure category. It describes a round face with full cheeks and a soft jaw. If a chart offers it, treat it as round and use the round recommendations.</p></details>
     <details><summary>Which face shape is best for haircuts?</summary>
-      <p>Oval, only because it is the most forgiving — its proportions fight the fewest cuts. That is not the same as better looking, and every other shape has cuts that suit it better than they suit an oval face. The goal is never to look oval; it is to pick a cut that works with the proportions you have.</p></details>
+      <p>Oval, only because it is the most forgiving, since its proportions fight the fewest cuts. That is not the same as better looking, and every other shape has cuts that suit it better than they suit an oval face. The goal is never to look oval; it is to pick a cut that works with the proportions you have.</p></details>
     <details><summary>Does this quiz store my answers?</summary>
       <p>No. Everything runs in your browser and nothing is sent anywhere. Close the page and the answers are gone.</p></details>
   </div>
@@ -220,8 +220,9 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
   <div class="sx-cta">
     <h2>Next: get the exact cut, not just the label</h2>
     <p>A shape name is only useful once it becomes a haircut. Confirm your shape with real measurements, then take the cut brief to your barber or stylist.</p>
-    <a class="sx-btn sx-btn--cta" href="https://stylexmagazine.com/face-shape-calculator/">Open the Face Shape Calculator <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="sx-btn sx-btn--cta" href="{{CALCULATOR}}">Open the Face Shape Calculator <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <ul class="sx-links" id="sx-links" style="margin-top:18px"></ul>
+    <p class="sx-note" id="sx-related-note" style="margin-top:14px" hidden></p>
   </div>
 
 </div>
@@ -232,16 +233,10 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
 (function () {
   'use strict';
 
-  /* ==================================================================
-   * EDIT ME — extra internal links in the bottom CTA block.
-   * The Face Shape Calculator button is always in the HTML, so it is
-   * crawlable without these. Only add URLs confirmed in your sitemap;
-   * an empty array hides the list and nothing ships broken.
-   * ================================================================== */
-  var LINKS = [
-    // { text: 'Best haircuts for a round face',  href: 'https://stylexmagazine.com/...' },
-    // { text: 'How old do I look? AI face age test', href: 'https://stylexmagazine.com/tools/how-old-do-i-look/' }
-  ];
+  /* Internal links come from src/links.json, resolved at build time. Edit
+     that file and rebuild; never hardcode a URL here. Anything still null
+     there is simply left out, so the page cannot ship a broken link. */
+  var SITE = /*!INJECT_LINKS*/;
 
   var Q = window.StyleXQuiz;
   var SHAPES = window.StyleXFace.SHAPES;
@@ -258,7 +253,8 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
     gender: el('sx-gender'), best: el('sx-best'), avoid: el('sx-avoid'),
     beardWrap: el('sx-beard-wrap'), beard: el('sx-beard'),
     bars: el('sx-bars'), answers: el('sx-answers'),
-    retake: el('sx-retake'), links: el('sx-links')
+    retake: el('sx-retake'), links: el('sx-links'),
+    relatedNote: el('sx-related-note'), deeplink: el('sx-deeplink')
   };
 
   var answers = [];
@@ -354,7 +350,7 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
       strong.textContent = 'You are between two shapes. ';
       var rest = document.createTextNode(
         'Your answers score ' + shape.label + ' and ' + SHAPES[outcome.runnerUp].label +
-        ' almost equally, which is normal — most faces borrow from two. Read both sets of ' +
+        ' almost equally, which is normal, because most faces borrow from two. Read both sets of ' +
         'recommendations below and treat the cuts that appear on both as your safest options.');
       ui.splitnote.appendChild(strong);
       ui.splitnote.appendChild(rest);
@@ -396,6 +392,20 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
       body.appendChild(tr);
     });
     ui.answers.appendChild(body);
+
+    // Deep link into the article for this shape, when that article exists.
+    var shapeUrl = (SITE.shapes || {})[outcome.id];
+    if (shapeUrl) {
+      ui.deeplink.innerHTML = '';
+      var a = document.createElement('a');
+      a.href = shapeUrl;
+      a.textContent = 'Read the full guide to ' + shape.label.toLowerCase() + ' faces';
+      a.style.fontWeight = '650';
+      ui.deeplink.appendChild(a);
+      ui.deeplink.hidden = false;
+    } else {
+      ui.deeplink.hidden = true;
+    }
 
     ui.quiz.hidden = true;
     ui.result.hidden = false;
@@ -448,10 +458,22 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
     ui.intro.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
 
-  // Bottom CTA links.
+  // Bottom CTA list: related tools and articles, from the link map. Anything
+  // still null in links.json is skipped, so no broken link can ship.
   (function () {
-    if (!LINKS.length) { ui.links.hidden = true; return; }
-    LINKS.forEach(function (l) {
+    var out = [];
+    if (SITE.ageTest) out.push({ text: 'How old do I look? Free AI face age test', href: SITE.ageTest });
+    Object.keys(SITE.shapes || {}).forEach(function (k) {
+      if (SITE.shapes[k]) {
+        out.push({ text: 'Best haircuts for a ' + k + ' face', href: SITE.shapes[k] });
+      }
+    });
+    (SITE.related || []).forEach(function (l) {
+      if (l && l.href && l.text) out.push(l);
+    });
+
+    if (!out.length) { ui.links.hidden = true; return; }
+    out.forEach(function (l) {
       var li = document.createElement('li'), a = document.createElement('a');
       a.href = l.href; a.textContent = l.text;
       li.appendChild(a); ui.links.appendChild(li);

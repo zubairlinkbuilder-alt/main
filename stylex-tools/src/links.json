@@ -1,0 +1,21 @@
+{
+  "_comment": "Internal link map. Build-time: build.py turns these into real static <a> tags in dist/, so they are crawlable without JavaScript. A null means the page is not live yet, and that link is rendered as plain text instead of a broken link. Fill one in and rebuild.",
+
+  "home": "https://stylexmagazine.com/",
+  "tools": null,
+  "calculator": "https://stylexmagazine.com/face-shape-calculator/",
+  "quiz": "https://stylexmagazine.com/face-shape-quiz/",
+  "ageTest": null,
+
+  "shapes": {
+    "oval": null,
+    "round": null,
+    "square": null,
+    "oblong": null,
+    "heart": null,
+    "diamond": null,
+    "triangle": null
+  },
+
+  "related": []
+}

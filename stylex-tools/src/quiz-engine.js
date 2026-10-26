@@ -31,7 +31,7 @@
       q: 'Is your face longer than it is wide?',
       hint: 'Pull your hair back and look straight into a mirror. Compare the distance from hairline to chin against the width across your cheekbones.',
       options: [
-        { t: 'Clearly longer', d: 'Noticeably taller than wide — about one and a half times or more',
+        { t: 'Clearly longer', d: 'Noticeably taller than wide, about one and a half times or more',
           w: { oblong: 4.5, oval: 1.2, diamond: 0.8 } },
         { t: 'A little longer', d: 'Taller than wide, but not dramatically',
           w: { oval: 2.4, heart: 1.0, diamond: 1.0, oblong: 0.6 } },

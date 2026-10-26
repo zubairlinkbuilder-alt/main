@@ -1,6 +1,6 @@
 :root{
   /* StyleX brand palette
-     #2B2D42 ink · #F2C230 gold · #F2C23021 gold tint · #3F4368 indigo · #FFFFFF */
+     #2B2D42 ink, #F2C230 gold, #F2C23021 gold tint, #3F4368 indigo, #FFFFFF */
   --sx-brand-ink:#2B2D42;
   --sx-brand-gold:#F2C230;
   --sx-brand-tint:#F2C23021;
@@ -169,7 +169,7 @@
 .sx-crumbs span[aria-current]{color:var(--sx-text); font-weight:600}
 
 /* ==================================================================
-   App shell — matches the StyleX Face Shape Calculator page layout
+   App shell, matching the StyleX Face Shape Calculator page layout
    ================================================================== */
 .sx-title{
   font-size:clamp(1.9rem,5.2vw,2.7rem); font-weight:800; letter-spacing:-.02em;

@@ -99,7 +99,7 @@
     var jawRaw = dist(p[3], p[13]);       // upper jaw, nearest the gonion
     var browRaw = dist(p[17], p[26]);     // outer brow span (forehead proxy)
 
-    // Normalised to a comparable scale — see TUNING.
+    // Normalised to a comparable scale. See TUNING.
     var jaw = jawRaw * TUNING.JAW_NORM;
     var forehead = browRaw * TUNING.FOREHEAD_NORM;
     var length = dist(browMid, chin) * TUNING.FACE_LENGTH_FACTOR;
@@ -261,7 +261,7 @@
         age: age,
         ageLow: Math.max(1, age - TUNING.AGE_BAND),
         ageHigh: age + TUNING.AGE_BAND,
-        gender: r.gender,                 // 'male' | 'female' — a guess, always overridable
+        gender: r.gender,                 // 'male' | 'female'. A guess, always overridable
         genderProbability: r.genderProbability,
         detectionScore: r.detection.score,
         warnings: warnings
@@ -274,10 +274,10 @@
   var SHAPES = {
     oval: {
       label: 'Oval',
-      summary: 'Length is noticeably greater than width, cheekbones are the widest point, and the jaw rounds off softly. The most forgiving shape — almost nothing fights it.',
+      summary: 'Length is noticeably greater than width, cheekbones are the widest point, and the jaw rounds off softly. The most forgiving shape: almost nothing fights it.',
       men: {
         best: ['Textured crop', 'Mid or low taper fade', 'Classic side part', 'Quiff', 'Buzz cut'],
-        avoid: ['Heavy fringe straight across the forehead — it shortens the face and hides the proportion that works for you', 'Very long, flat, centre-parted hair that drags the face longer'],
+        avoid: ['Heavy fringe straight across the forehead, which shortens the face and hides the proportion that works for you', 'Very long, flat, centre-parted hair that drags the face longer'],
         beard: 'Short stubble or a trimmed full beard. Keep the chin line squared off rather than pointed.'
       },
       women: {
@@ -291,22 +291,22 @@
       summary: 'Width and length are close to equal, cheekbones sit at the widest point, and the jaw is soft with no hard corners. The goal of every cut is vertical height and a tighter perimeter.',
       men: {
         best: ['High or mid fade with height on top', 'Pompadour', 'Faux hawk', 'Angular fringe', 'Side part with volume'],
-        avoid: ['Buzz cuts at one length — they expose the full width of the face', 'Bowl cuts or a rounded fringe', 'Bulk at the sides'],
+        avoid: ['Buzz cuts at one length, which expose the full width of the face', 'Bowl cuts or a rounded fringe', 'Bulk at the sides'],
         beard: 'A beard is your best structural tool. Keep the sides short and let the chin grow longer to lengthen the face. Avoid round, full cheek growth.'
       },
       women: {
         best: ['Long layers starting below the chin', 'Side-swept or curtain bangs', 'Lob cut at collarbone length', 'Deep side part', 'High ponytail or topknot'],
-        avoid: ['Chin-length blunt bob — it widens the face at its widest point', 'Full, straight-across bangs', 'Tight curls set at cheek height'],
+        avoid: ['Chin-length blunt bob, which widens the face at its widest point', 'Full, straight-across bangs', 'Tight curls set at cheek height'],
         beard: null
       }
     },
     square: {
       label: 'Square',
-      summary: 'Forehead, cheekbones and jaw are close to the same width, with a strong, angular jawline. Cuts either lean into that structure or soften it — both work, nothing in between.',
+      summary: 'Forehead, cheekbones and jaw are close to the same width, with a strong, angular jawline. Cuts either lean into that structure or soften it. Both work, nothing in between.',
       men: {
         best: ['Crew cut', 'Buzz cut', 'Short textured quiff', 'Side part', 'Classic taper'],
         avoid: ['Very long, heavy hair that hides the jawline', 'Blunt, boxy fringes that repeat the square outline'],
-        beard: 'Stubble or a short full beard that follows the jaw. Avoid square, boxed-off beard lines — you already have the angle.'
+        beard: 'Stubble or a short full beard that follows the jaw. Avoid square, boxed-off beard lines, because you already have the angle.'
       },
       women: {
         best: ['Soft, face-framing layers', 'Side part with waves', 'Wavy lob', 'Long curtain bangs', 'Textured shag'],
@@ -319,8 +319,8 @@
       summary: 'Noticeably longer than it is wide, with the forehead, cheekbones and jaw at similar widths. Every cut should add width at the sides and keep height off the top.',
       men: {
         best: ['Textured fringe or French crop', 'Medium length with side volume', 'Low taper (not a high fade)', 'Side part with fullness at the temples'],
-        avoid: ['Pompadours, quiffs and anything with height on top — it stretches the face further', 'Very short sides with long top', 'Slicked-back hair'],
-        beard: 'A full beard with width at the cheeks shortens the face. Keep the chin trimmed short — avoid long, pointed goatees.'
+        avoid: ['Pompadours, quiffs and anything with height on top, which stretches the face further', 'Very short sides with long top', 'Slicked-back hair'],
+        beard: 'A full beard with width at the cheeks shortens the face. Keep the chin trimmed short, and avoid long, pointed goatees.'
       },
       women: {
         best: ['Chin-length bob with waves', 'Blunt fringe or curtain bangs', 'Mid-length cut with layers at the cheekbone', 'Side-swept volume'],
@@ -344,7 +344,7 @@
     },
     diamond: {
       label: 'Diamond',
-      summary: 'Cheekbones are clearly the widest point, with a narrower forehead and a narrow, often pointed chin. The rarest shape — the brief is to widen the forehead and jaw while keeping the cheekbones from dominating.',
+      summary: 'Cheekbones are clearly the widest point, with a narrower forehead and a narrow, often pointed chin. The rarest shape. The brief is to widen the forehead and jaw while keeping the cheekbones from dominating.',
       men: {
         best: ['Textured fringe or forward-swept crop', 'Medium-length with side fullness', 'Low taper', 'Quiff with width rather than height'],
         avoid: ['Slicked-back styles that expose a narrow forehead', 'High fades that strip width from the sides', 'Centre parts'],
@@ -360,7 +360,7 @@
       label: 'Triangle / Pear',
       summary: 'The jaw is the widest point, narrowing up through the cheekbones to a smaller forehead. Cuts add volume and width above the eyeline to balance the jaw.',
       men: {
-        best: ['Volume on top — quiff, pompadour or a full textured crop', 'High or mid fade to narrow the lower sides', 'Side part with lift at the root'],
+        best: ['Volume on top: quiff, pompadour or a full textured crop', 'High or mid fade to narrow the lower sides', 'Side part with lift at the root'],
         avoid: ['Flat, forward-combed hair', 'Heavy fringes', 'Long hair that hangs level with the jaw'],
         beard: 'Keep it short and tight to the jaw, or clean-shaven. A full beard widens the widest part of your face.'
       },

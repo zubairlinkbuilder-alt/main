@@ -2,19 +2,19 @@
 
 Lengths are measured, not estimated. Working limits: title ≤ 60 characters,
 meta description 140–160. These go in your SEO plugin (Rank Math / Yoast) on
-the WordPress page — not into the tool's HTML file, which your theme and
+the WordPress page ,  not into the tool's HTML file, which your theme and
 plugin override anyway.
 
 ---
 
 ## /tools/how-old-do-i-look/
 
-**Title (recommended)** — 40
+**Title (recommended)** ,  40
 ```
 How Old Do I Look? Free AI Face Age Test
 ```
 
-**Meta description (recommended)** — 156
+**Meta description (recommended)** ,  156
 ```
 Free AI face age test. Upload a photo or take a selfie to find out how old you look, shown as a range. Nothing is uploaded, everything runs in your browser.
 ```
@@ -40,12 +40,12 @@ one claim none of them can make, so it earns its place in the description.
 
 ## /face-shape-calculator/
 
-**Title (recommended)** — 56
+**Title (recommended)** ,  56
 ```
 Face Shape Calculator & Detector: Find Your Best Haircut
 ```
 
-**Meta description (recommended)** — 156
+**Meta description (recommended)** ,  156
 ```
 Free face shape calculator and detector. Measure four widths or upload a photo to find your shape, then get the haircuts that suit it. Runs in your browser.
 ```
@@ -59,12 +59,12 @@ Alternates:
 |---|---|
 | 53 | Face Shape Calculator for Men: Find Your Best Haircut |
 | 55 | Face Shape Calculator for Men: 7 Shapes & Best Haircuts |
-| 57 | Face Shape Calculator for Men — Measure or Upload a Photo |
+| 57 | Face Shape Calculator for Men ,  Measure or Upload a Photo |
 | 46 | What Is My Face Shape? Free Calculator for Men |
 
 | Len | Description |
 |---|---|
-| 154 | Find your face shape in seconds — measure, upload a photo or use a selfie. Get the exact haircut, fringe and beard shape for your shape. Free and private. |
+| 154 | Find your face shape in seconds ,  measure, upload a photo or use a selfie. Get the exact haircut, fringe and beard shape for your shape. Free and private. |
 | 150 | Measure or upload a photo to find which of the 7 face shapes you have, then see the haircuts that suit it and the ones to avoid. Free, nothing stored. |
 | 152 | Which of the 7 face shapes do you have? Measure four widths or upload a photo, then get haircut, beard and glasses picks. Free and runs in your browser. |
 
@@ -72,7 +72,7 @@ Alternates:
 title sharpens relevance for male queries but drops you out of the female
 ones, and `face shape calculator female` is a real query set. If the page
 covers both, use the recommended title. If it is genuinely men-only, use the
-53-character alternate and build a separate female page later — that is the
+53-character alternate and build a separate female page later ,  that is the
 one case where a second page is not cannibalization, because the intent
 differs.
 
@@ -96,21 +96,21 @@ an FAQ entry using the "detector" phrasing, rather than a second page.
 
 ## /face-shape-quiz/
 
-**Title (recommended)** — 53
+**Title (recommended)** ,  53
 ```
 Face Shape Quiz: What Is My Face Shape? (7 Questions)
 ```
 
-**Meta description (recommended)** — 148
+**Meta description (recommended)** ,  148
 ```
-Answer 7 questions and find your face shape in about a minute — no tape measure, no photo. Then see the haircuts that suit it and the ones to avoid.
+Answer 7 questions and find your face shape in about a minute ,  no tape measure, no photo. Then see the haircuts that suit it and the ones to avoid.
 ```
 
 Alternates:
 
 | Len | Title |
 |---|---|
-| 53 | Face Shape Quiz — Find Your Shape & Best Haircut Free |
+| 53 | Face Shape Quiz ,  Find Your Shape & Best Haircut Free |
 | 55 | Face Shape Quiz: Your Shape + The Haircuts That Suit It |
 | 49 | What Is My Face Shape? Free Quiz, No Tape Measure |
 

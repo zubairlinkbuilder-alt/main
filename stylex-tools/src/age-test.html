@@ -7,7 +7,7 @@
 <meta name="description" content="Free AI face age test. Upload a photo or take a selfie to find out how old you look, shown as a range. Nothing is uploaded, everything runs in your browser.">
 <style>/*!INJECT_CSS*/</style>
 <style>
-/* Standalone page only — DELETE this block when pasting the tool into a
+/* Standalone page only. DELETE this block when pasting the tool into a
    WordPress post or theme template, so your theme keeps control of the page. */
 html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: var(--sx-text); }
 </style>
@@ -17,17 +17,15 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
 <div class="sx-tool" id="sx-age-test">
 
   <nav class="sx-crumbs" aria-label="Breadcrumb">
-    <a href="https://stylexmagazine.com/">StyleX Magazine</a> ›
-    <a href="https://stylexmagazine.com/tools/">Tools</a> ›
-    <span aria-current="page">How Old Do I Look</span>
+    <!--BREADCRUMB-->
   </nav>
 
   <h1 class="sx-title">How Old Do I Look?</h1>
-  <p class="sx-subtitle">Free AI Face Age Test — Nothing Uploaded</p>
+  <p class="sx-subtitle">Free AI Face Age Test, Nothing Uploaded</p>
 
   <div class="sx-quick">
     <h2>Quick Answer</h2>
-    <p>Upload a photo or take a selfie and the tool estimates your <strong>apparent age</strong> — the age your face reads as, shown as a range rather than one number. Guess your result first and compare. It is not your biological age and not a health measurement. Free, no sign-up, and every step runs in your browser.</p>
+    <p>Upload a photo or take a selfie and the tool estimates your <strong>apparent age</strong>: the age your face reads as, shown as a range rather than one number. Guess your result first and compare. It is not your biological age and not a health measurement. Free, no sign-up, and every step runs in your browser.</p>
   </div>
 
   <!-- ================================ APP ================================ -->
@@ -36,7 +34,7 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
     <div class="sx-app-head">
       <div>
         <strong>StyleX Face Age Test</strong>
-        <span class="sx-app-sub">Upload Photo · Take Selfie — all processed in your browser, nothing stored</span>
+        <span class="sx-app-sub">Upload Photo · Take Selfie · all processed in your browser, nothing stored</span>
       </div>
       <span class="sx-pill">100% FREE</span>
     </div>
@@ -109,7 +107,7 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
           </div>
           <div class="sx-hero">
             <p class="sx-note" style="margin-bottom:4px">You look about</p>
-            <p class="sx-age" id="sx-age">—</p>
+            <p class="sx-age" id="sx-age">&nbsp;</p>
             <p class="sx-conf" id="sx-range"></p>
             <p class="sx-note sx-hidden" id="sx-verdict" style="margin-top:12px;font-size:.93rem;color:var(--sx-text)"></p>
           </div>
@@ -125,7 +123,7 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
 
   <!-- ============================= PROSE ============================= -->
   <div class="sx-card sx-prose">
-    <h2>What this number is — and is not</h2>
+    <h2>What this number is, and what it is not</h2>
     <p>It is an <strong>apparent age</strong>: the age a model trained on labelled face photos reads your face as. It is not your biological age, it is not a health measurement, and it says nothing about how long you will live. Any tool that tells you otherwise from a single selfie is overselling itself.</p>
 
     <h3>Apparent age vs biological age vs chronological age</h3>
@@ -134,7 +132,7 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
         <thead><tr><th>Measure</th><th>What it is</th><th>How it is measured</th></tr></thead>
         <tbody>
           <tr><td>Chronological age</td><td>Years since you were born</td><td>Your birth certificate</td></tr>
-          <tr><td>Apparent age</td><td>How old your face reads</td><td>A photo — what this tool estimates</td></tr>
+          <tr><td>Apparent age</td><td>How old your face reads</td><td>A photo, which is what this tool estimates</td></tr>
           <tr><td>Biological age</td><td>How your body is ageing</td><td>Clinical and molecular markers, not a selfie</td></tr>
         </tbody>
       </table>
@@ -165,7 +163,7 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
     <h2>How to get the most accurate result</h2>
     <ol>
       <li>Face the camera straight on, with your whole face in frame.</li>
-      <li>Use soft, even light from in front of you — never from directly overhead or behind.</li>
+      <li>Use soft, even light from in front of you, never from directly overhead or behind.</li>
       <li>Hold the camera at eye level, at arm's length.</li>
       <li>Take off sunglasses and pull hair back from your forehead and jaw.</li>
       <li>Keep a neutral expression, and use the sharpest photo you have.</li>
@@ -192,8 +190,8 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
   <!-- ============================== CTA ============================== -->
   <div class="sx-cta">
     <h2>Next: find the haircut that suits your face</h2>
-    <p>Apparent age is a party trick. The measurement that changes what actually suits you is your face shape — the ratio of forehead to cheekbone to jaw. It decides which haircut, fringe, beard line and glasses frame work on you, and which fight your proportions.</p>
-    <a class="sx-btn sx-btn--cta" href="https://stylexmagazine.com/face-shape-calculator/">Open the Face Shape Calculator <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <p>Apparent age is a party trick. The measurement that changes what actually suits you is your face shape: the ratio of forehead to cheekbone to jaw. It decides which haircut, fringe, beard line and glasses frame work on you, and which fight your proportions.</p>
+    <a class="sx-btn sx-btn--cta" href="{{CALCULATOR}}">Open the Face Shape Calculator <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <ul class="sx-links" id="sx-links" style="margin-top:16px"></ul>
   </div>
 
@@ -205,13 +203,11 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
   'use strict';
 
   /* ==================================================================
-   * EDIT ME — extra links shown under the CTA after a result.
-   * The Face Shape Calculator button above is always in the HTML, so it
-   * is crawlable without these. Only add URLs that exist in your sitemap.
+   * Internal links come from src/links.json, resolved at build time. Edit
+   * that file and rebuild; never hardcode a URL here. Anything still null
+   * there is left out, so the page cannot ship a broken link.
    * ================================================================== */
-  var LINKS = [
-    // { text: 'Best haircuts for a round face', href: 'https://stylexmagazine.com/...' }
-  ];
+  var SITE = /*!INJECT_LINKS*/;
 
   var S = window.StyleXFace;
   var el = function (id) { return document.getElementById(id); };
@@ -249,7 +245,7 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
     face_too_small: 'The face is too small in this photo to read. Move closer, or crop in before uploading.'
   };
   var WARNING_TEXT = {
-    multiple_faces: 'More than one face is in this photo — the largest one was used.',
+    multiple_faces: 'More than one face is in this photo. The largest one was used.',
     head_turned: 'Your head is turned away from the camera, which makes the estimate less reliable.',
     low_resolution: 'The face is small in frame. Age estimates get noticeably worse at low resolution.'
   };
@@ -299,9 +295,9 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
     if (!isNaN(guess) && guess >= 5 && guess <= 100) {
       var off = Math.abs(guess - res.age);
       var line;
-      if (off === 0) line = 'You guessed ' + guess + ' — exactly right.';
+      if (off === 0) line = 'You guessed ' + guess + ', exactly right.';
       else if (off <= 2) line = 'You guessed ' + guess + ', within ' + off + ' year' + (off === 1 ? '' : 's') + '. Close.';
-      else if (off <= 5) line = 'You guessed ' + guess + ' — ' + off + ' years out.';
+      else if (off <= 5) line = 'You guessed ' + guess + ', ' + off + ' years out.';
       else line = 'You guessed ' + guess + ', which is ' + off + ' years off. Your face reads ' +
                   (res.age > guess ? 'older' : 'younger') + ' than you expected.';
       ui.verdict.textContent = line;
@@ -314,9 +310,16 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
     if (notes.length) { ui.warnings.textContent = notes.join(' '); ui.warnings.classList.remove('sx-hidden'); }
     else { ui.warnings.classList.add('sx-hidden'); }
 
-    if (LINKS.length) {
+    var extra = [];
+    if (SITE.quiz) extra.push({ text: 'Not sure? Take the face shape quiz instead', href: SITE.quiz });
+    Object.keys(SITE.shapes || {}).forEach(function (k) {
+      if (SITE.shapes[k]) extra.push({ text: 'Best haircuts for a ' + k + ' face', href: SITE.shapes[k] });
+    });
+    (SITE.related || []).forEach(function (l) { if (l && l.href && l.text) extra.push(l); });
+
+    if (extra.length) {
       ui.links.innerHTML = '';
-      LINKS.forEach(function (l) {
+      extra.forEach(function (l) {
         var li = document.createElement('li'), a = document.createElement('a');
         a.href = l.href; a.textContent = l.text; li.appendChild(a); ui.links.appendChild(li);
       });

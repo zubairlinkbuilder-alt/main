@@ -1,4 +1,4 @@
-# Audit — the four tools you sent
+# Audit ,  the four tools you sent
 
 **Method note:** this container's network policy blocks all four domains
 (the proxy returned 403 on every request), so none of the four could be
@@ -23,7 +23,7 @@ framing and the one to copy.
 
 **Weaknesses:**
 - Publishes no accuracy figure, no training-set size, no model detail.
-- Server-side processing — the photo is uploaded.
+- Server-side processing ,  the photo is uploaded.
 - A swarm of near-identical lookalike domains (`howolddoilook.com`, `.cv`,
   `.co`, `.app`, `.io`, `howolddoyoulook.app`) makes contradictory claims:
   one cites 56 million training photos, another says it calls a multimodal
@@ -56,7 +56,7 @@ privacy-focused.
 
 **Takeaway:** do not borrow the "biological age" framing. On a fashion and
 grooming site, a health-adjacent claim pulls the page into YMYL territory
-where you have no author credentials, no citations and no clinical basis —
+where you have no author credentials, no citations and no clinical basis , 
 for a number a selfie cannot support.
 
 ---
@@ -71,7 +71,7 @@ selling to platforms that must keep minors out.
 producing a point estimate plus a calibrated uncertainty value. Its API
 reference quotes ~1.6 years MAE.
 
-**The number nobody quotes — and the one that matters to you:** accuracy
+**The number nobody quotes ,  and the one that matters to you:** accuracy
 collapses with age. **MAE 3.30 years at ages 26–40 and 5.04 years at 40+.**
 Rigr's own page notes these describe its benchmark dataset, not every upload.
 
@@ -79,13 +79,13 @@ Rigr's own page notes these describe its benchmark dataset, not every upload.
 Trial includes a Rigr case study, rating it strongly on technical readiness,
 privacy and usability with fast on-device processing and low false-positive
 rates. The trial tested against its own dataset, not the vendor's, and the
-trial's MAE figures are not public — so the 1.64 figure stays unverified.
+trial's MAE figures are not public ,  so the 1.64 figure stays unverified.
 Its "on-device/edge-enabled" architecture is also unverified: the only
 documented interface is a server endpoint (`POST /api/image`), with no SDK or
 on-device latency benchmark published.
 
 **Takeaway:** the best-documented vendor in your set, and the wrong category
-for you. It also hands you the single most useful fact in this audit — the
+for you. It also hands you the single most useful fact in this audit ,  the
 3.30 / 5.04 year error band for adults is exactly why a "how old do I look"
 result should be shown as a range, not a number.
 
@@ -111,11 +111,11 @@ test your own tool should pass.
 |---|---|---|---|---|
 | howolddoyoulook.com | Server | Yes | No | No |
 | faceage.ai | Server | Yes | No | No |
-| rigr.ai | Server (claims edge) | Yes | Yes, with caveats | Partly — gov trial |
+| rigr.ai | Server (claims edge) | Yes | Yes, with caveats | Partly ,  gov trial |
 | longevity-cities.com | Unknown | Presumed | No | No |
 
 **Every one of them uploads the photo.** That is the gap. A tool that
-processes on-device can say "your photo never leaves this page" and mean it —
+processes on-device can say "your photo never leaves this page" and mean it , 
 which is both the strongest conversion line on the page and the reason you
 never touch a biometric identifier under BIPA or GDPR Article 9.
 
@@ -139,7 +139,7 @@ You asked for an age tool. Three things argue against making it your main one:
    is fighting uphill for a query that monetises badly even if you win it.
 
 3. **Risk for no return.** Face uploads are the most actively litigated area
-   in US privacy right now — face-scan class actions were filed through 2026
+   in US privacy right now ,  face-scan class actions were filed through 2026
    against several large platforms, with BIPA statutory damages of $1,000 per
    negligent and $5,000 per intentional violation, per person. An on-device
    tool sidesteps this, which is how both tools here are built. But the
@@ -147,7 +147,7 @@ You asked for an age tool. Three things argue against making it your main one:
 
 **The better fit, which is why it is the primary deliverable:** a **face shape
 detector**. Same technology, same on-device privacy story, and it sits
-directly on top of the cluster StyleX already publishes into — "diamond face
+directly on top of the cluster StyleX already publishes into ,  "diamond face
 shape" alone is 90,500/mo, with "what is my face shape", "face shape
 analyzer", "face shape best haircut" and "according to face shape haircut"
 behind it. Every shape-specific haircut article links into it; its result
