@@ -1,0 +1,70 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://stylexmagazine.com/tools/face-shape-detector/#app",
+      "name": "Face Shape Detector & Haircut Finder",
+      "url": "https://stylexmagazine.com/tools/face-shape-detector/",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Any modern web browser",
+      "browserRequirements": "Requires JavaScript. No installation or sign-up.",
+      "description": "Detects your face shape from a photo by measuring forehead, cheekbone, jaw and length ratios, then recommends the haircuts, fringes and beard shapes that suit it. Runs entirely in the browser; photos are never uploaded.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "featureList": [
+        "Detects seven face shapes: oval, round, square, oblong, heart, diamond, triangle",
+        "Shows the measured ratios behind the result",
+        "Haircut recommendations for men and women",
+        "Beard and facial hair guidance",
+        "Runs on-device, no photo upload"
+      ],
+      "publisher": { "@id": "https://stylexmagazine.com/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://stylexmagazine.com/tools/face-shape-detector/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How accurate is a face shape detector?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Face shape is a ratio judgement, and the tool measures a 2D photo of a 3D head. A straight-on photo in even light with hair off the face gives a reliable read. A turned head, a low camera angle, a phone held close, or hair across the forehead will all shift the numbers. The tool flags those conditions and shows the ratios so you can judge the result yourself."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the seven face shapes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oval, round, square, oblong (also called rectangle), heart, diamond and triangle (also called pear). They are defined by which part of the face is widest — forehead, cheekbones or jaw — how the length compares to the width, and whether the chin is pointed or rounded."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does it say I am between two face shapes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because most people are. The seven categories are a stylist's shorthand, not biological groups. If your top two scores are close, read both sets of recommendations — the cuts that appear on both lists are your safest options."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does my photo get uploaded?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The detection model is downloaded to your browser and the photo is measured on your own device. Nothing about your image is sent anywhere, so there is nothing stored and nothing to delete."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How should I take the photo for the most accurate result?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Face the camera straight on with a neutral expression. Pull hair back so the hairline, ears and jaw are visible. Use even front light, because overhead light casts shadows that distort the jaw. Hold the phone at eye level and at arm's length; held close and low, a phone lens widens the jaw and shortens the face."
+          }
+        }
+      ]
+    }
+  ]
+}

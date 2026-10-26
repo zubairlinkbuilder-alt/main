@@ -1,0 +1,126 @@
+# StyleX Tools
+
+Two on-device face tools for stylexmagazine.com. Both run entirely in the
+visitor's browser — no photo is ever uploaded, nothing is stored, and there is
+no server, no API key and no per-use cost.
+
+| Tool | File | Targets |
+|---|---|---|
+| **Face Shape Detector & Haircut Finder** (primary) | `dist/face-shape.html` | face shape / haircut cluster |
+| **How Old Do I Look?** | `dist/age-test.html` | apparent-age cluster |
+
+---
+
+## Deploy
+
+### Option A — iframe embed (recommended)
+
+1. Upload `dist/face-shape.html` to your server at `/stylex-tools/face-shape.html`.
+2. Create the page (e.g. `/tools/face-shape-detector/`).
+3. Add a **Custom HTML** block and paste `seo/embed-wordpress.html`.
+4. Paste `seo/face-shape-schema.json` into your SEO plugin's custom-schema
+   field, correcting the URLs.
+
+The iframe isolates the tool from your theme, so a theme or plugin update
+cannot break it. `allow="camera"` is required for the camera button.
+
+### Option B — paste inline
+
+Open `dist/face-shape.html`, **delete the `<style>` block marked
+"Standalone page only"**, then copy everything from `<style>` to the final
+`</script>` into a Custom HTML block. Faster to set up, but your theme's CSS
+can now reach the tool. All classes are namespaced `sx-` to limit collisions.
+
+### Requirements
+
+- **HTTPS.** The camera button will not work over plain HTTP.
+- Models load once from jsDelivr (~980 KB total) and are then browser-cached.
+  To self-host instead, copy the `model/` and `dist/` folders out of the
+  `@vladmandic/face-api` npm package and change `MODEL_URL` and `LIB_URL` at
+  the top of `src/engine.js`.
+
+---
+
+## Editing
+
+| Want to change | Where |
+|---|---|
+| Haircut / beard recommendations | `SHAPES` in `src/engine.js` |
+| Internal links shown with the result | `LINKS` at the top of each page's script |
+| Classifier calibration | `TUNING` in `src/engine.js` |
+| Colours, spacing | `src/_ui.css` |
+
+After editing anything in `src/`, rebuild:
+
+```
+python3 build.py          # writes dist/
+node tests/classify.test.mjs
+```
+
+`LINKS` starts empty on purpose — add only URLs confirmed in your sitemap, or
+the card stays hidden. Nothing ships a broken link.
+
+---
+
+## How the face shape result is produced
+
+1. `tinyFaceDetector` finds faces; the largest is used.
+2. `faceLandmark68Net` places 68 points.
+3. Head roll is cancelled using the eye centres, so widths are measured on a
+   level face.
+4. Four measurements are taken: cheekbone width (points 1–15), jaw width
+   (3–13), forehead width (outer brows, 17–26), and face length (brow midpoint
+   to chin, projected to the hairline).
+5. Seven shapes are scored with smooth membership functions. The winner, its
+   confidence and the full ranking are all shown to the visitor.
+
+### A caveat worth knowing
+
+The 68-point model has no hairline landmark, and landmark spans are not
+anatomical widths. Measured across a calibration set, the brow span runs about
+0.80× cheekbone width and the jaw span about 0.89×, so raw ratios cluster well
+below the textbook numbers the shape definitions assume. `JAW_NORM`,
+`FOREHEAD_NORM` and `FACE_LENGTH_FACTOR` in `TUNING` correct for this.
+
+Those three constants were fitted on a small calibration set. The classifier
+itself is verified against all seven textbook archetypes
+(`tests/classify.test.mjs`), but on real photos the distribution skews toward
+oval, round and square. **Run 15–20 of your own photos through it before
+launch**; if results lean one way, adjust `FACE_LENGTH_FACTOR` (raise it if
+faces read too round, lower it if everything reads oblong).
+
+---
+
+## Privacy and legal
+
+Everything runs on-device. Nothing is transmitted, so no biometric identifier
+is ever collected, stored or shared by you. That is the point: a tool that
+uploads a face to a server extracts facial geometry, which is a biometric
+identifier under Illinois BIPA and a special-category identifier under GDPR
+Article 9 when used to identify someone — a live litigation area, with face-scan
+class actions filed through 2026 against several large platforms.
+
+Still do this before launch:
+
+- Add a line to your privacy policy stating the tool processes images locally
+  in the browser and transmits nothing.
+- Keep the on-page privacy notice visible. It is a conversion asset as well as
+  a compliance one — none of the competing tools can make the same claim.
+- Do not add analytics events that record results against a user identifier.
+- Never present the age tool as age verification. That is a regulated use.
+
+---
+
+## Tests
+
+```
+node tests/classify.test.mjs
+```
+
+Checks all seven archetypes classify correctly, that an average face does not
+land on a rare shape, that every shape is reachable, and that confidence stays
+inside the documented band.
+
+The browser-level checks run against a local copy of the models (upload,
+camera capture, no-face handling, the gender toggle, reset, overlay painting,
+dark mode and 360px layout). Screenshots of the verified output are in `docs/`.

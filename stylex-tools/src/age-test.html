@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Old Do I Look</title>
+<meta name="description" content="Find out how old you look from a photo. Guess your own result first, then see what the AI says. Runs entirely in your browser — your photo is never uploaded.">
+<style>/*!INJECT_CSS*/</style>
+<style>
+/* Standalone page only — DELETE this block when pasting the tool into a
+   WordPress post or theme template, so your theme keeps control of the page. */
+html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: var(--sx-text); }
+</style>
+</head>
+<body>
+
+<div class="sx-tool" id="sx-age-test">
+
+  <h1>How Old Do I Look?</h1>
+  <p class="sx-lede">Upload a photo and the tool estimates the age your face reads as — your <em>apparent</em> age, not your real one. Guess your result first, then see how close you were.</p>
+
+  <div class="sx-privacy">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span><strong>Your photo never leaves this page.</strong> The model runs in your browser. Nothing is uploaded, stored, or shared — so there is nothing for anyone to leak.</span>
+  </div>
+
+  <!-- ------------------------------- INPUT ------------------------------- -->
+  <div class="sx-card" id="sx-input">
+    <div class="sx-drop" id="sx-drop" tabindex="0" role="button" aria-label="Choose a photo of your face">
+      <strong>Drop a photo here, or tap to choose one</strong>
+      <span>One face, looking at the camera, no sunglasses. JPG, PNG or WebP.</span>
+      <div class="sx-actions">
+        <button type="button" class="sx-btn" id="sx-pick">Choose photo</button>
+        <button type="button" class="sx-btn sx-btn--ghost" id="sx-cam">Use camera</button>
+      </div>
+    </div>
+    <input type="file" accept="image/*" id="sx-file" class="sx-hidden">
+
+    <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--sx-border)">
+      <label for="sx-guess" style="font-weight:600;font-size:.93rem;display:block;margin-bottom:6px">Optional: what age do you think it will say?</label>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <input type="number" id="sx-guess" min="5" max="100" inputmode="numeric" placeholder="e.g. 27"
+               style="font:inherit;width:120px;padding:10px 12px;border:1px solid var(--sx-border);border-radius:10px;background:var(--sx-bg);color:var(--sx-text);min-height:44px">
+        <span class="sx-note">We will compare it to the result. Kept on this page only.</span>
+      </div>
+    </div>
+
+    <div class="sx-progress sx-hidden" id="sx-progress"><i></i></div>
+    <p class="sx-status" id="sx-status"></p>
+  </div>
+
+  <!-- ------------------------------ CAMERA ------------------------------- -->
+  <div class="sx-card sx-hidden" id="sx-camera">
+    <div class="sx-stage"><video id="sx-video" playsinline muted></video></div>
+    <div class="sx-actions">
+      <button type="button" class="sx-btn" id="sx-shoot">Capture</button>
+      <button type="button" class="sx-btn sx-btn--ghost" id="sx-cam-cancel">Cancel</button>
+    </div>
+  </div>
+
+  <!-- ------------------------------ RESULT ------------------------------- -->
+  <div class="sx-hidden" id="sx-result">
+
+    <div class="sx-alert sx-alert--warn sx-hidden" id="sx-warnings"></div>
+
+    <div class="sx-card">
+      <div class="sx-grid sx-grid--2">
+        <div class="sx-stage">
+          <img id="sx-preview" alt="The photo you analysed">
+          <canvas class="sx-overlay" id="sx-overlay"></canvas>
+        </div>
+        <div class="sx-hero">
+          <p class="sx-note" style="margin-bottom:4px">You look about</p>
+          <p class="sx-age" id="sx-age">—</p>
+          <p class="sx-conf" id="sx-range"></p>
+          <p class="sx-note sx-hidden" id="sx-verdict" style="margin-top:12px;font-size:.93rem;color:var(--sx-text)"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sx-card">
+      <h2>What this number is — and is not</h2>
+      <p style="font-size:.95rem">It is an <strong>apparent age</strong>: the age a model trained on labelled face photos reads your face as. It is not your biological age, it is not a health measurement, and it says nothing about how long you will live. Any tool that tells you otherwise from a single selfie is overselling itself.</p>
+      <p style="font-size:.95rem;margin-bottom:0">Expect it to move by several years between two photos of the same person on the same day. Lighting, camera angle, expression, make-up, facial hair, glasses and image sharpness all shift the estimate, and the model is least reliable at both ends of the age range.</p>
+    </div>
+
+    <div class="sx-card" id="sx-crosslink-card">
+      <h2>More useful than your age: your face shape</h2>
+      <p style="font-size:.95rem">Apparent age is a party trick. The measurement that actually changes what suits you is the shape of your face — the ratio of forehead to cheekbone to jaw. It decides which haircut, beard line, fringe and glasses frame work on you, and which fight your proportions.</p>
+      <ul class="sx-links" id="sx-links"></ul>
+    </div>
+
+    <div class="sx-actions" style="margin-bottom:22px">
+      <button type="button" class="sx-btn sx-btn--ghost" id="sx-again">Try another photo</button>
+    </div>
+  </div>
+
+  <!-- -------------------------------- FAQ -------------------------------- -->
+  <div class="sx-card sx-faq">
+    <h2>Questions people ask</h2>
+    <details><summary>How accurate is an AI age detector?</summary>
+      <p>Models of this type are typically a few years out either way, and the error grows with age — estimates for children are tighter than for adults over 40, where several vendors report an average error of five years or more. Treat the number as a range, not a reading.</p></details>
+    <details><summary>Is this my biological age?</summary>
+      <p>No. Biological age is estimated from clinical and molecular markers, and the published research on predicting health outcomes from face photos comes from hospital datasets with consent procedures attached. This tool estimates how old your face looks. The two are not the same thing and should not be read as one.</p></details>
+    <details><summary>Why did it say I look older than I am?</summary>
+      <p>Usually the photo, not the face. Harsh overhead light deepens shadows around the eyes and mouth; a low camera angle adds weight to the jaw; low resolution smears the fine skin detail the model reads as youth. Facial hair pushes estimates up, and a neutral expression reads older than a smile. Try a second photo in soft, even, front-on light.</p></details>
+    <details><summary>Does my photo get uploaded?</summary>
+      <p>No. The model file downloads to your browser and the photo is processed on your device. Nothing about your image is transmitted, so there is no copy of it anywhere but your own phone or computer.</p></details>
+    <details><summary>Can I use it to verify someone's age?</summary>
+      <p>No, and you should not. Age verification and age assurance are a regulated field with its own accuracy and auditing requirements. This is an entertainment tool for your own photo.</p></details>
+  </div>
+
+</div>
+
+<script>/*!INJECT_ENGINE*/</script>
+<script>
+(function () {
+  'use strict';
+
+  /* ==================================================================
+   * EDIT ME — where this tool sends traffic next.
+   * Point the first entry at your face shape tool once it is live. Only
+   * use URLs that exist; an empty array hides the card.
+   * ================================================================== */
+  var LINKS = [
+    // { text: 'Find your face shape and the haircuts that suit it', href: '/tools/face-shape-detector/' }
+  ];
+
+  var S = window.StyleXFace;
+  var el = function (id) { return document.getElementById(id); };
+
+  var ui = {
+    drop: el('sx-drop'), pick: el('sx-pick'), cam: el('sx-cam'), file: el('sx-file'),
+    guess: el('sx-guess'),
+    progress: el('sx-progress'), bar: el('sx-progress').firstElementChild, status: el('sx-status'),
+    camera: el('sx-camera'), video: el('sx-video'), shoot: el('sx-shoot'), camCancel: el('sx-cam-cancel'),
+    input: el('sx-input'), result: el('sx-result'), warnings: el('sx-warnings'),
+    preview: el('sx-preview'), overlay: el('sx-overlay'),
+    age: el('sx-age'), range: el('sx-range'), verdict: el('sx-verdict'),
+    links: el('sx-links'), crossCard: el('sx-crosslink-card'), again: el('sx-again')
+  };
+
+  var current = null;
+  var stream = null;
+
+  function say(m) { ui.status.textContent = m || ''; }
+  function progress(f) { ui.progress.classList.remove('sx-hidden'); ui.bar.style.width = Math.round(f * 100) + '%'; }
+  function busy(on) { ui.pick.disabled = on; ui.cam.disabled = on; ui.drop.style.opacity = on ? '.6' : ''; }
+  function fail(m) { busy(false); ui.progress.classList.add('sx-hidden'); say(m); }
+
+  var MESSAGES = {
+    no_face: 'No face found. Try a photo taken straight on, with the whole face in frame and even light.',
+    face_too_small: 'The face is too small in this photo to read. Move closer or crop in before uploading.'
+  };
+  var WARNING_TEXT = {
+    multiple_faces: 'More than one face is in this photo — the largest one was used.',
+    head_turned: 'Your head is turned away from the camera, which makes the estimate less reliable.',
+    low_resolution: 'The face is small in frame. Age estimates get noticeably worse at low resolution.'
+  };
+
+  function toCanvas(source, maxSide) {
+    var w = source.naturalWidth || source.videoWidth || source.width;
+    var h = source.naturalHeight || source.videoHeight || source.height;
+    var scale = Math.min(1, maxSide / Math.max(w, h));
+    var c = document.createElement('canvas');
+    c.width = Math.round(w * scale); c.height = Math.round(h * scale);
+    c.getContext('2d').drawImage(source, 0, 0, c.width, c.height);
+    return c;
+  }
+
+  function drawOverlay(res) {
+    var cv = ui.overlay, img = ui.preview;
+    var w = img.clientWidth, h = img.clientHeight;
+    if (!w || !h) return;
+    var dpr = window.devicePixelRatio || 1;
+    cv.width = w * dpr; cv.height = h * dpr;
+    cv.style.width = w + 'px'; cv.style.height = h + 'px';
+    var ctx = cv.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    var k = w / res.sourceWidth;
+    var stroke = getComputedStyle(document.documentElement).getPropertyValue('--sx-accent').trim() || '#fff';
+    var b = res.box;
+    ctx.strokeStyle = stroke; ctx.lineWidth = 2; ctx.globalAlpha = .8;
+    var r = 8, x = (b.x - res.cropX) * k, y = (b.y - res.cropY) * k, bw = b.width * k, bh = b.height * k;
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + bw, y, x + bw, y + bh, r);
+    ctx.arcTo(x + bw, y + bh, x, y + bh, r);
+    ctx.arcTo(x, y + bh, x, y, r);
+    ctx.arcTo(x, y, x + bw, y, r);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+
+  function render(res) {
+    current = res;
+    ui.age.textContent = res.age;
+    ui.range.textContent = 'most likely ' + res.ageLow + '–' + res.ageHigh + ' years';
+
+    var guess = parseInt(ui.guess.value, 10);
+    if (!isNaN(guess) && guess >= 5 && guess <= 100) {
+      var off = Math.abs(guess - res.age);
+      var line;
+      if (off === 0) line = 'You guessed ' + guess + ' — exactly right.';
+      else if (off <= 2) line = 'You guessed ' + guess + ', within ' + off + ' year' + (off === 1 ? '' : 's') + '. Close.';
+      else if (off <= 5) line = 'You guessed ' + guess + ' — ' + off + ' years out.';
+      else line = 'You guessed ' + guess + ', which is ' + off + ' years off. Your face reads ' +
+                  (res.age > guess ? 'older' : 'younger') + ' than you expected.';
+      ui.verdict.textContent = line;
+      ui.verdict.classList.remove('sx-hidden');
+    } else {
+      ui.verdict.classList.add('sx-hidden');
+    }
+
+    var notes = res.warnings.map(function (w) { return WARNING_TEXT[w]; }).filter(Boolean);
+    if (notes.length) { ui.warnings.textContent = notes.join(' '); ui.warnings.classList.remove('sx-hidden'); }
+    else { ui.warnings.classList.add('sx-hidden'); }
+
+    if (LINKS.length) {
+      ui.links.innerHTML = '';
+      LINKS.forEach(function (l) {
+        var li = document.createElement('li'), a = document.createElement('a');
+        a.href = l.href; a.textContent = l.text; li.appendChild(a); ui.links.appendChild(li);
+      });
+      ui.links.classList.remove('sx-hidden');
+    } else {
+      ui.links.classList.add('sx-hidden');
+    }
+
+    ui.input.classList.add('sx-hidden');
+    ui.result.classList.remove('sx-hidden');
+    drawOverlay(res);
+    ui.result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function run(source) {
+    busy(true);
+    say('Loading the age model…');
+    progress(0.05);
+    S.loadModels(function (stage, frac) {
+      progress(frac * 0.7);
+      if (stage === 'done') say('Reading your face…');
+    }).then(function () {
+      progress(0.8);
+      var canvas = toCanvas(source, 1200);
+      return S.analyze(canvas).then(function (res) {
+        progress(1);
+        if (!res.ok) { fail(MESSAGES[res.error] || 'Could not read this photo. Try another one.'); return; }
+        var crop = S.cropFace(canvas, res.box, 2.0);
+        res.sourceWidth = crop.size;
+        res.cropX = crop.x;
+        res.cropY = crop.y;
+        ui.preview.src = crop.canvas.toDataURL('image/jpeg', 0.9);
+        ui.preview.onload = function () { render(res); busy(false); ui.progress.classList.add('sx-hidden'); say(''); };
+      });
+    }).catch(function (err) {
+      console.error('[StyleX] analysis failed', err);
+      fail('The model could not load. Check your connection and try again.');
+    });
+  }
+
+  function handleFile(file) {
+    if (!file) return;
+    if (!/^image\//.test(file.type)) { say('That file is not an image.'); return; }
+    var url = URL.createObjectURL(file);
+    var img = new Image();
+    img.onload = function () { run(img); URL.revokeObjectURL(url); };
+    img.onerror = function () { say('That image could not be read.'); URL.revokeObjectURL(url); };
+    img.src = url;
+  }
+
+  function stopCamera() {
+    if (stream) { stream.getTracks().forEach(function (t) { t.stop(); }); stream = null; }
+    ui.camera.classList.add('sx-hidden');
+  }
+  function openCamera() {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      say('This browser cannot open the camera. Upload a photo instead.'); return;
+    }
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 1280 } }, audio: false })
+      .then(function (s) {
+        stream = s; ui.video.srcObject = s; ui.video.play();
+        ui.camera.classList.remove('sx-hidden'); say('');
+      })
+      .catch(function () { say('Camera access was blocked. Allow it in your browser, or upload a photo instead.'); });
+  }
+
+  ui.pick.addEventListener('click', function (e) { e.stopPropagation(); ui.file.click(); });
+  ui.cam.addEventListener('click', function (e) { e.stopPropagation(); openCamera(); });
+  ui.drop.addEventListener('click', function () { ui.file.click(); });
+  ui.drop.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); ui.file.click(); }
+  });
+  ui.file.addEventListener('change', function () { handleFile(this.files[0]); this.value = ''; });
+  ['dragenter', 'dragover'].forEach(function (ev) {
+    ui.drop.addEventListener(ev, function (e) { e.preventDefault(); ui.drop.classList.add('is-over'); });
+  });
+  ['dragleave', 'drop'].forEach(function (ev) {
+    ui.drop.addEventListener(ev, function (e) { e.preventDefault(); ui.drop.classList.remove('is-over'); });
+  });
+  ui.drop.addEventListener('drop', function (e) {
+    if (e.dataTransfer && e.dataTransfer.files) handleFile(e.dataTransfer.files[0]);
+  });
+  ui.shoot.addEventListener('click', function () { var f = toCanvas(ui.video, 1200); stopCamera(); run(f); });
+  ui.camCancel.addEventListener('click', stopCamera);
+  ui.again.addEventListener('click', function () {
+    current = null;
+    ui.result.classList.add('sx-hidden');
+    ui.input.classList.remove('sx-hidden');
+    say('');
+    ui.input.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  window.addEventListener('resize', function () { if (current) drawOverlay(current); });
+
+  var warmed = false;
+  ['pointerdown', 'keydown'].forEach(function (ev) {
+    ui.drop.addEventListener(ev, function () {
+      if (warmed) return; warmed = true;
+      S.loadModels(function () {}).catch(function () { warmed = false; });
+    }, { once: true });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://stylexmagazine.com/tools/how-old-do-i-look/#app",
+      "name": "How Old Do I Look? AI Face Age Test",
+      "url": "https://stylexmagazine.com/tools/how-old-do-i-look/",
+      "applicationCategory": "EntertainmentApplication",
+      "operatingSystem": "Any modern web browser",
+      "browserRequirements": "Requires JavaScript. No installation or sign-up.",
+      "description": "Estimates the apparent age of a face from a photo. Guess your own result first, then compare. Runs entirely in the browser; photos are never uploaded. It estimates apparent age only and is not a biological age or health measurement.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@id": "https://stylexmagazine.com/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://stylexmagazine.com/tools/how-old-do-i-look/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How accurate is an AI age detector?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Models of this type are typically a few years out either way, and the error grows with age. Estimates for children are tighter than for adults over 40, where several vendors report an average error of five years or more. Treat the number as a range rather than a reading."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is apparent age the same as biological age?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Biological age is estimated from clinical and molecular markers. This tool estimates how old a face looks in a photo. The two are different measurements and should not be read as one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why did it say I look older than I am?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually the photo rather than the face. Harsh overhead light deepens shadows around the eyes and mouth, a low camera angle adds weight to the jaw, and low resolution smears the fine skin detail the model reads as youth. Facial hair pushes estimates up, and a neutral expression reads older than a smile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does my photo get uploaded?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The model file downloads to your browser and the photo is processed on your device. Nothing about your image is transmitted, so no copy exists anywhere but your own phone or computer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can this be used to verify someone's age?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Age verification and age assurance are a regulated field with their own accuracy and auditing requirements. This is an entertainment tool for your own photo."
+          }
+        }
+      ]
+    }
+  ]
+}

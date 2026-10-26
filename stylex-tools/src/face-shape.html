@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Face Shape Detector</title>
+<meta name="description" content="Find your face shape from a photo in seconds, then get the haircuts, beard shapes and bangs that actually suit it. Runs entirely in your browser — your photo is never uploaded.">
+<style>/*!INJECT_CSS*/</style>
+<style>
+/* Standalone page only — DELETE this block when pasting the tool into a
+   WordPress post or theme template, so your theme keeps control of the page. */
+html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: var(--sx-text); }
+</style>
+</head>
+<body>
+
+<div class="sx-tool" id="sx-face-shape">
+
+  <h1>Face Shape Detector &amp; Haircut Finder</h1>
+  <p class="sx-lede">Upload a photo or use your camera. The tool maps 68 points on your face, measures the forehead, cheekbone, jaw and length ratios, and tells you which of the seven face shapes you have — then which cuts work with it and which fight it.</p>
+
+  <div class="sx-privacy">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span><strong>Your photo never leaves this page.</strong> Every measurement runs locally in your browser. Nothing is uploaded, nothing is stored, and no account is needed.</span>
+  </div>
+
+  <!-- ------------------------------- INPUT ------------------------------- -->
+  <div class="sx-card" id="sx-input">
+    <div class="sx-drop" id="sx-drop" tabindex="0" role="button" aria-label="Choose a photo of your face">
+      <strong>Drop a photo here, or tap to choose one</strong>
+      <span>Front-facing, good light, hair pulled back from the face. JPG, PNG or WebP.</span>
+      <div class="sx-actions">
+        <button type="button" class="sx-btn" id="sx-pick">Choose photo</button>
+        <button type="button" class="sx-btn sx-btn--ghost" id="sx-cam">Use camera</button>
+      </div>
+    </div>
+    <input type="file" accept="image/*" id="sx-file" class="sx-hidden">
+    <div class="sx-progress sx-hidden" id="sx-progress"><i></i></div>
+    <p class="sx-status" id="sx-status"></p>
+  </div>
+
+  <!-- ------------------------------ CAMERA ------------------------------- -->
+  <div class="sx-card sx-hidden" id="sx-camera">
+    <div class="sx-stage"><video id="sx-video" playsinline muted></video></div>
+    <div class="sx-actions">
+      <button type="button" class="sx-btn" id="sx-shoot">Capture</button>
+      <button type="button" class="sx-btn sx-btn--ghost" id="sx-cam-cancel">Cancel</button>
+    </div>
+  </div>
+
+  <!-- ------------------------------ RESULT ------------------------------- -->
+  <div class="sx-hidden" id="sx-result">
+
+    <div class="sx-alert sx-alert--warn sx-hidden" id="sx-warnings"></div>
+
+    <div class="sx-card">
+      <div class="sx-grid sx-grid--2">
+        <div class="sx-stage">
+          <img id="sx-preview" alt="The photo you analysed, with the detected face outline">
+          <canvas class="sx-overlay" id="sx-overlay"></canvas>
+        </div>
+        <div class="sx-hero">
+          <p class="sx-note" style="margin-bottom:6px">Your face shape</p>
+          <p class="sx-shape" id="sx-shape-name">—</p>
+          <p class="sx-conf" id="sx-shape-conf"></p>
+          <p id="sx-shape-summary" style="font-size:.93rem;margin-top:12px"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sx-card">
+      <h2>Haircuts for your shape</h2>
+      <p class="sx-note" style="margin-bottom:14px">Recommendations differ by cut length and silhouette, so pick the set you want to see.</p>
+      <div class="sx-toggle" id="sx-gender" role="group" aria-label="Show recommendations for">
+        <button type="button" data-g="men" aria-pressed="false">Men</button>
+        <button type="button" data-g="women" aria-pressed="false">Women</button>
+      </div>
+      <p class="sx-note sx-hidden" id="sx-gender-note" style="margin-top:10px"></p>
+
+      <div class="sx-grid sx-grid--2" style="margin-top:18px">
+        <div>
+          <h3>Works with your shape</h3>
+          <ul class="sx-list sx-list--yes" id="sx-best"></ul>
+        </div>
+        <div>
+          <h3>Fights your shape</h3>
+          <ul class="sx-list sx-list--no" id="sx-avoid"></ul>
+        </div>
+      </div>
+      <div id="sx-beard-wrap" class="sx-hidden" style="margin-top:18px;padding-top:16px;border-top:1px solid var(--sx-border)">
+        <h3>Beard &amp; facial hair</h3>
+        <p style="font-size:.95rem;margin:0" id="sx-beard"></p>
+      </div>
+    </div>
+
+    <div class="sx-card">
+      <h2>The measurements behind the result</h2>
+      <div class="sx-grid sx-grid--2">
+        <table class="sx-metrics">
+          <tbody>
+            <tr><th>Length to cheekbone width</th><td id="sx-m-lr">—</td></tr>
+            <tr><th>Jaw to cheekbone width</th><td id="sx-m-jc">—</td></tr>
+            <tr><th>Forehead to cheekbone width</th><td id="sx-m-fc">—</td></tr>
+            <tr><th>Forehead to jaw width</th><td id="sx-m-fj">—</td></tr>
+            <tr><th>Chin angle</th><td id="sx-m-chin">—</td></tr>
+          </tbody>
+        </table>
+        <div>
+          <h3 style="margin-bottom:12px">How close you are to each shape</h3>
+          <ul class="sx-bars" id="sx-bars"></ul>
+        </div>
+      </div>
+      <p class="sx-note" style="margin-top:14px">Ratios are unitless, so they hold whatever the photo size. A pointed chin reads under roughly 110°, a soft rounded chin over it. Most faces sit between two shapes — the second bar matters as much as the first.</p>
+    </div>
+
+    <div class="sx-card">
+      <h2>Also worth reading</h2>
+      <ul class="sx-links" id="sx-links"></ul>
+    </div>
+
+    <div class="sx-actions" style="margin-bottom:22px">
+      <button type="button" class="sx-btn sx-btn--ghost" id="sx-again">Try another photo</button>
+    </div>
+  </div>
+
+  <!-- -------------------------------- FAQ -------------------------------- -->
+  <div class="sx-card sx-faq">
+    <h2>Questions people ask</h2>
+    <details><summary>How accurate is a face shape detector?</summary>
+      <p>Shape is a ratio judgement, not a fact, and the tool is measuring a 2D photo of a 3D head. A straight-on photo in even light with hair off the face gives a reliable read. A turned head, a low camera angle, a wide-angle phone lens held close, or hair across the forehead will all shift the numbers. The tool flags those conditions when it detects them, and shows the ratios so you can judge the call yourself.</p></details>
+    <details><summary>What are the seven face shapes?</summary>
+      <p>Oval, round, square, oblong (also called rectangle), heart, diamond and triangle (also called pear). They are defined by which part of the face is widest — forehead, cheekbones or jaw — how the length compares to the width, and whether the chin is pointed or rounded.</p></details>
+    <details><summary>Why does it say I'm between two shapes?</summary>
+      <p>Because most people are. The seven categories are a stylist's shorthand, not biological groups. If your top two bars are close, read both sets of recommendations — the cuts that appear on both lists are your safest options.</p></details>
+    <details><summary>Does my photo get uploaded?</summary>
+      <p>No. The detection model is downloaded to your browser and the photo is measured on your own device. Nothing about your image is sent anywhere, so there is nothing to store or delete.</p></details>
+    <details><summary>How should I take the photo?</summary>
+      <p>Face the camera straight on with a neutral expression. Pull hair back so the hairline, ears and jaw are visible. Use even front light — overhead light casts shadows that distort the jaw. Hold the phone at eye level and at arm's length; held close and low, a phone lens widens the jaw and shortens the face.</p></details>
+  </div>
+
+</div>
+
+<script>/*!INJECT_ENGINE*/</script>
+<script>
+(function () {
+  'use strict';
+
+  /* ==================================================================
+   * EDIT ME — internal links shown with the result.
+   * Only add URLs that exist in your sitemap. Leave the array empty and
+   * the "Also worth reading" card hides itself.
+   * ================================================================== */
+  var LINKS = [
+    // { text: 'Best haircuts for a round face', href: '/best-haircuts-round-face/' },
+    // { text: 'How to pick a fade length', href: '/fade-haircut-guide/' }
+  ];
+
+  var S = window.StyleXFace;
+  var el = function (id) { return document.getElementById(id); };
+
+  var ui = {
+    drop: el('sx-drop'), pick: el('sx-pick'), cam: el('sx-cam'), file: el('sx-file'),
+    progress: el('sx-progress'), bar: el('sx-progress').firstElementChild, status: el('sx-status'),
+    camera: el('sx-camera'), video: el('sx-video'), shoot: el('sx-shoot'), camCancel: el('sx-cam-cancel'),
+    input: el('sx-input'), result: el('sx-result'), warnings: el('sx-warnings'),
+    preview: el('sx-preview'), overlay: el('sx-overlay'),
+    shapeName: el('sx-shape-name'), shapeConf: el('sx-shape-conf'), shapeSummary: el('sx-shape-summary'),
+    gender: el('sx-gender'), genderNote: el('sx-gender-note'),
+    best: el('sx-best'), avoid: el('sx-avoid'), beardWrap: el('sx-beard-wrap'), beard: el('sx-beard'),
+    bars: el('sx-bars'), links: el('sx-links'), again: el('sx-again')
+  };
+
+  var current = null;   // last analysis result
+  var stream = null;    // active camera stream
+
+  /* ----------------------------- helpers ---------------------------- */
+
+  function say(msg) { ui.status.textContent = msg || ''; }
+
+  function progress(frac) {
+    ui.progress.classList.remove('sx-hidden');
+    ui.bar.style.width = Math.round(frac * 100) + '%';
+  }
+
+  function busy(on) {
+    ui.pick.disabled = on; ui.cam.disabled = on;
+    ui.drop.style.opacity = on ? '.6' : '';
+  }
+
+  function fail(msg) {
+    busy(false);
+    ui.progress.classList.add('sx-hidden');
+    say(msg);
+  }
+
+  var MESSAGES = {
+    no_face: 'No face found. Try a photo taken straight on, with the whole face in frame and even light.',
+    face_too_small: 'The face is too small in this photo to measure. Move closer or crop in before uploading.'
+  };
+
+  var WARNING_TEXT = {
+    multiple_faces: 'More than one face is in this photo — the largest one was measured.',
+    head_turned: 'Your head is turned away from the camera, which narrows one side of the face. A straight-on photo gives a truer read.',
+    low_resolution: 'The face is small in frame, so the ratios are rougher than usual.'
+  };
+
+  // Downscale very large photos; detection gains nothing above ~1200px.
+  function toCanvas(source, maxSide) {
+    var w = source.naturalWidth || source.videoWidth || source.width;
+    var h = source.naturalHeight || source.videoHeight || source.height;
+    var scale = Math.min(1, maxSide / Math.max(w, h));
+    var c = document.createElement('canvas');
+    c.width = Math.round(w * scale);
+    c.height = Math.round(h * scale);
+    c.getContext('2d').drawImage(source, 0, 0, c.width, c.height);
+    return c;
+  }
+
+  /* ------------------------------ drawing --------------------------- */
+
+  function drawOverlay(res) {
+    var img = ui.preview;
+    var cv = ui.overlay;
+    var w = img.clientWidth, h = img.clientHeight;
+    if (!w || !h) return;
+    var dpr = window.devicePixelRatio || 1;
+    cv.width = w * dpr; cv.height = h * dpr;
+    cv.style.width = w + 'px'; cv.style.height = h + 'px';
+
+    var ctx = cv.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+
+    var k = w / res.sourceWidth;   // analysis canvas -> displayed image
+    var css = getComputedStyle(document.documentElement);
+    var stroke = css.getPropertyValue('--sx-accent').trim() || '#fff';
+
+    // Jawline + brow line: the outline the measurements are taken from.
+    function path(indices, close) {
+      ctx.beginPath();
+      indices.forEach(function (i, n) {
+        var p = res.landmarks[i];
+        if (!p) return;
+        var px = (p.x - res.cropX) * k, py = (p.y - res.cropY) * k;
+        n === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+      });
+      if (close) ctx.closePath();
+      ctx.stroke();
+    }
+    ctx.lineWidth = 2; ctx.strokeStyle = stroke; ctx.globalAlpha = .85;
+    path([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16], false);
+    ctx.globalAlpha = .55;
+    path([17,18,19,20,21], false);
+    path([22,23,24,25,26], false);
+
+    // The three width measurements.
+    ctx.globalAlpha = .75;
+    ctx.setLineDash([5, 4]);
+    [[17, 26], [1, 15], [4, 12]].forEach(function (pair) {
+      var a = res.landmarks[pair[0]], b = res.landmarks[pair[1]];
+      ctx.beginPath();
+      ctx.moveTo((a.x - res.cropX) * k, (a.y - res.cropY) * k);
+      ctx.lineTo((b.x - res.cropX) * k, (b.y - res.cropY) * k);
+      ctx.stroke();
+    });
+    ctx.setLineDash([]);
+    ctx.globalAlpha = 1;
+  }
+
+  /* ---------------------------- rendering --------------------------- */
+
+  function renderRecommendations(genderKey) {
+    var shape = S.SHAPES[current.shape.id];
+    var set = shape[genderKey];
+
+    Array.prototype.forEach.call(ui.gender.children, function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.g === genderKey));
+    });
+
+    ui.best.innerHTML = '';
+    set.best.forEach(function (t) {
+      var li = document.createElement('li'); li.textContent = t; ui.best.appendChild(li);
+    });
+    ui.avoid.innerHTML = '';
+    set.avoid.forEach(function (t) {
+      var li = document.createElement('li'); li.textContent = t; ui.avoid.appendChild(li);
+    });
+
+    if (set.beard) {
+      ui.beard.textContent = set.beard;
+      ui.beardWrap.classList.remove('sx-hidden');
+    } else {
+      ui.beardWrap.classList.add('sx-hidden');
+    }
+  }
+
+  function render(res) {
+    current = res;
+    var shape = S.SHAPES[res.shape.id];
+
+    ui.shapeName.textContent = shape.label;
+    ui.shapeConf.textContent = Math.round(res.shape.confidence * 100) + '% match · closest alternative: ' +
+      S.SHAPES[res.shape.runnerUp].label;
+    ui.shapeSummary.textContent = shape.summary;
+
+    var m = res.metrics;
+    el('sx-m-lr').textContent = m.lengthToCheek.toFixed(2);
+    el('sx-m-jc').textContent = m.jawToCheek.toFixed(2);
+    el('sx-m-fc').textContent = m.foreheadToCheek.toFixed(2);
+    el('sx-m-fj').textContent = m.foreheadToJaw.toFixed(2);
+    el('sx-m-chin').textContent = Math.round(m.chinAngle) + '°' +
+      (m.chinAngle < 110 ? ' (pointed)' : ' (rounded)');
+
+    // Score bars, normalised against the winner.
+    var top = res.shape.ranked[0].score || 1;
+    ui.bars.innerHTML = '';
+    res.shape.ranked.forEach(function (r) {
+      var pct = Math.max(0, Math.round((r.score / top) * 100));
+      var li = document.createElement('li');
+      var name = document.createElement('span'); name.textContent = S.SHAPES[r.id].label;
+      var bar = document.createElement('div'); bar.className = 'sx-bar';
+      var fill = document.createElement('i'); fill.style.width = pct + '%';
+      bar.appendChild(fill);
+      var num = document.createElement('span'); num.className = 'sx-pct'; num.textContent = pct + '%';
+      li.appendChild(name); li.appendChild(bar); li.appendChild(num);
+      ui.bars.appendChild(li);
+    });
+
+    // Gender toggle: the model's guess only preselects a tab, and says so.
+    var guess = res.gender === 'female' ? 'women' : 'men';
+    renderRecommendations(guess);
+    ui.genderNote.textContent = 'Showing the ' + (guess === 'men' ? "men's" : "women's") +
+      ' set by default — switch any time, the shape result is the same either way.';
+    ui.genderNote.classList.remove('sx-hidden');
+
+    // Condition warnings.
+    var notes = res.warnings.map(function (w) { return WARNING_TEXT[w]; }).filter(Boolean);
+    if (notes.length) {
+      ui.warnings.textContent = notes.join(' ');
+      ui.warnings.classList.remove('sx-hidden');
+    } else {
+      ui.warnings.classList.add('sx-hidden');
+    }
+
+    // Internal links.
+    var linkCard = ui.links.closest('.sx-card');
+    if (LINKS.length) {
+      ui.links.innerHTML = '';
+      LINKS.forEach(function (l) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = l.href; a.textContent = l.text;
+        li.appendChild(a); ui.links.appendChild(li);
+      });
+      linkCard.classList.remove('sx-hidden');
+    } else {
+      linkCard.classList.add('sx-hidden');
+    }
+
+    ui.input.classList.add('sx-hidden');
+    ui.result.classList.remove('sx-hidden');
+    drawOverlay(res);
+    ui.result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  /* ------------------------------ pipeline -------------------------- */
+
+  function run(source) {
+    busy(true);
+    say('Loading the detection model…');
+    progress(0.05);
+
+    S.loadModels(function (stage, frac) {
+      progress(frac * 0.7);
+      if (stage === 'done') say('Measuring your face…');
+    }).then(function () {
+      progress(0.8);
+      var canvas = toCanvas(source, 1200);
+      return S.analyze(canvas).then(function (res) {
+        progress(1);
+        if (!res.ok) { fail(MESSAGES[res.error] || 'Could not analyse this photo. Try another one.'); return; }
+        var crop = S.cropFace(canvas, res.box, 2.0);
+        res.sourceWidth = crop.size;
+        res.cropX = crop.x;
+        res.cropY = crop.y;
+        ui.preview.src = crop.canvas.toDataURL('image/jpeg', 0.9);
+        ui.preview.onload = function () { render(res); busy(false); ui.progress.classList.add('sx-hidden'); say(''); };
+      });
+    }).catch(function (err) {
+      console.error('[StyleX] analysis failed', err);
+      fail('The detection model could not load. Check your connection and try again.');
+    });
+  }
+
+  function handleFile(file) {
+    if (!file) return;
+    if (!/^image\//.test(file.type)) { say('That file is not an image.'); return; }
+    var url = URL.createObjectURL(file);
+    var img = new Image();
+    img.onload = function () { run(img); URL.revokeObjectURL(url); };
+    img.onerror = function () { say('That image could not be read.'); URL.revokeObjectURL(url); };
+    img.src = url;
+  }
+
+  /* ------------------------------- camera --------------------------- */
+
+  function stopCamera() {
+    if (stream) { stream.getTracks().forEach(function (t) { t.stop(); }); stream = null; }
+    ui.camera.classList.add('sx-hidden');
+  }
+
+  function openCamera() {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      say('This browser cannot open the camera. Upload a photo instead.'); return;
+    }
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 1280 } }, audio: false })
+      .then(function (s) {
+        stream = s;
+        ui.video.srcObject = s;
+        ui.video.play();
+        ui.camera.classList.remove('sx-hidden');
+        say('');
+      })
+      .catch(function () {
+        say('Camera access was blocked. Allow it in your browser, or upload a photo instead.');
+      });
+  }
+
+  /* ------------------------------- events --------------------------- */
+
+  ui.pick.addEventListener('click', function (e) { e.stopPropagation(); ui.file.click(); });
+  ui.cam.addEventListener('click', function (e) { e.stopPropagation(); openCamera(); });
+  ui.drop.addEventListener('click', function () { ui.file.click(); });
+  ui.drop.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); ui.file.click(); }
+  });
+  ui.file.addEventListener('change', function () { handleFile(this.files[0]); this.value = ''; });
+
+  ['dragenter', 'dragover'].forEach(function (ev) {
+    ui.drop.addEventListener(ev, function (e) { e.preventDefault(); ui.drop.classList.add('is-over'); });
+  });
+  ['dragleave', 'drop'].forEach(function (ev) {
+    ui.drop.addEventListener(ev, function (e) { e.preventDefault(); ui.drop.classList.remove('is-over'); });
+  });
+  ui.drop.addEventListener('drop', function (e) {
+    if (e.dataTransfer && e.dataTransfer.files) handleFile(e.dataTransfer.files[0]);
+  });
+
+  ui.shoot.addEventListener('click', function () {
+    var frame = toCanvas(ui.video, 1200);
+    stopCamera();
+    run(frame);
+  });
+  ui.camCancel.addEventListener('click', stopCamera);
+
+  ui.gender.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-g]');
+    if (!b || !current) return;
+    renderRecommendations(b.dataset.g);
+  });
+
+  ui.again.addEventListener('click', function () {
+    current = null;
+    ui.result.classList.add('sx-hidden');
+    ui.input.classList.remove('sx-hidden');
+    say('');
+    ui.input.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  window.addEventListener('resize', function () { if (current) drawOverlay(current); });
+
+  // Warm the model up on first interaction so the first real run feels instant.
+  var warmed = false;
+  ['pointerdown', 'keydown'].forEach(function (ev) {
+    ui.drop.addEventListener(ev, function () {
+      if (warmed) return; warmed = true;
+      S.loadModels(function () {}).catch(function () { warmed = false; });
+    }, { once: true });
+  });
+})();
+</script>
+</body>
+</html>

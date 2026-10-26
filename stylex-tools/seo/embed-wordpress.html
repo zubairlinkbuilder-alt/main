@@ -1,0 +1,40 @@
+<!--
+  WordPress embed — the safest option.
+
+  1. Upload dist/face-shape.html to your server, e.g. via FTP or your host's
+     file manager, at:   /stylex-tools/face-shape.html
+  2. Create the page you want the tool to live on (Tools > Face Shape Detector).
+  3. Add a Custom HTML block and paste everything below.
+  4. Paste the contents of seo/face-shape-schema.json into the page's JSON-LD
+     field (Rank Math / Yoast custom schema), with the URLs corrected.
+
+  The iframe keeps the tool's CSS and JS fully isolated from your theme, so a
+  plugin or theme update can never break it. allow="camera" is required for
+  the "Use camera" button to work inside an iframe.
+-->
+<iframe
+  src="/stylex-tools/face-shape.html"
+  title="Face Shape Detector and Haircut Finder"
+  loading="lazy"
+  allow="camera"
+  referrerpolicy="no-referrer"
+  style="width:100%;border:0;display:block;min-height:760px"
+  id="stylex-face-tool"></iframe>
+
+<script>
+/* Keeps the iframe exactly as tall as its content, so there is no inner
+   scrollbar and no large empty gap on mobile. */
+(function () {
+  var frame = document.getElementById('stylex-face-tool');
+  function fit() {
+    try {
+      var d = frame.contentDocument;
+      if (d && d.body) frame.style.height = (d.body.scrollHeight + 24) + 'px';
+    } catch (e) { /* cross-origin — leave the min-height in place */ }
+  }
+  frame.addEventListener('load', function () {
+    fit();
+    setInterval(fit, 700);   // the tool changes height when a result appears
+  });
+})();
+</script>
