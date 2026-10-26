@@ -27,10 +27,27 @@ cannot break it. `allow="camera"` is required for the camera button.
 
 ### Option B ,  paste inline
 
-Open `dist/face-shape.html`, **delete the `<style>` block marked
-"Standalone page only"**, then copy everything from `<style>` to the final
-`</script>` into a Custom HTML block. Faster to set up, but your theme's CSS
-can now reach the tool. All classes are namespaced `sx-` to limit collisions.
+Use the files in `dist/elementor/`, produced by:
+
+```
+python3 build-elementor.py
+```
+
+They have no `<!doctype>`, `<html>`, `<head>` or `<body>`, so they drop
+straight into an Elementor **HTML widget** or a WordPress **Custom HTML**
+block. Open the file, select all, paste.
+
+They also carry a block of theme guards scoped to `.sx-tool`. A theme styles
+bare elements globally and often with `!important`, which reaches into
+anything pasted into a widget. The guards pin the button colours, input
+borders, table backgrounds, heading case, link colours and the `[hidden]`
+behaviour, while leaving prose bullets and numbering intact. Nothing in them
+applies outside `.sx-tool`, so the rest of your page is untouched.
+
+Verified against a deliberately hostile stylesheet (uppercase headings, red
+`!important` buttons, 5px magenta input borders, 28px red list text,
+`[hidden] { display: block !important }`): 30 checks, all passing, with the
+theme's own styling unaffected outside the widget.
 
 ### Requirements
 
