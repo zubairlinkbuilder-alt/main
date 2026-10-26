@@ -48,7 +48,8 @@ can now reach the tool. All classes are namespaced `sx-` to limit collisions.
 | Haircut / beard recommendations | `SHAPES` in `src/engine.js` |
 | Internal links shown with the result | `LINKS` at the top of each page's script |
 | Classifier calibration | `TUNING` in `src/engine.js` |
-| Colours, spacing | `src/_ui.css` |
+| Colours, spacing | `src/_ui.css` (tokens at the top) |
+| The face shape CTA target | search `face-shape-calculator` in `src/age-test.html` |
 
 After editing anything in `src/`, rebuild:
 
@@ -58,7 +59,25 @@ node tests/classify.test.mjs
 ```
 
 `LINKS` starts empty on purpose — add only URLs confirmed in your sitemap, or
-the card stays hidden. Nothing ships a broken link.
+the list stays hidden. Nothing ships a broken link.
+
+### Brand colours
+
+The palette lives in the `:root` block at the top of `src/_ui.css`:
+`#2B2D42` ink, `#F2C230` gold, `#F2C23021` gold tint, `#3F4368` indigo,
+`#FFFFFF`. Light mode is white with the gold as the button and accent colour;
+dark mode moves to `#2B2D42` with the gold kept as the accent. Gold carries
+`#2B2D42` text rather than white — measured at 8.1:1, where gold-on-white text
+would fail contrast outright. Change a token in one place and both tools
+follow.
+
+### Why the CTA is in the static HTML
+
+The face shape button appears twice: once above the tool and once with the
+result. Both are in the page source at load, not injected after analysis.
+That matters — a crawler never uploads a photo, so anything rendered only in
+the result state is invisible to it. The same goes for the prose sections:
+every H2 is in the HTML at rest.
 
 ---
 
@@ -123,4 +142,7 @@ inside the documented band.
 
 The browser-level checks run against a local copy of the models (upload,
 camera capture, no-face handling, the gender toggle, reset, overlay painting,
-dark mode and 360px layout). Screenshots of the verified output are in `docs/`.
+dark mode and 360px layout), plus a structure pass that checks the CTA is in
+the static HTML, the heading outline, breadcrumbs, word count and the
+gold-button contrast ratio in both themes. Screenshots of the verified output
+are in `docs/`.

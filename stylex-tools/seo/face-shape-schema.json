@@ -2,15 +2,37 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "BreadcrumbList",
+      "@id": "https://stylexmagazine.com/face-shape-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StyleX Magazine",
+          "item": "https://stylexmagazine.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Face Shape Calculator",
+          "item": "https://stylexmagazine.com/face-shape-calculator/"
+        }
+      ]
+    },
+    {
       "@type": "WebApplication",
-      "@id": "https://stylexmagazine.com/tools/face-shape-detector/#app",
+      "@id": "https://stylexmagazine.com/face-shape-calculator/#app",
       "name": "Face Shape Detector & Haircut Finder",
-      "url": "https://stylexmagazine.com/tools/face-shape-detector/",
+      "url": "https://stylexmagazine.com/face-shape-calculator/",
       "applicationCategory": "LifestyleApplication",
       "operatingSystem": "Any modern web browser",
       "browserRequirements": "Requires JavaScript. No installation or sign-up.",
       "description": "Detects your face shape from a photo by measuring forehead, cheekbone, jaw and length ratios, then recommends the haircuts, fringes and beard shapes that suit it. Runs entirely in the browser; photos are never uploaded.",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
       "featureList": [
         "Detects seven face shapes: oval, round, square, oblong, heart, diamond, triangle",
         "Shows the measured ratios behind the result",
@@ -18,11 +40,17 @@
         "Beard and facial hair guidance",
         "Runs on-device, no photo upload"
       ],
-      "publisher": { "@id": "https://stylexmagazine.com/#organization" }
+      "publisher": {
+        "@id": "https://stylexmagazine.com/#organization"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://stylexmagazine.com/#website"
+      }
     },
     {
       "@type": "FAQPage",
-      "@id": "https://stylexmagazine.com/tools/face-shape-detector/#faq",
+      "@id": "https://stylexmagazine.com/face-shape-calculator/#faq",
       "mainEntity": [
         {
           "@type": "Question",

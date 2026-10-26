@@ -1,24 +1,36 @@
 :root{
-  --sx-bg:#ffffff; --sx-surface:#f6f6f4; --sx-surface-2:#eeeeea;
-  --sx-text:#17181a; --sx-muted:#5f6368; --sx-border:#dedcd6;
-  --sx-accent:#111214; --sx-accent-text:#ffffff;
-  --sx-good:#1c6b45; --sx-warn:#8a5a00; --sx-bad:#9b2226;
+  /* StyleX brand palette
+     #2B2D42 ink · #F2C230 gold · #F2C23021 gold tint · #3F4368 indigo · #FFFFFF */
+  --sx-brand-ink:#2B2D42;
+  --sx-brand-gold:#F2C230;
+  --sx-brand-tint:#F2C23021;
+  --sx-brand-indigo:#3F4368;
+
+  --sx-bg:#FFFFFF; --sx-surface:#FBF6E8; --sx-surface-2:#F5EDD6;
+  --sx-text:#2B2D42; --sx-muted:#5C6080; --sx-border:#E6DDC4;
+  --sx-accent:#F2C230; --sx-accent-text:#2B2D42;
+  --sx-ink:#3F4368;
+  --sx-good:#1C6B45; --sx-warn:#8A5A00; --sx-bad:#9B2226;
   --sx-radius:14px; --sx-max:880px;
   --sx-font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --sx-bg:#101113; --sx-surface:#191b1e; --sx-surface-2:#22252a;
-    --sx-text:#f2f3f5; --sx-muted:#a4a9b0; --sx-border:#2e3238;
-    --sx-accent:#f2f3f5; --sx-accent-text:#101113;
-    --sx-good:#5fd49b; --sx-warn:#e0b252; --sx-bad:#f08a8a;
+    --sx-bg:#2B2D42; --sx-surface:#343754; --sx-surface-2:#3F4368;
+    --sx-text:#FFFFFF; --sx-muted:#B9BDD9; --sx-border:#4B4F74;
+    --sx-accent:#F2C230; --sx-accent-text:#2B2D42;
+    --sx-ink:#F2C230;
+    --sx-good:#5FD49B; --sx-warn:#F2C230; --sx-bad:#F08A8A;
+    color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --sx-bg:#101113; --sx-surface:#191b1e; --sx-surface-2:#22252a;
-  --sx-text:#f2f3f5; --sx-muted:#a4a9b0; --sx-border:#2e3238;
-  --sx-accent:#f2f3f5; --sx-accent-text:#101113;
-  --sx-good:#5fd49b; --sx-warn:#e0b252; --sx-bad:#f08a8a;
+    --sx-bg:#2B2D42; --sx-surface:#343754; --sx-surface-2:#3F4368;
+    --sx-text:#FFFFFF; --sx-muted:#B9BDD9; --sx-border:#4B4F74;
+    --sx-accent:#F2C230; --sx-accent-text:#2B2D42;
+    --sx-ink:#F2C230;
+    --sx-good:#5FD49B; --sx-warn:#F2C230; --sx-bad:#F08A8A;
+  color-scheme:dark;
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -102,7 +114,7 @@
 .sx-bars{margin:0; padding:0; list-style:none}
 .sx-bars li{display:grid; grid-template-columns:96px 1fr 44px; gap:10px; align-items:center; font-size:.85rem; margin-bottom:7px}
 .sx-bars .sx-bar{height:7px; background:var(--sx-surface-2); border-radius:999px; overflow:hidden}
-.sx-bars .sx-bar i{display:block; height:100%; background:var(--sx-accent)}
+.sx-bars .sx-bar i{display:block; height:100%; background:var(--sx-ink)}
 .sx-bars .sx-pct{text-align:right; color:var(--sx-muted); font-variant-numeric:tabular-nums}
 
 .sx-note{font-size:.84rem; color:var(--sx-muted); margin:0}
@@ -111,8 +123,8 @@
 .sx-alert--bad{border-color:var(--sx-bad); color:var(--sx-bad); background:transparent}
 
 .sx-links{display:grid; gap:8px; margin:0; padding:0; list-style:none}
-.sx-links a{color:var(--sx-text); text-decoration:none; font-weight:600; font-size:.93rem; border-bottom:1px solid var(--sx-border); padding-bottom:7px; display:block}
-.sx-links a:hover{border-color:var(--sx-accent)}
+.sx-links a{color:var(--sx-ink); text-decoration:none; font-weight:600; font-size:.93rem; border-bottom:1px solid var(--sx-border); padding-bottom:7px; display:block}
+.sx-links a:hover{border-color:var(--sx-accent); color:var(--sx-text)}
 
 .sx-faq details{border-bottom:1px solid var(--sx-border); padding:13px 0}
 .sx-faq summary{cursor:pointer; font-weight:600; font-size:.96rem; list-style:none}
@@ -123,3 +135,35 @@
 
 .sx-hidden{display:none !important}
 .sx-sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+
+/* ---- CTA band: the handoff to the face shape calculator ---- */
+.sx-cta{
+  background:var(--sx-surface); border:1px solid var(--sx-border);
+  border-left:4px solid var(--sx-accent); border-radius:var(--sx-radius);
+  padding:22px; margin:0 0 18px;
+}
+.sx-cta h2{margin-bottom:.35em}
+.sx-cta p{font-size:.95rem; margin-bottom:16px; max-width:58ch}
+/* gold tint over white reads warm; over the navy it goes muddy, so the
+   result CTA uses the secondary surface in both themes */
+.sx-cta--result{background:var(--sx-surface-2)}
+.sx-btn--cta{
+  text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+  background:var(--sx-accent); color:var(--sx-accent-text); border-color:var(--sx-accent);
+}
+.sx-btn--cta:hover{filter:brightness(.94)}
+.sx-btn--cta svg{flex:0 0 16px}
+
+/* ---- static prose sections (crawlable without interacting) ---- */
+.sx-prose h2{margin-top:0}
+.sx-prose h3{margin-top:1.3em}
+.sx-prose p,.sx-prose li{font-size:.95rem}
+.sx-prose ol,.sx-prose ul{padding-left:1.2em; margin:0 0 1em}
+.sx-prose li{margin-bottom:.45em}
+.sx-prose table{width:100%; border-collapse:collapse; font-size:.88rem; margin:0 0 1em}
+.sx-prose th,.sx-prose td{text-align:left; padding:9px 10px; border-bottom:1px solid var(--sx-border)}
+.sx-prose th{font-weight:650; color:var(--sx-muted)}
+.sx-table-wrap{overflow-x:auto}
+.sx-crumbs{font-size:.82rem; color:var(--sx-muted); margin:0 0 14px}
+.sx-crumbs a{color:var(--sx-muted)}
+.sx-crumbs span[aria-current]{color:var(--sx-text); font-weight:600}

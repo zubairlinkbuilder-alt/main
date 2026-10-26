@@ -2,6 +2,30 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "BreadcrumbList",
+      "@id": "https://stylexmagazine.com/tools/how-old-do-i-look/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StyleX Magazine",
+          "item": "https://stylexmagazine.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://stylexmagazine.com/tools/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How Old Do I Look",
+          "item": "https://stylexmagazine.com/tools/how-old-do-i-look/"
+        }
+      ]
+    },
+    {
       "@type": "WebApplication",
       "@id": "https://stylexmagazine.com/tools/how-old-do-i-look/#app",
       "name": "How Old Do I Look? AI Face Age Test",
@@ -10,8 +34,19 @@
       "operatingSystem": "Any modern web browser",
       "browserRequirements": "Requires JavaScript. No installation or sign-up.",
       "description": "Estimates the apparent age of a face from a photo. Guess your own result first, then compare. Runs entirely in the browser; photos are never uploaded. It estimates apparent age only and is not a biological age or health measurement.",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "publisher": { "@id": "https://stylexmagazine.com/#organization" }
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@id": "https://stylexmagazine.com/#organization"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://stylexmagazine.com/#website"
+      },
+      "significantLink": "https://stylexmagazine.com/face-shape-calculator/"
     },
     {
       "@type": "FAQPage",
@@ -56,6 +91,45 @@
             "@type": "Answer",
             "text": "No. Age verification and age assurance are a regulated field with their own accuracy and auditing requirements. This is an entertainment tool for your own photo."
           }
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://stylexmagazine.com/tools/how-old-do-i-look/#howto",
+      "name": "How to photograph your face for an accurate age estimate",
+      "description": "Five steps that keep lighting, angle and resolution from skewing the result.",
+      "totalTime": "PT1M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Face the camera straight on",
+          "text": "Face the camera straight on, with your whole face in frame."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Use soft, even front light",
+          "text": "Use soft, even light from in front of you, never from directly overhead or behind."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Hold the camera at eye level",
+          "text": "Hold the camera at eye level, at arm's length. Held low and close, a phone lens widens the jaw."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Clear your face",
+          "text": "Take off sunglasses and pull hair back from your forehead and jaw."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Keep it neutral and sharp",
+          "text": "Keep a neutral expression and use the sharpest photo you have."
         }
       ]
     }

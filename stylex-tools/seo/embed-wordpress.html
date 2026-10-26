@@ -1,12 +1,24 @@
 <!--
   WordPress embed — the safest option.
 
+  Shown here for the face shape tool. For the age tool, swap both the src and
+  the title, and use seo/age-test-schema.json.
+
   1. Upload dist/face-shape.html to your server, e.g. via FTP or your host's
      file manager, at:   /stylex-tools/face-shape.html
-  2. Create the page you want the tool to live on (Tools > Face Shape Detector).
+  2. Create the page the tool lives on:
+       face shape  ->  /face-shape-calculator/
+       age test    ->  /tools/how-old-do-i-look/
   3. Add a Custom HTML block and paste everything below.
-  4. Paste the contents of seo/face-shape-schema.json into the page's JSON-LD
-     field (Rank Math / Yoast custom schema), with the URLs corrected.
+  4. Paste the matching seo/*-schema.json into the page's JSON-LD field
+     (Rank Math / Yoast custom schema).
+
+  NOTE ON SEO: an iframe isolates the tool, which also means Google attributes
+  the tool's text and its internal links to the iframe URL, not to the parent
+  page. So write the page's own H1, intro and FAQ in WordPress itself, and put
+  the link to the other tool in the parent page too. If you would rather the
+  tool's own copy count for the page, use the inline paste (Option B in the
+  README) instead of this iframe.
 
   The iframe keeps the tool's CSS and JS fully isolated from your theme, so a
   plugin or theme update can never break it. allow="camera" is required for

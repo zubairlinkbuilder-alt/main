@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How Old Do I Look</title>
-<meta name="description" content="Find out how old you look from a photo. Guess your own result first, then see what the AI says. Runs entirely in your browser — your photo is never uploaded.">
+<meta name="description" content="Find out how old you look from a photo. Guess your result first, then compare. Free, no sign-up, and your photo never leaves your browser.">
 <style>/*!INJECT_CSS*/</style>
 <style>
 /* Standalone page only — DELETE this block when pasting the tool into a
@@ -16,12 +16,24 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
 
 <div class="sx-tool" id="sx-age-test">
 
+  <nav class="sx-crumbs" aria-label="Breadcrumb">
+    <a href="https://stylexmagazine.com/">StyleX Magazine</a> ›
+    <a href="https://stylexmagazine.com/tools/">Tools</a> ›
+    <span aria-current="page">How Old Do I Look</span>
+  </nav>
+
   <h1>How Old Do I Look?</h1>
   <p class="sx-lede">Upload a photo and the tool estimates the age your face reads as — your <em>apparent</em> age, not your real one. Guess your result first, then see how close you were.</p>
 
   <div class="sx-privacy">
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     <span><strong>Your photo never leaves this page.</strong> The model runs in your browser. Nothing is uploaded, stored, or shared — so there is nothing for anyone to leak.</span>
+  </div>
+
+  <div class="sx-cta">
+    <h2>Looking for a haircut, not a number?</h2>
+    <p>Apparent age is a party trick. The measurement that changes what actually suits you is your face shape — the ratio of forehead to cheekbone to jaw. It decides which haircut, fringe, beard line and glasses frame work on you.</p>
+    <a class="sx-btn sx-btn--cta" href="https://stylexmagazine.com/face-shape-calculator/">Find your face shape <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 
   <!-- ------------------------------- INPUT ------------------------------- -->
@@ -78,21 +90,65 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
       </div>
     </div>
 
-    <div class="sx-card">
-      <h2>What this number is — and is not</h2>
-      <p style="font-size:.95rem">It is an <strong>apparent age</strong>: the age a model trained on labelled face photos reads your face as. It is not your biological age, it is not a health measurement, and it says nothing about how long you will live. Any tool that tells you otherwise from a single selfie is overselling itself.</p>
-      <p style="font-size:.95rem;margin-bottom:0">Expect it to move by several years between two photos of the same person on the same day. Lighting, camera angle, expression, make-up, facial hair, glasses and image sharpness all shift the estimate, and the model is least reliable at both ends of the age range.</p>
-    </div>
-
-    <div class="sx-card" id="sx-crosslink-card">
-      <h2>More useful than your age: your face shape</h2>
-      <p style="font-size:.95rem">Apparent age is a party trick. The measurement that actually changes what suits you is the shape of your face — the ratio of forehead to cheekbone to jaw. It decides which haircut, beard line, fringe and glasses frame work on you, and which fight your proportions.</p>
-      <ul class="sx-links" id="sx-links"></ul>
+    <div class="sx-cta sx-cta--result">
+      <h2>Now find out what actually suits you</h2>
+      <p>You have a number. Your face shape is the measurement that decides which cuts work with your proportions and which fight them — same photo, far more useful answer.</p>
+      <a class="sx-btn sx-btn--cta" href="https://stylexmagazine.com/face-shape-calculator/">Open the face shape calculator <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <ul class="sx-links" id="sx-links" style="margin-top:16px"></ul>
     </div>
 
     <div class="sx-actions" style="margin-bottom:22px">
       <button type="button" class="sx-btn sx-btn--ghost" id="sx-again">Try another photo</button>
     </div>
+  </div>
+
+
+  <div class="sx-card sx-prose">
+    <h2>What this number is — and is not</h2>
+    <p>It is an <strong>apparent age</strong>: the age a model trained on labelled face photos reads your face as. It is not your biological age, it is not a health measurement, and it says nothing about how long you will live. Any tool that tells you otherwise from a single selfie is overselling itself.</p>
+
+    <h3>Apparent age vs biological age vs chronological age</h3>
+    <div class="sx-table-wrap">
+      <table>
+        <thead><tr><th>Measure</th><th>What it is</th><th>How it is measured</th></tr></thead>
+        <tbody>
+          <tr><td>Chronological age</td><td>Years since you were born</td><td>Your birth certificate</td></tr>
+          <tr><td>Apparent age</td><td>How old your face reads</td><td>A photo — what this tool estimates</td></tr>
+          <tr><td>Biological age</td><td>How your body is ageing</td><td>Clinical and molecular markers, not a selfie</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>How the estimate works</h2>
+    <ol>
+      <li><strong>Face detection.</strong> The model locates every face in the photo and keeps the largest one.</li>
+      <li><strong>Landmark mapping.</strong> 68 points are placed across the brows, eyes, nose, mouth and jawline to align the face.</li>
+      <li><strong>Age prediction.</strong> A neural network trained on labelled-age photographs returns a single number, which is shown here as a range.</li>
+    </ol>
+    <p>All three steps run on your own device. The model file is downloaded to your browser once and the photo is never sent anywhere.</p>
+
+    <h2>How accurate is an AI age detector?</h2>
+    <p>Accurate enough to be entertaining, not accurate enough to rely on. Published vendor benchmarks are honest about where the error sits: one age-assurance provider reports an overall mean error of about 1.6 years, but the same benchmark shows <strong>3.3 years at ages 26–40 and 5.0 years at 40 and over</strong>. Error grows with age, because adult faces change far more slowly than children's.</p>
+    <p>That is why the result here is shown as a band rather than a single confident number. Expect it to move by several years between two photos of the same person taken on the same day.</p>
+
+    <h3>What pushes the estimate up or down</h3>
+    <ul>
+      <li><strong>Lighting.</strong> Harsh overhead light deepens shadows under the eyes and mouth and reads as older. Soft, even front light reads younger.</li>
+      <li><strong>Camera angle.</strong> A phone held low and close widens the jaw and adds apparent weight to the lower face.</li>
+      <li><strong>Resolution.</strong> Low-resolution photos smear the fine skin detail the model reads as youth.</li>
+      <li><strong>Facial hair.</strong> Beards consistently push estimates upward.</li>
+      <li><strong>Expression.</strong> A neutral face reads older than a smile.</li>
+      <li><strong>Make-up and glasses.</strong> Both shift the result, in either direction.</li>
+    </ul>
+
+    <h2>How to get the most accurate result</h2>
+    <ol>
+      <li>Face the camera straight on, with your whole face in frame.</li>
+      <li>Use soft, even light from in front of you — never from directly overhead or behind.</li>
+      <li>Hold the camera at eye level, at arm's length.</li>
+      <li>Take off sunglasses and pull hair back from your forehead and jaw.</li>
+      <li>Keep a neutral expression, and use the sharpest photo you have.</li>
+    </ol>
   </div>
 
   <!-- -------------------------------- FAQ -------------------------------- -->
@@ -123,7 +179,9 @@ html, body { margin: 0; padding: 24px 0 40px; background: var(--sx-bg); color: v
    * use URLs that exist; an empty array hides the card.
    * ================================================================== */
   var LINKS = [
-    // { text: 'Find your face shape and the haircuts that suit it', href: '/tools/face-shape-detector/' }
+    // Extra links shown under the CTA after a result. The face shape button
+    // above is always in the HTML, so it is crawlable without these.
+    // { text: 'Best haircuts for a round face', href: 'https://stylexmagazine.com/...' }
   ];
 
   var S = window.StyleXFace;
