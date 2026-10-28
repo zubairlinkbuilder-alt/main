@@ -7,7 +7,7 @@
  *
  * Exposes: window.StyleXFace
  *   .loadModels(onProgress) -> Promise
- *   .analyze(HTMLImageElement|HTMLVideoElement|HTMLCanvasElement) -> Promise<Result>
+ *   .analyze(HTMLImageElement|HTMLVideoElement|HTMLCanvasElement) -> Promise(Result)
  *   .TUNING  (calibration constants, safe to edit)
  *   .SHAPES  (shape ids + editorial copy)
  */

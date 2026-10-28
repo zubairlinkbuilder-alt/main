@@ -308,3 +308,23 @@
   background:var(--sx-surface-2); color:var(--sx-text); border:1px solid var(--sx-border);
 }
 .sx-chip--on{background:var(--sx-accent); border-color:var(--sx-accent); color:var(--sx-brand-ink)}
+
+/* Scoped theme pins. A page may add data-theme="light" or "dark" to the
+   .sx-tool wrapper to lock the tool to that theme regardless of the
+   visitor's OS, which is what WordPress embeds usually want. */
+.sx-tool[data-theme="light"]{
+  --sx-bg:#FFFFFF; --sx-surface:#FBF6E8; --sx-surface-2:#F5EDD6; --sx-card:#FFFFFF;
+  --sx-text:#2B2D42; --sx-muted:#5C6080; --sx-border:#E6DDC4;
+  --sx-accent:#F2C230; --sx-accent-text:#2B2D42;
+  --sx-ink:#3F4368;
+  --sx-good:#1C6B45; --sx-warn:#8A5A00; --sx-bad:#9B2226;
+  color-scheme:light;
+}
+.sx-tool[data-theme="dark"]{
+  --sx-bg:#2B2D42; --sx-surface:#343754; --sx-surface-2:#3F4368; --sx-card:#343754;
+  --sx-text:#FFFFFF; --sx-muted:#B9BDD9; --sx-border:#4B4F74;
+  --sx-accent:#F2C230; --sx-accent-text:#2B2D42;
+  --sx-ink:#F2C230;
+  --sx-good:#5FD49B; --sx-warn:#F2C230; --sx-bad:#F08A8A;
+  color-scheme:dark;
+}

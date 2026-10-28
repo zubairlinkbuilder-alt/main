@@ -74,7 +74,16 @@ def build() -> None:
             }[name]
             html = html.replace("<!--BREADCRUMB-->", breadcrumb(links, page_name))
         html = linkify_shapes(html, links)
-        html = html.replace("/*!INJECT_LINKS*/", json.dumps(links))
+        # Strip the human-readable comment and escape every < in the JSON,
+        # so a WordPress or Elementor HTML sanitiser cannot mistake a string
+        # character inside the script for an opening HTML tag. Without this,
+        # a <a> substring in a string ends a run of DOM nodes early and the
+        # whole bottom half of the page silently disappears.
+        safe_links = {k: v for k, v in links.items() if not k.startswith('_')}
+        html = html.replace(
+            "/*!INJECT_LINKS*/",
+            json.dumps(safe_links).replace('<', r'\u003c').replace('>', r'\u003e'),
+        )
 
         for placeholder, key in (("{{CALCULATOR}}", "calculator"),
                                  ("{{HOME}}", "home")):
